@@ -1,0 +1,76 @@
+<div class="container full-width">
+    <div class="row no-gutter">
+        <div class="col-md-6">
+            <div class="branding">
+                <img class="center-block" src="images/logo.png" alt="EVO Stream Logo">
+            </div>
+            <form class="form-signin" method="post" action="/login">
+                <h4 class="form-signin-heading">Log in to your account</h4>
+
+                <p>Email address*</p>
+                <label for="email" class="sr-only">Email address</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+
+                <p>Password*</p>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+
+                <div class="checkbox">
+                    <label for="rememberMe">
+                        <input type="checkbox" id="rememberMe" name="rememberMe"> Remember me
+                    </label>
+                    <a class="pull-right" href="/forgotpassword">Forgot password?</a>
+                </div>
+                {{#if error}}
+                    <div style="color:red;">{{error}}</div>
+                {{/if}}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <p class="subtitle fancy"><span>Or</span></p>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="form-signin-heading">Log in using your social media account</h4>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <a class="btn btn-block btn-social btn-facebook" href="/fblogin?page=dashboard">
+                            <span class="fa fa-facebook"></span> Sign in with Facebook
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <a class="btn btn-block btn-social btn-google" href="/googlelogin?page=dashboard">
+                            <span class="fa fa-google"></span> Sign in with Google+
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="right-bg">
+                <div class="r-content">
+                    <h3>Welcome to the Web User Interface for the Evostream Media Server.</h3>
+                    <p>This application leverages your use of the Evostream Media Server. Easily stream live video with
+                        a click of a button.</p>
+
+                    <img src="images/dashboard-icon.png" alt="EVO Dashboard"/>
+                    <h5>Admin Dashboard</h5>
+                    <p>Monitor inbound and outbound streams. Check connection to EMS.</p>
+
+                    <img src="images/manage-icon.png" alt="EVO Manage Streams"/>
+                    <h5>Manage Stream</h5>
+                    <p>View list of stream using the web interface. Create and Send Stream to Facebook Live or
+                        Youtube</p>
+
+                    <img src="images/api-icon.png" alt="EMS API Explorer"/>
+                    <h5>EMS API Explorer</h5>
+                    <p>Tool to create, and authenticate API calls and debug responses. See methods available for each
+                        API and what parameters they support.</p>
+
+                    <p class="text-center evo-tsp">Note: It is expected that you already have a basic functional
+                        knowledge of the EvoStream Media Server. Please read the EMS User Guide prior to working with
+                        the Web UI!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /container -->

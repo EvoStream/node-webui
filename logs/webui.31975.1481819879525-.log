@@ -1,0 +1,276 @@
+1481819932398:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:52 +0000] "GET /forgotpassword HTTP/1.1" 200 5123 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819932787:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:52 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819932790:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:52 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819932791:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:52 +0000] "GET /css/login-style.css HTTP/1.1" 304 - "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819932794:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:52 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819932818:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:52 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819933010:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:53 +0000] "GET /js/app/webui-app-login.js HTTP/1.1" 304 - "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819933240:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:53 +0000] "GET /images/image.png HTTP/1.1" 304 - "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819933287:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:53 +0000] "GET /images/logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819939496:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:38:59 +0000] "POST /forgotpassword HTTP/1.1" 302 214 "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940179:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f HTTP/1.1" 200 6318 "http://50.56.172.81:3000/forgotpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940514:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940516:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /css/login-style.css HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940519:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940521:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940525:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940603:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /js/app/webui-app-login.js HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940923:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /images/image.png HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819940929:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:00 +0000] "GET /images/logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819987849:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:47 +0000] "POST /resetpassword HTTP/1.1" 200 4804 "http://50.56.172.81:3000/resetpassword?token=e5986d9d2176469239fbfcdfad27aa5fdd6b865f" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988248:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988249:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988253:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988255:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988257:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /css/login-style.css HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988276:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /js/app/webui-app-login.js HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988688:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /images/image.png HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988690:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /images/logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819988731:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:48 +0000] "GET /images/check-icon.svg HTTP/1.1" 200 899 "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819991567:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:51 +0000] "GET /dashboard HTTP/1.1" 200 15684 "http://50.56.172.81:3000/resetpassword" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819991914:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:51 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819991917:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:51 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819991928:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:51 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819991930:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:51 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819991944:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:51 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819991995:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:51 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992139:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992147:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992156:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992160:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992174:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992209:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992363:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992379:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992387:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992388:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992402:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992421:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992588:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992609:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992620:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992621:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992630:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992647:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992815:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992840:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992848:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819992853:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:52 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993451:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993455:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993457:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /css/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 304 - "http://50.56.172.81:3000/css/font-awesome/css/font-awesome.css" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993457:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993460:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993472:31975 - info: EMS API function command 
+1481819993472:31975 - verbose: EMS API this.sendCommand 
+1481819993474:31975 - verbose: EMS API this.buildqs 
+1481819993476:31975 - verbose: EMS API parameters: 
+1481819993477:31975 - verbose: EMS API this.sendCommand command version
+1481819993477:31975 - verbose: EMS API this.sendCommand parameters null
+1481819993477:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//version
+1481819993501:31975 - verbose: response {"data":{"banner":"EvoStream Media Server (www.evostream.com) version 1.7.0 build 4283 with hash: 395ff5e220ea7311adf3fca70960fb30c7785d34 - PacMan|m| - (built for Ubuntu-14.04-x86_64 on 2016-01-27T10:00:15.000)","branchName":"","buildDate":"2016-01-27T10:00:15.000","buildNumber":"4283","codeName":"PacMan|m|","hash":"395ff5e220ea7311adf3fca70960fb30c7785d34","releaseNumber":"1.7.0"},"description":"Version","status":"SUCCESS"}
+
+
+1481819993506:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 429 "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993674:31975 - info: EMS API function command 
+1481819993675:31975 - verbose: EMS API this.sendCommand 
+1481819993675:31975 - verbose: EMS API this.buildqs 
+1481819993675:31975 - verbose: EMS API parameters: 
+1481819993676:31975 - verbose: EMS API this.sendCommand command version
+1481819993676:31975 - verbose: EMS API this.sendCommand parameters null
+1481819993677:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//version
+1481819993688:31975 - verbose: response {"data":{"banner":"EvoStream Media Server (www.evostream.com) version 1.7.0 build 4283 with hash: 395ff5e220ea7311adf3fca70960fb30c7785d34 - PacMan|m| - (built for Ubuntu-14.04-x86_64 on 2016-01-27T10:00:15.000)","branchName":"","buildDate":"2016-01-27T10:00:15.000","buildNumber":"4283","codeName":"PacMan|m|","hash":"395ff5e220ea7311adf3fca70960fb30c7785d34","releaseNumber":"1.7.0"},"description":"Version","status":"SUCCESS"}
+
+
+1481819993697:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 429 "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993702:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://50.56.172.81:3000/css/admin-style.css" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993705:31975 - info: EMS API function command 
+1481819993705:31975 - verbose: EMS API this.sendCommand 
+1481819993706:31975 - verbose: EMS API this.buildqs 
+1481819993706:31975 - verbose: EMS API parameters: 
+1481819993706:31975 - verbose: EMS API this.sendCommand command version
+1481819993706:31975 - verbose: EMS API this.sendCommand parameters null
+1481819993707:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//version
+1481819993711:31975 - info: EMS API function command 
+1481819993711:31975 - verbose: EMS API this.sendCommand 
+1481819993711:31975 - verbose: EMS API this.buildqs 
+1481819993712:31975 - verbose: EMS API parameters: 
+1481819993712:31975 - verbose: EMS API this.sendCommand command getStreamsCount
+1481819993712:31975 - verbose: EMS API this.sendCommand parameters null
+1481819993712:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481819993717:31975 - info: EMS API function command 
+1481819993717:31975 - verbose: EMS API this.sendCommand 
+1481819993717:31975 - verbose: EMS API this.buildqs 
+1481819993718:31975 - verbose: EMS API parameters: 
+1481819993718:31975 - verbose: EMS API this.sendCommand command getLicenseId
+1481819993718:31975 - verbose: EMS API this.sendCommand parameters null
+1481819993718:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getLicenseId
+1481819993721:31975 - verbose: response {"data":{"banner":"EvoStream Media Server (www.evostream.com) version 1.7.0 build 4283 with hash: 395ff5e220ea7311adf3fca70960fb30c7785d34 - PacMan|m| - (built for Ubuntu-14.04-x86_64 on 2016-01-27T10:00:15.000)","branchName":"","buildDate":"2016-01-27T10:00:15.000","buildNumber":"4283","codeName":"PacMan|m|","hash":"395ff5e220ea7311adf3fca70960fb30c7785d34","releaseNumber":"1.7.0"},"description":"Version","status":"SUCCESS"}
+
+
+1481819993727:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 429 "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993729:31975 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481819993730:31975 - info: EMS API function command 
+1481819993730:31975 - verbose: EMS API this.sendCommand 
+1481819993731:31975 - verbose: EMS API this.buildqs 
+1481819993731:31975 - verbose: EMS API parameters: 
+1481819993731:31975 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481819993731:31975 - verbose: EMS API this.sendCommand parameters null
+1481819993731:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481819993734:31975 - verbose: response {"data":null,"description":"command getlicenseid not known. Type help for list of commands","status":"FAIL"}
+
+
+1481819993737:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /ems/api/get-license-id HTTP/1.1" 200 108 "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481819993739:31975 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+
+1481819993934:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:39:53 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://50.56.172.81:3000/css/admin-style.css" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481820113463:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:41:53 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" - - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481820113939:31975 - info: EMS API function command 
+1481820113940:31975 - verbose: EMS API this.sendCommand 
+1481820113941:31975 - verbose: EMS API this.buildqs 
+1481820113941:31975 - verbose: EMS API parameters: 
+1481820113941:31975 - verbose: EMS API this.sendCommand command getStreamsCount
+1481820113941:31975 - verbose: EMS API this.sendCommand parameters null
+1481820113942:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481820113951:31975 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481820113951:31975 - info: EMS API function command 
+1481820113952:31975 - verbose: EMS API this.sendCommand 
+1481820113952:31975 - verbose: EMS API this.buildqs 
+1481820113952:31975 - verbose: EMS API parameters: 
+1481820113953:31975 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481820113954:31975 - verbose: EMS API this.sendCommand parameters null
+1481820113956:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481820113962:31975 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+
+1481820234026:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:43:54 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" - - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481820234478:31975 - info: EMS API function command 
+1481820234478:31975 - verbose: EMS API this.sendCommand 
+1481820234479:31975 - verbose: EMS API this.buildqs 
+1481820234479:31975 - verbose: EMS API parameters: 
+1481820234479:31975 - verbose: EMS API this.sendCommand command getStreamsCount
+1481820234479:31975 - verbose: EMS API this.sendCommand parameters null
+1481820234480:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481820234485:31975 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481820234486:31975 - info: EMS API function command 
+1481820234486:31975 - verbose: EMS API this.sendCommand 
+1481820234486:31975 - verbose: EMS API this.buildqs 
+1481820234487:31975 - verbose: EMS API parameters: 
+1481820234487:31975 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481820234487:31975 - verbose: EMS API this.sendCommand parameters null
+1481820234488:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481820234490:31975 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+
+1481820354570:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:45:54 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" - - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481820355028:31975 - info: EMS API function command 
+1481820355029:31975 - verbose: EMS API this.sendCommand 
+1481820355029:31975 - verbose: EMS API this.buildqs 
+1481820355029:31975 - verbose: EMS API parameters: 
+1481820355029:31975 - verbose: EMS API this.sendCommand command getStreamsCount
+1481820355030:31975 - verbose: EMS API this.sendCommand parameters null
+1481820355030:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481820355035:31975 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481820355035:31975 - info: EMS API function command 
+1481820355036:31975 - verbose: EMS API this.sendCommand 
+1481820355036:31975 - verbose: EMS API this.buildqs 
+1481820355036:31975 - verbose: EMS API parameters: 
+1481820355037:31975 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481820355037:31975 - verbose: EMS API this.sendCommand parameters null
+1481820355037:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481820355045:31975 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+
+1481820475122:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:47:55 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" - - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481820475583:31975 - info: EMS API function command 
+1481820475584:31975 - verbose: EMS API this.sendCommand 
+1481820475584:31975 - verbose: EMS API this.buildqs 
+1481820475584:31975 - verbose: EMS API parameters: 
+1481820475585:31975 - verbose: EMS API this.sendCommand command getStreamsCount
+1481820475585:31975 - verbose: EMS API this.sendCommand parameters null
+1481820475585:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481820475590:31975 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481820475591:31975 - info: EMS API function command 
+1481820475591:31975 - verbose: EMS API this.sendCommand 
+1481820475591:31975 - verbose: EMS API this.buildqs 
+1481820475591:31975 - verbose: EMS API parameters: 
+1481820475592:31975 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481820475592:31975 - verbose: EMS API this.sendCommand parameters null
+1481820475593:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481820475599:31975 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+
+1481820595670:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:49:55 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" - - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481820596142:31975 - info: EMS API function command 
+1481820596142:31975 - verbose: EMS API this.sendCommand 
+1481820596143:31975 - verbose: EMS API this.buildqs 
+1481820596143:31975 - verbose: EMS API parameters: 
+1481820596143:31975 - verbose: EMS API this.sendCommand command getStreamsCount
+1481820596144:31975 - verbose: EMS API this.sendCommand parameters null
+1481820596144:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481820596148:31975 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481820596149:31975 - info: EMS API function command 
+1481820596149:31975 - verbose: EMS API this.sendCommand 
+1481820596149:31975 - verbose: EMS API this.buildqs 
+1481820596157:31975 - verbose: EMS API parameters: 
+1481820596158:31975 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481820596158:31975 - verbose: EMS API this.sendCommand parameters null
+1481820596159:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481820596163:31975 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+
+1481820716217:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:51:56 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" - - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481820716675:31975 - info: EMS API function command 
+1481820716675:31975 - verbose: EMS API this.sendCommand 
+1481820716675:31975 - verbose: EMS API this.buildqs 
+1481820716676:31975 - verbose: EMS API parameters: 
+1481820716676:31975 - verbose: EMS API this.sendCommand command getStreamsCount
+1481820716676:31975 - verbose: EMS API this.sendCommand parameters null
+1481820716676:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481820716685:31975 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481820716685:31975 - info: EMS API function command 
+1481820716685:31975 - verbose: EMS API this.sendCommand 
+1481820716686:31975 - verbose: EMS API this.buildqs 
+1481820716686:31975 - verbose: EMS API parameters: 
+1481820716686:31975 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481820716686:31975 - verbose: EMS API this.sendCommand parameters null
+1481820716687:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481820716689:31975 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+
+1481820836766:31975 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:16:53:56 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" - - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481820837238:31975 - info: EMS API function command 
+1481820837239:31975 - verbose: EMS API this.sendCommand 
+1481820837239:31975 - verbose: EMS API this.buildqs 
+1481820837239:31975 - verbose: EMS API parameters: 
+1481820837239:31975 - verbose: EMS API this.sendCommand command getStreamsCount
+1481820837239:31975 - verbose: EMS API this.sendCommand parameters null
+1481820837240:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481820837246:31975 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481820837247:31975 - info: EMS API function command 
+1481820837247:31975 - verbose: EMS API this.sendCommand 
+1481820837247:31975 - verbose: EMS API this.buildqs 
+1481820837248:31975 - verbose: EMS API parameters: 
+1481820837248:31975 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481820837248:31975 - verbose: EMS API this.sendCommand parameters null
+1481820837249:31975 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481820837253:31975 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+

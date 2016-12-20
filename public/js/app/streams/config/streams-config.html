@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+
+    <!-- Panel Header -->
+    <div class="row banner4">
+        <div class="col-lg-12 page-header-streams">
+            <h1>List All Push/Pull Configurations</h1>
+            <small class="descr-sub-header" >
+                Returns a list with all push/pull configurations.
+            <br>
+                Whenever the pullStream or pushStream interfaces are called, a record containing the details of the pull or push is created in the pullpushconfig.xml file.
+                Then, the next time the EMS is started, the pullpushconfig.xml file is read, and the EMS attempts to reconnect all of the previous pulled or pushed streams.
+            </small>
+        </div>
+    </div>
+
+    <div class=" col-lg-12">
+        <!-- Panel Content -->
+        <div class="panel-body">
+            <form class="ng-pristine ng-valid ng-scope">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label class="evo-head">Filter by Configuration Type</label>
+                        <ui-select ng-model="configType.selected" ng-change="selectedConfigType()"
+                                   theme="bootstrap" search-enabled="false" ng-disabled="false"
+                                   style="min-width: 300px;" title="Choose a Configuration Type">
+                            <ui-select-match placeholder="Select a Configuration Type...">{[{configType.selected }]}
+                            </ui-select-match>
+                            <ui-select-choices repeat="cType in configType ">
+                                <div ng-bind-html="cType | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+
+                <hr>
+                <div>
+                    <table ng-if="bsConfigTableControl" bs-table-control="bsConfigTableControl"></table>
+                </div>
+                <div ng-if ="noActiveStreams" class="col-md-12 ">
+                    <h1>There are no Active Streams at the moment</h1>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

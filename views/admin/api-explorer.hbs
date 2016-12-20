@@ -1,0 +1,211 @@
+<div id="page-wrapper">
+    <div class="container-fluid " ng-controller="apiExplorerCtrl as ctrl">
+        <!-- Page Heading -->
+        <div class="row row-header banner4">
+            <div class="col-lg-12 page-header">
+                <h1 ng-init="helloScope()">
+                    EMS API Explorer
+                </h1>
+                <small>This tool lets you use the EMS Core API by helping you build the commands that will create and manipulate the streams in the EMS</small>
+            </div>
+        </div>
+        <!-- Content -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-terminal "></i></h3>
+                    </div>
+                    <div class="panel-body">
+                        <!-- ngIf: streamListsLoaded -->
+                        <form>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="evo-head">Command</label><br>
+                                    <div id="api-command">
+                                        <ui-select ng-model="ctrl.api.selected"
+                                                   ng-change="selectedCommandAddParameters()" theme="select2"
+                                                   ng-disabled="ctrl.disabled"
+                                                   title="Command Name">
+                                            <ui-select-match
+                                                    placeholder="Command Name - select in the list or search command name...">
+                                                {[{$select.selected.command}]}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="api.command as api in ctrl.apiList | propsFilter: { command : $select.search}"
+                                                    position='down'>
+                                                <div style="font-weight: bold;"
+                                                     ng-bind-html="api.command | highlight: $select.search"></div>
+                                                <small>
+                                                    description: {[{api.description}]}
+                                                </small>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <small ng-if="selectedCommandDescription">
+                                            description: {[{selectedCommandDescription}]}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!--<div class="form-group parameters-container col-md-12">-->
+                                <div class="form-group col-md-12">
+                                    <label class="evo-head parameters-heading">Parameters</label>
+                                </div>
+                                <div ng-if="ctrl.api.selected">
+                                    <!--<p>Required Parameters: </p>-->
+                                    <div class="form-group col-md-12">
+                                        <label class="parameters-heading">Required Parameters:</label>
+                                    </div>
+                                    <div ng-repeat="parameterCollection in parameterCollectionsMandatory ">
+                                        <div class="row parameter-row col-md-12">
+                                            <div class="col-md-4 api-parameter-name">
+                                                <ui-select ng-model="parameterCollection.defaultName.selected"
+                                                           theme="select2"
+                                                           ng-disabled="true"
+                                                           title="Parameter Name">
+                                                    <ui-select-match
+                                                            placeholder="Parameter Name - select in the list or search command name...">
+                                                        {[{$select.selected.name || $select.selected}]}
+                                                    </ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="param.name as param in parameterCollection.listing | propsFilter: { name : $select.search}"
+                                                            position='down'>
+                                                        <div style="font-weight: bold;"
+                                                             ng-bind-html="param.name | highlight: $select.search"></div>
+                                                        <small>
+                                                            description: {[{param.description}]}
+                                                            <br>
+                                                            mandatory: <span style="font-weight: bold;">{[{param.mandatory}]}</span>
+                                                        </small>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                                <!--<p>Selected: <code> parameterCollection.id {[{parameterCollection.id}]}</code></p>-->
+                                                <!--<p>Selected: <code> parameterCollections[parameterCollection.id].selectedParameterDescriptionValue {[{parameterCollections[parameterCollection.id].selectedParameterDescriptionValue}]}</code></p>-->
+                                                <small>
+                                                    description: {[{parameterCollection.defaultDescription}]}
+                                                    <br>
+                                                    mandatory: <span style="font-weight: bold;">{[{parameterCollection.defaultMandatory}]}</span>
+                                                </small>
+                                            </div>
+
+                                            <div class="col-md-4 api-parameter-value">
+                                                <input type="text"
+                                                       class="form-control evo-input"
+                                                       placeholder="Parameter Value"
+                                                       ng-model="parameterCollection.value">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--<p>Not Required Parameters: </p>-->
+                                    <div class="form-group col-md-2 parameter-not-required">
+                                        <label class="parameters-heading">Other Parameters:</label>
+                                    </div>
+                                    <div class="form-group col-md-6 parameter-not-required-button">
+                                        <button class="btn btn-evo "
+                                                ng-click="addParameterNotMandatory(parameterCollectionsNotMandatory);">
+                                            Add Parameter <!--<i class="fa fa-plus-circle" aria-hidden="true"></i>-->
+                                        </button>
+                                    </div>
+                                    <div ng-repeat="parameterCollection in parameterCollectionsNotMandatory track by $index  ">
+                                        <div class="row parameter-row col-md-12">
+                                            <div class="col-md-4 api-parameter-name">
+                                                <ui-select ng-model="parameterCollection.defaultName.selected"
+                                                           theme="select2"
+                                                           ng-change="selectedParameterDescription(parameterCollection)"
+                                                           title="Parameter Name">
+                                                    <ui-select-match
+                                                            placeholder="Parameter Name - select in the list or search command name...">
+                                                        {[{$select.selected.name || $select.selected}]}
+                                                    </ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="param.name as param in parameterCollection.listing | propsFilter: { name : $select.search}"
+                                                            position='down'>
+                                                        <div style="font-weight: bold;"
+                                                             ng-bind-html="param.name | highlight: $select.search"></div>
+                                                        <small>
+                                                            description: {[{param.description}]}
+                                                            <br>
+                                                            mandatory: <span style="font-weight: bold;">{[{param.mandatory}]}</span>
+                                                        </small>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                                <small ng-if="parameterCollection.selectedParameterDescriptionStatus">
+                                                    description:
+                                                    {[{parameterCollection.selectedParameterDescriptionValue }]}
+                                                    <br>
+                                                    mandatory: <span style="font-weight: bold;">{[{parameterCollection.selectedParameterMandatoryValue}]}</span>
+                                                </small>
+                                            </div>
+
+                                            <div class="col-md-4 api-parameter-value">
+                                                <input type="text"
+                                                       class="form-control evo-input"
+                                                       placeholder="Parameter Value"
+                                                       ng-model="parameterCollection.value">
+                                            </div>
+                                            <div class="col-md-2 api-parameter-value">
+                                                <button class="delete-param"
+                                                        ng-click="deleteParameterNotMandatory(parameterCollectionsNotMandatory);">
+                                                    <i class="fa fa-minus-circle" aria-hidden="true"></i></button>
+                                                <button class="add-param"
+                                                        ng-click="addParameterNotMandatory(parameterCollectionsNotMandatory);">
+                                                    <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div ng-if="!ctrl.api.selected">
+                                    <div class="form-group col-md-12">
+                                        <label class="parameters-heading">Please select a command above</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group .console-container col-md-12">
+                                    <label class="evo-head">Command Text</label>
+                                    <!--<div class="well" style=" min-width:300px; height: 200px;">-->
+                                    <div class="form-control console evo-form-control " style="min-height: 50px;"
+                                         ng-model="commandText">
+                                        {[{selectedCommandName}]} <span
+                                            ng-repeat="parameterCollection in parameterCollectionsMandatory">{[{parameterCollection.defaultName.selected+'='+parameterCollection.value + ' &nbsp;' }]}</span>
+                                        <span ng-repeat="parameterCollection in parameterCollectionsNotMandatory">
+                                            <span ng-if="parameterCollection.defaultName.selected">
+                                                {[{parameterCollection.defaultName.selected+'='+parameterCollection.value + ' &nbsp;' }]}
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="console-buttons" style="float:left">
+                                    <button type="button" class="btn btn-evo" ng-click="sendCommand()" ladda="sendCommandLoading" >
+                                        <span>Send Command</span>
+                                    </button>
+
+                                    <button type="button" class="btn btn-evo-clear" ng-click="clearCommand()">
+                                        <span>Clear</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group json-container col-md-12">
+                                    <label class="evo-head">JSON Response</label>
+                                    <textarea readonly rows="30" style="resize: vertical"
+                                              class="form-control console json ">{[{commandResponse}]}
+                                    </textarea>
+                                </div>
+                            </div>
+
+                        </form><!-- end ngIf: streamListsLoaded -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>

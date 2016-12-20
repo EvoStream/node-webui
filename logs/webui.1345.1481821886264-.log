@@ -1,0 +1,8 @@
+1481821886910:1345 - info: [webui] user logging out.....
+1481821886916:1345 - info: [webui] user session {"cookie":{"originalMaxAge":100000000,"expires":"2016-12-16T20:58:06.904Z","httpOnly":true,"path":"/"}}
+1481821886916:1345 - info: (typeof req.session.passport !== undefined) false
+1481821887018:1345 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:11:27 +0000] "GET /users/logout HTTP/1.1" 500 1028 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481821891025:1345 - info: [webui] user logging out.....
+1481821891026:1345 - info: [webui] user session {"cookie":{"originalMaxAge":100000000,"expires":"2016-12-16T20:58:11.024Z","httpOnly":true,"path":"/"}}
+1481821891027:1345 - info: (typeof req.session.passport !== undefined) false
+1481821891042:1345 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:11:31 +0000] "GET /users/logout HTTP/1.1" 500 1028 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"

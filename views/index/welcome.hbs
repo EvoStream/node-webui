@@ -1,0 +1,128 @@
+<div class="container full-width" ng-controller="welcomeCtrl">
+    <div class="row no-gutter">
+        <div class="col-md-6">
+            <div class="branding">
+                <img class="center-block" src="images/logo.png" alt="EVO Stream Logo">
+            </div>
+            <form class="form-signin" name="welcome" action="/" id="create-user-form" method="post" novalidate>
+                <h4 class="form-signin-heading">Please create an administrator account</h4>
+
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="email" name="email" ng-model="email" class="form-control"
+                       placeholder="Email address" value="{{input.email}}" required autofocus>
+                <div class="welcomeError" ng-show="welcome.email.$invalid && !welcome.email.$pristine"><span>Enter a valid email</span>
+                </div>
+
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" ng-model="password" autocomplete="off"
+                       class="form-control" placeholder="Password" ng-minlength="5" ng-maxlength="20" required>
+                <div class="welcomeError" ng-show="welcome.password.$dirty && welcome.password.$error.minlength"><span>Password too short. Minimum of 5 characters</span>
+                </div>
+                <div class="welcomeError" ng-show="welcome.password.$dirty && welcome.password.$error.required"><span>Password required.</span>
+                </div>
+
+                <!--<span >welcome.password.$dirty {[{welcome.password.$dirty}]}</span>-->
+                <!--<br>-->
+                <!--<span >welcome.password.$error.minlength {[{welcome.password.$error.minlength}]}</span>-->
+
+                <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" ng-model="confirmPassword"
+                       autocomplete="off" required class="form-control" placeholder="Confirm Password"
+                       ng-minlength="5" ng-maxlength="20" password-check="password" required>
+                <div class="welcomeError" ng-show="welcome.confirmPassword.$error.passwordMatch"><span>Passwords do not match</span>
+                </div>
+                <div class="welcomeError"
+                     ng-show="welcome.confirmPassword.$dirty && welcome.confirmPassword.$error.required"><span>Confirm Password required.</span>
+                </div>
+
+                <!--<span >welcome.confirmPassword.$error.passwordMatch {[{welcome.confirmPassword.$error.passwordMatch}]}</span>-->
+                <!--<br>-->
+
+                {{#if error}}
+                    <div class="welcomeError" style="margin-top: 10px; color:red;">{{error}}</div>
+                {{/if}}
+
+                <button class="btn btn-lg btn-primary btn-block" ng-disabled="welcome.$invalid" type="submit">Create
+                    Account
+                </button>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <p class="subtitle fancy"><span>Or</span></p>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="form-signin-heading">Log in using your social media account</h4>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <a class="btn btn-block btn-social btn-facebook" href="/fblogin">
+                            <span class="fa fa-facebook" style="font-size:16px;"></span> Sign in with Facebook
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <a class="btn btn-block btn-social btn-google" href="/googlelogin">
+                            <span class="fa fa-google" style="font-size:16px;"></span> Sign in with Google+
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="right-bg">
+                <div class="r-content">
+                    <h3>Welcome to the Web User Interface for the Evostream Media Server.</h3>
+                    <p>This application leverages your use of the Evostream Media Server. Easily stream live video with
+                        a click of a button.</p>
+                    <img class="img-responsive add-bottom" src="images/image.png" alt="EVO Main"/>
+
+                    <div class="row text-center">
+                        <div class="col-sm-4">
+                            <!--<img src="images/dashboard-icon.png" alt="EVO Dashboard" />-->
+                            <h5>Admin Dashboard</h5>
+                            <p>Monitor inbound and outbound streams. Check connection to EMS.</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <!--<img src="images/manage-icon.png" alt="EVO Manage Streams" />-->
+                            <h5>Manage Stream</h5>
+                            <p>View list of stream using the web interface. Create and Send Stream to Facebook Live or
+                                Youtube</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <!--<img src="images/api-icon.png" alt="EMS API Explorer" />-->
+                            <h5>EMS API Explorer</h5>
+                            <p>Tool to create, and authenticate API calls and debug responses. See methods available for
+                                each API and what parameters they support.</p>
+                        </div>
+                    </div>
+                    <p class="text-center evo-tsp">Note: It is expected that you already have a basic functional
+                        knowledge of the EvoStream Media Server. Please read the EMS User Guide prior to working with
+                        the Web UI!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /container -->
+
+
+<!--<h1>Evostream Web UI</h1>-->
+<!--<p>Welcome to {{title}}</p>-->
+
+<!--<h1>Add Account</h1>-->
+<!--<div class="widget">-->
+<!--<form name="create-user-form" id="create-user-form" method="post" >-->
+<!--<div class="form-group">-->
+<!--<label for="email">Email</label>-->
+<!--<input type="email" id="email" name="email" required value="{{input.email}}" />-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label for="password">Password</label>-->
+<!--<input type="password" id="password" name="password" autocomplete="off" required />-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label for="password">Confirm Password</label>-->
+<!--<input type="password" id="confirmPassword" name="confirmPassword" autocomplete="off" required />-->
+<!--</div>-->
+<!--<div class="form-submit">-->
+<!--<input type="submit" value="Create my account" />-->
+<!--</div>-->
+<!--<span style="color:red">{{error}}</span>-->
+<!--</form>-->
+<!--</div>-->

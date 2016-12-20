@@ -1,0 +1,176 @@
+<div id="page-wrapper">
+    <div class="container-fluid" ng-controller="dashboardCtrl">
+        <!-- Page Heading -->
+        <div class="row row-header banner4">
+            <div class="col-lg-12 page-header">
+                <h1>
+                    Welcome to EvoStream Media Server Web User Interface!
+                </h1>
+                <small class="descr-sub-header">This application leverages your use of the Evostream Media Server.
+                    Easily stream live video with
+                    a click of a button.
+                </small>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-plug fa-fw icon-right"></i> Connection Settings</h3>
+                    </div>
+                    <div class="panel-body" ng-controller="connectionButtonCtrl">
+                        <p class="status"><span>Status:</span> <span class="{[{statusConnected}]}">{[{dashboardConnectionText}]}</span>
+                        </p>
+                        <!--<a class="connect" href="#">Connect</a>-->
+                        <p><span>EMS Default Port Settings:</span></p>
+                        <p class="sub">Note: changes to config.lua will not be reflected here</p>
+                        <div class="table-container-dashboard">
+                            <table>
+                                <tr>
+                                    <td class="first-table">inboundJsonCli</td>
+                                    <td>1121</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundHttpJsonCli</td>
+                                    <td>7777</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundAsciiCli</td>
+                                    <td>1222</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundRtmp</td>
+                                    <td>1935</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundRtmp (clustering)</td>
+                                    <td>1936</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundBinVariant</td>
+                                    <td>1113</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundRtsp</td>
+                                    <td>5544</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundLiveFlv</td>
+                                    <td>6666</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundLiveFlv</td>
+                                    <td>1121</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundTcpTs</td>
+                                    <td>9999</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundUdTps</td>
+                                    <td>9999</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundHttp</td>
+                                    <td>8080</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundRtmp (optional)</td>
+                                    <td>4443</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundJsonMeta</td>
+                                    <td>8100</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">wsJsonMeta</td>
+                                    <td>8210</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">inboundWSFMP4</td>
+                                    <td>8410</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <p></p>
+                        <p><span>Application Port Settings:</span></p>
+                        <div class="table-container-dashboard">
+                            <table>
+                                <tr>
+                                    <td class="first-table">evowebserver</td>
+                                    <td>8888</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">evowebservices</td>
+                                    <td>4000</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">webui</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-table">apiproxy</td>
+                                    <td>7777</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-info-circle fa-fw icon-right"></i> Build Information
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><span>EMS Version: </span> {[{emsVersion}]}</p>
+                        <p><span>Build Number: </span> {[{buildNumber}]}</p>
+                        <p><span>License ID: </span>{[{licenseId}]}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-file-text fa-fw icon-right"></i> Quick Links
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="/streams#/fblive">
+                            <p><span>Facebook Video</span></p>
+                        </a>
+                        <a href="/streams#/youtube">
+                            <p><span>Youtube Live Video</span></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-area-chart fa-fw icon-right"></i> Incoming/Outgoing
+                            Stream</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><span>Incoming Streams: </span>{[{streamCount.inbound}]}</p>
+                        <p><span>Outgoing Streams: </span> {[{streamCount.outbound}]}</p>
+                        <p><span>Outgoing HTTP Streams: </span> {[{streamCount.http}]}</p>
+                        <div class="graph-mock-up">
+                            <canvas id="bar" class="chart chart-bar"
+                                    chart-data="dataCount" chart-labels="labels" chart-options="options"
+                                    chart-dataset-override="datasetOverride"> chart-series="series"
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
+</div>

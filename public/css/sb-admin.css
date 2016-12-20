@@ -1,0 +1,1183 @@
+/*!
+ * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+body {
+    margin-top: 100px;
+    background-color: #eff0f3;
+    /*background-image: url('bg3.jpg');*/
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/*custom bootstrap*/
+.row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+/*end of custom bootstrap*/
+
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    /*min-height: 600px;*/
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 5px;
+        padding-top: 0;
+        padding-bottom: 28px;
+    }
+}
+
+/* Top Navigation */
+
+.navbar-brand {
+    background-color: #005f8d;
+    width: 225px;
+    height: 100px;
+}
+
+.top-nav {
+    padding: 0 15px;
+}
+
+.top-nav>li {
+    display: inline-block;
+    float: left;
+}
+
+.top-nav>li>a {
+    /*padding-top: 15px;*/
+    /*padding-bottom: 15px;*/
+    line-height: 115px;
+    color: #999;
+    height: 50px;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #fff;
+    background-color: #f5f7fa;
+}
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
+    position: absolute;
+    margin-top: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #37bdb1;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.top-nav>.open>.dropdown-menu>li>a {
+    white-space: normal;
+}
+
+.dropdown-menu > li > a:hover {
+    color: #fff;
+}
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+li.message-preview>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li.message-footer {
+    margin: 5px 0;
+}
+
+ul.alert-dropdown {
+    width: 200px;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+    .side-nav {
+        position: fixed;
+        top: 100px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: #1F3035;
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+
+    .side-nav>li>a {
+        width: 225px;
+    }
+
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+        outline: none;
+        background-color: #171d1f !important;
+    }
+}
+
+.side-nav>li>ul {
+    padding: 0;
+}
+
+.side-nav>li>ul>li>a {
+    display: block;
+    padding: 8px 15px 8px 54px;
+    text-decoration: none;
+    color: #fff;
+    opacity: .4;
+}
+
+.side-nav>li>ul>li>a:hover {
+    color: #fff;
+}
+
+/* Flot Chart Containers */
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+
+/* Custom Colored Panels */
+
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.panel-green > a {
+    color: #5cb85c;
+}
+
+.panel-green > a:hover {
+    color: #3d8b3d;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.panel-red > a {
+    color: #d9534f;
+}
+
+.panel-red > a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow > a {
+    color: #f0ad4e;
+}
+
+.panel-yellow > a:hover {
+    color: #df8a13;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 225px;
+    right: 0;
+    background-color: #fff;
+    /*border-top: 1px solid #e1e6ef;*/
+    z-index: 1000;
+    color: rgba(207, 220, 226, 0.57);
+    background-color: rgba(51, 68, 82, 0.88);
+}
+
+.footer  {
+    padding: 0;
+    list-style: none;
+}
+
+.footer li {
+    padding: 20px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.footer .evostream {
+    float: left;
+}
+
+.footer .wylog {
+    float: right;
+}
+
+.top-button {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    border-radius: 37px;
+    background-color: #457380;
+    top: 50%;
+    transform: translateY(-50%);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+li.dropdown a:hover, li.dropdown a:focus, .top-nav>.open>a {
+    background-color: transparent !important;
+}
+
+.dropdown-menu > li > a {
+    color: #fff;
+}
+
+li.dropdown a:hover .top-button {
+    background-color: #528290;
+}
+
+.top-button.connection-notification {
+    position: relative;
+    /*top: 36px;*/
+    right: 40px;
+    height: 22px;
+    width: 37px;
+    border: 1px solid #ececec;
+    background-color: #f3f3f3;
+    /*background-image: url("../../images/connection-notification.png");*/
+}
+
+/*.top-button.connection-notification .connect-button {*/
+    /*background-color: #26b605;*/
+    /*position: relative;*/
+    /*height: 16px;*/
+    /*width: 16px;*/
+    /*border-radius: 16px;*/
+    /*top: 2px;*/
+    /*left: 17px;*/
+/*}*/
+
+/*.top-button.connection-notification .connect-button.disconnected {*/
+    /*background-color: #e46f6f;*/
+    /*left: 2px;*/
+/*}*/
+
+.dropdown.user .dropdown-toggle {
+    padding-right: 25px;
+}
+
+div.dropdown-toggle {
+    position: relative;
+    display: block;
+    padding: 0px 10px;
+    height: 50px;
+    padding-left: 40px;
+    line-height: .45;
+    font-weight: 400;
+    color: #fff;
+}
+
+.navbar-left {
+    padding-left: 20px;
+}
+
+.navbar-nav.side-nav img {
+    padding-right: 7px;
+    height: 12px;
+    margin-bottom: 2px;
+}
+
+
+.page-header h1 {
+    color: #fff;
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.navbar-right a.dropdown-toggle {
+    padding: 0 10px;
+}
+
+@media (min-width: 768px) {
+    .navbar-right {
+         margin-right: 0; 
+    }
+}
+
+.panel-title {
+    color: #fff;
+    font-weight: 500;
+    opacity: .8;
+    font-size: 15px;
+}
+
+.panel-heading {
+    /*border-top: 3px solid #005f8d;*/
+    padding: 10px;
+    background-color: rgb(55, 189, 177) !important;
+}
+
+.panel {
+    border-radius: 3px;
+    background-color: #fff;
+    border: 0px solid #fff;
+    overflow: hidden;
+    -webkit-box-shadow: 0 0px 10px rgba(0, 0, 0, .05), 0 2px 3px rgba(0, 0, 0, .08), 0 2px 1px rgba(82, 128, 181, 0.15);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .05), 0 2px 3px rgba(0, 0, 0, .08), 0 2px 1px rgba(82, 128, 181, 0.15);
+}
+
+/* cutom css for welcome page */
+#wrapper.no-sidebar {
+    padding-left: 0;
+}
+
+.no-sidebar #page-wrapper {
+    /*background-image: url(../../assets/bg.jpg);*/
+}
+
+#wrapper.no-sidebar footer {
+    left: 0;
+}
+
+#wrapper.no-sidebar #page-wrapper {
+    padding-top: 30px;
+}
+
+#wrapper .navbar-brand {
+    background-color: #005f8d;
+    /*background-image: url("../../assets/evostream-logo-white.png");*/
+}
+
+#wrapper.no-sidebar .navbar-brand {
+    background-color: transparent;
+    /*background-image: url("../../assets/evostream-logo-dark.png");*/
+}
+
+#wrapper.no-sidebar .navbar-brand img, #wrapper .navbar-brand img {
+    margin: 20px auto;
+    height: 60px;
+}
+
+.set-up-panel a {
+    text-decoration: none;
+}
+
+.set-up-panel {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.set-up-panel .panel-heading {
+    border-bottom: 1px transparent;
+}
+
+.set-up-panel a h3 {
+    text-align: center;
+    height: 50px;
+    margin-top: 10px;
+    line-height: 45px;
+    background-color: #fff;
+    opacity: 1;
+    border-radius: 3px;
+    font-weight: 700;
+}
+
+.set-up-panel a.left {
+    padding-left: 10px;
+    padding-right: 3px;
+}
+
+.set-up-panel a.right {
+    padding-left: 3px;
+    padding-right: 10px;
+}
+
+.set-up-panel a.active h3 {
+    color: #71A8C3;
+    background-color: rgba(255,255,255,.1);
+}
+
+.set-up-panel .panel-heading {
+    padding: 0;
+    height: 55px;
+    border-top: 1px;
+    background-color: #005f8d;
+}
+
+.no-sidebar .panel-body h4 {
+    text-align: left;
+    font-size: 43px;
+    font-weight: 300;
+    color: #7b7b7b;
+    padding-right: 200px;
+    padding-top: 25px;
+    margin-bottom: 40px;
+}
+
+.no-sidebar .panel-body h4 span {
+    font-weight: 900;
+}
+
+.welcome .panel-body {
+    padding: 15px 45px;
+}
+
+.custom-button-welcome {
+    height: 50px;
+    margin-top: 12px;
+    /*margin-bottom: 20px;*/
+}
+
+.custom-button-welcome button {
+    /*width: 220px;*/
+    float: left;
+    width: 100%;
+}
+
+.changelog {
+    text-decoration: underline;
+    color: #a2a6b1;
+    width: 130px;
+    display: block;
+    /*text-align: right;*/
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+/* custom css for account creation */
+.create .panel-body {
+    padding: 15px 45px;
+}
+
+.create input {
+    border: 1px solid #dde1eb;
+    padding: 11px 15px;
+    width: 100%;
+    margin: 16px 0;
+    background-color: #f7f7f7;
+}
+
+.create h5 {
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #a2a6b1;
+}
+
+.custom-button-welcome .add-account {
+    width: 75%;
+}
+
+.custom-button-welcome .previous {
+    float: right;
+    width: 23.5%;
+    background-color: #e8ebee;
+    color: #a9b2bb;
+}
+
+.custom-button-welcome .previous:hover, .custom-button-welcome .previous:focus, .custom-button-welcome .previous:active {
+    background-color: #d6dbe1 !important;
+}
+
+/* custom css for login page */
+.panel-heading .center {
+    padding: 0 10px;
+}
+
+.forgot-pass {
+    text-decoration: underline;
+    color: #c2c5ce;
+    font-size: 12px;
+    position: relative;
+    top: 4px;
+}
+
+.forgot-pass:hover {
+    color: #a2a6b1;
+}
+
+.btn-primary:active {
+    background-color: #24a707 !important;
+}
+
+
+/* add June 6, 16 */
+a {
+    color: #005f8d;
+}
+
+hr {
+    border: 0;
+}
+
+.navbar-inverse {
+    border-bottom: 0;
+    height: 50px;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+		box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+		background-color: #396571;
+}
+
+.page-header {
+    line-height: 50%;
+    margin-top: 20px;
+    margin-bottom: 28px;
+    padding: 0 20px;
+}
+
+.form-control {
+    border-radius: 0;
+    background-color: rgb(252, 252, 252);
+    padding: 7px;
+    padding-left: 12px;
+    color: #737373;
+    height: auto;
+    -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+    border-color: #efefef;
+}
+
+.bootstrap-table .table > thead > tr > th {
+    background-color: #5B6C71;
+    color: #E6E6E6;
+    font-weight: 500;
+    letter-spacing: .8px;
+    border-left: 1px solid #6B787B;
+    padding-top: 3px;
+    border-bottom: 0;
+}
+
+.bootstrap-table .table > thead > tr > th:first-child {
+    border-left: 0;
+}
+
+.fixed-table-container thead th:first-child {
+    border-top-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+}
+
+.fixed-table-container {
+    /*border: 1px solid #fff;*/
+    border-radius: 0;
+}
+
+.table > tbody > tr > td {
+    border-top: 0;
+    border-left: 1px solid #fff;
+    letter-spacing: 0;
+    padding-top: 10px !important;
+    font-size: 12px;
+    color: #777777;
+    font-weight: 400;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+    background-color: #f7f7f7;
+}
+
+.bootstrap-table .table {
+    border-bottom: 0;
+    border-radius: 0;
+}
+
+.fixed-table-header {
+    background-color: #5B6C71;
+}
+
+.page-header small {
+    color: #fff;
+    font-size: 100%;
+    font-weight: 300;
+    opacity: .8;
+    letter-spacing: .4px;
+    max-width: 650px;
+    display: block;
+    line-height: 20px;
+}
+
+select.form-control {
+    background-color: #F1F1F1;
+    border: 0;
+    border-bottom: 2px solid #E3E7E8;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+.side-nav {
+    background-color: #26343a;
+}
+
+.dummy-class {
+    height: 114px;
+    background-color: #F5F5F5;
+    border: 0;
+    font-size: 13px;
+    color: #B1B1B1;
+}
+
+.dummy-class:hover {
+    color: #959595;
+}
+
+.modal-header {
+    background-color: #005f8d;
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal.alert p {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.modal.alert .modal-footer {
+    border-top: 0;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-content {
+    border: 0;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: #37bdb1;
+    color: #fff;
+}
+
+.btn-close {
+    color: #fff;
+    background-color: #C7CCD2;
+    border-color: #ccc;
+    border: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-bottom: 2.5px solid #ABABAB;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background-color: #223035;
+}
+
+.navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #1f2a2e !important;
+}
+
+.form-control:focus {
+    border-color: #F1F1F1;
+}
+
+nav .dropdown {
+    width: auto;
+}
+
+.dropdown-menu > .active > a {
+    background-color: #26b605;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+    opacity: .4;
+}
+
+.navbar-inverse .navbar-nav > li.active > a {
+    opacity: 1;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #909090;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus,
+ .pagination > .active > span:focus {
+    background-color: #63d080;
+    border-color: #4bb366;
+}
+
+/* CSS add June 23 */
+.panel-body-inner {
+	background-color: #fff;
+}
+
+.panel-body {
+	padding: 18px;
+}
+
+.panel-default > .panel-heading {
+    /*border-color: #eef1f7;*/
+    border-bottom: 0;
+}
+
+.table-container-dashboard td {
+    width: 50%;
+    padding: 5px;
+    padding-left: 7px;
+    font-size: 11px;
+}
+
+.table-container-dashboard td.first-table {
+    width: 50%;
+}
+
+.sub {
+    margin-top: -5px;
+    font-size: 11px;
+    margin-bottom: 7px;
+}
+
+p {
+    font-weight: 300;
+    margin-bottom: 5px;
+    color: #757575;
+}
+
+p span, label {
+    font-weight: 500;
+    color: #777e86;
+    margin-bottom: 3px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.status {
+    margin-bottom: 3px;
+    color: #d27878;
+}
+
+a.connect {
+    margin-bottom: 14px;
+    display: inline-block;
+    background-color: #63d080;
+    padding: 4px 12px;
+    color: #fff;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0px -2px 0px 0px rgba(0,0,0,0.1);
+-moz-box-shadow: inset 0px -2px 0px 0px rgba(0,0,0,0.1);
+box-shadow: inset 0px -2px 0px 0px rgba(0,0,0,0.1), 0px 2px 1px 0px rgba(0,0,0,0.1);
+}
+
+.table-container-dashboard tr {
+    width: 250px;
+}
+
+.table-container-dashboard table {
+    display: table;
+    width: 100%;
+    color: rgb(78, 87, 103);
+}
+
+.table-container-dashboard tr:nth-child(odd) {
+    background-color: rgba(53, 74, 121, 0.06);
+}
+
+.table-container-dashboard {
+    overflow-y: scroll;
+    height: 229px;
+    border-radius: 2px;
+    background-color: rgba(88, 115, 158, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 768px) {
+    .navbar-collapse.collapse {
+        height: 50px !important;
+    }
+}
+
+.row.row-header {
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: 20px;
+		background-size: cover;
+		background-position: right;
+		background-repeat: no-repeat;
+}
+
+.row-header.banner1 {
+    background-image: url("banner-background1.jpg");
+}
+
+.row-header.banner2 {
+    background-image: url("banner-background2.jpg");
+}
+
+.row-header.banner3 {
+    background-image: url("banner-background3.jpg");
+}
+
+.row-header.banner4 {
+    background-image: url("banner-background4.jpg");
+}
+
+/*.graph-mock-up {*/
+	/*background-image: url(graph.png);*/
+	/*height: 110px;*/
+	/*background-size: contain;*/
+	/*background-repeat: no-repeat;*/
+/*}*/
+
+/********** Button Panel ************
+*************************************
+*************************************
+*************************************/
+.btn {
+    border: 0;
+}
+
+.btn:hover, .btn:focus {
+    opacity: .9;
+}
+
+/* Removed by Toni */
+/*.btn-default {*/
+    /*background-color: #63d080;*/
+    /*color: #fff;*/
+    /*border-color: #40b55f;*/
+    /*box-shadow: inset 0 -3px 0 0 rgba(0,0,0,.2), 0 3px 0 0 rgba(0,0,0,0.05);*/
+    /*padding-bottom: 8px;*/
+    /*margin-right: 5px;*/
+/*}*/
+
+.btn-default.btn-alert {
+    background-color: #ea7b7b;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default:active:focus {
+    /*background-color: #63d080;*/
+    color: #fff;
+    border-color: #40b55f;
+}
+
+.btn-cancel {
+    background-color: #b7b7b7;
+    color: #fff;
+    border-color: #9a9a9a;
+    font-size: 12px;
+    box-shadow: inset 0 -3px 0 0 rgba(0,0,0,.2), 0 3px 0 0 rgba(0,0,0,0.05);
+    padding: 4px 10px;
+    padding-bottom: 4px;
+}
+
+.btn-cancel:hover, .btn-cancel:active, .btn-cancel:focus, .btn-cancel:active:focus {
+    color: #fff;
+    border-color: #9a9a9a;
+}
+
+.panel-container {
+    font-size: 0;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.button-panel {
+    font-size: 15px;
+    color: #fff;
+}
+
+.button-panel button {
+    border: 1px solid grey;
+    padding-top: 5px;
+    padding-bottom: 7px;
+    box-shadow: inset 0 -3px 0 0 rgba(0,0,0,.2), 0 3px 0 0 rgba(0,0,0,0.1);
+}
+
+.button-panel button.button-first {
+    border-radius: 3px 0 0 3px;
+    border-right: 0;
+}
+
+.button-panel button.button-last {
+    border-radius: 0 3px 3px 0;
+}
+
+.button-panel button.button-middle {
+    border-right: 0;
+}
+
+.panel-container .button-panel {
+    border: transparent;
+    display: inline-block;
+}
+
+.left.button-panel {
+    width: 40%;
+    padding: 5px;
+    padding-left: 0;
+}
+
+.right.button-panel {
+    width: 60%;
+    padding: 5px;
+    padding-right: 0;
+}
+
+.button-panel button {
+    background-color: #0f78ab;
+    border-color: #0d6d9c !important;
+}
+
+/*.left.button-panel button {
+    background-color: #ec7d7d;
+    border-color: #cc6262;
+}
+
+.right.button-panel button {
+    background-color: #b098dc;
+    border-color: #8d7ab0;
+}*/
+
+/************ Drop Down *************
+*************************************
+*************************************
+*************************************/
+.dropbtn {
+    background-color: #cacaca;
+    color: #fff;
+    padding: 7px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 100%;
+    text-align: left;
+    padding-left: 15px;
+    -webkit-transition: all 200ms cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transition:         all 200ms cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown i {
+    position: absolute;
+    right: 12px;
+    top: 11px;
+}
+
+.dropdown .dropdown-content {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    transform: translateY(30px);
+    min-width: 100%;
+    box-shadow: 0px 30px 25px -25px rgba(0,0,0,0.3);
+    border-radius: 0 0 3px 3px;
+    background-color: #37bdb1;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 3000;
+    -webkit-transition: all 200ms cubic-bezier(0.6, 0.2, 0.1, 1);
+    transition:         all 200ms cubic-bezier(0.6, 0.2, 0.1, 1);
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #2cada1}
+
+.dropdown:hover .dropdown-content {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #37bdb1;
+    border-radius: 3px 3px 0 0;
+}
+
+/**********Terminal Page ************
+*************************************
+*************************************
+*************************************/
+
+.form-control.col-md-4 {
+    width: 33.33333333%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.form-control.col-md-6 {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.parameters-container {
+    margin-bottom: 7px;
+}
+
+.console {
+    color: #d09f3f;
+    background-color: #26343a;
+    border: 0;
+}
+
+.console.json {
+    color: #fff;
+}
+
+.json-container {
+    margin-bottom: 0;
+}
+
+.form-control[readonly] {
+    background-color: #26343a;
+}
+
+.console-buttons {
+    position: relative;
+    float: left;
+    margin-top: -8px;
+    padding-left: 10px;
+    margin-bottom: 17px;
+}
+
+.filter-stream {
+    padding-left: 0;
+}
+
+.panel-container .button-panel button.active {
+    opacity: .9;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transform: translateY(2px);
+    box-shadow: 0 0 0 0;
+    pointer-events: none;
+}
+
+.panel-container .button-panel button:focus {
+    outline: 0;
+}
+
+.panel-container .button-panel button:hover {
+    opacity: .9;
+}
+
+.panel-container .button-panel button:active {
+    padding-top: 4px;
+    padding-bottom: 6px;
+    margin-top: 2px;
+    box-shadow: 0 0 0 0;
+    opacity: .9
+}
+
+.protocol label {
+    display: inline-block;
+    width: 35%;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.protocol input {
+    margin-left: 15px;
+    margin-right: 10px;
+}

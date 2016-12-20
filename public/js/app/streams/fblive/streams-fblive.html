@@ -1,0 +1,165 @@
+<div class="panel panel-default">
+
+    <!-- Panel Header -->
+    <div class="row banner4">
+        <div class="col-lg-12 page-header-streams">
+            <h1>Send a Stream to Facebook Live</h1>
+            <small class="descr-sub-header">This will try to push a local stream to Facebook Live</small>
+        </div>
+    </div>
+
+    <div class=" col-lg-12" ng-show="!seeFbForm">
+        <div class="panel-body">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <a class="btn btn-block btn-social btn-facebook" href="/fblogin?page=fblive">
+                    <span class="fa fa-facebook"></span> Sign in with Facebook
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class=" col-lg-12" ng-show="seeFbForm">
+        <!-- Panel Content -->
+        <div class="panel-body">
+            <form class="ng-pristine ng-valid ng-scope">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label class="evo-head">Choose the Stream you want to Send</label>
+                            <ui-select ng-model="fbInboundList.selected"
+                                       theme="bootstrap" search-enabled="true" ng-disabled="disabled"
+                                       style="min-width: 300px;" title="Choose a stream type">
+                                <ui-select-match placeholder="Select a stream...">{[{$select.selected.name}]}
+                                </ui-select-match>
+                                <ui-select-choices
+                                        repeat="inbound in fbInboundList | propsFilter: {name: $select.search} ">
+                                    <div ng-bind-html="inbound.name | highlight: $select.search"></div>
+                                    <small>
+                                        source: {[{inbound.sourceUri}]}
+                                    </small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="evo-frm-section">
+                            <div class="form-group">
+                                <label>Description </label>
+                                <textarea class="form-control" rows="6" class="social-descr"
+                                          placeholder="Input Text" ng-model="fbDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="evo-head">Choose the Privacy Status</label>
+                            <ui-select ng-model="fbPrivacyStatus.selected"
+                                       theme="bootstrap" search-enabled="false" ng-disabled="disabled"
+                                       style="min-width: 300px;" title="Choose a Privacy Status">
+                                <ui-select-match placeholder="Select a Privacy Status...">{[{$select.selected.text}]}
+                                </ui-select-match>
+                                <ui-select-choices repeat="status in fbPrivacyStatus ">
+                                    <div ng-bind-html="status.text | highlight: $select.search"></div>
+                                    <small>
+                                        description: {[{status.description}]}
+                                    </small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                        <button type="button" class="btn btn-evo" ng-disabled="streamsNotAvailable"
+                                ng-click="sendFacebookStream()">
+                            <span>{[{fbButtonText}]}</span>
+                        </button>
+
+                        <button type="button" class="btn btn-evo" ng-click="setToDefaultValuesFbStreamForm()">
+                            <span>Clear</span>
+                        </button>
+
+                        <span class="successMessage" ng-show="seeAddedSendStream">
+                            <span>Stream successfully sent. Check the created Facebook Video </span>
+                        </span>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="evo-head">Choose the Target Protocol</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><input type="radio" name="protocol"
+                                                                       ng-model="fbProtocol" value="rtmp"></span>
+                                <div class="form-control form-control-static"> use port 80 (not secure)</div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><input type="radio" name="protocol"
+                                                                       ng-model="fbProtocol" value="rtmps"></span>
+                                <div class="form-control form-control-static"> use port 443 (secured)</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="evo-head">Choose where to Publish Live Video </label>
+                            <ui-select ng-model="fbEdge.default.selected" ng-change="selectedFbEdge()"
+                                       theme="bootstrap" search-enabled="false" ng-disabled="ctrl.disabled"
+                                       style="min-width: 300px;" title="Choose a stream type">
+                                <ui-select-match placeholder="Select a FB ...">{[{$select.selected.text || $select.selected}]}
+                                </ui-select-match>
+                                <ui-select-choices repeat="fbEdgeData in fbEdge.list ">
+                                    <div ng-bind-html="fbEdgeData.text | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+
+                        </div>
+
+                        <div ng-if="activeEdge == 'user'">
+                            <div class="form">
+                                <p class="evo-push-down">Reminder: The stream would be sent to the user's timeline </p>
+                            </div>
+                        </div>
+
+                        <div ng-if="activeEdge == 'page'">
+                            <div class="form-group">
+                                <label>List of Pages</label>
+                                <div ng-repeat="data in fbInfo.data">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon"><input type="radio" name="page"
+                                                                               ng-model="$parent.$parent.fbPageId"
+                                                                               value="{[{data.id}]}"></span>
+                                        <div class="form-control form-control-static"> {[{data.name}]}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="activeEdge == 'event'">
+                            <div class="form-group">
+                                <label>List of Events</label>
+                                <div ng-repeat="data in fbInfo.data">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon"><input type="radio" name="event"
+                                                                               ng-model="$parent.$parent.fbEventId"
+                                                                               ng-value="{[{data.id}]}"></span>
+                                        <div class="form-control form-control-static"> {[{data.name}]}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="activeEdge == 'group'">
+                            <div class="form-group">
+                                <label>List of Groups</label>
+                                <div ng-repeat="data in fbInfo.data">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon"><input type="radio" name="group"
+                                                                               ng-model="$parent.$parent.fbGroupId"
+                                                                               ng-value="{[{data.id}]}"></span>
+                                        <div class="form-control form-control-static"> {[{data.name}]}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>

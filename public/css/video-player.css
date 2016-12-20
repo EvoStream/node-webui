@@ -1,0 +1,69 @@
+body {
+    margin-top: 0;
+    background-color: #fff;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: 13px;
+}
+
+table, th, td {
+    border: none;
+    padding: 5px;
+    /*color: #565656;*/
+    font-weight: 400;
+	font-size:13px;
+}
+
+table p{
+	font-weight:300;
+	font-size:13px;
+	color: #868686;
+	line-height:18px;
+	margin:0;
+}
+
+p span, label {
+    font-weight: 500;
+    color: #777e86;
+    margin-bottom: 0;
+}
+
+.evo-h3{
+	color:#005f8d;
+	font-weight:400;
+
+}
+
+.evo-note-media{
+	font-size:12px;
+	font-weight:300;
+	color: #868686;
+	margin-bottom:20px;
+}
+
+.video .table-responsive{
+	margin:0;
+}
+
+@media(min-width:768px) {
+    body {
+        margin-top: 0;
+    }
+	
+	.table-responsive {
+		width: 100%;
+		margin-bottom: 15px;
+		overflow-y: hidden;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		border: none;
+	}
+}
+
+@media screen and (max-width: 767px){
+.table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: none;
+}}

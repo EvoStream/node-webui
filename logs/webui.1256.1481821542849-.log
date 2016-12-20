@@ -1,0 +1,3 @@
+1481821545395:1256 - info: [webui] user logging out.....
+1481821545401:1256 - info: [webui] user session {"cookie":{"originalMaxAge":100000000,"expires":"2016-12-16T20:52:25.389Z","httpOnly":true,"path":"/"}}
+1481821547729:1256 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:05:47 +0000] "GET /users/logout HTTP/1.1" - - "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"

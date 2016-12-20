@@ -1,0 +1,36 @@
+<div id="page-wrapper">
+    <!-- container-fluid -->
+    <div class="container-fluid " ng-controller="streamsCtrl as parentStreams">
+
+        <!-- Button Panel -->
+        <div class="row panel-container">
+            <div class="left button-panel">
+                <button class="button-middle" ng-class="{active: (activeTab == '/add' || activeTab == '/add/')}" ng-click="go('/add')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Add
+                </button>
+                <button class="button-middle" ng-class="{active: (activeTab == '/send' || activeTab == '/send/')}" ng-click="go('/send')"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                    Send
+                </button>
+                <button class="button-middle" ng-class="{active: (activeTab == '/fblive' || activeTab == '/fblive/')}" ng-click="go('/fblive')" ><i class="fa fa-facebook-square"></i> Facebook Live</button>
+                <button class="button-middle" ng-class="{active: (activeTab == '/youtube' || activeTab == '/youtube/')}" ng-click="go('/youtube')"><i class="fa fa-youtube"></i> Youtube Live</button>
+                <button class="button-middle" ng-class="{active: (activeTab == '/active' || activeTab == '/active/')}" ng-click="go('/active')"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                        Active
+                </button>
+                <button class="button-middle" ng-class="{active: (activeTab == '/config' || activeTab == '/config/')}" ng-click="go('/config')"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    Config
+                </button>
+                <button class="button-middle" ng-class="{active: (activeTab == '/vod' || activeTab == '/vod/')}" ng-click="go('/vod')"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    VOD
+                </button>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div ng-view></div>
+            </div>
+        </div>
+
+    </div>
+</div>

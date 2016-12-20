@@ -1,0 +1,25 @@
+1481814175965:25122 - verbose: index winston setup 
+1481814182967:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:02 +0000] "GET /login HTTP/1.1" 200 5909 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814183417:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:03 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 200 33831 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814183478:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:03 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 200 35128 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814183479:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:03 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 200 37045 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814183483:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:03 +0000] "GET /css/login-style.css HTTP/1.1" 200 6080 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814183484:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:03 +0000] "GET /js/app/webui-app-login.js HTTP/1.1" 200 1576 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814183911:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:03 +0000] "GET /css/bootstrap.css HTTP/1.1" 200 146250 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814185078:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:05 +0000] "GET /images/logo.png HTTP/1.1" 200 18442 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814185086:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:05 +0000] "GET /images/dashboard-icon.png HTTP/1.1" 200 2461 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814185088:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:05 +0000] "GET /images/manage-icon.png HTTP/1.1" 200 1883 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814185089:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:05 +0000] "GET /images/api-icon.png HTTP/1.1" 200 2978 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+
+1481814185584:25122 - info: ::ffff:219.90.95.84 - - [15/Dec/2016:15:03:05 +0000] "GET /css/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 71896 "http://50.56.172.81:3000/css/font-awesome/css/font-awesome.css" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+

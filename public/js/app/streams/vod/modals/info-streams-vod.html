@@ -1,0 +1,91 @@
+<div class="modal-content ">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Stream Information</h4>
+    </div>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-sm evo-table">
+                <thead>
+                <tr >
+                    <th ng-repeat="(key, value) in streamRowHeaders track by $index" >{[{key}]}</th>
+                    <!--<th ng-repeat-end>{[{key}]}</th>-->
+                    <th>actions</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr class="evo-tb-subhead">
+                    <td ng-repeat="(key, value) in streamRowHeaders track by $index" >{[{value}]}</td>
+                    <td><a href="#" ng-click="play()" >play</a> | <a href="#" ng-click="delete()" >delete</a></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <table class="table table-sm evo-rmar">
+                            <tr>
+                                <td colspan="2">
+                                    <table class="table table-striped table-sm evo-rmar">
+                                        <tr>
+                                            <th class="info-sub-header" colspan="2"  >
+                                                Basic info
+                                            </th>
+                                        </tr>
+                                        <tr ng-repeat="(key, value) in streamRowNoArray.content">
+                                            <td>{[{key}]}</td>
+                                            <td>{[{value}]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th  class="info-sub-header" colspan="2" align="center" >
+                                                {[{streamRowAudio.header}]}
+                                            </th>
+                                        </tr>
+                                        <tr ng-repeat="(key, value) in streamRowAudio.content">
+                                            <td>{[{key}]}</td>
+                                            <td>{[{value}]}</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td colspan="2">
+                                    <table class="table table-striped table-sm evo-rmar">
+                                        <tr>
+                                            <th class="info-sub-header" colspan="2" align="center" >
+                                                {[{streamRowSettings.header}]}
+                                            </th>
+                                        </tr>
+                                        <tr ng-repeat="(key, value) in streamRowSettings.content">
+                                            <td>{[{key}]}</td>
+                                            <td>{[{value}]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-sub-header" colspan="2" align="center">
+                                                {[{streamRowVideo.header}]}
+                                            </th>
+                                        </tr>
+                                        <tr ng-repeat="(key, value) in streamRowVideo.content">
+                                            <td>{[{key}]}</td>
+                                            <td>{[{value}]}</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--<div class="info-stream-container">-->
+        <!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.-->
+        <!--</div>-->
+
+        <!--<div class="info-stream-container">-->
+            <!--<div class="info-stream-row" ng-repeat="(key, value) in streamRow track by $index" >-->
+                <!--<div class="col-sm-6" >{[{key}]}</div>-->
+                <!--<div class="col-sm-6" >{[{value}]}</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+    </div>
+</div>

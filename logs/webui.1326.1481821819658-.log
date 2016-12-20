@@ -1,0 +1,3 @@
+1481821823350:1326 - info: [webui] user logging out.....
+1481821823355:1326 - info: [webui] user session {"cookie":{"originalMaxAge":100000000,"expires":"2016-12-16T20:57:03.344Z","httpOnly":true,"path":"/"}}
+1481821823356:1326 - info: (typeof req.session.passport !== undefined) false

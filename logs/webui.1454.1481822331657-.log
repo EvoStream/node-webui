@@ -1,0 +1,118 @@
+1481822340802:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:00 +0000] "GET /users/logout HTTP/1.1" 302 46 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822341040:1454 - verbose: winston index 
+1481822341051:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:01 +0000] "GET / HTTP/1.1" 302 54 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822341395:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:01 +0000] "GET /login HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822341708:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:01 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822341935:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:01 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822341937:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:01 +0000] "GET /css/login-style.css HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822341940:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:01 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822341943:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:01 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822341980:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:01 +0000] "GET /js/app/webui-app-login.js HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822342434:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:02 +0000] "GET /images/logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822342472:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:02 +0000] "GET /images/manage-icon.png HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822342472:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:02 +0000] "GET /images/api-icon.png HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822342474:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:02 +0000] "GET /images/dashboard-icon.png HTTP/1.1" 304 - "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822356144:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:16 +0000] "POST /login HTTP/1.1" 302 64 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822356839:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:16 +0000] "GET /dashboard HTTP/1.1" 200 15684 "http://50.56.172.81:3000/login" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357263:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357265:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357268:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357269:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357273:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357303:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357493:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357501:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357503:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357507:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357510:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357530:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357723:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357732:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357738:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357742:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357753:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357758:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357952:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357965:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357971:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357972:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357985:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822357991:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:17 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358181:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358198:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358202:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358203:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358545:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358549:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358550:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358552:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358798:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://50.56.172.81:3000/css/admin-style.css" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358802:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://50.56.172.81:3000/css/admin-style.css" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358841:1454 - info: EMS API function command 
+1481822358842:1454 - verbose: EMS API this.sendCommand 
+1481822358842:1454 - verbose: EMS API this.buildqs 
+1481822358843:1454 - verbose: EMS API parameters: 
+1481822358843:1454 - verbose: EMS API this.sendCommand command version
+1481822358843:1454 - verbose: EMS API this.sendCommand parameters null
+1481822358843:1454 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//version
+1481822358860:1454 - info: EMS API function command 
+1481822358861:1454 - verbose: EMS API this.sendCommand 
+1481822358861:1454 - verbose: EMS API this.buildqs 
+1481822358861:1454 - verbose: EMS API parameters: 
+1481822358862:1454 - verbose: EMS API this.sendCommand command getLicenseId
+1481822358862:1454 - verbose: EMS API this.sendCommand parameters null
+1481822358862:1454 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getLicenseId
+1481822358874:1454 - info: EMS API function command 
+1481822358874:1454 - verbose: EMS API this.sendCommand 
+1481822358875:1454 - verbose: EMS API this.buildqs 
+1481822358875:1454 - verbose: EMS API parameters: 
+1481822358875:1454 - verbose: EMS API this.sendCommand command version
+1481822358876:1454 - verbose: EMS API this.sendCommand parameters null
+1481822358876:1454 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//version
+1481822358879:1454 - info: EMS API function command 
+1481822358879:1454 - verbose: EMS API this.sendCommand 
+1481822358880:1454 - verbose: EMS API this.buildqs 
+1481822358881:1454 - verbose: EMS API parameters: 
+1481822358881:1454 - verbose: EMS API this.sendCommand command version
+1481822358881:1454 - verbose: EMS API this.sendCommand parameters null
+1481822358881:1454 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//version
+1481822358890:1454 - verbose: response {"data":{"banner":"EvoStream Media Server (www.evostream.com) version 1.7.0 build 4283 with hash: 395ff5e220ea7311adf3fca70960fb30c7785d34 - PacMan|m| - (built for Ubuntu-14.04-x86_64 on 2016-01-27T10:00:15.000)","branchName":"","buildDate":"2016-01-27T10:00:15.000","buildNumber":"4283","codeName":"PacMan|m|","hash":"395ff5e220ea7311adf3fca70960fb30c7785d34","releaseNumber":"1.7.0"},"description":"Version","status":"SUCCESS"}
+
+
+1481822358902:1454 - verbose: response {"data":null,"description":"command getlicenseid not known. Type help for list of commands","status":"FAIL"}
+
+
+1481822358904:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358904:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358908:1454 - verbose: response {"data":{"banner":"EvoStream Media Server (www.evostream.com) version 1.7.0 build 4283 with hash: 395ff5e220ea7311adf3fca70960fb30c7785d34 - PacMan|m| - (built for Ubuntu-14.04-x86_64 on 2016-01-27T10:00:15.000)","branchName":"","buildDate":"2016-01-27T10:00:15.000","buildNumber":"4283","codeName":"PacMan|m|","hash":"395ff5e220ea7311adf3fca70960fb30c7785d34","releaseNumber":"1.7.0"},"description":"Version","status":"SUCCESS"}
+
+
+1481822358909:1454 - verbose: response {"data":{"banner":"EvoStream Media Server (www.evostream.com) version 1.7.0 build 4283 with hash: 395ff5e220ea7311adf3fca70960fb30c7785d34 - PacMan|m| - (built for Ubuntu-14.04-x86_64 on 2016-01-27T10:00:15.000)","branchName":"","buildDate":"2016-01-27T10:00:15.000","buildNumber":"4283","codeName":"PacMan|m|","hash":"395ff5e220ea7311adf3fca70960fb30c7785d34","releaseNumber":"1.7.0"},"description":"Version","status":"SUCCESS"}
+
+
+1481822358911:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 429 "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822358912:1454 - info: [webui] ::ffff:219.90.95.84 - - [15/Dec/2016:17:19:18 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 429 "http://50.56.172.81:3000/dashboard" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0"
+1481822359030:1454 - info: EMS API function command 
+1481822359031:1454 - verbose: EMS API this.sendCommand 
+1481822359031:1454 - verbose: EMS API this.buildqs 
+1481822359031:1454 - verbose: EMS API parameters: 
+1481822359031:1454 - verbose: EMS API this.sendCommand command getStreamsCount
+1481822359032:1454 - verbose: EMS API this.sendCommand parameters null
+1481822359032:1454 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getStreamsCount
+1481822359037:1454 - verbose: response {"data":{"streamCount":5},"description":"Active streams count","status":"SUCCESS"}
+
+
+1481822359038:1454 - info: EMS API function command 
+1481822359038:1454 - verbose: EMS API this.sendCommand 
+1481822359039:1454 - verbose: EMS API this.buildqs 
+1481822359039:1454 - verbose: EMS API parameters: 
+1481822359039:1454 - verbose: EMS API this.sendCommand command getInboundStreamsCount
+1481822359039:1454 - verbose: EMS API this.sendCommand parameters null
+1481822359040:1454 - verbose: EMS API this.sendCommand url http://127.0.0.1:7777//getInboundStreamsCount
+1481822359043:1454 - verbose: response {"data":null,"description":"command getinboundstreamscount not known. Type help for list of commands","status":"FAIL"}
+
+
+1481822363138:1454 - info: [webui] user logging out.....
+1481822363139:1454 - info: [webui] user session {"cookie":{"originalMaxAge":100000000,"expires":"2016-12-16T21:05:58.910Z","httpOnly":true,"path":"/"},"flash":{},"passport":{"user":{"email":"qwerty01.evostream@gmail.com","password":"$2a$10$43jgH0savng6hwUABN/yW.kQv9wCJvL3rnprPkeMjCqvP2R9VdCca","meta":{"revision":14,"created":1480256578069,"version":0,"updated":1481819987813},"$loki":1,"googletoken":"1/qfuBJYdI-oGclbTHdUuQTUzs11hQr603O47KXvwKU_0","fbtoken":"EAAEdOycPhPkBADIZAugmrww0TkmmmKcBYMhG4obYjL0zkP3q9gPsoSGoNdZC443cP85vvcqZCAcEPZAhBRTkOMZBB7cBb3jV2YhGdTiAfmEKYUsDmmklEFEpNvpNf7MNqZC7mJZAZBtUueKCgtEvJsZCKnLDpUkkco6EZD"}}}
+1481822363139:1454 - info: (typeof req.session.passport !== undefined) true
+1481822363139:1454 - verbose: req.session.passport.user {"email":"qwerty01.evostream@gmail.com","password":"$2a$10$43jgH0savng6hwUABN/yW.kQv9wCJvL3rnprPkeMjCqvP2R9VdCca","meta":{"revision":14,"created":1480256578069,"version":0,"updated":1481819987813},"$loki":1,"googletoken":"1/qfuBJYdI-oGclbTHdUuQTUzs11hQr603O47KXvwKU_0","fbtoken":"EAAEdOycPhPkBADIZAugmrww0TkmmmKcBYMhG4obYjL0zkP3q9gPsoSGoNdZC443cP85vvcqZCAcEPZAhBRTkOMZBB7cBb3jV2YhGdTiAfmEKYUsDmmklEFEpNvpNf7MNqZC7mJZAZBtUueKCgtEvJsZCKnLDpUkkco6EZD"}
