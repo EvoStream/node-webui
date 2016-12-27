@@ -2,15 +2,11 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var restrict = require(path.join(__dirname, '../auth/restrict'));
+var winston = require('winston');
 
 /* GET dashboard listing. */
 router.get('/', restrict, function(req, res, next) {
-// router.get('/', function(req, res, next) {
-    console.log('dashboard part '+JSON.stringify(req.session));
-
-    // emsService.checkEmsConnection(function(result){
-    //     console.log('inside checkEmsConnection result '+JSON.stringify(result));
-    // });
+    winston.log("info", '[webui] dashboard index page');
 
     var vm = {
         title: 'Dashboard - Evostream Web UI ',
@@ -19,10 +15,6 @@ router.get('/', restrict, function(req, res, next) {
         layout: 'admin/layout',
     }
     res.render('admin/dashboard', vm);
-
-    // res.render('admin/dashboard');
-
-
 });
 
 module.exports = router;

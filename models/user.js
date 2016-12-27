@@ -3,19 +3,21 @@ var bcrypt = require('bcrypt');
 var path = require('path');
 var loki = require('lokijs');
 
+var winston = require('winston');
+
 var db = new loki(path.join(__dirname, '../data/user.json'));
 
 /*
  * Local User
  */
 exports.addUser = function (user, next) {
+    winston.log("info", '[webui] add user');
 
     //load the database
     db.loadDatabase({}, function () {
 
         //get the users collection
         var users = db.getCollection('users');
-        // console.log('users.data ' + JSON.stringify(users.data));
 
         if (users == null) {
             //add the users collection if it does not exist
@@ -27,9 +29,11 @@ exports.addUser = function (user, next) {
             email.applyFind({'email': user.email.toString().toLowerCase()});
 
             if (email.data().length > 0) {
+
                 var response = {
                     error: 'Email address already exists.'
                 };
+                winston.log("error", '[webui] add user - email address already exists');
                 return next(response);
             }
         }
@@ -40,6 +44,8 @@ exports.addUser = function (user, next) {
                 var response = {
                     error: 'Password hashing failed.'
                 };
+
+                winston.log("error", '[webui] add user - password hashing failed');
                 return next(response);
             }
 
@@ -60,8 +66,6 @@ exports.addUser = function (user, next) {
             var email = users.addDynamicView('email');
             email.applyFind({'email': user.email.toString().toLowerCase()});
 
-            console.log('email.data() ' + JSON.stringify(email.data()));
-
             var response = email.data();
 
             return next(email.data());
@@ -73,24 +77,23 @@ exports.addUser = function (user, next) {
 };
 
 exports.findUser = function (email, user) {
+    winston.log("info", '[webui] find user');
 
     //load the database
     db.loadDatabase({}, function () {
 
         //get the users collection
         var users = db.getCollection('users');
-        // console.log('users.data ' + JSON.stringify(users.data));
 
         if (users == null) {
             var response = {
                 error: 'there are no existing users'
             };
+            winston.log("error", '[webui] find user - there are no existing users');
             return user(response);
 
         } else {
             var result = users.findOne({'email': email.toLowerCase()});
-
-            console.log('findUser result ' + JSON.stringify(result));
             return user(result);
         }
 
@@ -98,29 +101,20 @@ exports.findUser = function (email, user) {
 };
 
 exports.countUser = function (next) {
+    winston.log("info", '[webui] count user');
 
     var count = 0;
 
     //load the database
     db.loadDatabase({}, function () {
 
-
-        console.log('db.loadDatabase db.loadDatabase ');
-
         //get the users collection
         var users = db.getCollection('users');
-        // console.log('users.data ' + JSON.stringify(users.data));
 
         if (users == null) {
-
-            console.log('users 0 ');
-
             return next(count);
         } else {
             var email = users.addDynamicView('email');
-
-            console.log('email.data().length ' + email.data().length);
-
             count = email.data().length;
 
             return next(count);
@@ -135,34 +129,23 @@ exports.countUser = function (next) {
  */
 
 exports.findUserResetToken = function (resetPasswordToken, userResult) {
-    // User.findOne({
-    //     resetPasswordToken: resetPasswordToken,
-    //     resetPasswordExpires: {$gt: Date.now()}
-    // }, function (err, user) {
-    //     next(err, user);
-    // });
-
-    console.log('findUserResetToken findUserResetToken ');
-
+    winston.log("info", '[webui] find user and reset token');
 
     //load the database
     db.loadDatabase({}, function () {
 
         //get the users collection
         var users = db.getCollection('users');
-        // console.log('users.data ' + JSON.stringify(users.data));
 
         if (users == null) {
             var response = {
                 error: 'there are no existing users'
             };
+
+            winston.log("error", '[webui] find user and reset token - there are no existing users');
             return userResult(response);
 
         } else {
-            // var result = users.findOne({
-            //     'resetPasswordToken' : resetPasswordToken,
-            //     'resetPasswordExpires': {$gt: Date.now()}
-            // });
 
             var result = users.findOne(
                 {'$and': [{
@@ -173,7 +156,6 @@ exports.findUserResetToken = function (resetPasswordToken, userResult) {
                 }
             );
 
-            console.log('findUser result ' + JSON.stringify(result));
             return userResult(result);
         }
 
@@ -183,35 +165,22 @@ exports.findUserResetToken = function (resetPasswordToken, userResult) {
 
 
 exports.updateUser = function (user, userResult) {
-    console.log('insisde updateUser');
-    // User.update(user, function (err) {
-    //     if (err) {
-    //         return next(err);
-    //     }
-    //     next(null);
-    // });
+    winston.log("info", '[webui] update user');
 
     //load the database
     db.loadDatabase({}, function () {
 
         //get the users collection
         var users = db.getCollection('users');
-        // console.log('users.data ' + JSON.stringify(users.data));
 
         if (users == null) {
             var response = {
                 error: 'there are no existing users'
             };
+            winston.log("error", '[webui] update user - there are no existing users');
             return userResult(response);
 
         } else {
-            // var result = users.findOne({
-            //     resetPasswordToken: resetPasswordToken,
-            //     resetPasswordExpires: {$gt: Date.now()}
-            // });
-            //
-            // console.log('findUser result ' + JSON.stringify(result));
-            // return user(result);
 
             var result = users.findOne({'email': user.email.toLowerCase()});
 
@@ -225,8 +194,6 @@ exports.updateUser = function (user, userResult) {
             //save
             db.saveDatabase();
 
-            console.log('findUser result ' + JSON.stringify(result));
-
             userResult(result);
         }
 
@@ -235,6 +202,8 @@ exports.updateUser = function (user, userResult) {
 };
 
 exports.updateUserPassword = function (user, next) {
+    winston.log("info", '[webui] update user password');
+
     bcrypt.hash(user.password, 10, function (err, hash) {
         if (err) {
             return next(err);
@@ -244,25 +213,17 @@ exports.updateUserPassword = function (user, next) {
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
 
-        // User.update(user, function (err) {
-        //     if (err) {
-        //         return next(err);
-        //     }
-        //     next(null);
-        // });
-
-
         //load the database
         db.loadDatabase({}, function () {
 
             //get the users collection
             var users = db.getCollection('users');
-            // console.log('users.data ' + JSON.stringify(users.data));
 
             if (users == null) {
                 var response = {
                     error: 'there are no existing users'
                 };
+                winston.log("error", '[webui] update user - there are no existing users');
                 return next(response);
 
             } else {
@@ -278,8 +239,6 @@ exports.updateUserPassword = function (user, next) {
                 //save
                 db.saveDatabase();
 
-                console.log('findUser result ' + JSON.stringify(result));
-
                 return next(result);
             }
 
@@ -293,12 +252,12 @@ exports.updateUserPassword = function (user, next) {
  * Facebook User
  */
 exports.addFbUser = function (fbUser, response) {
+    winston.log("info", '[webui] add facebook user');
 
     db.loadDatabase({}, function () {
 
         //get the users collection
         var users = db.getCollection('users');
-        // console.log('users.data ' + JSON.stringify(users.data));
 
         if (users == null) {
             //add the users collection if it does not exist
@@ -315,8 +274,6 @@ exports.addFbUser = function (fbUser, response) {
         var email = users.addDynamicView('email');
         email.applyFind({'email': fbUser.email.toString().toLowerCase()});
 
-        console.log('email.data() ' + JSON.stringify(email.data()));
-
         return response(email.data());
 
     });
@@ -324,22 +281,7 @@ exports.addFbUser = function (fbUser, response) {
 };
 
 exports.findFbEmailUpdateToken = function (fbUser, response) {
-    // FbUser.findOneAndUpdate({'facebook.email': fbUser.email}, fbUser , function (err, fbUser) {
-    //     next(err, User);
-    // });
-    //
-    //
-    // User.update(user, function (err) {
-    //     if (err) {
-    //         return next(err);
-    //     }
-    //     next(null);
-    // });
-
-    // User.findOneAndUpdate({'email': fbUser.email}, fbUser, function (err, fbUser) {
-    //     next(err, User);
-    // });
-
+    winston.log("info", '[webui] find facebook user and update token');
 
     db.loadDatabase({}, function () {
 
@@ -351,6 +293,7 @@ exports.findFbEmailUpdateToken = function (fbUser, response) {
             var result = {
                 error: 'there are no existing users'
             };
+            winston.log("error", '[webui] find facebook user and update token - there are no existing users');
             return response(result);
 
         } else {
@@ -364,8 +307,6 @@ exports.findFbEmailUpdateToken = function (fbUser, response) {
             //save
             db.saveDatabase();
 
-            console.log('findUser result ' + JSON.stringify(result));
-
             return response(result);
         }
 
@@ -378,12 +319,12 @@ exports.findFbEmailUpdateToken = function (fbUser, response) {
  */
 
 exports.addGoogleUser = function (googleUser, response) {
+    winston.log("info", '[webui] add google user');
 
     db.loadDatabase({}, function () {
 
         //get the users collection
         var users = db.getCollection('users');
-        // console.log('users.data ' + JSON.stringify(users.data));
 
         if (users == null) {
             //add the users collection if it does not exist
@@ -400,8 +341,6 @@ exports.addGoogleUser = function (googleUser, response) {
         var email = users.addDynamicView('email');
         email.applyFind({'email': googleUser.email.toString().toLowerCase()});
 
-        console.log('email.data() ' + JSON.stringify(email.data()));
-
         return response(email.data());
 
     });
@@ -410,16 +349,7 @@ exports.addGoogleUser = function (googleUser, response) {
 
 
 exports.findGoogleEmailUpdateToken = function (googleUser, response) {
-
-    console.log('inside findGoogleEmailUpdateToken findGoogleEmailUpdateToken ');
-
-    // GoogleUser.findOneAndUpdate({'google.email': googleUser.email}, googleUser , function (err, googleUser) {
-    //     next(err, googleUser);
-    // });
-
-    // User.findOneAndUpdate({'email': googleUser.email}, googleUser, function (err, googleUser) {
-    //     next(err, googleUser);
-    // });
+    winston.log("info", '[webui] find google user and update token');
 
     db.loadDatabase({}, function () {
 
@@ -431,6 +361,7 @@ exports.findGoogleEmailUpdateToken = function (googleUser, response) {
             var result = {
                 error: 'there are no existing users'
             };
+            winston.log("error", '[webui] find google user and update token - there are no existing users');
             return response(result);
 
         } else {
@@ -443,8 +374,6 @@ exports.findGoogleEmailUpdateToken = function (googleUser, response) {
 
             //save
             db.saveDatabase();
-
-            console.log('findUser result ' + JSON.stringify(result));
 
             return response(result);
         }

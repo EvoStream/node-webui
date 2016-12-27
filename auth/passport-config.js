@@ -2,6 +2,7 @@ module.exports = function(){
     var passport = require('passport');
     var passportLocal = require('passport-local');
     var bcrypt = require('bcrypt');
+    var winston = require('winston');
 
     var path = require('path');
     
@@ -9,30 +10,24 @@ module.exports = function(){
     var userService = require(path.join(__dirname, '../models/user'));
 
     passport.use('local-user', new passportLocal.Strategy({usernameField: 'email'}, function(email, password, next) {
-        console.log('passport.use local-user');
-        console.log('');
-        console.log('userService.findUser ');
-        console.log('userService.findUser email '+email);
-        console.log('userService.findUser password '+password);
+        winston.log("info", '[webui] passport checking user');
+
         userService.findUser(email, function(user){
 
             var errorText = '';
 
             if (typeof user ['error'] !== "undefined") {
+                winston.log("error", '[webui] passport user not found');
                 return next(user['error']);
             }
             if (!user) {
+                winston.log("error", '[webui] passport user not found');
                 return next(null, null);
             }
-
-            console.log('userService.findUser user '+ JSON.stringify(user));
 
 
             if(typeof user.password !== 'undefined' && user.password ){
                 bcrypt.compare(password, user.password, function(err, same){
-                    console.log('password '+password);
-                    console.log('user.password '+user.password);
-                    console.log('same '+same);
                     if(err){
                         return next(err);
                     }
@@ -51,18 +46,16 @@ module.exports = function(){
 
 
     passport.serializeUser(function(user, next) {
-        console.log('serializeUser user '+JSON.stringify(user));
+        winston.log("info", '[webui] passport serialize user');
         next(null, user);
     });
 
     passport.deserializeUser(function(user, next) {
-        console.log('deserializeUser user '+JSON.stringify(user));
+        winston.log("info", '[webui] passport deserialize user');
         userService.findUser(user.email, function(user) {
 
-            console.log('user '+ JSON.stringify(user));
-            // console.log('err '+ JSON.stringify(err));
-
             if (typeof user ['error'] !== "undefined") {
+                winston.log("error", '[webui] passport deserialize - user not found');
                 return next(user['error'],user);
             }
             next(null, user);

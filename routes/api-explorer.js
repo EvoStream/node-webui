@@ -6,15 +6,17 @@ var restrict = require(path.join(__dirname, '../auth/restrict'));
 
 var ems = require(path.join(__dirname, "../core_modules/ems-api-core"))(null);
 
+var winston = require('winston');
+
 /* GET dashboard listing. */
 router.get('/', restrict, function(req, res, next) {
-    console.log('api-exporer part '+JSON.stringify(req.session));
+    winston.log("info", '[webui] api-explorer: index page');
 
     var parameters = null;
 
     //Execute command for pushStream using destination address
     ems.version(parameters, function(result) {
-        console.log("version result" + JSON.stringify(result));
+        winston.log("verbose", "[webui] api-explorer: version result" + JSON.stringify(result));
         
         var view = 'admin/error';
 

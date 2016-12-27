@@ -3,6 +3,7 @@ var router = express.Router();
 var path = require('path');
 var restrict = require(path.join(__dirname, '../auth/restrict'));
 var request = require('request');
+var winston = require('winston');
 
 //build the api proxy
 var ipApiProxy = null;
