@@ -6,6 +6,10 @@ h1 {
     font-weight: 300;
 }
 
+p span, label {
+    font-weight: bold;
+}
+
 .status {
     margin-bottom: 10px;
     color: #d21515;
@@ -59,7 +63,7 @@ h1 {
 /** Pages **/
 
 #page-wrapper {
-    padding: 50px 5px 28px;
+    padding: 8px 5px 28px;
 }
 
 .page-header-streams {
@@ -217,7 +221,7 @@ li.dropdown a:hover .top-button {
 
 .page-header h1 {
     color: #565656;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 30px;
     margin-top: 0;
     margin-bottom: 0;
@@ -395,8 +399,6 @@ a.connect:hover {
 .btn-default {
     background-color: #eee;
 }
-
-
 
 /**Params**/
 .delete-param, .add-param {
@@ -579,7 +581,8 @@ a.connect:hover {
 
 .form-control {
     border-radius: 0;
-    background-color: rgb(252, 252, 252);
+    /*background-color: rgb(252, 252, 252);*/
+    background-color: #e5eaf3;
     padding: 7px;
     padding-left: 12px;
     color: #737373;
@@ -605,7 +608,6 @@ a.connect:hover {
 .bottom-spacing {
     margin-bottom: 15px;
 }
-
 
 /**Glyphicons**/
 
@@ -749,6 +751,10 @@ a.connect:hover {
 .evo-push {
     padding-top: 10px;
     margin-bottom: 20px;
+}
+
+.evo-push-google {
+    margin-top: 25px;
 }
 
 .evo-rmar {
@@ -1033,7 +1039,7 @@ div.successMessage {
     display: inline-block;
 }
 
-div.errorMessage{
+div.errorMessage {
     margin-top: 5px;
 }
 
@@ -1088,7 +1094,6 @@ tr .uib-increment {
     margin-top: 10px;
 }
 
-
 /*Facebook Edge Group Buttons*/
 
 .btn-fb-default:active, .btn-fb-default.active, .open > .dropdown-toggle.btn-fb-default {
@@ -1115,4 +1120,19 @@ tr .uib-increment {
 
 .graph-mock-up {
     margin-top: 25px;
+}
+
+/* Profile */
+
+div.profilePasswordError{
+    margin-top: 5px;
+}
+
+div.profilePasswordError span{
+    color:red;
+}
+
+
+.err{
+    color:red;
 }

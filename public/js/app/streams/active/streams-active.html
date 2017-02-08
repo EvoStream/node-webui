@@ -33,12 +33,11 @@
 
                 </div>
 
-                <hr>
-                <div>
+                <div >
                     <table ng-if="bsTableControl" bs-table-control="bsTableControl"></table>
                 </div>
-                <div ng-if ="noActiveStreams" class="col-md-12 ">
-                    <h1>There are no Active Streams at the moment</h1>
+                <div ng-if ="noActiveStreams" class="col-md-12 err">
+                    <h4>There are no Active Streams at the moment</h4>
                 </div>
             </form>
         </div>

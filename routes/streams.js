@@ -34,22 +34,6 @@ router.get('/', restrict, function (req, res, next) {
 
 });
 
-
-// router.get('/info', restrict, function (req, res, next) {
-//     console.log('streams part ' + JSON.stringify(req.session));
-//
-//     var view = 'admin/streams/info';
-//
-//     var vm = {
-//         title: 'Streams Info - Evostream Web UI',
-//         email: req.user ? req.user.email : null,
-//         streamsActive: "active",
-//         // layout: 'admin/layout',
-//     }
-//     res.render(view, vm);
-//
-// });
-
 /* displaying play stream page */
 router.get('/play', restrict, function (req, res, next) {
 

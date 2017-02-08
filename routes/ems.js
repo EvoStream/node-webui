@@ -59,68 +59,73 @@ router.get('/api/get-inbound-outbound-count', restrict, function (req, res, next
         console.log("getStreamsCount result" + JSON.stringify(result));
 
         // var data = result;
-        if (result.data.streamCount > 0) {
 
-            var outboundCount = result.data.streamCount;
+        if(result.data != null){
+            if (result.data.streamCount > 0) {
 
-            //Execute command for version to check connection to ems
-            ems.getInboundStreamsCount(parameters, function (result) {
-                console.log("getInboundStreamsCount result" + JSON.stringify(result));
+                var outboundCount = result.data.streamCount;
 
-                console.log('(result.data != null ) '+ (result.data != null ));
-                // console.log('result.data.length > 0 '+result.data.length > 0 );
+                //Execute command for version to check connection to ems
+                ems.getInboundStreamsCount(parameters, function (result) {
+                    console.log("getInboundStreamsCount result" + JSON.stringify(result));
 
-                if(result.data != null ) {
-                    var inboundCount = result.data.inboundStreamsCount;
-                    outboundCount = outboundCount - inboundCount;
-                    var httpCount = 0;
+                    console.log('(result.data != null ) '+ (result.data != null ));
+                    // console.log('result.data.length > 0 '+result.data.length > 0 );
 
-                    ems.listStreams(parameters, function (result) {
-                        console.log("listStreams result" + JSON.stringify(result));
+                    if(result.data != null ) {
+                        var inboundCount = result.data.inboundStreamsCount;
+                        outboundCount = outboundCount - inboundCount;
+                        var httpCount = 0;
 
-                        // res.json(result);
+                        ems.listStreams(parameters, function (result) {
+                            console.log("listStreams result" + JSON.stringify(result));
 
-                        var data = result.data;
+                            // res.json(result);
 
-                        if (data != null) {
+                            var data = result.data;
 
-                            for (var i in data) {
+                            if (data != null) {
 
-                                if (data[i].hasOwnProperty('hlsSettings')) {
-                                    httpCount++;
-                                } else if (data[i].hasOwnProperty('hdsSettings')) {
-                                    httpCount++;
-                                } else if (data[i].hasOwnProperty('dashSettings')) {
-                                    httpCount++;
-                                } else if (data[i].hasOwnProperty('mssSettings')) {
-                                    httpCount++;
+                                for (var i in data) {
+
+                                    if (data[i].hasOwnProperty('hlsSettings')) {
+                                        httpCount++;
+                                    } else if (data[i].hasOwnProperty('hdsSettings')) {
+                                        httpCount++;
+                                    } else if (data[i].hasOwnProperty('dashSettings')) {
+                                        httpCount++;
+                                    } else if (data[i].hasOwnProperty('mssSettings')) {
+                                        httpCount++;
+                                    }
                                 }
                             }
-                        }
 
 
-                        streamCountData.inbound = inboundCount;
-                        streamCountData.outbound = outboundCount;
-                        streamCountData.http = httpCount;
+                            streamCountData.inbound = inboundCount;
+                            streamCountData.outbound = outboundCount;
+                            streamCountData.http = httpCount;
 
-                        streamCountData = {
-                            'inbound': inboundCount,
-                            'outbound': outboundCount,
-                            'http': httpCount
-                        };
+                            streamCountData = {
+                                'inbound': inboundCount,
+                                'outbound': outboundCount,
+                                'http': httpCount
+                            };
 
-                        console.log('streamCountData.http  ' + streamCountData.http);
-                        console.log('streamCountData.inbound  ' + streamCountData.inbound);
-                        console.log('streamCountData.outbound  ' + streamCountData.outbound);
-                        console.log('streamCountData ' + JSON.stringify(streamCountData));
+                            console.log('streamCountData.http  ' + streamCountData.http);
+                            console.log('streamCountData.inbound  ' + streamCountData.inbound);
+                            console.log('streamCountData.outbound  ' + streamCountData.outbound);
+                            console.log('streamCountData ' + JSON.stringify(streamCountData));
 
-                        res.json(streamCountData);
-                    });
-                }
+                            res.json(streamCountData);
+                        });
+                    }
 
 
-            });
+                });
+            }
         }
+
+
     });
 });
 

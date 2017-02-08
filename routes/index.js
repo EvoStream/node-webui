@@ -185,19 +185,15 @@ router.get('/fbcallback', function (req, res, next) {
         //Find if Facebook User already exists
         userService.findUser(req.query.email, function (fbUser) {
 
-            if (typeof fbUser ['error'] !== "undefined") {
-                console.log('userService.findUser fbUser [error] ' + fbUser ['error']);
-                res.redirect('/');
-            }
+            if (fbUser.error) {
 
-            if (!fbUser) {
-                console.log('userService.findUser !fbUser ');
-
-                console.log('Add the fbuser');
                 //Add the Facebook User
+                winston.log("info", "Add the Facebook User " );
 
                 userService.addFbUser(req.query, function (response) {
                     console.log('before if err');
+
+                    winston.log("verbose", "addFbUser response " + JSON.stringify(response));
 
                     if (response.length == 0) {
                         res.redirect('/');
@@ -207,6 +203,7 @@ router.get('/fbcallback', function (req, res, next) {
 
                     req.session.fbUser = req.query;
                     res.redirect(redirectPage);
+                    // res.redirect('/');
                 });
             } else {
                 console.log('Find and Update the fbuser ' + JSON.stringify(fbUser));
@@ -224,6 +221,9 @@ router.get('/fbcallback', function (req, res, next) {
 
                 });
             }
+
+
+
         });
     }else{
         var vm = {
@@ -233,6 +233,7 @@ router.get('/fbcallback', function (req, res, next) {
         }
         res.render('index/loginform', vm);
     }
+
 
 
 
@@ -275,15 +276,10 @@ router.get('/googlecallback', function (req, res, next) {
         //Find if Google User already exists
         userService.findUser(req.query.email, function (googleUser) {
 
-            if (typeof googleUser ['error'] !== "undefined") {
-                console.log('userService.findUser fbUser [error] ' + googleUser ['error']);
-                res.redirect('/');
-            }
-
-            if (!googleUser) {
+            if (googleUser.error) {
                 console.log('userService.findGoogleEmail !googleUser ');
 
-                console.log('Add the googleUser');
+                winston.log("info", 'Add the googleUser');
                 //Add the Google User
 
                 userService.addGoogleUser(req.query, function (response) {
@@ -379,18 +375,7 @@ router.post('/forgotpassword', function (req, res, next) {
     });
 });
 
-// router.get('/resetpassword/:token', function(req, res) {
-// router.get('/resetpassword', function(req, res) {
-//     console.log('render resetpassword');
-//         var vm = {
-//             title: 'Reset Password',
-//             layout: 'index/layout'
-//         }
-//         // res.render('index/forgotpassword', vm);
-//         res.render('index/resetpassword', vm);
-//
-// });
-// router.get('/resetpassword/:token', function(req, res) {
+
 router.get('/resetpassword', function (req, res) {
     console.log('request query ' + JSON.stringify(req.query));
     userService.findUserResetToken(req.query.token, function (userResult) {
@@ -415,7 +400,7 @@ router.post('/resetpassword', function (req, res) {
     async.waterfall([
         function (done) {
             userService.findUserResetToken(req.body.token, function (userResult) {
-                // next(err, user);
+                
                 if (!userResult) {
                     req.flash('error', 'Password reset token is invalid or has expired.');
                     return res.redirect('back');

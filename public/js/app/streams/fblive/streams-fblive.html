@@ -43,27 +43,26 @@
                         <div class="evo-frm-section">
                             <div class="form-group">
                                 <label>Description </label>
-                                <textarea class="form-control" rows="6" class="social-descr"
+                                <textarea class="form-control" rows="2" class="social-descr"
                                           placeholder="Input Text" ng-model="fbDescription"></textarea>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="evo-head">Choose the Privacy Status</label>
-                            <ui-select ng-model="fbPrivacyStatus.selected"
-                                       theme="bootstrap" search-enabled="false" ng-disabled="disabled"
-                                       style="min-width: 300px;" title="Choose a Privacy Status">
-                                <ui-select-match placeholder="Select a Privacy Status...">{[{$select.selected.text}]}
-                                </ui-select-match>
-                                <ui-select-choices repeat="status in fbPrivacyStatus ">
-                                    <div ng-bind-html="status.text | highlight: $select.search"></div>
-                                    <small>
-                                        description: {[{status.description}]}
-                                    </small>
-                                </ui-select-choices>
-                            </ui-select>
+                            <label class="evo-head">Choose the Target Protocol</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><input type="radio" name="protocol"
+                                                                       ng-model="fbProtocol" value="rtmp"></span>
+                                <div class="form-control form-control-static"> use port 80</div>
+                            </div>
+                            <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><input type="radio" name="protocol"-->
+                            <!--ng-model="fbProtocol" value="rtmps"></span>-->
+                            <!--<div class="form-control form-control-static"> use port 443 (secured)</div>-->
+                            <!--</div>-->
                         </div>
 
-                        <button type="button" class="btn btn-evo" ng-disabled="streamsNotAvailable"
+                        <button type="button" class="btn btn-evo" ng-disabled="streamsNotAvailable" ladda="sendFacebookStreamLoading"
                                 ng-click="sendFacebookStream()">
                             <span>{[{fbButtonText}]}</span>
                         </button>
@@ -79,20 +78,6 @@
                     </div>
 
                     <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label class="evo-head">Choose the Target Protocol</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><input type="radio" name="protocol"
-                                                                       ng-model="fbProtocol" value="rtmp"></span>
-                                <div class="form-control form-control-static"> use port 80 (not secure)</div>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon"><input type="radio" name="protocol"
-                                                                       ng-model="fbProtocol" value="rtmps"></span>
-                                <div class="form-control form-control-static"> use port 443 (secured)</div>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label class="evo-head">Choose where to Publish Live Video </label>
@@ -154,6 +139,22 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="evo-head">Choose the Privacy Status</label>
+                            <ui-select ng-model="fbPrivacyStatus.selected"
+                                       theme="bootstrap" search-enabled="false" ng-disabled="disabled"
+                                       style="min-width: 300px;" title="Choose a Privacy Status">
+                                <ui-select-match placeholder="Select a Privacy Status...">{[{$select.selected.text}]}
+                                </ui-select-match>
+                                <ui-select-choices repeat="status in fbPrivacyStatus ">
+                                    <div ng-bind-html="status.text | highlight: $select.search"></div>
+                                    <small>
+                                        description: {[{status.description}]}
+                                    </small>
+                                </ui-select-choices>
+                            </ui-select>
                         </div>
                     </div>
                 </div>

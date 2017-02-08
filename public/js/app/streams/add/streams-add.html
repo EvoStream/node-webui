@@ -31,8 +31,8 @@
                             <ui-select-choices
                                     repeat="streamType in addStreamType  | propsFilter: {text: $select.search} ">
                                 <div ng-bind-html="streamType.text | highlight: $select.search"></div>
-                                <small>
-                                    info: {[{streamType.description}]}
+                                <small style="font-size: smaller; ">
+                                    &emsp; - {[{streamType.description}]}
                                 </small>
                             </ui-select-choices>
                         </ui-select>

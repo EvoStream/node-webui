@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Description </label>
-                                <textarea class="form-control" rows="6" class="social-descr" name="decr"
+                                <textarea class="form-control" rows="2" class="social-descr" name="decr"
                                           placeholder="Input Text" ng-model="ytDescription" ></textarea>
                             </div>
                             <div class="form">
@@ -87,6 +87,25 @@
                     </div>
                     <div class="col-md-6">
 
+
+
+                        <div class="form-group">
+                            <label class="evo-head">Choose the Video Format </label>
+                            <ui-select ng-model="ytFormatVideo.selected"
+                                       theme="bootstrap" search-enabled="false" ng-disabled="disabled"
+                                       style="min-width: 300px;" title="Choose a Format of the Video">
+                                <ui-select-match placeholder="Select a Format of the Video...">
+                                    {[{$select.selected.text}]}
+                                </ui-select-match>
+                                <ui-select-choices repeat="format in ytFormatVideo ">
+                                    <div ng-bind-html="format.text | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form">
+                            <p class="evo-push-down">Note: Choose the same or lower video format of the stream.</p>
+                        </div>
+
                         <div class="form-group" style="margin-bottom: 50px;">
                             <label class="evo-head">Choose the Privacy Status</label>
                             <ui-select ng-model="ytPrivacyStatus.selected"
@@ -96,21 +115,6 @@
                                 </ui-select-match>
                                 <ui-select-choices repeat="status in ytPrivacyStatus ">
                                     <div ng-bind-html="status.text | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="evo-head">Choose the Format of the video stream that you are sending to
-                                Youtube</label>
-                            <ui-select ng-model="ytFormatVideo.selected"
-                                       theme="bootstrap" search-enabled="false" ng-disabled="disabled"
-                                       style="min-width: 300px;" title="Choose a Format of the Video">
-                                <ui-select-match placeholder="Select a Format of the Video...">
-                                    {[{$select.selected.text}]}
-                                </ui-select-match>
-                                <ui-select-choices repeat="format in ytFormatVideo ">
-                                    <div ng-bind-html="format.text | highlight: $select.search"></div>
                                 </ui-select-choices>
                             </ui-select>
                         </div>

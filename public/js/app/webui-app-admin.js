@@ -19,6 +19,24 @@ webuiApp.config(function (laddaProvider) {
     });
 });
 
+webuiApp.directive('passwordCheck', function() {
+
+    console.log('passwordCheck passwordCheck passwordCheck ');
+
+    return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, ctrl) {
+            var firstPassword = '#' + attrs.passwordCheck;
+            elem.add(firstPassword).on('keyup', function () {
+                scope.$apply(function () {
+                    var v = elem.val()===$(firstPassword).val();
+                    ctrl.$setValidity('passwordMatch', v);
+                });
+            });
+        }
+    }
+});
+
 webuiApp.config(function ($routeProvider) {
     $routeProvider
         .when('/add', {
@@ -197,13 +215,13 @@ webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', func
 
             if(data.status == "SUCCESS"){
                 $scope.connectionStatus = '';
-                $scope.connectionText = 'EMS Online. Connected to EMS';
-                $scope.dashboardConnectionText = 'Connected.';
+                $scope.connectionText = 'EMS ONLINE';
+                $scope.dashboardConnectionText = 'CONNECTED';
                 $scope.statusConnected = 'statusConnected';
             }else{
                 $scope.connectionStatus = 'disconnected';
-                $scope.connectionText = 'EMS Offline. Please Start EMS.';
-                $scope.dashboardConnectionText = 'Not Connected. Please Start EMS.';
+                $scope.connectionText = 'EMS OFFLINE';
+                $scope.dashboardConnectionText = 'NOT CONNECTED. Please Start EMS.';
                 $scope.statusConnected = 'status';
             }
 

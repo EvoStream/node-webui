@@ -18,13 +18,14 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
         if (response.data.status == 'login') {
 
             $scope.seeFbForm = true;
+            $scope.sendFacebookStreamLoading = false;
 
             /*
              * Default Values
              */
 
             $scope.seeAddedSendStream = false;
-            $scope.fbButtonText = 'Send Stream to Facebook Video';
+            $scope.fbButtonText = 'Post to Facebook';
 
             //Get the List of Inbound Streams
             $scope.fbInboundList = [];
@@ -77,7 +78,7 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
             $scope.fbEdgeList = [
                 {
                     value: "user",
-                    text: "User"
+                    text: "User Timeline"
                 },
                 {
                     value: "page",
@@ -262,7 +263,8 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
                     console.log('response ' + JSON.stringify(response));
 
                     $scope.seeAddedSendStream = false;
-                    $scope.fbButtonText = 'Send Stream to Facebook Video';
+                    $scope.fbButtonText = 'Post to Facebook';
+                    $scope.sendFacebookStreamLoading = false;
 
                     if (response.data.status){
 

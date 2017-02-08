@@ -27,7 +27,7 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
 
                 //Set the columns
                 $scope.columnConfigData = [
-                    {field: 'configId', sortable: true, title: 'Stream ID'},
+                    {field: 'configId', sortable: true, title: 'Config ID'},
                     {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
                     {field: 'sourceURI', sortable: true, title: 'Source URI'},
                     {

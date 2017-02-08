@@ -1,7 +1,7 @@
 module.exports = function(){
     var passport = require('passport');
     var passportLocal = require('passport-local');
-    var bcrypt = require('bcrypt');
+    var bcrypt = require('bcryptjs');
     var winston = require('winston');
 
     var path = require('path');
@@ -14,24 +14,30 @@ module.exports = function(){
 
         userService.findUser(email, function(user){
 
-            var errorText = '';
-
             if (typeof user ['error'] !== "undefined") {
                 winston.log("error", '[webui] passport user not found');
-                return next(user['error']);
+                return next(null, null);
             }
             if (!user) {
                 winston.log("error", '[webui] passport user not found');
                 return next(null, null);
             }
 
+            winston.log("verbose", "[webui] passport checking user " + JSON.stringify(user));
+
+            winston.log("verbose", "user.password " +user.password );
+            winston.log("verbose", "password " +password );
 
             if(typeof user.password !== 'undefined' && user.password ){
-                bcrypt.compare(password, user.password, function(err, same){
+                bcrypt.compare(password, user.password, function(err, res){
+
+                    winston.log("verbose", "bcrypt err " + JSON.stringify(err));
+                    winston.log("verbose", "bcrypt res " + JSON.stringify(res));
+
                     if(err){
                         return next(err);
                     }
-                    if(!same){
+                    if(res === false){
                         return next(null, null);
                     }
                     next(null, user);
@@ -60,6 +66,5 @@ module.exports = function(){
             }
             next(null, user);
         });
-        
     });
 };
