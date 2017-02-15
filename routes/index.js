@@ -128,9 +128,11 @@ router.get('/login', function (req, res, next) {
 
 /* POST Login Form */
 router.post('/login', function (req, res, next) {
-        console.log('post/login req--- ' + JSON.stringify(req.body));
+        console.log('--------------------------------------post/login req--- ' + JSON.stringify(req.body));
         if (req.body.rememberMe) {
             req.session.cookie.maxAge = 30 * 24 * 3600 * 1000; // 30 days
+            // req.session.cookie.maxAge = 60000; // 1 minute
+            // req.session.cookie.maxAge = 300000;  //5 minutes
         }
         next();
     },

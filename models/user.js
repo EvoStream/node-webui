@@ -94,9 +94,6 @@ exports.findUser = function (email, user) {
         //get the users collection
         var users = db.getCollection('users');
 
-        console.log('(typeof(users) == "undefined") ' + (typeof(users) == "undefined"));
-        winston.log("info", '[webui] find user data '+JSON.stringify(users));
-
         if ((typeof(users) == "undefined") || users == null) {
             var response = {
                 error: 'there are no existing users'

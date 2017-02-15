@@ -14,11 +14,14 @@ module.exports = function(){
 
         userService.findUser(email, function(user){
 
-            if (typeof user ['error'] !== "undefined") {
+            // winston.log("verbose", "user " + JSON.stringify(user));
+
+            if (user == null) {
                 winston.log("error", '[webui] passport user not found');
                 return next(null, null);
             }
-            if (!user) {
+
+            if (typeof user ['error'] !== "undefined" ) {
                 winston.log("error", '[webui] passport user not found');
                 return next(null, null);
             }

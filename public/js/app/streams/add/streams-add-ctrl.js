@@ -103,7 +103,7 @@
 
     $scope.setDefaultValuesAddStreamForm = function () {
 
-        console.log('$scope.setToDefaultValuesAddStreamForm $scope.setToDefaultValuesAddStreamForm ');
+        console.log('$scope.setDefaultValuesAddStreamForm $scope.setDefaultValuesAddStreamForm ');
 
         $scope.inbound.uri = '';
         $scope.inbound.localStreamName = '';
@@ -135,6 +135,7 @@
 
         $scope.addStreamLoading = true;
         $scope.addButtonText = 'Creating the Stream...';
+        $scope.seeAddedStream = false;
 
 
         var streamType = $scope.addStreamType.selected.value;
@@ -228,6 +229,7 @@
 
 
             } else {
+                $scope.forAddStreamErrorMessage = response.data.description;
                 $scope.invalidArgumentModal();
             }
 
@@ -240,16 +242,19 @@
     };
 
 
-    $scope.setToDefaultValuesAddStreamForm = function () {
-        $scope.inbound.uri = '';
-        $scope.inbound.localStreamName = '';
-
-        $scope.inboundList.selected = $scope.inboundList[0];
-        $scope.hls.targetFolder = '';
-        $scope.hls.groupName = '';
-        $scope.hds.targetFolder = '';
-        $scope.hls.groupName = '';
-    };
+    // $scope.setToDefaultValuesAddStreamForm = function () {
+    //     $scope.inbound.uri = '';
+    //     $scope.inbound.localStreamName = '';
+    //
+    //     $scope.inboundList.selected = $scope.inboundList[0];
+    //     $scope.hls.targetFolder = '';
+    //     $scope.hls.groupName = '';
+    //     $scope.hds.targetFolder = '';
+    //     $scope.hls.groupName = '';
+    //
+    //     $scope.seeAddedStream = false;
+    //
+    // };
 
 
     $scope.invalidArgumentModal = function () {
@@ -257,8 +262,14 @@
 
         var modalInstance = $uibModal.open({
             templateUrl: 'js/app/streams/add/modals/invalid-params-streams-add.html',
-            controller: 'invalidArgumentModalCtrl',
+            controller: 'invalidArgumentAddModalCtrl',
             resolve: {
+                addStreamErrorMessage: function () {
+
+                    var addStreamErrorMessage = $scope.forAddStreamErrorMessage;
+
+                    return addStreamErrorMessage;
+                },
                 addStreamLoading: function () {
                     return $scope.addStreamLoading;
                 }
@@ -277,7 +288,13 @@
 }]);
 
 
-webuiApp.controller('invalidArgumentModalCtrl', ['$scope', '$uibModalInstance', '$http', function ($scope, $uibModalInstance, $http) {
+webuiApp.controller('invalidArgumentAddModalCtrl', ['$scope', '$uibModalInstance', 'addStreamErrorMessage', function ($scope, $uibModalInstance, addStreamErrorMessage) {
+
+    console.log('invalidArgumentAddModalCtrl invalidArgumentAddModalCtrl ');
+
+    $scope.addStreamErrorMessage = addStreamErrorMessage;
+
+    console.log('invalidArgumentModalCtrl $scope.addStreamErrorMessage '+$scope.addStreamErrorMessage );
 
     $scope.ok = function () {
         console.log('invalidArgumentModalCtrl ok');

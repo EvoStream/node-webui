@@ -49,7 +49,7 @@ router.get('/play', restrict, function (req, res, next) {
 
     console.log('req.app.settings.address  ' + req.app.settings.address);
     console.log('req.app.settings.port  ' + req.app.settings.port);
-
+    console.log("req.query " + JSON.stringify(req.query));
 
     var info = new Buffer(req.query.info, 'base64');
     var infoRow = JSON.parse(info);
