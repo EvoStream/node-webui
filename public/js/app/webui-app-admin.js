@@ -95,10 +95,13 @@ webuiApp.filter('propsFilter', function () {
                 for (var i = 0; i < keys.length; i++) {
                     var prop = keys[i];
                     var text = props[prop].toLowerCase();
-                    if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
-                        itemMatches = true;
-                        break;
+                    if(item[prop]){
+                        if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+                            itemMatches = true;
+                            break;
+                        }
                     }
+
                 }
 
                 if (itemMatches) {
@@ -114,30 +117,6 @@ webuiApp.filter('propsFilter', function () {
     };
 });
 
-// webuiApp.service('checkEmsConnection', function () {
-//     console.log('webuiApp service checkEmsConnection ');
-//
-//     // this.connectionStatus = function (resultStatus) {
-//     //     console.log('service checkEmsConnection connectionStatus');
-//     //
-//     //     $http.get("ems/api/check-connection").then(function (response) {
-//     //         console.log(JSON.stringify(response));
-//     //
-//     //         var data = response.data;
-//     //
-//     //         if (data.code == "ECONNREFUSED") {
-//     //             resultStatus(false) ;
-//     //         }
-//     //
-//     //         if(data.status == "SUCCESS"){
-//     //             resultStatus(true) ;
-//     //         }else{
-//     //             resultStatus(false) ;
-//     //         }
-//     //     });
-//     // }
-//
-// });
 
 webuiApp.factory('listPullStreamFactory', [ '$http', '$q', function ($http, $q) {
     console.log('webuiApp service listPullStreamFactory ');

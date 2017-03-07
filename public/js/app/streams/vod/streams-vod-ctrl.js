@@ -132,7 +132,7 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
                 $scope.loadFilesLoading = false;
             });
         }
-    }
+    };
 
     $scope.playVod = function (row) {
 

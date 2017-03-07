@@ -1581,7 +1581,7 @@
       {
         "defaultValue": null,
         "description": "The key to shutdown the server. shutdownServer must be called without the key to obtain the key and once again with the returned key to shutdown the server",
-        "mandatory": true,
+        "mandatory": false,
         "name": "key"
       },
       {

@@ -5,6 +5,8 @@ var restrict = require(path.join(__dirname, '../auth/restrict'));
 var request = require('request');
 var winston = require('winston');
 
+var recursive = require('recursive-readdir');
+
 //build the api proxy
 var ipApiProxy = null;
 
@@ -60,7 +62,7 @@ router.get('/api/get-inbound-outbound-count', restrict, function (req, res, next
 
         // var data = result;
 
-        if(result.data != null){
+        if (result.data != null) {
             if (result.data.streamCount > 0) {
 
                 var outboundCount = result.data.streamCount;
@@ -69,10 +71,10 @@ router.get('/api/get-inbound-outbound-count', restrict, function (req, res, next
                 ems.getInboundStreamsCount(parameters, function (result) {
                     console.log("getInboundStreamsCount result" + JSON.stringify(result));
 
-                    console.log('(result.data != null ) '+ (result.data != null ));
+                    console.log('(result.data != null ) ' + (result.data != null ));
                     // console.log('result.data.length > 0 '+result.data.length > 0 );
 
-                    if(result.data != null ) {
+                    if (result.data != null) {
                         var inboundCount = result.data.inboundStreamsCount;
                         outboundCount = outboundCount - inboundCount;
                         var httpCount = 0;
@@ -158,75 +160,89 @@ router.post('/api/get-vod-files', restrict, function (req, res, next) {
 
     console.log('req.body ' + JSON.stringify(req.body));
 
+    winston.log("info", "[webui] get vod files");
+
     var data = req.body;
 
     var directory = null;
 
-    if (data.directory != "") {
-        // directory = JSON.parse('{"' + decodeURI(data.directory).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+    var filesToPlayList = [];
 
-        //Check if it is a valid directory
-
-        directory = data.directory;
-        // directory = "";
-
-        try {
-
-            // Is it a directory?
-            //Check if file location is a valid directory
-            if (fs.lstatSync(directory).isDirectory()) {
-                console.log('directory ' + JSON.stringify(directory));
-
-                var filesToPlayList = [];
-                var files_ = files_ || [];
-                var files = fs.readdirSync(directory);
-                for (var i in files) {
-                    var name = directory + '/' + files[i];
-
-                    console.log('name ' + name);
-                    console.log('fs.statSync(name).isDirectory() ' + fs.statSync(name).isDirectory());
-
-                    if (!fs.statSync(name).isDirectory()) {
-
-                        var ext = name.split('.').pop();
-
-                        console.log('ext ' + ext);
-
-                        //Only add files that can be played
-                        var fileToPlay = ["mp4", "ts", "flv", "m4v"];
-
-                        var playFile = fileToPlay.indexOf(ext);
-
-                        console.log('playFile ' + playFile);
-
-
-                        if (playFile != -1) {
-
-                            console.log('name to add ' + name);
-
-                            filesToPlayList.push(files[i]);
-                        }
-                    }
-                }
-
-                // console.log('files '+ JSON.stringify(files));
-                console.log('filesToPlayList.length ' + filesToPlayList.length);
-
-                if (filesToPlayList.length > 0) {
-                    res.json(filesToPlayList);
-                } else {
-                    res.json("");
-                }
+    // List all files in a directory in Node.js recursively in a synchronous fashion
+    function walk(currentDirPath, callback) {
+        var fs = require('fs'),
+            path = require('path');
+        fs.readdir(currentDirPath, function (err, files) {
+            if (err) {
+                throw new Error(err);
             }
-        }
-        catch (e) {
-            res.json("");
-        }
+            files.forEach(function (name) {
+                var filePath = path.join(currentDirPath, name);
+                var stat = fs.statSync(filePath);
+                if (stat.isFile()) {
+
+                    var ext = filePath.split('.').pop();
+
+                    //Only add files that can be played
+                    var fileToPlay = ["mp4", "ts", "flv", "m4v"];
+
+                    var playFile = fileToPlay.indexOf(ext);
+
+                    if (playFile != -1) {
+
+                        winston.log("verbose", 'name to add ' + name);
+
+                        callback(filePath, stat);
+
+                    }
+
+
+                } else if (stat.isDirectory()) {
+                    walk(filePath, callback);
+                }
+
+
+            });
+        });
     }
 
-    console.log('files ' + JSON.stringify(files));
+    if (data.directory != "") {
 
-    // res.json("");
+        directory = data.directory;
+
+        recursive(directory, function (err, files) {
+            // Files is an array of filename
+            winston.log("verbose", "recursive files " + JSON.stringify(files));
+
+            for (var i in files) {
+                var ext = files[i].split('.').pop();
+
+                //Only add files that can be played
+                var fileToPlay = ["mp4", "ts", "flv", "m4v"];
+
+                var playFile = fileToPlay.indexOf(ext);
+
+                if (playFile != -1) {
+
+                    var vodFile = files[i].replace(directory + "/", '');
+
+                    winston.log("verbose", 'vodFile to add ' + vodFile);
+                    filesToPlayList.push(vodFile);
+                }
+            }
+
+            winston.log("verbose", "after for filesToPlayList " + JSON.stringify(filesToPlayList));
+
+            if (filesToPlayList.length > 0) {
+                res.json(filesToPlayList);
+            } else {
+                res.json("");
+            }
+
+        });
+
+
+    }
 
 
 });
@@ -370,12 +386,12 @@ router.get('/api/removeconfig', restrict, function (req, res, next) {
 
 router.get('/api/send-youtube', function (req, res, next) {
     // console.log('POST: api/send-youtube req.body ' + JSON.stringify(req.body));
-    console.log('GET: api/send-youtube req.query ' + JSON.stringify(req.query));
+    winston.log("verbose", 'GET: api/send-youtube req.query ' + JSON.stringify(req.query));
 
     var data = req.query;
     var parameters = null;
 
-    console.log('data.command ' + data.command);
+    winston.log("verbose", 'data.command ' + data.command);
 
     if (data.command == 'step01') {
         if (req.session.googleUser) {
@@ -386,11 +402,11 @@ router.get('/api/send-youtube', function (req, res, next) {
             // var createBroadcastUrl = "http://webuiauth.evostream.com/verify/youtube/create?" + parameters;
             var createBroadcastUrl = youtubeCreate + parameters;
 
-            console.log('createBroadcastUrl ' + createBroadcastUrl);
+            winston.log("verbose", 'createBroadcastUrl ' + createBroadcastUrl);
 
             request(createBroadcastUrl, function (error, response, body) {
 
-                console.log('response ' + JSON.stringify(response));
+                winston.log("verbose", 'response ' + JSON.stringify(response));
 
                 if (error) {
                     err = {
@@ -404,11 +420,22 @@ router.get('/api/send-youtube', function (req, res, next) {
                     // var importedJSON = JSON.parse(body);
                     // res.json(importedJSON);
 
-                    console.log('body' + JSON.stringify(body));
+                    winston.log("verbose", 'body ' + JSON.stringify(body));
 
                     var youtubeData = JSON.parse(body);
 
-                    console.log('youtubeData.ingestionAddress ' + youtubeData.ingestionAddress);
+                    if (youtubeData.error) {
+                        winston.log("error", 'Youtube Error Details: ' + body);
+
+                        var result = {
+                            'status': false,
+                            'broadcastId': ''
+                        };
+
+                        res.json(result);
+                    }
+
+                    winston.log("verbose", 'youtubeData.ingestionAddress ' + youtubeData.ingestionAddress);
 
                     var parameters = {
                         uri: youtubeData.ingestionAddress,
@@ -419,7 +446,7 @@ router.get('/api/send-youtube', function (req, res, next) {
 
                     //Execute command for pushStream to send stream to youtube
                     ems.pushStream(parameters, function (result) {
-                        console.log("pushStream result" + JSON.stringify(result));
+                        winston.log("verbose", "pushStream result" + JSON.stringify(result));
                         // res.json(result);
 
                         if (result.status == 'SUCCESS') {
@@ -434,11 +461,11 @@ router.get('/api/send-youtube', function (req, res, next) {
                                 // var transitionToTestUrl = "http://webuiauth.evostream.com/verify/youtube/transition?" + parameters;
                                 var transitionToTestUrl = youtubeTransition + parameters;
 
-                                console.log('transitionToTestUrl ' + transitionToTestUrl);
+                                winston.log("verbose", 'transitionToTestUrl ' + transitionToTestUrl);
 
                                 request(transitionToTestUrl, function (error, response, body) {
 
-                                    console.log('response ' + JSON.stringify(response));
+                                    winston.log("verbose", 'response ' + JSON.stringify(response));
 
                                     if (error) {
                                         var result = {
@@ -453,11 +480,23 @@ router.get('/api/send-youtube', function (req, res, next) {
                                         // var importedJSON = JSON.parse(body);
                                         // res.json(importedJSON);
 
-                                        console.log('body' + JSON.stringify(body));
+
+                                        winston.log("verbose", 'body' + JSON.stringify(body));
 
                                         var youtubeData = JSON.parse(body);
 
-                                        console.log('youtubeData.broadcastId ' + youtubeData.broadcastId);
+                                        if (youtubeData.error) {
+                                            winston.log("error", 'Youtube Error Details: ' + body);
+
+                                            var result = {
+                                                'status': false,
+                                                'broadcastId': ''
+                                            };
+
+                                            res.json(result);
+                                        }
+
+                                        winston.log("verbose", 'youtubeData.broadcastId ' + youtubeData.broadcastId);
 
                                         if (youtubeData.broadcastId) {
 
@@ -470,6 +509,8 @@ router.get('/api/send-youtube', function (req, res, next) {
 
 
                                         }
+
+
                                     }
                                 });
                             }, 10000);
@@ -480,14 +521,15 @@ router.get('/api/send-youtube', function (req, res, next) {
 
                     });
 
+
                 }
             });
         }
     } else if (data.command == 'step02') {
         //Transition Youtube Stream to Live
 
-        console.log('req.session.googleUser.googletoken ' + req.session.googleUser.googletoken);
-        console.log('data.broadcastId ' + data.broadcastId);
+        winston.log("verbose", 'req.session.googleUser.googletoken ' + req.session.googleUser.googletoken);
+        winston.log("verbose", 'data.broadcastId ' + data.broadcastId);
 
         if (req.session.googleUser && typeof data.broadcastId !== 'undefined' && data.broadcastId) {
             setTimeout(function () {
@@ -496,11 +538,11 @@ router.get('/api/send-youtube', function (req, res, next) {
 
                 var transitionToLiveUrl = "http://webuiauth.evostream.com/verify/youtube/transition?" + parametersToLive;
 
-                console.log('transitionToLiveUrl ' + transitionToLiveUrl);
+                winston.log("verbose", 'transitionToLiveUrl ' + transitionToLiveUrl);
 
                 request(transitionToLiveUrl, function (error, response, body) {
 
-                    console.log('response ' + JSON.stringify(response));
+                    winston.log("verbose", 'response ' + JSON.stringify(response));
 
                     if (error) {
                         var result = {
@@ -515,11 +557,23 @@ router.get('/api/send-youtube', function (req, res, next) {
                         // var importedJSON = JSON.parse(body);
                         // res.json(importedJSON);
 
-                        console.log('body' + JSON.stringify(body));
+                        winston.log("verbose", 'body' + JSON.stringify(body));
+
 
                         var youtubeData = JSON.parse(body);
 
-                        console.log('youtubeData.broadcastId ' + youtubeData.broadcastId);
+                        if (youtubeData.error) {
+                            winston.log("error", 'Youtube Error Details: ' + body);
+
+                            var result = {
+                                'status': false,
+                                'broadcastId': ''
+                            };
+
+                            res.json(result);
+                        }
+
+                        winston.log("verbose", 'youtubeData.broadcastId ' + youtubeData.broadcastId);
 
                         if (youtubeData.broadcastId) {
 
@@ -529,9 +583,11 @@ router.get('/api/send-youtube', function (req, res, next) {
                             };
                             res.json(result);
                         }
+
+
                     }
                 });
-            }, 25000);
+            }, 30000);
         }
 
     }
@@ -546,11 +602,11 @@ router.get('/api/send-youtube', function (req, res, next) {
 
 router.get('/api/get-fb-edge', restrict, function (req, res, next) {
 
-    console.log('get-fb-user get-fb-user get-fb-user ');
+    winston.log("verbose", 'get-fb-user get-fb-user get-fb-user ');
 
-    console.log('req.query ' + JSON.stringify(req.query));
+    winston.log("verbose", 'req.query ' + JSON.stringify(req.query));
 
-    console.log('req.session.fbUser ' + JSON.stringify(req.session.fbUser));
+    winston.log("verbose", 'req.session.fbUser ' + JSON.stringify(req.session.fbUser));
 
     var data = req.query;
     var parameters = null;
@@ -566,12 +622,12 @@ router.get('/api/get-fb-edge', restrict, function (req, res, next) {
         var getInfoUrl = fbEdge + parameters;
 
 
-        // console.log('createBroadcastUrl ' + createBroadcastUrl);
+        // winston.log("verbose", 'createBroadcastUrl ' + createBroadcastUrl);
 
         request(getInfoUrl, function (error, response, body) {
 
-            console.log('response ' + JSON.stringify(response));
-            console.log('body ' + JSON.stringify(body));
+            winston.log("verbose", 'response ' + JSON.stringify(response));
+            winston.log("verbose", 'body ' + JSON.stringify(body));
 
             if (response.statusCode == 200) {
                 res.json(body);
@@ -588,31 +644,31 @@ router.get('/api/get-fb-edge', restrict, function (req, res, next) {
 
 router.get('/api/send-facebook', function (req, res, next) {
     // console.log('POST: api/send-youtube req.body ' + JSON.stringify(req.body));
-    console.log('GET: api/send-facebook req.query ' + JSON.stringify(req.query));
+    winston.log("verbose", 'GET: api/send-facebook req.query ' + JSON.stringify(req.query));
 
     var data = req.query;
     var parameters = null;
 
-    console.log('data.command ' + data.command);
+    winston.log("verbose", 'data.command ' + data.command);
 
 
     if (req.session.fbUser) {
         parameters = data.parameters + '&token=' + req.session.fbUser.fbtoken;
 
-        console.log('parameters ' + parameters);
+        winston.log("verbose", 'parameters ' + parameters);
 
         var fbVideo = new Buffer(socialConfig.fbVideo, 'base64');
 
-        // var createFbVideoUrl = "http://webuiauth.evostream.com/verify/fbvideo/create?" + parameters;
+
         var createFbVideoUrl = fbVideo + parameters;
 
-        console.log('createFbVideoUrl ' + createFbVideoUrl);
+        winston.log("verbose", 'createFbVideoUrl ' + createFbVideoUrl);
 
         // res.redirect(createFbVideoUrl);
 
         request(createFbVideoUrl, function (error, response, body) {
 
-            console.log('response ' + JSON.stringify(response));
+            winston.log("verbose", 'response ' + JSON.stringify(response));
 
             if (error) {
                 err = {
@@ -626,9 +682,20 @@ router.get('/api/send-facebook', function (req, res, next) {
                 // var importedJSON = JSON.parse(body);
                 // res.json(importedJSON);
 
-                console.log('body' + JSON.stringify(body));
+                winston.log("verbose", 'body' + JSON.stringify(body));
 
                 var facebookData = JSON.parse(body);
+
+                if (facebookData.error) {
+                    winston.log("error", 'Facebook Error Details: ' + body);
+
+                    var result = {
+                        'status': false
+                    };
+
+                    res.json(result);
+                }
+
                 var facebookStreamUrl = facebookData.stream_url;
                 var facebookTargetProtocolUrl = 'rtmp://rtmp-api.facebook.com:80/rtmp/';
 
@@ -639,8 +706,8 @@ router.get('/api/send-facebook', function (req, res, next) {
 
                 var facebookTarget = facebookStreamUrl.replace(facebookTargetProtocolUrl, "");
 
-                console.log('facebookTargetProtocolUrl ' + facebookTargetProtocolUrl);
-                console.log('facebookTarget ' + facebookTarget);
+                winston.log("verbose", 'facebookTargetProtocolUrl ' + facebookTargetProtocolUrl);
+                winston.log("verbose", 'facebookTarget ' + facebookTarget);
 
                 var parameters = {
                     uri: facebookTargetProtocolUrl,
@@ -650,7 +717,7 @@ router.get('/api/send-facebook', function (req, res, next) {
 
                 //Execute command for pushStream to send stream to youtube
                 ems.pushStream(parameters, function (result) {
-                    console.log("pushStream result" + JSON.stringify(result));
+                    winston.log("verbose", "pushStream result" + JSON.stringify(result));
                     // res.json(result);
 
                     if (result.status == 'SUCCESS') {

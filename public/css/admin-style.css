@@ -122,6 +122,11 @@ p span, label {
     width: 14.28%;
 }
 
+
+.extra-bottom-space{
+    padding-bottom: 160px;
+}
+
 /**Page Record Buttons - Active Page**/
 
 .evo-form-panel .btn-default {

@@ -1,6 +1,3 @@
-
-
-
 webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window', function ($scope, $http, $timeout, $window) {
 
     console.log('apiExplorerCtrl loaded ');
@@ -48,6 +45,7 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
 
         $scope.parameterCollectionsMandatory = [];
         $scope.parameterListNotMandatory = [];
+        var tempParameterListNotMandatory = [];
         $scope.parameterCollectionsNotMandatory = [];
 
         for (var i in $scope.parameterList) {
@@ -63,6 +61,7 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
                 });
             } else {
                 $scope.parameterListNotMandatory.push($scope.parameterList[i]);
+                tempParameterListNotMandatory.push($scope.parameterList[i]);
             }
         }
 
@@ -74,6 +73,8 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
             // "defaultDescription": $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].description,
             // "defaultMandatory": $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].mandatory,
         });
+
+        $scope.checkingParameterListNotMandatory = tempParameterListNotMandatory;
 
 
         // console.log('$scope.parameterCollections ' +JSON.stringify($scope.parameterCollections));
@@ -102,11 +103,26 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
 
         console.log('$scope.parameterListNotMandatory[index].description ' + $scope.parameterListNotMandatory[index].description);
 
-        $scope.parameterCollectionsNotMandatory[id].selectedParameterDescriptionValue = $scope.parameterListNotMandatory[index].description;
-        $scope.parameterCollectionsNotMandatory[id].selectedParameterMandatoryValue = $scope.parameterListNotMandatory[index].mandatory;
-        $scope.parameterCollectionsNotMandatory[id].selectedParameterDescriptionStatus = true;
+        if($scope.parameterCollectionsNotMandatory[id]){
+            $scope.parameterCollectionsNotMandatory[id].listing = $scope.checkingParameterListNotMandatory;
+            $scope.parameterCollectionsNotMandatory[id].selectedParameterDescriptionValue = $scope.parameterListNotMandatory[index].description;
+            $scope.parameterCollectionsNotMandatory[id].selectedParameterMandatoryValue = $scope.parameterListNotMandatory[index].mandatory;
+            $scope.parameterCollectionsNotMandatory[id].selectedParameterDescriptionStatus = true;
 
-        console.log('AFTER $scope.parameterCollectionsNotMandatory ' + JSON.stringify($scope.parameterCollectionsNotMandatory));
+            console.log('AFTER $scope.parameterCollectionsNotMandatory ' + JSON.stringify($scope.parameterCollectionsNotMandatory));
+
+            //Check List of Parameters Not Mandatory
+            for (var i in $scope.checkingParameterListNotMandatory) {
+
+                if ($scope.checkingParameterListNotMandatory[i].name == parameterCollection.defaultName.selected) {
+
+                    //Remove the parameter
+                    $scope.checkingParameterListNotMandatory.splice(i, 1);
+                }
+            }
+        }
+
+
 
 
     };
@@ -119,6 +135,7 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
 
         // $scope.parameterCollectionsNotMandatory.push(parameterCollectionsNotMandatory);
 
+
         var newIndex = parameterCollectionsNotMandatory.length;
 
         console.log('parameterCollectionsNotMandatory.length ' + parameterCollectionsNotMandatory.length);
@@ -126,7 +143,7 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
 
         $scope.parameterCollectionsNotMandatory.push({
             "id": newIndex,
-            "listing": $scope.parameterListNotMandatory,
+            "listing": $scope.checkingParameterListNotMandatory,
             // "defaultName": {selected: $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].name},
             // "defaultDescription": $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].description,
             // "defaultMandatory": $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].mandatory,
@@ -142,16 +159,47 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
 
     };
 
-    $scope.deleteParameterNotMandatory = function (parameterCollectionsNotMandatory) {
+    $scope.deleteParameterNotMandatory = function (parameterCollectionsNotMandatory, parameterCollection) {
 
         console.log('deleteParameterNotMandatory deleteParameterNotMandatory');
+        console.log('deleteParameterNotMandatory parameterCollection ' + JSON.stringify(parameterCollection));
+        console.log('deleteParameterNotMandatory parameterCollectionsNotMandatory ' + JSON.stringify(parameterCollectionsNotMandatory));
 
-        // $scope.parameters.push(parameter);
-        var index = parameterCollectionsNotMandatory.id;
+        var index = parameterCollectionsNotMandatory.findIndex(function (item, i) {
+
+            if(parameterCollection.defaultName){
+                return item.defaultName.selected === parameterCollection.defaultName.selected;
+            }else{
+                return 0;
+            }
+
+        });
+
+        // var index = parameterCollection.id;
+
 
         console.log('deleteParameterNotMandatory index ' + index);
 
         $scope.parameterCollectionsNotMandatory.splice(index, 1);
+
+
+
+        if(parameterCollection.defaultName){
+            //Add the deleted parameter back to the listing of not mandatory parameters
+            for (var i in $scope.parameterListNotMandatory) {
+
+                if ($scope.parameterListNotMandatory[i].name == parameterCollection.defaultName.selected) {
+
+                    //Add the parameter
+                    $scope.checkingParameterListNotMandatory.push($scope.parameterListNotMandatory[i]);
+                }
+            }
+        }
+
+        console.log('$scope.parameterListNotMandatory '+ JSON.stringify($scope.parameterListNotMandatory));
+        console.log('$scope.checkingParameterListNotMandatory '+ JSON.stringify($scope.checkingParameterListNotMandatory));
+
+
     };
 
 
@@ -186,13 +234,13 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
             });
         }
 
-        console.log('$scope.parameterCollectionsNotMandatory.length '+$scope.parameterCollectionsNotMandatory.length);
+        console.log('$scope.parameterCollectionsNotMandatory.length ' + $scope.parameterCollectionsNotMandatory.length);
 
         if ($scope.parameterCollectionsNotMandatory.length > 0) {
             var parameterCollectionsMandatory = $scope.parameterCollectionsNotMandatory;
             angular.forEach(parameterCollectionsMandatory, function (parameterCollection, key) {
 
-                if(typeof parameterCollection.defaultName != 'undefined'){
+                if (typeof parameterCollection.defaultName != 'undefined') {
                     parameters[parameterCollection.defaultName.selected] = parameterCollection.value;
                 }
 

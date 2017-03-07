@@ -1,6 +1,6 @@
 /**
  *
- * Copyright (c) 2016, EvoStream Inc.  All rights reserved.
+ * Copyright (c) 2017, EvoStream Inc.  All rights reserved.
  *
  * This software is provided free of charge to be used solely in conjunction
  * with the EvoStream Media Server.

@@ -196,8 +196,11 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <p><label>url:&nbsp;</label>{{playUrl}}</p>
+                                <!--<p><label>url:&nbsp;</label>rtsp://50.56.172.81:5544/vod/subfolder1/bunny06.mp4</p>-->
                                 <video id=vod-video width=720 height=480 class="video-js vjs-default-skin" controls preload="auto">
                                     <source src="{{playUrl}}" type={{playType}}>
+                                    <!--<source src="rtsp://50.56.172.81:5544/vod/subfolder1/bunny06.mp4" type='rtsp/mp4'>-->
+                                    <!--<source src="rtmp://50.56.172.81/vod/bunny05.mp4" type='rtmp/mp4'>-->
                                 </video>
                                 <link href="http://vjs.zencdn.net/5.8.8/video-js.css"  rel="stylesheet">
                                 <!-- If you'd like to support IE8 -->
@@ -220,8 +223,7 @@
                             <div class="col-md-10">
                                 <p><label>url:&nbsp;</label>{{playUrl}}</p>
                                 <video id=hls-video width=720 height=480 class="video-js vjs-default-skin" controls>
-                                    <!--<source src="http://solutions.brightcove.com/jwhisenant/hls/apple/bipbop/bipbopall.m3u8"-->
-                                    <!--type="application/x-mpegURL">-->
+                                    <!--<source src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8" type="application/x-mpegURL">-->
                                     <!--<source src="http://50.56.172.81:3000/media/hls02/playlist.m3u8" type="application/x-mpegURL">-->
                                     <source src="{{playUrl}}" type="application/x-mpegURL">
                                 </video>

@@ -85,63 +85,7 @@ webuiApp.controller('dashboardCtrl', ['$scope', '$http', '$timeout', function ($
         }
 
     });
-
-
-    // $scope.serverIsOnline = false;
-    //
-    // console.log("$scope.serverIsOffline "+$scope.serverIsOffline);
-    //
-    // $scope.checkEmsConnection = function(){
-    //     console.log("$scope.serverIsOffline "+$scope.serverIsOffline);
-    // }
-
-    // $timeout(function () {
-    //     checkResponse()
-    // }, 3000);
-
-    // checkEmsConnection();
-    // function checkEmsConnection() {
-    //     $http.get("ems/api/check-connection").then(function (response) {
-    //
-    //         console.log(JSON.stringify(response));
-    //
-    //         var data = response.data;
-    //
-    //         if(data.code == "ECONNREFUSED"){
-    //             return $scope.serverIsOnline = false;
-    //         }
-    //
-    //         console.log("$scope.serverIsOnline "+$scope.serverIsOnline);
-    //
-    //         // else{
-    //         //     if(data.status == "SUCCESS"){
-    //         //
-    //         //         $scope.serverIsOnline = true;
-    //         //         console.log($scope.serverIsOnline);
-    //         //     } else {
-    //         //         $scope.serverIsOnline = false;
-    //         //     }
-    //         // }
-    //         $timeout(function()  { checkEmsConnection()},  3000);
-    //             // if (response.data.hasOwnProperty('status')) {
-    //             //     if (!$scope.emsCommandLoads) {
-    //             //         $scope.emsCommands = response.data.data;
-    //             //         $scope.currentEmsCommand = response.data.data[0];
-    //             //         $scope.currentEmsCommandName = response.data.data[0].command;
-    //             //         $scope.emsCommandLoads = true;
-    //             //     }
-    //             //     $scope.serverIsOnline = true;
-    //             // } else {
-    //             //     $scope.serverIsOnline = false;
-    //             // }
-    //             // $timeout(function () {
-    //             //     checkResponse()
-    //             // }, 3000);
-    //         }
-    //     );
-    // }
-
-
+    
 }]);
 
 

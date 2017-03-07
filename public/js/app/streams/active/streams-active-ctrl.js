@@ -26,7 +26,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
     $scope.streamTypeList = [
         {
             value: "inbound",
-            text: "Inbound Live Stream (pull)",
+            text: "Inbound Streams (pull)",
             description: "“inbound” will refer to any stream coming into the EMS"
         },
         {
@@ -51,7 +51,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
         "default": {
             selected: {
                 value: "inbound",
-                text: "Inbound Live Stream (pull)",
+                text: "Inbound Streams (pull)",
                 description: "“inbound” will refer to any stream coming into the EMS"
             }
         },
@@ -194,13 +194,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 
                                     },
                                     'click .delete': function (e, value, row, index) {
-                                        console.log('DELETE');
-                                        // console.log('e ' + JSON.stringify());
-                                        // console.log('value ' + JSON.stringify());
-                                        // console.log('row ' + JSON.stringify());
-                                        // console.log('index ' + JSON.stringify());
-
-                                        // $scope.deleteModal(row, vm.listStreams.data);
+                                        $scope.deleteModal(row, index, vm.listStreams.data);
 
 
                                     }
@@ -236,7 +230,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                                         // console.log('row ' + JSON.stringify());
                                         // console.log('index ' + JSON.stringify());
 
-                                        $scope.deleteModal(row, index, vm.listStreams.data, $scope.streamData.inbound.rowCollection);
+                                        $scope.deleteModal(row, index, vm.listStreams.data);
 
 
                                     },
@@ -304,31 +298,32 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                         if ($scope.listStreamsData[i].hasOwnProperty('pullSettings')) {
                             sourceURI = $scope.listStreamsData[i].pullSettings.uri;
                             streamFormat = 'PULL';
-
-                            //set the type as inbound
-                            $scope.streamData.inbound.rowCollection.push({
-                                "streamId": $scope.listStreamsData[i].uniqueId,
-                                "streamFormat": streamFormat,
-                                "localStreamName": $scope.listStreamsData[i].name,
-                                "sourceURI": sourceURI,
-                                "audioCodec": $scope.listStreamsData[i].audio.codec,
-                                "videoCodec": $scope.listStreamsData[i].video.codec
-                            });
-
-                        } else if ($scope.listStreamsData[i].type = 'IFR') {
-                            streamFormat = 'VOD';
-                            $scope.listStreamsData[i].name = $scope.listStreamsData[i].name.split('\\').pop().split('/').pop();
-
-                            //set the type as inbound
-                            $scope.streamData.file.rowCollection.push({
-                                "streamId": $scope.listStreamsData[i].uniqueId,
-                                "streamFormat": streamFormat,
-                                "localStreamName": $scope.listStreamsData[i].name,
-                                "sourceURI": sourceURI,
-                                "audioCodec": $scope.listStreamsData[i].audio.codec,
-                                "videoCodec": $scope.listStreamsData[i].video.codec
-                            });
                         }
+
+                        //set the type as inbound
+                        $scope.streamData.inbound.rowCollection.push({
+                            "streamId": $scope.listStreamsData[i].uniqueId,
+                            "streamFormat": streamFormat,
+                            "localStreamName": $scope.listStreamsData[i].name,
+                            "sourceURI": sourceURI,
+                            "audioCodec": $scope.listStreamsData[i].audio.codec,
+                            "videoCodec": $scope.listStreamsData[i].video.codec
+                        });
+
+                        // else if ($scope.listStreamsData[i].type = 'IFR') {
+                        //     streamFormat = 'VOD';
+                        //     $scope.listStreamsData[i].name = $scope.listStreamsData[i].name.split('\\').pop().split('/').pop();
+                        //
+                        //     //set the type as inbound
+                        //     $scope.streamData.file.rowCollection.push({
+                        //         "streamId": $scope.listStreamsData[i].uniqueId,
+                        //         "streamFormat": streamFormat,
+                        //         "localStreamName": $scope.listStreamsData[i].name,
+                        //         "sourceURI": sourceURI,
+                        //         "audioCodec": $scope.listStreamsData[i].audio.codec,
+                        //         "videoCodec": $scope.listStreamsData[i].video.codec
+                        //     });
+                        // }
 
 
                     } else if ($scope.listStreamsData[i].type.charAt(0) == 'O') {
@@ -610,7 +605,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
         });
     };
 
-    $scope.deleteModal = function (row, rowCollectionIndex, listStreamsDataTemp, streamData) {
+    $scope.deleteModal = function (row, rowCollectionIndex, listStreamsDataTemp) {
 
         // console.log('inboundDelete $scope.streamTypeSelected ' + $scope.streamTypeSelected);
 
@@ -621,7 +616,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
             }
         }
 
-        console.log('streamData.rowCollection[rowCollectionIndex] ' + JSON.stringify(streamData.rowCollection[rowCollectionIndex]));
+        // console.log('streamData.rowCollection[rowCollectionIndex] ' + JSON.stringify(streamData.rowCollection[rowCollectionIndex]));
 
         console.log('inboundInfo listStreamsDataTemp index ' + JSON.stringify(listStreamsDataTemp[index]));
 
@@ -657,6 +652,29 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                     console.log('01 $scope.deleteConfigId ' + $scope.deleteConfigId);
 
                     return configId;
+                },
+                deleteMessage: function () {
+
+                    var streamRowTemp = listStreamsData;
+                    var deleteMessage = '';
+
+                    if (streamRowTemp.hasOwnProperty('pullSettings')) {
+                        deleteMessage = 'stream '+streamRowTemp.pullSettings.localStreamName;
+                    } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
+                        deleteMessage = 'stream '+streamRowTemp.pushSettings.localStreamName;
+                    } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
+                        deleteMessage = 'groupname '+streamRowTemp.hlsSettings.groupName;
+                    } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
+                        deleteMessage = 'groupname '+streamRowTemp.hdsSettings.groupName;
+                    } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
+                        deleteMessage = 'groupname '+streamRowTemp.dashSettings.groupName;
+                    } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
+                        deleteMessage = 'groupname '+streamRowTemp.mssSettings.groupName;
+                    }
+
+                    $scope.deleteMessage = deleteMessage;
+
+                    return deleteMessage;
                 }
             }
         });
@@ -683,14 +701,18 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 }]);
 
 
-webuiApp.controller('activeConfirmDeleteModalCtrl', ['$scope', '$uibModalInstance', '$http', 'configId', function ($scope, $uibModalInstance, $http, configId) {
+webuiApp.controller('activeConfirmDeleteModalCtrl', ['$scope', '$uibModalInstance', '$http', 'configId', 'deleteMessage', function ($scope, $uibModalInstance, $http, configId, deleteMessage) {
 
     // $scope.localStreamName = items;
     console.log('active confirmDeleteModalCtrl confirmDeleteModalCtrl ');
 
     $scope.deleteConfigId = configId;
+    $scope.confirmDeleteMessage = deleteMessage;
+
 
     console.log('02 $scope.deleteConfigId ' + $scope.deleteConfigId);
+
+    $scope.deleteMessage = deleteMessage;
 
     $scope.delete = function () {
         console.log('Active: confirmDeleteModalCtrl ok');
@@ -714,7 +736,7 @@ webuiApp.controller('activeConfirmDeleteModalCtrl', ['$scope', '$uibModalInstanc
 }]);
 
 
-webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalInstance', '$window', 'streamRowHeaders', 'streamRow', 'streamRowAudio', 'streamRowVideo', 'streamRowSettings', function ($scope, $uibModal, $uibModalInstance, $window, streamRowHeaders, streamRow, streamRowAudio, streamRowVideo, streamRowSettings) {
+webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalInstance', '$window', 'streamRowHeaders', 'streamRow', 'streamRowAudio', 'streamRowVideo', 'streamRowSettings', '$base64', function ($scope, $uibModal, $uibModalInstance, $window, streamRowHeaders, streamRow, streamRowAudio, streamRowVideo, streamRowSettings, $base64) {
 
     console.log('streamRow ' + JSON.stringify(streamRow));
 
@@ -744,7 +766,11 @@ webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
     $scope.play = function () {
         console.log('infoModalCtrl play');
         // $uibModalInstance.dismiss('cancel');
-        $window.open("/streams/play", 'windowOpenTab', '_blank,scrollbars=0,resizable=0,width=500,height=300,left=0,top=0');
+        // $window.open("/streams/play", 'windowOpenTab', '_blank,scrollbars=0,resizable=0,width=500,height=300,left=0,top=0');
+
+        var info = $base64.encode(JSON.stringify($scope.streamRowHeaders));
+
+        $window.open("/streams/play?info=" + info, 'windowOpenTab' + info, 'scrollbars=yes,resizable=0,width=800,height=630,left=0,top=0');
     };
 
     $scope.delete = function () {
@@ -778,6 +804,29 @@ webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
 
 
                     return configId;
+                },
+                deleteMessage: function () {
+
+                    var streamRowTemp = streamRow;
+                    var deleteMessage = '';
+
+                    if (streamRowTemp.hasOwnProperty('pullSettings')) {
+                        deleteMessage = 'stream '+streamRowTemp.pullSettings.localStreamName;
+                    } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
+                        deleteMessage = 'stream '+streamRowTemp.pushSettings.localStreamName;
+                    } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
+                        deleteMessage = 'groupname '+streamRowTemp.hlsSettings.groupName;
+                    } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
+                        deleteMessage = 'groupname '+streamRowTemp.hdsSettings.groupName;
+                    } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
+                        deleteMessage = 'groupname '+streamRowTemp.dashSettings.groupName;
+                    } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
+                        deleteMessage = 'groupname '+streamRowTemp.mssSettings.groupName;
+                    }
+
+                    $scope.deleteMessage = deleteMessage;
+
+                    return deleteMessage;
                 }
             }
         });
