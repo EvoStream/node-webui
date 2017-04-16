@@ -16,13 +16,7 @@ router.get('/logout', restrict, function(req, res, next) {
     winston.log("info", "[webui] user logging out.....");
     winston.log("info", "[webui] user session "+JSON.stringify(req.session));
 
-    winston.log("info", '(typeof req.session.passport !== undefined) '+ (typeof req.session.passport !== 'undefined')  );
-    // winston.log("verbose", "req.session.passport.length " +req.session.passport.length );
-
-
     if(typeof req.session.passport !== 'undefined'){
-
-        winston.log("verbose", "req.session.passport.user " + JSON.stringify(req.session.passport.user));
 
         //delete facebook token and google token
         var user = req.session.passport.user;
@@ -31,10 +25,6 @@ router.get('/logout', restrict, function(req, res, next) {
         user.fbtoken = '';
 
         userService.updateUser(user, function (userResult) {
-            console.log('upateuser response');
-
-            winston.log("verbose", "userResult " + JSON.stringify(userResult));
-
         });
     }
 
@@ -48,13 +38,6 @@ router.get('/logout', restrict, function(req, res, next) {
 
 
 router.get('/check-google-login', function (req, res, next) {
-    // console.log('POST: api/send-youtube req.body ' + JSON.stringify(req.body));
-    // console.log('GET: api/send-youtube req.query ' + JSON.stringify(req.query));
-
-    // var data = req.query;
-    // var parameters = null;
-
-    console.log('req.session '+ JSON.stringify(req.session));
 
     var result = {
         'status': 'not-login'
@@ -75,13 +58,6 @@ router.get('/check-google-login', function (req, res, next) {
 
 
 router.get('/check-fb-login', function (req, res, next) {
-    // console.log('POST: api/send-youtube req.body ' + JSON.stringify(req.body));
-    // console.log('GET: api/send-youtube req.query ' + JSON.stringify(req.query));
-
-    // var data = req.query;
-    // var parameters = null;
-
-    console.log('req.session '+ JSON.stringify(req.session));
 
     var result = {
         'status': 'not-login'
@@ -95,18 +71,12 @@ router.get('/check-fb-login', function (req, res, next) {
 
     }
 
-    //else look if local user has a token
-
     res.json(result);
 
 });
 
 
 router.get('/profile', restrict, function (req, res, next) {
-
-    winston.log("info", '[webui] profile: index page');
-
-    
 
     var vm = {
         title: 'Profile - Evostream Web UI ',
@@ -123,8 +93,6 @@ router.get('/profile-info', restrict, function (req, res, next) {
 
     winston.log("info", '[webui] profile information');
 
-    winston.log("verbose", "req.session " + JSON.stringify(req.session));
-
     var userInfo = {};
 
     if(typeof req.session.passport != 'undefined'){
@@ -132,22 +100,25 @@ router.get('/profile-info', restrict, function (req, res, next) {
         userInfo.password = req.session.passport.user.password;
     }
 
-
     userInfo.fbtoken = '';
     userInfo.fbemail = '';
+    userInfo.fbname = '';
     userInfo.googletoken = '';
     userInfo.googleemail = '';
+    userInfo.googlename = '';
 
     //Get Facebook info on session
     if(req.session.fbUser){
         userInfo.fbtoken = req.session.fbUser.fbtoken;
         userInfo.fbemail = req.session.fbUser.email;
+        userInfo.fbname = req.session.fbUser.name;
     }
 
     //Get Google info on session
     if(req.session.googleUser){
         userInfo.googletoken = req.session.googleUser.googletoken;
         userInfo.googleemail = req.session.googleUser.email;
+        userInfo.googlename = req.session.googleUser.name;
     }
 
     //Get the user data
@@ -210,9 +181,6 @@ router.get('/unlink-social-token', restrict, function (req, res, next) {
 
     winston.log("info", '[webui] unlink social token');
 
-    winston.log("verbose", "req.query " + JSON.stringify(req.query));
-    winston.log("verbose", "req.session " + JSON.stringify(req.session));
-
     var result = {};
     result.status = false;
 
@@ -228,9 +196,6 @@ router.get('/unlink-social-token', restrict, function (req, res, next) {
 
             //remove token in database
             userService.findFbEmailUpdateToken(removeTokenUser, function (response) {
-                winston.log("verbose", "[webui] profile findFbEmailUpdateToken " );
-                winston.log("verbose", "[webui] profile findFbEmailUpdateToken response " + JSON.stringify(response));
-
                 if (response.length != 0) {
                     result.status = true;
 
@@ -251,9 +216,6 @@ router.get('/unlink-social-token', restrict, function (req, res, next) {
         }else if(parameter.social == 'google'){
             //remove token in database
             userService.findGoogleEmailUpdateToken(removeTokenUser, function (response) {
-                winston.log("verbose", "[webui] profile findGoogleEmailUpdateToken " );
-                winston.log("verbose", "[webui] profile findGoogleEmailUpdateToken response " + JSON.stringify(response));
-
                 if (response.length != 0) {
                     result.status = true;
 
@@ -267,10 +229,6 @@ router.get('/unlink-social-token', restrict, function (req, res, next) {
                 }
 
             });
-
-
-
-
         }
 
     }

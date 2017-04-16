@@ -22,31 +22,8 @@ webuiApp.directive('passwordCheck', function() {
 
 webuiApp.controller('welcomeCtrl', ['$scope' , function ($scope) {
 
-    console.log('welcomeCtrl loaded ');
-
     $scope.connectionStatus = 'disconnected';
     $scope.connectionText = 'EMS Offline. Please Start EMS.';
-
-    // var compareTo = function() {
-    //     return {
-    //         require: "ngModel",
-    //         scope: {
-    //             otherModelValue: "=compareTo"
-    //         },
-    //         link: function(scope, element, attributes, ngModel) {
-    //
-    //             ngModel.$validators.compareTo = function(modelValue) {
-    //                 return modelValue == scope.otherModelValue;
-    //             };
-    //
-    //             scope.$watch("otherModelValue", function() {
-    //                 ngModel.$validate();
-    //             });
-    //         }
-    //     };
-    // };
-    //
-    // module.directive("compareTo", compareTo);
 
 }]);
 

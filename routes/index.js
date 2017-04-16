@@ -18,8 +18,6 @@ var crypto = require('crypto');
 /* GET index page. */
 router.get('/', function (req, res, next) {
 
-    winston.log("verbose", "winston index " );
-
     //Check if a index user exists
     if (req.user) {
         return res.redirect('dashboard');
@@ -27,8 +25,6 @@ router.get('/', function (req, res, next) {
 
     //Get the total number of Local Users
     userService.countUser(function (count) {
-        console.log('using userService');
-        console.log('count ' + count);
 
         if ((count > 0)) {
             res.redirect('login');
@@ -59,18 +55,10 @@ router.get('/javascript-error', function (req, res, next) {
 
 /* POST Add Account Form */
 router.post('/', function (req, res, next) {
-    console.log('POST: Add Account Form req.body ' + req.body);
     userService.addUser(req.body, function (response) {
 
-        console.log('userService response' + JSON.stringify(response));
-
         if (typeof response[0] !== "undefined") {
-
-            console.log('for login ');
-
-            //res.redirect('/dashboard');
             req.login(req.body, function (err) {
-                // res.redirect('/dashboard');
 
                 var vm = {
                     title: 'Account Creation Succesfull',
@@ -102,11 +90,7 @@ router.post('/', function (req, res, next) {
 
 /* GET index page. */
 router.get('/login', function (req, res, next) {
-
-    console.log('login page  ');
     userService.countUser(function (count) {
-        console.log('using userService');
-        console.log('count ' + count);
 
         if ((count > 0)) {
             var vm = {
@@ -128,11 +112,8 @@ router.get('/login', function (req, res, next) {
 
 /* POST Login Form */
 router.post('/login', function (req, res, next) {
-        console.log('--------------------------------------post/login req--- ' + JSON.stringify(req.body));
         if (req.body.rememberMe) {
             req.session.cookie.maxAge = 30 * 24 * 3600 * 1000; // 30 days
-            // req.session.cookie.maxAge = 60000; // 1 minute
-            // req.session.cookie.maxAge = 300000;  //5 minutes
         }
         next();
     },
@@ -148,13 +129,9 @@ router.post('/login', function (req, res, next) {
 router.get('/fblogin', function (req, res, next) {
 
     var fullUrl = req.protocol + '://' + req.get('host') + '/fbcallback';
-
     var data = "url=" + fullUrl;
 
     if (typeof req.query.page !== 'undefined' && req.query.page) {
-
-        // fullUrl = req.protocol + '://' + req.get('host') + '/fbcallback' + '?page=' +req.query.page ;
-
         data = "url=" + fullUrl + "&page=" + req.query.page;
     } else {
         data = "url=" + fullUrl + "&page=dashboard";
@@ -165,16 +142,11 @@ router.get('/fblogin', function (req, res, next) {
     var webuiUrl = buffer.toString('base64');
     var fbAuth = new Buffer(socialConfig.fbAuthLogin, 'base64');
 
-
-    // res.redirect("http://webuiauth.evostream.com/verify/fblogin/user?webuiurl=" + webuiUrl);
     res.redirect(fbAuth + "=" + webuiUrl);
 
 });
 
 router.get('/fbcallback', function (req, res, next) {
-
-    console.log('fbcallback fbcallback fbcallback fbcallback fbcallback fbcallback fbcallback ');
-    console.log('fbcallback parameters ' + JSON.stringify(req.query));
 
     //Set the page to redirect from
     var redirectPage = '/dashboard';
@@ -193,38 +165,24 @@ router.get('/fbcallback', function (req, res, next) {
                 winston.log("info", "Add the Facebook User " );
 
                 userService.addFbUser(req.query, function (response) {
-                    console.log('before if err');
-
-                    winston.log("verbose", "addFbUser response " + JSON.stringify(response));
-
                     if (response.length == 0) {
                         res.redirect('/');
                     }
-
-                    console.log('addFbUser after if err - redirect to dashboard');
 
                     req.session.fbUser = req.query;
                     res.redirect(redirectPage);
-                    // res.redirect('/');
                 });
             } else {
-                console.log('Find and Update the fbuser ' + JSON.stringify(fbUser));
-
                 userService.findFbEmailUpdateToken(req.query, function (response) {
-                    console.log('findFbEmailUpdateToken before if err');
-
                     if (response.length == 0) {
                         res.redirect('/');
                     }
 
-                    console.log('findFbEmailUpdateToken after if err - redirect to dashboard');
                     req.session.fbUser = req.query;
                     res.redirect(redirectPage);
 
                 });
             }
-
-
 
         });
     }else{
@@ -256,15 +214,11 @@ router.get('/googlelogin', function (req, res, next) {
     var webuiUrl = buffer.toString('base64');
     var googleAuth = new Buffer(socialConfig.googleAuthLogin, 'base64');
 
-    // res.redirect("http://webuiauth.evostream.com/verify/googlelogin/user?webuiurl=" + webuiUrl);
     res.redirect(googleAuth + "=" + webuiUrl);
 
 });
 
 router.get('/googlecallback', function (req, res, next) {
-
-    console.log('googlecallback googlecallback googlecallback googlecallback googlecallback googlecallback googlecallback ');
-    console.log('parameters ' + JSON.stringify(req.query));
 
     if(req.query.status == 'success'){
         
@@ -279,30 +233,21 @@ router.get('/googlecallback', function (req, res, next) {
         userService.findUser(req.query.email, function (googleUser) {
 
             if (googleUser.error) {
-                console.log('userService.findGoogleEmail !googleUser ');
-
-                winston.log("info", 'Add the googleUser');
                 //Add the Google User
-
                 userService.addGoogleUser(req.query, function (response) {
-                    console.log('before if err');
                     if (response.length == 0) {
                         res.redirect('/');
                     }
-                    console.log('addGoogleUser after if err - redirect to dashboard');
                     req.session.googleUser = req.query;
                     res.redirect(redirectPage);
 
                 });
             } else {
-                console.log('Find and Update the googleUser ' + JSON.stringify(googleUser));
 
                 userService.findGoogleEmailUpdateToken(req.query, function (response) {
-                    console.log('findGoogleEmailUpdateToken before if err');
                     if (response.length == 0) {
                         res.redirect('/');
                     }
-                    console.log('findGoogleEmailUpdateToken after if err - redirect to dashboard');
                     req.session.googleUser = req.query;
                     res.redirect(redirectPage);
 
@@ -340,9 +285,6 @@ router.post('/forgotpassword', function (req, res, next) {
         },
         function (token, done) {
 
-            console.log('token ' + token);
-            console.log('req.body ' + JSON.stringify(req.body));
-
             userService.findUser(req.body.email, function (user) {
                 // next(err, user);
                 if (!user) {
@@ -354,8 +296,6 @@ router.post('/forgotpassword', function (req, res, next) {
                 user.resetPasswordToken = token;
                 user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
 
-                console.log('forgot password user ' + JSON.stringify(user));
-
                 userService.updateUser(user, function (userResult) {
                     console.log('upateuser response');
                     done(userResult.error, token, userResult);
@@ -365,8 +305,6 @@ router.post('/forgotpassword', function (req, res, next) {
         function (token, user, done) {
 
             //Redirect to Reset Password
-            // res.redirect('/resetpassword/'+token);
-
             var reserUrl = 'http://' + req.headers.host + '/resetpassword?token=' + token;
             res.redirect(reserUrl);
 
@@ -379,7 +317,6 @@ router.post('/forgotpassword', function (req, res, next) {
 
 
 router.get('/resetpassword', function (req, res) {
-    console.log('request query ' + JSON.stringify(req.query));
     userService.findUserResetToken(req.query.token, function (userResult) {
         if (!userResult) {
             req.flash('error', 'Password reset token is invalid or has expired.');
@@ -398,7 +335,6 @@ router.get('/resetpassword', function (req, res) {
 
 
 router.post('/resetpassword', function (req, res) {
-    console.log('request post body ' + JSON.stringify(req.body));
     async.waterfall([
         function (done) {
             userService.findUserResetToken(req.body.token, function (userResult) {
@@ -409,7 +345,6 @@ router.post('/resetpassword', function (req, res) {
                 }
 
                 userResult.password = req.body.rpassword;
-                console.log('reset user ' + JSON.stringify(userResult));
 
                 userService.updateUserPassword(userResult, function (err) {
                     // done(err, token, user);

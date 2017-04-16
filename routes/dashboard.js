@@ -4,7 +4,6 @@ var path = require('path');
 var restrict = require(path.join(__dirname, '../auth/restrict'));
 var winston = require('winston');
 
-/* GET dashboard listing. */
 router.get('/', restrict, function(req, res, next) {
     winston.log("info", '[webui] dashboard index page');
 

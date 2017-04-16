@@ -1,6 +1,5 @@
 webuiApp.controller('dashboardCtrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
 
-    console.log('dashboardCtrl loaded');
     $scope.licenseId = null;
     $scope.emsVersion = null;
     $scope.buildNumber = null;
@@ -9,8 +8,6 @@ webuiApp.controller('dashboardCtrl', ['$scope', '$http', '$timeout', function ($
 
     $http.get("/ems/api/check-connection").then(function (response) {
 
-        console.log('response ' + JSON.stringify(response));
-
         var data = response.data.data;
 
         if (data != null) {
@@ -18,10 +15,6 @@ webuiApp.controller('dashboardCtrl', ['$scope', '$http', '$timeout', function ($
             $scope.buildNumber = data.buildNumber;
 
             $http.get("/ems/api/get-inbound-outbound-count").then(function (response) {
-
-                console.log('response ' + JSON.stringify(response));
-
-                // var data = response.data.;
 
                 $scope.streamCount = response.data;
 
@@ -34,15 +27,8 @@ webuiApp.controller('dashboardCtrl', ['$scope', '$http', '$timeout', function ($
                     [$scope.streamCount.http]
                 ];
 
-
-                console.log('$scope.streamCount.inbound ' + $scope.streamCount.inbound);
-                console.log('max $scope.dataCount '+Math.max($scope.streamCount.inbound, $scope.streamCount.outbound, $scope.streamCount.http ));
-
                 $scope.datasetOverride = [{yAxisID: 'y-axis-1'}];
-
-
                 var maxValue = Math.max($scope.streamCount.inbound, $scope.streamCount.outbound, $scope.streamCount.http ) + 1;
-
 
                 $scope.options = {
                     scales: {
@@ -65,8 +51,6 @@ webuiApp.controller('dashboardCtrl', ['$scope', '$http', '$timeout', function ($
 
             $http.get("/ems/api/get-license-id").then(function (response) {
 
-                console.log('response ' + JSON.stringify(response));
-
                 var data = response.data.data;
 
                 if (data != null) {
@@ -74,8 +58,6 @@ webuiApp.controller('dashboardCtrl', ['$scope', '$http', '$timeout', function ($
                 } else {
                     $scope.licenseId = null;
                 }
-
-                console.log('$scope.licenseId ' + $scope.licenseId);
 
             });
             

@@ -25,49 +25,6 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
 
             if (configData != null) {
 
-                //Set the columns
-                $scope.columnConfigData = [
-                    {field: 'configId', sortable: true, title: 'Config ID'},
-                    {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
-                    {field: 'sourceURI', sortable: true, title: 'Source URI'},
-                    {
-                        field: 'operate',
-                        title: 'Actions',
-                        align: 'center',
-                        width: '180',
-                        clickToSelect: false,
-                        formatter: configActionFormatter,
-                        events: {
-                            'click .info': function (e, value, row, index) {
-                                console.log('INFO');
-
-                                var settingsInfo = configData[configTypeSelected][index];
-
-                                var rowHeaderConfig = $scope.rowConfigData[index];
-
-                                console.log('settingsInfo '+ JSON.stringify(settingsInfo));
-                                console.log('rowHeaderConfig '+ JSON.stringify(rowHeaderConfig));
-
-                                $scope.configInfoModal($scope.configType.selected, settingsInfo, rowHeaderConfig);
-
-                            },
-                            'click .delete': function (e, value, row, index) {
-                                console.log('DELETE');
-
-                                var rowHeaderConfig = $scope.rowConfigData[index];
-
-                                $scope.configDeleteModal(rowHeaderConfig);
-
-                            }
-                        }
-                    }
-                ];
-
-                // console.log(' '+ JSON.stringify(configData));
-
-                //Set the Rows
-                $scope.rowConfigData = [];
-
                 //Set the Config Type Dropdown Filter
                 for (var i in configData) {
 
@@ -77,17 +34,162 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                     $scope.configType.push(i);
                     $scope.configType.selected = configTypeSelected;
 
-                    console.log('configData[i] ' + JSON.stringify(configData[i]));
+                    if (configTypeSelected == i) {
 
-                    if (i == configTypeSelected) {
-
+                        //Set the rows
                         var settingsData = configData[i];
 
                         if(settingsData.length > 0){
+
+                            //Set Action Column
+                            var actionColumn = {
+                                field: 'operate',
+                                title: 'Actions',
+                                align: 'center',
+                                width: '180',
+                                clickToSelect: false,
+                                formatter: configActionFormatter,
+                                events: {
+                                    'click .info': function (e, value, row, index) {
+                                        var settingsInfo = configData[configTypeSelected][index];
+
+                                        var rowHeaderConfig = $scope.rowConfigData[index];
+
+                                        $scope.configInfoModal($scope.configType.selected, settingsInfo, rowHeaderConfig);
+
+                                    },
+                                    'click .delete': function (e, value, row, index) {
+
+                                        var rowHeaderConfig = $scope.rowConfigData[index];
+
+                                        $scope.configDeleteModal(rowHeaderConfig);
+
+                                    }
+                                }
+                            };
+
+                            //Set the columns first
+                            if(configTypeSelected == 'dash'){
+                                $scope.tableConfigData = {
+                                    dash: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                                            {field: 'groupName', sortable: true, title: 'Group Name'}
+
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.dash.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.dash.rowConfigData = [];
+                            }else if(configTypeSelected == 'hls'){
+                                $scope.tableConfigData = {
+                                    hls: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                                            {field: 'groupName', sortable: true, title: 'Group Name'}
+
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.hls.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.hls.rowConfigData = [];
+                            }else if(configTypeSelected == 'mss'){
+                                $scope.tableConfigData = {
+                                    mss: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                                            {field: 'groupName', sortable: true, title: 'Group Name'}
+
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.mss.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.mss.rowConfigData = [];
+                            }else if(configTypeSelected == 'hds'){
+                                $scope.tableConfigData = {
+                                    hds: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                                            {field: 'groupName', sortable: true, title: 'Group Name'}
+
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.hds.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.hds.rowConfigData = [];
+                            }else if(configTypeSelected == 'process'){
+                                $scope.tableConfigData = {
+                                    process: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                                            {field: 'fullBinaryPath', sortable: true, title: 'fullBinaryPath'}
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.process.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.process.rowConfigData = [];
+                            }else if(configTypeSelected == 'pull'){
+                                $scope.tableConfigData = {
+                                    pull: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                                            {field: 'sourceURI', sortable: true, title: 'Source URI'}
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.pull.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.pull.rowConfigData = [];
+                            }else if(configTypeSelected == 'push'){
+                                $scope.tableConfigData = {
+                                    push: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                                            {field: 'targetUri', sortable: true, title: 'TargetUri'},
+                                            {field: 'targetStreamName', sortable: true, title: 'TargetStreamName'}
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.push.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.push.rowConfigData = [];
+                            }else if(configTypeSelected == 'record'){
+                                $scope.tableConfigData = {
+                                    record: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                                            {field: 'pathToFile', sortable: true, title: 'PathToFile'},
+                                            {field: 'type', sortable: true, title: 'Type'}
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.record.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.webrecordrtc.rowConfigData = [];
+                            }else if(configTypeSelected == 'webrtc'){
+                                $scope.tableConfigData = {
+                                    webrtc: {
+                                        columnCollection: [
+                                            {field: 'configId', sortable: true, title: 'Config ID'},
+                                            {field: 'ersip', sortable: true, title: 'ERS IP'},
+                                            {field: 'ersport', sortable: true, title: 'ERS Port'},
+                                            {field: 'roomid', sortable: true, title: 'Room ID'}
+
+
+                                        ]
+                                    },
+                                }
+                                $scope.tableConfigData.webrtc.columnCollection.push(actionColumn);
+                                $scope.tableConfigData.webrtc.rowConfigData = [];
+                            }
+
                             for (var y in settingsData) {
                                 var sourceURI = "";
-
-                                console.log('y ' + y);
 
                                 if (settingsData[y].uri !== 'undefined') {
                                     sourceURI = settingsData[y].uri;
@@ -98,48 +200,134 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                                     localStreamName = settingsData[y].localStreamName;
                                 }
 
-                                $scope.rowConfigData.push({
-                                    "configId": settingsData[y].configId,
-                                    "localStreamName": localStreamName,
-                                    "sourceURI": sourceURI
-                                });
+                                //if for each config type
+                                if(configTypeSelected == 'dash'){
+
+                                    $scope.tableConfigData.dash.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "localStreamName": localStreamName,
+                                        "groupName": settingsData[y].groupName
+                                    });
+                                }else if(configTypeSelected == 'hls'){
+                                    $scope.tableConfigData.hls.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "localStreamName": localStreamName,
+                                        "groupName": settingsData[y].groupName
+                                    });
+                                }else if(configTypeSelected == 'mss'){
+                                    $scope.tableConfigData.mss.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "localStreamName": localStreamName,
+                                        "groupName": settingsData[y].groupName
+                                    });
+                                }else if(configTypeSelected == 'hds'){
+                                    $scope.tableConfigData.hds.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "localStreamName": localStreamName,
+                                        "groupName": settingsData[y].groupName
+                                    });
+                                }else if(configTypeSelected == 'process'){
+                                    $scope.tableConfigData.process.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "localStreamName": localStreamName,
+                                        "fullBinaryPath": settingsData[y].fullBinaryPath
+                                    });
+                                }else if(configTypeSelected == 'pull'){
+                                    $scope.tableConfigData.pull.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "localStreamName": localStreamName,
+                                        "sourceURI": sourceURI
+                                    });
+                                }else if(configTypeSelected == 'push'){
+                                    $scope.tableConfigData.push.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "localStreamName": localStreamName,
+                                        "targetUri": settingsData[y].targetUri,
+                                        "targetStreamName": settingsData[y].targetStreamName
+                                    });
+                                }else if(configTypeSelected == 'record'){
+                                    $scope.tableConfigData.record.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "localStreamName": localStreamName,
+                                        "pathToFile": settingsData[y].pathToFile,
+                                        "type": settingsData[y].type
+                                    });
+                                }else if(configTypeSelected == 'webrtc'){
+                                    $scope.tableConfigData.webrtc.rowConfigData.push({
+                                        "configId": settingsData[y].configId,
+                                        "ersip": settingsData[y].ersip,
+                                        "ersport": settingsData[y].ersport,
+                                        "roomid": settingsData[y].roomid
+                                    });
+                                }
+
+
                             }
-
-
                         }else{
-                            $scope.rowConfigData = [];
+                            $scope.tableConfigData = [];
                         }
-                        
-                        //Build the Table
-                        $scope.bsConfigTableControl = {
-                            options: {
-                                data: $scope.rowConfigData,
-                                rowStyle: function (row, index) {
-                                    return {classes: 'none'};
-                                },
-                                cache: false,
-                                height: 600,
-                                striped: true,
-                                pagination: true,
-                                pageSize: 7,
-                                pageList: [5, 10, 25, 50, 100, 200],
-                                search: true,
-                                showColumns: false,
-                                showRefresh: false,
-                                minimumCountColumns: 2,
-                                clickToSelect: false,
-                                showToggle: false,
-                                maintainSelected: true,
-                                dataSortOrder: "desc",
-                                columns: $scope.columnConfigData
-                            }
-                        };
+
 
                     }
-
                 }
 
 
+                var pageSize = 7;
+                var pageNumber = 1;
+                if($scope.bsConfigTableControl){
+                    if(typeof $scope.bsConfigTableControl.state != 'undefined' ){
+                        pageSize = $scope.bsConfigTableControl.state.pageSize;
+                        pageNumber = $scope.bsConfigTableControl.state.pageNumber;
+                    }
+                }
+
+                var bsTableData = null;
+
+                if (configTypeSelected  == 'dash') {
+                    bsTableData = $scope.tableConfigData.dash;
+                } else if (configTypeSelected  == 'hds') {
+                    bsTableData = $scope.tableConfigData.hds;
+                } else if (configTypeSelected  == 'hls') {
+                    bsTableData = $scope.tableConfigData.hls;
+                } else if (configTypeSelected  == 'mss') {
+                    bsTableData = $scope.tableConfigData.mss;
+                } else if (configTypeSelected  == 'process') {
+                    bsTableData = $scope.tableConfigData.process;
+                } else if (configTypeSelected  == 'pull') {
+                    bsTableData = $scope.tableConfigData.pull;
+                } else if (configTypeSelected  == 'push') {
+                    bsTableData = $scope.tableConfigData.push;
+                } else if (configTypeSelected  == 'record') {
+                    bsTableData = $scope.tableConfigData.record;
+                } else if (configTypeSelected  == 'webrtc') {
+                    bsTableData = $scope.tableConfigData.webrtc;
+                }
+
+                //Build the Table
+                $scope.bsConfigTableControl = {
+                    options: {
+                        data: bsTableData.rowConfigData,
+                        rowStyle: function (row, index) {
+                            return {classes: 'none'};
+                        },
+                        cache: false,
+                        height: 600,
+                        striped: true,
+                        pagination: true,
+                        pageSize: pageSize,
+                        pageNumber: pageNumber,
+                        pageList: [5, 10, 25, 50, 100, 200],
+                        search: true,
+                        showColumns: false,
+                        showRefresh: false,
+                        minimumCountColumns: 2,
+                        clickToSelect: false,
+                        showToggle: false,
+                        maintainSelected: true,
+                        dataSortOrder: "desc",
+                        columns: bsTableData.columnCollection
+                    }
+                };
 
                 $scope.configType.selected = configTypeSelected;
 
@@ -148,9 +336,7 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
     }
 
     $scope.selectedConfigType = function () {
-
         listConfigs($scope.configType.selected);
-
     };
 
     function configActionFormatter(value, row, index) {
@@ -169,8 +355,6 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
 
 
     $scope.configInfoModal = function (configTypeSelected, settingsInfo, rowHeaderConfig) {
-
-        console.log('configInfoModal configInfoModal ');
 
         var modalInstance = $uibModal.open({
             templateUrl: 'js/app/streams/config/modals/info-streams-config.html',
@@ -211,11 +395,7 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
         });
 
         modalInstance.result.then(function (selectedItem) {
-            // $ctrl.selected = selectedItem;
-            // $route.reload();
-            // listConfigs($scope.configType.selected);
             $location.path('/config/'+$scope.configType.selected);
-            // listConfigs($scope.configType.selected);
         }, function () {
 
         });
@@ -223,8 +403,6 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
     }
 
     $scope.configDeleteModal = function (rowHeaderConfig) {
-
-        console.log('deleteModal deleteModal');
 
         var modalInstance = $uibModal.open({
             templateUrl: 'js/app/streams/config/modals/delete-streams-config.html',
@@ -234,19 +412,14 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
 
                     var configId = rowHeaderConfig.configId;
 
-                    console.log('configId ' + configId);
-
                     return configId;
                 }
             }
         });
 
         modalInstance.result.then(function (selectedItem) {
-            // $ctrl.selected = selectedItem;
-            // $route.reload();
-            listConfigs($scope.configType.selected);
+            $scope.selectedConfigType();
         }, function () {
-            // $log.info('Modal dismissed at: ' + new Date());
         });
     };
 
@@ -256,8 +429,6 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
 
 
 webuiApp.controller('configInfoModalCtrl', ['$scope', '$uibModal', '$uibModalInstance', '$window' , '$base64', 'configTypeSelected', 'configRowHeaders', 'configRowBasic', 'configRowCurrent', 'configRowPrevious', function ($scope, $uibModal, $uibModalInstance, $window, $base64, configTypeSelected, configRowHeaders, configRowBasic, configRowCurrent, configRowPrevious) {
-
-    console.log('configInfoModalCtrl configInfoModalCtrl ');
 
     $scope.configRowBasicNoArray = [];
     $scope.configRowBasicNoArray.content = {};
@@ -276,7 +447,6 @@ webuiApp.controller('configInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
 
 
     $scope.cancel = function () {
-        console.log('infoModalCtrl cancel');
         $uibModalInstance.dismiss('cancel');
     };
 
@@ -288,15 +458,11 @@ webuiApp.controller('configInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
 
     $scope.showPlay = false;
 
-    console.log('playStream '+ playStream);
-
     if(playStream != -1){
 
         $scope.showPlay = true;
 
-        // $scope.play(configRowHeaders);
-
-        $scope.playConfig = function () {
+        $scope.playConfig = function ($event) {
 
             var infoRaw = configRowHeaders;
             infoRaw.streamFormat = configTypeSelected.toUpperCase();
@@ -306,13 +472,13 @@ webuiApp.controller('configInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
             }
 
             var info = $base64.encode(JSON.stringify(infoRaw));
+
+            $event.preventDefault();
             $window.open("/streams/play?info=" + info, 'windowOpenTab' + info, 'scrollbars=0,resizable=0,width=800,height=630,left=0,top=0');
         };
     }
 
     $scope.delete = function () {
-        console.log('delete delete');
-
 
         var modalInstance = $uibModal.open({
             templateUrl: 'js/app/streams/config/modals/delete-streams-config.html',
@@ -321,19 +487,14 @@ webuiApp.controller('configInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
                 configId: function () {
 
                     var configId = $scope.configRowHeaders.configId;
-
-                    console.log('configId ' + configId);
-
                     return configId;
                 }
             }
         });
 
         modalInstance.result.then(function (selectedItem) {
-            // $ctrl.selected = selectedItem;
             $uibModalInstance.close();
         }, function () {
-            // $log.info('Modal dismissed at: ' + new Date());
         });
     };
 
@@ -344,26 +505,19 @@ webuiApp.controller('configInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
 
 webuiApp.controller('configConfirmDeleteModalCtrl', ['$scope', '$uibModalInstance', '$http', 'configId', function ($scope, $uibModalInstance, $http, configId) {
 
-    // $scope.localStreamName = items;
-
     $scope.deleteConfigId = configId;
 
     $scope.delete = function () {
         console.log('configConfirmDeleteModalCtrl ok');
-        // $uibModalInstance.dismiss('cancel');
 
         $http.get("/ems/api/removeconfig?configid=" + configId).then(function (response) {
-
-            console.log('response ' + JSON.stringify(response));
 
             $uibModalInstance.close();
 
         });
-
     };
 
     $scope.cancel = function () {
-        console.log('confirmDeleteModalCtrl cancel');
         $uibModalInstance.dismiss('cancel');
     };
 

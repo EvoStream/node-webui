@@ -28,8 +28,6 @@ exports.addUser = function (user, next) {
             var email = users.addDynamicView('email');
             email.applyFind({'email': user.email.toString().toLowerCase()});
 
-            winston.log("info", '[webui] email.data() '+JSON.stringify(email.data()));
-
             if (email.data().length > 0) {
 
                 var response = {
@@ -53,8 +51,7 @@ exports.addUser = function (user, next) {
                     return next(response);
                 }
 
-                winston.log("verbose", "user to be inserted " + JSON.stringify(user));
-                winston.log("verbose", "hash " +hash );
+                winston.log("verbose", "[webui] user to be inserted " + JSON.stringify(user));
 
                 //insert the user
                 users.insert({
@@ -251,13 +248,7 @@ exports.findUserOldPassword = function (user, next) {
             var result = users.findOne({'email': user.email.toLowerCase()});
 
             bcrypt.compare(user.oldpassword, result.password, function(err, res){
-
-                winston.log("verbose", "findUserOldPassword err " + JSON.stringify(err));
-                winston.log("verbose", "findUserOldPassword res " + JSON.stringify(res));
-
-                winston.log("verbose", "findUserOldPassword result.password " +result.password );
-                winston.log("verbose", "findUserOldPassword user.password " +user.oldpassword );
-
+                
                 if(err){
                     var response = {
                         status: false,

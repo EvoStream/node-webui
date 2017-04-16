@@ -1,5 +1,3 @@
-// webuiApp.controller('streamsActiveCtrl', ['$scope', '$http', '$timeout', 'listStreamFactory', function ($scope, $http, listStreamFactory) {
-// webuiApp.controller('streamsActiveCtrl', ['$scope', '$http', '$timeout', function ($scope, $http) {
 webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$timeout', '$window', '$base64', '$route', '$routeParams', function ($uibModal, $scope, $http, $timeout, $window, $base64, $route, $routeParams) {
 
     console.log('streamsActiveCtrl loaded');
@@ -14,10 +12,6 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 
     vm.disabled = false;
     vm.searchEnabled = true;
-
-    console.log('starting $scope.streamTypeSelected ' + $scope.streamTypeSelected);
-    console.log('starting $routeParams ' + JSON.stringify($routeParams));
-
 
     /*
      * Dropdown
@@ -91,8 +85,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
     }
 
     $scope.selectedStreamType = function () {
-        // console.log('$scope.streamType.default.selected ' + JSON.stringify($scope.streamType.default.selected));
-        // console.log('$scope.streamType.default.selected.value ' + $scope.streamType.default.selected.value);
+
         $scope.streamTypeSelected = $scope.streamType.default.selected.value;
         listStreams($scope.streamType.default.selected.value);
 
@@ -105,27 +98,22 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 
     function listStreams(streamTypeSelected) {
 
-        console.log('listStreams calls streamTypeSelected ' + streamTypeSelected);
 
         $http.get("/ems/api/liststreams").then(function (response) {
 
             vm.listStreams = response.data;
 
-            // console.log('vm.listStreams ' + JSON.stringify(vm.listStreams));
-
             /*
              * Build the Data of the Table
              */
 
-            $scope.noActiveStreams = false;
+            $scope.noActiveStreams = true;
 
             //check type on list streams
             if (vm.listStreams.data != null) {
 
+                $scope.noActiveStreams = false;
                 $scope.listStreamsData = vm.listStreams.data;
-                // $scope.listStreamsDataTemp = vm.listStreams.data;
-
-                // var listStreamsDataTemp = vm.listStreams.data;
 
                 //Initialize the stream information for the table
                 $scope.streamData = {
@@ -146,26 +134,12 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                                 formatter: actionFormatter,
                                 events: {
                                     'click .info': function (e, value, row, index) {
-                                        // console.log('INFO');
-                                        // console.log('INFO row '+JSON.stringify(row));
-
-                                        // $scope.infoModal(row, index, vm.listStreams.data, $scope.streamData.inbound);
                                         $scope.infoModal(row, vm.listStreams.data);
-
                                     },
                                     'click .delete': function (e, value, row, index) {
-                                        console.log('DELETE');
-                                        // // console.log('e ' + JSON.stringify(e));
-                                        // console.log('value ' + JSON.stringify(value));
-                                        // console.log('row ' + JSON.stringify(row));
-                                        // console.log('index ' + JSON.stringify(index));
-
                                         $scope.deleteModal(row, index, vm.listStreams.data, $scope.streamData.inbound);
-
-
                                     },
                                     'click .play': function (e, value, row, index) {
-                                        console.log('PLAY');
                                         $scope.playNewWindow(row);
                                     }
                                 }
@@ -189,14 +163,10 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                                 formatter: actionFormatter,
                                 events: {
                                     'click .info': function (e, value, row, index) {
-                                        console.log('INFO');
                                         $scope.infoModal(row, vm.listStreams.data);
-
                                     },
                                     'click .delete': function (e, value, row, index) {
                                         $scope.deleteModal(row, index, vm.listStreams.data);
-
-
                                     }
                                 }
                             }
@@ -219,24 +189,13 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                                 formatter: actionFormatter,
                                 events: {
                                     'click .info': function (e, value, row, index) {
-                                        console.log('INFO');
                                         $scope.infoModal(row, vm.listStreams.data);
 
                                     },
                                     'click .delete': function (e, value, row, index) {
-                                        console.log('DELETE');
-                                        // console.log('e ' + JSON.stringify());
-                                        // console.log('value ' + JSON.stringify());
-                                        // console.log('row ' + JSON.stringify());
-                                        // console.log('index ' + JSON.stringify());
-
                                         $scope.deleteModal(row, index, vm.listStreams.data);
-
-
                                     },
                                     'click .play': function (e, value, row, index) {
-                                        console.log('PLAY');
-
                                         $scope.playNewWindow(row);
                                     }
                                 }
@@ -260,15 +219,9 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                                 formatter: actionFormatter,
                                 events: {
                                     'click .info': function (e, value, row, index) {
-                                        // console.log('INFO');
-                                        // console.log('INFO row '+JSON.stringify(row));
-
-                                        // $scope.infoModal(row, index, vm.listStreams.data, $scope.streamData.inbound);
                                         $scope.infoModal(row, vm.listStreams.data);
-
                                     },
                                     'click .play': function (e, value, row, index) {
-                                        console.log('PLAY');
                                         $scope.playNewWindow(row);
                                     }
                                 }
@@ -283,21 +236,18 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                 $scope.streamData.file.rowCollection = [];
 
                 for (var i in $scope.listStreamsData) {
-                    // console.log('dataStream[i] ' + JSON.stringify(dataStream[i]));
-                    // console.log('vm.listStreams[i].type '+vm.listStreams[i].type);
-
-                    // console.log('dataStream[i].type.charAt(0) '+dataStream[i].type.charAt(0));
 
                     if ($scope.listStreamsData[i].type.charAt(0) == 'I') {
 
                         var sourceURI = '';
                         var streamFormat = "Inbound";
 
-                        // console.log('$scope.listStreamsData[i].type  ' + $scope.listStreamsData[i].type);
-
                         if ($scope.listStreamsData[i].hasOwnProperty('pullSettings')) {
                             sourceURI = $scope.listStreamsData[i].pullSettings.uri;
                             streamFormat = 'PULL';
+                        }else if ($scope.listStreamsData[i].type = 'IFR') {
+                            streamFormat = 'VOD';
+                            $scope.listStreamsData[i].name = $scope.listStreamsData[i].name.split('\\').pop().split('/').pop();
                         }
 
                         //set the type as inbound
@@ -309,21 +259,6 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                             "audioCodec": $scope.listStreamsData[i].audio.codec,
                             "videoCodec": $scope.listStreamsData[i].video.codec
                         });
-
-                        // else if ($scope.listStreamsData[i].type = 'IFR') {
-                        //     streamFormat = 'VOD';
-                        //     $scope.listStreamsData[i].name = $scope.listStreamsData[i].name.split('\\').pop().split('/').pop();
-                        //
-                        //     //set the type as inbound
-                        //     $scope.streamData.file.rowCollection.push({
-                        //         "streamId": $scope.listStreamsData[i].uniqueId,
-                        //         "streamFormat": streamFormat,
-                        //         "localStreamName": $scope.listStreamsData[i].name,
-                        //         "sourceURI": sourceURI,
-                        //         "audioCodec": $scope.listStreamsData[i].audio.codec,
-                        //         "videoCodec": $scope.listStreamsData[i].video.codec
-                        //     });
-                        // }
 
 
                     } else if ($scope.listStreamsData[i].type.charAt(0) == 'O') {
@@ -356,11 +291,8 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                             }
                         }
 
-                        // console.log('streamFormat '+streamFormat);
 
                         if (streamFormat == 'Outbound' || streamFormat == 'PUSH') {
-
-                            // console.log('streamFormat Outbound');
 
                             $scope.streamData.outbound.rowCollection.push({
                                 "streamId": $scope.listStreamsData[i].uniqueId,
@@ -371,7 +303,16 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                                 "videoCodec": $scope.listStreamsData[i].video.codec
                             });
 
-                            // console.log('$scope.streamData.outbound.rowCollection ' + JSON.stringify($scope.streamData.outbound.rowCollection));
+                        } else if (streamFormat == 'VOD') {
+
+                            $scope.streamData.file.rowCollection.push({
+                                "streamId": $scope.listStreamsData[i].uniqueId,
+                                "streamFormat": streamFormat,
+                                "sourceStreamName": $scope.listStreamsData[i].name,
+                                "farIp": $scope.listStreamsData[i].farIp,
+                                "audioCodec": $scope.listStreamsData[i].audio.codec,
+                                "videoCodec": $scope.listStreamsData[i].video.codec
+                            });
 
                         } else {
 
@@ -384,16 +325,11 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                                 "videoCodec": $scope.listStreamsData[i].video.codec
                             });
 
-                            // console.log('$scope.streamData.http.rowCollection ' + JSON.stringify($scope.streamData.http.rowCollection));
                         }
                     }
                 }
 
-
-                // console.log('$scope.streamData ' + JSON.stringify($scope.streamData));
                 var bsTableData = null;
-
-                // console.log('streamTypeSelected '+streamTypeSelected);
 
                 if (streamTypeSelected == 'inbound') {
                     bsTableData = $scope.streamData.inbound;
@@ -405,8 +341,15 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                     bsTableData = $scope.streamData.file;
                 }
 
+                var pageSize = 7;
+                var pageNumber = 1;
+                if($scope.bsTableControl){
+                    if(typeof $scope.bsTableControl.state != 'undefined' ){
+                        pageSize = $scope.bsTableControl.state.pageSize;
+                        pageNumber = $scope.bsTableControl.state.pageNumber;
+                    }
+                }
 
-                // console.log('bsTableData ' + JSON.stringify(bsTableData));
 
                 //Set to bsTable
                 $scope.bsTableControl = {
@@ -419,8 +362,10 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                         height: 600,
                         striped: true,
                         pagination: true,
-                        pageSize: 7,
+                        pageSize: pageSize,
+                        pageNumber: pageNumber,
                         pageList: [5, 10, 25, 50, 100, 200],
+                        savePages: true,
                         search: true,
                         showColumns: false,
                         showRefresh: false,
@@ -438,16 +383,13 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
             }
         });
 
-        // //Check ListStream Update
-        // $timeout(function () {
-        //     console.log("$timeout triggered listStreams $scope.streamTypeSelected "+$scope.streamTypeSelected);
-        //     listStreams($scope.streamTypeSelected);
-        // }, 3000);
+        //Check ListStream Update
+        $timeout(function () {
+            listStreams($scope.streamTypeSelected);
+        }, 3000);
     }
 
     function actionFormatter(value, row, index) {
-
-        console.log('actionFormatter row ' + JSON.stringify(row));
 
         var actionFormatterValue = [
             '<a class="info ml10" href="javascript:void(0)"  title="Details">',
@@ -488,27 +430,12 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 
     $scope.infoModal = function (row, listStreamsDataTemp) {
 
-        // console.log('inboundInfo $scope.streamType.default.selected.value ' + $scope.streamType.default.selected.value);
-        // console.log('inboundInfo $scope.streamTypeSelected ' + $scope.streamTypeSelected);
-
-
-        console.log('inboundInfo listStreamsDataTemp ' + JSON.stringify(listStreamsDataTemp));
-
         var index = 0;
         for (var i in listStreamsDataTemp) {
             if (listStreamsDataTemp[i].uniqueId === row.streamId) {
                 index = i;
             }
         }
-        // index++;
-
-        // var index = listStreamsDataTemp.findIndex(function (item, i) {
-        //     return listStreamsDataTemp.uniqueId === row.streamId;
-        // });
-
-        console.log('index ' + index);
-        console.log('inboundInfo listStreamsDataTemp index ' + JSON.stringify(listStreamsDataTemp[index]));
-        console.log('inboundInfo row ' + JSON.stringify(row));
 
         var listStreamsData = listStreamsDataTemp[index];
 
@@ -595,11 +522,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
         });
 
         modalInstance.result.then(function (selectedItem) {
-            // $ctrl.selected = selectedItem;
-            console.log('$scope.infoModal modalInstance.result ');
-            
             $route.reload();
-
         }, function () {
 
         });
@@ -607,18 +530,12 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 
     $scope.deleteModal = function (row, rowCollectionIndex, listStreamsDataTemp) {
 
-        // console.log('inboundDelete $scope.streamTypeSelected ' + $scope.streamTypeSelected);
-
         var index = 0;
         for (var i in listStreamsDataTemp) {
             if (listStreamsDataTemp[i].uniqueId === row.streamId) {
                 index = i;
             }
         }
-
-        // console.log('streamData.rowCollection[rowCollectionIndex] ' + JSON.stringify(streamData.rowCollection[rowCollectionIndex]));
-
-        console.log('inboundInfo listStreamsDataTemp index ' + JSON.stringify(listStreamsDataTemp[index]));
 
         var listStreamsData = listStreamsDataTemp[index];
 
@@ -645,11 +562,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                         configId = streamRowTemp.mssSettings.configId;
                     }
 
-                    console.log('configId ' + configId);
-
                     $scope.deleteConfigId = configId;
-
-                    console.log('01 $scope.deleteConfigId ' + $scope.deleteConfigId);
 
                     return configId;
                 },
@@ -680,10 +593,8 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
         });
 
         modalInstance.result.then(function (result) {
-            console.log('deleteModal modalInstance.result ');
             $scope.selectedStreamType();
         }, function () {
-            console.log('01 deleteModal modalInstance Modal dismissed at: ' + new Date());
 
         });
     };
@@ -691,8 +602,6 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 
     $scope.playNewWindow = function (row) {
         var info = $base64.encode(JSON.stringify(row));
-
-        console.log('row ' + JSON.stringify(row));
 
         $window.open("/streams/play?info=" + info, 'windowOpenTab' + info, 'scrollbars=0,resizable=0,width=800,height=630,left=0,top=0');
     };
@@ -703,33 +612,22 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 
 webuiApp.controller('activeConfirmDeleteModalCtrl', ['$scope', '$uibModalInstance', '$http', 'configId', 'deleteMessage', function ($scope, $uibModalInstance, $http, configId, deleteMessage) {
 
-    // $scope.localStreamName = items;
-    console.log('active confirmDeleteModalCtrl confirmDeleteModalCtrl ');
-
     $scope.deleteConfigId = configId;
     $scope.confirmDeleteMessage = deleteMessage;
-
-
-    console.log('02 $scope.deleteConfigId ' + $scope.deleteConfigId);
 
     $scope.deleteMessage = deleteMessage;
 
     $scope.delete = function () {
-        console.log('Active: confirmDeleteModalCtrl ok');
-        // $uibModalInstance.dismiss('cancel');
 
         $http.get("/ems/api/removeconfig?configid=" + configId).then(function (response) {
 
-            console.log('response ' + JSON.stringify(response));
-
             $uibModalInstance.close();
-            // $uibModalInstance.close({$value: filepath});
 
         });
     };
 
     $scope.cancel = function () {
-        console.log('Active: confirmDeleteModalCtrl cancel');
+
         $uibModalInstance.dismiss('cancel');
     };
 
@@ -737,8 +635,6 @@ webuiApp.controller('activeConfirmDeleteModalCtrl', ['$scope', '$uibModalInstanc
 
 
 webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalInstance', '$window', 'streamRowHeaders', 'streamRow', 'streamRowAudio', 'streamRowVideo', 'streamRowSettings', '$base64', function ($scope, $uibModal, $uibModalInstance, $window, streamRowHeaders, streamRow, streamRowAudio, streamRowVideo, streamRowSettings, $base64) {
-
-    console.log('streamRow ' + JSON.stringify(streamRow));
 
     $scope.streamRowNoArray = [];
     $scope.streamRowNoArray.content = {};
@@ -755,27 +651,21 @@ webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
     $scope.streamRowAudio = streamRowAudio;
     $scope.streamRowVideo = streamRowVideo;
     $scope.streamRowSettings = streamRowSettings;
-    console.log('streamRowSettings.content ' + JSON.stringify(streamRowSettings.content));
-    console.log('streamRowHeaders ' + JSON.stringify(streamRowHeaders));
 
     $scope.cancel = function () {
-        console.log('infoModalCtrl cancel');
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.play = function () {
-        console.log('infoModalCtrl play');
-        // $uibModalInstance.dismiss('cancel');
-        // $window.open("/streams/play", 'windowOpenTab', '_blank,scrollbars=0,resizable=0,width=500,height=300,left=0,top=0');
-
+    $scope.play = function ($event) {
         var info = $base64.encode(JSON.stringify($scope.streamRowHeaders));
 
+        $event.preventDefault();
+
         $window.open("/streams/play?info=" + info, 'windowOpenTab' + info, 'scrollbars=yes,resizable=0,width=800,height=630,left=0,top=0');
+
     };
 
     $scope.delete = function () {
-        console.log('infoModalCtrl delete');
-        console.log('inboundDelete $scope.streamTypeSelected ' + $scope.streamTypeSelected);
 
         var modalInstance = $uibModal.open({
             templateUrl: 'js/app/streams/active/modals/delete-streams-active.html',
@@ -799,9 +689,6 @@ webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
                     } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
                         configId = streamRowTemp.mssSettings.configId;
                     }
-
-                    console.log('configId ' + configId);
-
 
                     return configId;
                 },
@@ -832,9 +719,7 @@ webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
         });
 
         modalInstance.result.then(function (result) {
-            console.log('deleteModal modalInstance.result ');
             $uibModalInstance.close();
-            // $uibModalInstance.dismiss('cancel');
         }, function () {
 
         });

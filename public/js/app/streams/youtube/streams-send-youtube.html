@@ -25,143 +25,103 @@
         <!-- Panel Content -->
         <div class="panel-body">
             <form name="ytSendStreamForm" novalidate>
-                <div class="row">
-                    <div class="col-md-6 ">
-                        <div class="form-group">
-                            <label class="evo-head">Choose the Stream you want to Send</label>
-                            <ui-select ng-model="ytInboundList.selected"
-                                       theme="bootstrap" search-enabled="true" ng-disabled="disabled"
-                                       style="min-width: 300px;" title="Choose a stream to send">
-                                <ui-select-match placeholder="Select a stream...">{[{$select.selected.name}]}
-                                </ui-select-match>
-                                <ui-select-choices
-                                        repeat="inbound in ytInboundList | propsFilter: {name: $select.search} ">
-                                    <div ng-bind-html="inbound.name | highlight: $select.search"></div>
-                                    <small>
-                                        source: {[{inbound.sourceUri}]}
-                                    </small>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-                        <div class="evo-frm-section">
-                            <div class="form">
-                                <p class="small evo-push-down">Reminder: Events give you more control of your stream.
-                                    The options will let you select privacy options and set a start time </p>
-                            </div>
-                            <div class="form-group top-spacing" >
-                                <label>Title </label>
-                                <input type="text" class="form-control" id="exampleInputTitle" name="title"
-                                       placeholder="Input Text" ng-model="ytTitle"
-                                       required ng-focus="titleFocus=true" ng-blur="titleFocus=false" >
-                                <div class="errorMessage" ng-show="titleFocus && ytSendStreamForm.title.$error.required" ><span >Enter a Youtube Title</span></div>
-                            </div>
+                <fieldset ng-disabled="sendYoutubeStreamLoading">
+                    <div class="row">
+                        <div class="col-md-6 ">
                             <div class="form-group">
-                                <label>Description </label>
+                                <label class="evo-head">Choose the Stream you want to Send</label>
+                                <ui-select ng-model="ytInboundList.selected"
+                                           theme="bootstrap" search-enabled="true" ng-disabled="disabled"
+                                           style="min-width: 300px;" title="Choose a stream to send">
+                                    <ui-select-match placeholder="Select a stream...">{[{$select.selected.name}]}
+                                    </ui-select-match>
+                                    <ui-select-choices
+                                            repeat="inbound in ytInboundList | propsFilter: {name: $select.search} ">
+                                        <div ng-bind-html="inbound.name | highlight: $select.search"></div>
+                                        <small>
+                                            source: {[{inbound.sourceUri}]}
+                                        </small>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="evo-frm-section">
+                                <div class="form">
+                                    <p class="small evo-push-down">Reminder: Events give you more control of your stream.
+                                        The options will let you select privacy options and set a start time </p>
+                                </div>
+                                <div class="form-group top-spacing" >
+                                    <label>Title </label>
+                                    <input type="text" class="form-control" id="exampleInputTitle" name="title"
+                                           placeholder="Input Text" ng-model="ytTitle"
+                                           required ng-focus="titleFocus=true" ng-blur="titleFocus=false" >
+                                    <div class="errorMessage" ng-show="titleFocus && ytSendStreamForm.title.$error.required" ><span >Enter a Youtube Title</span></div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description </label>
                                 <textarea class="form-control" rows="2" class="social-descr" name="decr"
                                           placeholder="Input Text" ng-model="ytDescription" ></textarea>
+                                </div>
+                                <div class="form">
+                                    <p class="evo-push-down">Note: This will send the stream content and automatically start the stream for you after it is successfully sent</p>
+                                </div>
+
                             </div>
-                            <div class="form">
-                                <p class="evo-push-down">Note: This will send the stream content and automatically start the stream for you after it is successfully sent</p>
-                            </div>
 
-                        </div>
+                            <button type="button" class="btn btn-evo" ng-disabled="ytSendStreamForm.$invalid || streamsNotAvailable"
+                                    ladda="sendYoutubeStreamLoading" ng-click="sendYoutubeStream()">
+                                <span>{[{ytButtonText}]}</span>
+                            </button>
 
-                        <button type="button" class="btn btn-evo" ng-disabled="ytSendStreamForm.$invalid || streamsNotAvailable"
-                                ladda="sendYoutubeStreamLoading" ng-click="sendYoutubeStream()">
-                            <span>{[{ytButtonText}]}</span>
-                        </button>
+                            <button type="button" class="btn btn-evo" ng-click="setToDefaultValuesYoutubeStreamForm()">
+                                <span>Clear</span>
+                            </button>
 
-                        <button type="button" class="btn btn-evo" ng-click="setToDefaultValuesYoutubeStreamForm()">
-                            <span>Clear</span>
-                        </button>
-
-                        <a class="btn btn-evo" role="button" ng-show="seeAddedSendStream" target="_blank"
-                           href="{[{youtubeStreamUrl}]}">
-                            <span>View Youtube Video</span></a>
+                            <a class="btn btn-evo" role="button" ng-show="seeAddedSendStream" target="_blank"
+                               href="{[{youtubeStreamUrl}]}">
+                                <span>View Youtube Video</span></a>
 
                         <span class="successMessage" ng-show="seeAddedSendStream">
                             <span>Stream successfully sent.</span>
                         </span>
 
 
+                        </div>
+                        <div class="col-md-6">
+
+
+
+                            <div class="form-group">
+                                <label class="evo-head">Choose the Video Format </label>
+                                <ui-select ng-model="ytFormatVideo.selected"
+                                           theme="bootstrap" search-enabled="false" ng-disabled="disabled"
+                                           style="min-width: 300px;" title="Choose a Format of the Video">
+                                    <ui-select-match placeholder="Select a Format of the Video...">
+                                        {[{$select.selected.text}]}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="format in ytFormatVideo ">
+                                        <div ng-bind-html="format.text | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="form">
+                                <p class="evo-push-down">Note: Choose the same or lower video format of the stream.</p>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 50px;">
+                                <label class="evo-head">Choose the Privacy Status</label>
+                                <ui-select ng-model="ytPrivacyStatus.selected"
+                                           theme="bootstrap" search-enabled="false" ng-disabled="disabled"
+                                           style="min-width: 300px;" title="Choose a Privacy Status">
+                                    <ui-select-match placeholder="Select a Privacy Status...">{[{$select.selected.text}]}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="status in ytPrivacyStatus ">
+                                        <div ng-bind-html="status.text | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-
-
-
-                        <div class="form-group">
-                            <label class="evo-head">Choose the Video Format </label>
-                            <ui-select ng-model="ytFormatVideo.selected"
-                                       theme="bootstrap" search-enabled="false" ng-disabled="disabled"
-                                       style="min-width: 300px;" title="Choose a Format of the Video">
-                                <ui-select-match placeholder="Select a Format of the Video...">
-                                    {[{$select.selected.text}]}
-                                </ui-select-match>
-                                <ui-select-choices repeat="format in ytFormatVideo ">
-                                    <div ng-bind-html="format.text | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-                        <div class="form">
-                            <p class="evo-push-down">Note: Choose the same or lower video format of the stream.</p>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 50px;">
-                            <label class="evo-head">Choose the Privacy Status</label>
-                            <ui-select ng-model="ytPrivacyStatus.selected"
-                                       theme="bootstrap" search-enabled="false" ng-disabled="disabled"
-                                       style="min-width: 300px;" title="Choose a Privacy Status">
-                                <ui-select-match placeholder="Select a Privacy Status...">{[{$select.selected.text}]}
-                                </ui-select-match>
-                                <ui-select-choices repeat="status in ytPrivacyStatus ">
-                                    <div ng-bind-html="status.text | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-
-                        <!--<div class="form-group">-->
-                            <!--<label>Start Date and Time</label>-->
-                            <!--&lt;!&ndash;<p class="small evo-push-down">Input will be converted to Universal Time Coordinated (UTC) </p>&ndash;&gt;-->
-                            <!--<div class="row">-->
-                                <!--<div class="col-md-6">-->
-                                    <!--<p class="input-group center-date" >-->
-                                        <!--<input type="text" class="form-control" uib-datepicker-popup="{[{format}]}" ng-model="ytStartDateTime"-->
-                                               <!--is-open="openYtStartDate.opened" datepicker-options="dateOptions" ng-required="true"-->
-                                               <!--close-text="Close" alt-input-formats="altInputFormats"/>-->
-                                    <!--<span class="input-group-btn">-->
-                                        <!--<button type="button" class="btn " ng-click="openYtStartDate()"><i-->
-                                                <!--class="glyphicon glyphicon-calendar"></i></button>-->
-                                    <!--</span>-->
-                                    <!--</p>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-6">-->
-                                    <!--<div uib-timepicker ng-model="ytStartDateTime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="form-group">-->
-                            <!--<label>End Date and Time</label>-->
-                            <!--&lt;!&ndash;<p class="small evo-push-down">Input will be converted to Universal Time Coordinated (UTC)</p>&ndash;&gt;-->
-                            <!--<div class="row">-->
-                                <!--<div class="col-md-6">-->
-                                    <!--<p class="input-group center-date" >-->
-                                        <!--<input type="text" class="form-control" uib-datepicker-popup="{[{format}]}" ng-model="ytEndDateTime"-->
-                                               <!--is-open="openYtEndDate.opened" datepicker-options="dateOptions" ng-required="true"-->
-                                               <!--close-text="Close" alt-input-formats="altInputFormats"/>-->
-                                    <!--<span class="input-group-btn">-->
-                                        <!--<button type="button" class="btn " ng-click="openYtEndDate()"><i-->
-                                                <!--class="glyphicon glyphicon-calendar"></i></button>-->
-                                    <!--</span>-->
-                                    <!--</p>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-6">-->
-                                    <!--<div uib-timepicker ng-model="ytEndDateTime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                    </div>
-                </div>
+                </fieldset>
             </form>
         </div>
     </div>

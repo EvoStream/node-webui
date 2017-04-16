@@ -1,7 +1,5 @@
 webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
 
-    console.log('profileCtrl loaded');
-
     $scope.fbExists = true;
     $scope.googleExists = true;
     $scope.unlinkFbLoading = false;
@@ -9,9 +7,6 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) 
 
 
     $http.get("/users/profile-info").then(function (response) {
-
-        console.log('response ' + JSON.stringify(response));
-        console.log('response.data.length ' + response.data.length);
 
         if (response.data) {
             $scope.profileInfo = response.data;
@@ -41,10 +36,6 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) 
                 });
 
                 $http.get('/users/unlink-social-token?' + data).then(function (response) {
-
-                    console.log('response ' + JSON.stringify(response));
-                    console.log('(response.data !== null ) ' + (response.data !== null ));
-                    console.log('!response.data ' + !response.data);
 
                     if (response.data) {
 
@@ -84,10 +75,6 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) 
 
                 $http.get('/users/unlink-social-token?' + data).then(function (response) {
 
-                    console.log('response ' + JSON.stringify(response));
-                    console.log('(response.data !== null ) ' + (response.data !== null ));
-                    console.log('!response.data ' + !response.data);
-
                     if (response.data) {
 
                         if (response.data.status == true) {
@@ -112,8 +99,6 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) 
 
         $scope.profileChangePassword = function () {
 
-            console.log('profile change password ');
-
             $scope.profilePasswordLoading = true;
             
             var data = $.param({
@@ -123,10 +108,6 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) 
             });
 
             $http.get('/users/profile-change-password?' + data).then(function (response) {
-
-                console.log('response ' + JSON.stringify(response));
-                console.log('(response.data !== null ) ' + (response.data !== null ));
-                console.log('!response.data ' + !response.data);
 
                 if (response.data) {
 
@@ -153,8 +134,6 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) 
 
         };
     });
-
-
 }]);
 
 

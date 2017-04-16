@@ -114,7 +114,7 @@ module.exports = function(serverUrl) {
             var reponseBody = JSON.parse(response);
 
             //Apply Logs
-            winston.log("verbose", "response "+response);            
+            // winston.log("verbose", "response "+response);
 
             return callbackResponse(reponseBody);
 
@@ -223,7 +223,8 @@ module.exports = function(serverUrl) {
          */
 
         getInboundStreamsCount: "getinboundStreamsCount",
-        getLicenseId: "getLicenseId"
+        getLicenseId: "getLicenseId",
+        getServerInfo: "getServerInfo"
 
     }
 

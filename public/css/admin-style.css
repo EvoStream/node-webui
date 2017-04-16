@@ -1,5 +1,19 @@
 /**CUSTOM CSS - Chan**/
 
+/* Change all Placeholders */
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    font-style: italic;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-style: italic;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-style: italic;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-style: italic;
+}
+
 /**Nav Bar**/
 
 h1 {
@@ -428,6 +442,7 @@ a.connect:hover {
     margin-left: 2px;
     color: #e46f6f;
 }
+
 
 /**Custom Menu**/
 

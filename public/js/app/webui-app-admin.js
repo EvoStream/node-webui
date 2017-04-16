@@ -1,8 +1,4 @@
 'use strict';
-
-// var webuiApp = angular.module('webui-app', ['ngSanitize', 'ui.select']);
-// var webuiApp = angular.module('webui-app', ['ngSanitize', 'ui.select', 'ngRoute', 'smart-table']);
-// var webuiApp = angular.module('webui-app', ['ngSanitize', 'ui.select', 'ngRoute', 'bsTable']);
 var webuiApp = angular.module('webui-app', ['ngSanitize', 'ui.select', 'ngRoute', 'bsTable', 'ui.bootstrap', 'base64', 'angular-ladda', 'chart.js']);
 
 
@@ -20,9 +16,6 @@ webuiApp.config(function (laddaProvider) {
 });
 
 webuiApp.directive('passwordCheck', function() {
-
-    console.log('passwordCheck passwordCheck passwordCheck ');
-
     return {
         require: 'ngModel',
         link: function (scope, elem, attrs, ctrl) {
@@ -119,29 +112,21 @@ webuiApp.filter('propsFilter', function () {
 
 
 webuiApp.factory('listPullStreamFactory', [ '$http', '$q', function ($http, $q) {
-    console.log('webuiApp service listPullStreamFactory ');
 
     var factory = {};
 
     factory.updateListStreams = function () {
-        console.log('factory updateListStreams');
-
         var deferred = $q.defer();
-
         var inboundStreamList = [];
 
-        // return 12;
-
         $http.get("/ems/api/liststreams").then(function (response) {
-
-            // console.log('response '+JSON.stringify(response));
 
             if (response.data.data != null) {
                 var listStreamsDataTemp = response.data.data;
 
                 for (var i in listStreamsDataTemp) {
 
-                    if (listStreamsDataTemp[i].type.charAt(0) == 'I' && listStreamsDataTemp[i].type != 'IFR') {
+                    if (listStreamsDataTemp[i].type.charAt(0) == 'I' && listStreamsDataTemp[i].type != 'IFR' && listStreamsDataTemp[i].type != 'IFP') {
 
                         var obj = {};
 
@@ -157,8 +142,6 @@ webuiApp.factory('listPullStreamFactory', [ '$http', '$q', function ($http, $q) 
                 }
             }
 
-            console.log('inboundStreamList '+JSON.stringify(inboundStreamList));
-
             deferred.resolve(inboundStreamList);
 
         });
@@ -173,15 +156,12 @@ webuiApp.factory('listPullStreamFactory', [ '$http', '$q', function ($http, $q) 
 
 webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout ) {
 
-    console.log('connectionButtonCtrl loaded ');
-
     $scope.connectionStatus = 'disconnected';
     $scope.connectionText = 'EMS Offline. Please Start EMS.';
 
     checkEmsConnection();
     function checkEmsConnection() {
         $http.get("/ems/api/check-connection").then(function (response) {
-            // console.log(JSON.stringify(response));
 
             var data = response.data;
 
@@ -204,10 +184,10 @@ webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', func
                 $scope.statusConnected = 'status';
             }
 
-            // $timeout(function () {
-            //     // console.log("$timeout triggered");
-            //     checkEmsConnection();
-            // }, 10000);
+            $timeout(function () {
+                // console.log("$timeout triggered");
+                checkEmsConnection();
+            }, 10000);
         });
     }
 }]);

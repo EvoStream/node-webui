@@ -3,12 +3,9 @@ var router = express.Router();
 
 var path = require('path');
 var restrict = require(path.join(__dirname, '../auth/restrict'));
-
 var ems = require(path.join(__dirname, "../core_modules/ems-api-core"))(null);
-
 var winston = require('winston');
 
-/* GET dashboard listing. */
 router.get('/', restrict, function(req, res, next) {
     winston.log("info", '[webui] api-explorer: index page');
 

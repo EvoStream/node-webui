@@ -1,18 +1,9 @@
 ﻿webuiApp.controller('streamsSendYoutubeCtrl', ['$scope', '$http', '$timeout', 'listPullStreamFactory', '$uibModal', function ($scope, $http, $timeout, listPullStreamFactory, $uibModal) {
 
-    console.log('streamsSendYoutubeCtrl loaded');
-
     $scope.activeTab = '/youtube';
-
     $scope.seeYtForm = false;
 
-
     $http.get('/users/check-google-login').then(function (response) {
-
-
-        console.log('response ' + JSON.stringify(response));
-
-        console.log('response.data.status '+response.data.status );
 
         if(response.data.status == 'login'){
 
@@ -28,7 +19,6 @@
             //Get the List of Inbound Streams
             $scope.ytInboundList = [];
             listPullStreamFactory.updateListStreams().then(function (data) {
-                console.log('streamsSendCtrl output ' + JSON.stringify(data));
 
                 //build the ui select list
                 $scope.ytInboundList = data;
@@ -264,13 +254,9 @@
                 var todayStart = new Date();
                 var ytStartDateTimeISO = todayStart.toISOString();
 
-                console.log('ytStartDateTimeISO '+ytStartDateTimeISO );
-
                 var todayEnd = new Date();
                 todayEnd.setHours(todayEnd.getHours()+1);
                 var ytEndDateTimeISO = todayEnd.toISOString();
-
-                console.log('ytEndDateTimeISO '+ytEndDateTimeISO );
 
                 var parameters = {
                     title: $scope.ytTitle,
@@ -290,8 +276,6 @@
 
                 $http.get('/ems/api/send-youtube?' + data).then(function (response) {
 
-                    console.log('response ' + JSON.stringify(response));
-
                     $scope.sendYoutubeStreamLoading = true;
                     $scope.ytButtonText = 'Changing Youtube Event Stream to Live Status...';
 
@@ -303,8 +287,6 @@
                         });
 
                         $http.get('/ems/api/send-youtube?' + data).then(function (response) {
-
-                            console.log('response ' + JSON.stringify(response));
 
                             $scope.sendYoutubeStreamLoading = false;
                             $scope.ytButtonText = 'Send Stream to Youtube';
@@ -351,47 +333,19 @@
                 });
 
                 modalInstance.result.then(function () {
-                    // $ctrl.selected = selectedItem;
-                    // $scope.sendStreamLoading = false;
                 }, function () {
-                    // $log.info('Modal dismissed at: ' + new Date());
                     $scope.sendStreamLoading = false;
                 });
             };
 
         }
 
-        // else{
-        //     $scope.seeYtForm = false;
-        // }
-
-        console.log('01 LAST $scope.seeYtForm '+$scope.seeYtForm );
-
     });
-
-    console.log('02 LAST $scope.seeYtForm '+$scope.seeYtForm );
-
 
 }]);
 
 
 webuiApp.controller('invalidArgumentModalCtrl', ['$scope', '$uibModalInstance', '$http', function ($scope, $uibModalInstance, $http) {
-
-    // $scope.localStreamName = items;
-
-    // $scope.delete = function () {
-    //     console.log('confirmDeleteModalCtrl ok');
-    //     // $uibModalInstance.dismiss('cancel');
-    //
-    //     $http.get("/ems/api/removeconfig?configid="+configId).then(function (response) {
-    //
-    //         console.log('response '+JSON.stringify(response));
-    //
-    //         $uibModalInstance.dismiss('cancel');
-    //
-    //     });
-    //
-    // };
 
     $scope.ok = function () {
         console.log('invalidArgumentModalCtrl ok');

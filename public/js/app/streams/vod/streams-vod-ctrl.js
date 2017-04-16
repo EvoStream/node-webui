@@ -2,15 +2,8 @@
 // webuiApp.controller('streamsActiveCtrl', ['$scope', '$http', '$timeout', function ($scope, $http) {
 webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout', '$window', '$base64', '$routeParams', function ($uibModal, $scope, $http, $timeout, $window, $base64, $routeParams) {
 
-    console.log('streamsVodCtrl loaded');
-
     //Select the Tab
     $scope.activeTab = '/vod';
-
-    //Select the Inbound Stream Table
-    // $scope.streamTypeSelected = 'inbound';
-
-    // var vm = this;
 
     $scope.vodMediaFolder = '';
     $scope.loadFilesText = 'Load the Files';
@@ -18,20 +11,9 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
     $scope.noFilesFound = false;
     $scope.seeVodErrorMessage = false;
 
-    //
-    // vm.disabled = false;
-    // vm.searchEnabled = true;
-    //
-    // console.log('starting $scope.streamTypeSelected ' + $scope.streamTypeSelected);
-    // console.log('starting $routeParams ' + JSON.stringify($routeParams));
-
     $http.get("/ems/api/get-default-media-folder").then(function (response) {
 
-        console.log('get-default-media-folder response ' + JSON.stringify(response));
-
         var defaultMediaFolder = response.data;
-
-        console.log('defaultMediaFolder ' + defaultMediaFolder);
 
         $scope.vodMediaFolder = defaultMediaFolder;
 
@@ -59,9 +41,6 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
                 data: data,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function (response) {
-
-                console.log('response ' + JSON.stringify(response));
-
                 var listFiles = response.data;
 
                 $scope.loadFilesLoading = false;
@@ -78,13 +57,10 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
                         formatter: vodActionFormatter,
                         events: {
                             'click .play': function (e, value, row, index) {
-                                console.log('PLAY');
                                 row.streamFormat = 'VOD';
                                 $scope.playVod(row);
                             },
                             'click .delete': function (e, value, row, index) {
-                                console.log('DELETE');
-
                                 $scope.deleteVod(row);
 
                             },
@@ -100,9 +76,6 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
                         "file": listFiles[i]
                     });
                 }
-
-                console.log('listFiles ' + JSON.stringify(listFiles));
-                console.log('$scope.rowVodData ' + JSON.stringify($scope.rowVodData));
 
                 //Build the Table
                 $scope.bsVodTableControl = {
@@ -136,8 +109,6 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
 
     $scope.playVod = function (row) {
 
-        console.log('row ' + JSON.stringify(row));
-
         var info = $base64.encode(JSON.stringify(row));
         $window.open("/streams/play?info=" + info, 'windowOpenTab' + info, 'scrollbars=0,resizable=0,width=800,height=630,left=0,top=0');
     };
@@ -155,8 +126,6 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
 
         var filePath = $scope.vodMediaFolder + row.file;
 
-        console.log('filePath '+filePath );
-
         var modalInstance = $uibModal.open({
             templateUrl: 'js/app/streams/vod/modals/delete-streams-vod.html',
             controller: 'confirmDeleteVodModalCtrl',
@@ -168,8 +137,6 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
         });
 
         modalInstance.result.then(function (result) {
-            // $ctrl.selected = selectedItem;
-            console.log('deleteVod result.then result '+ JSON.stringify(result));
 
             if(result != filePath){
                 //create error message
@@ -203,16 +170,6 @@ webuiApp.controller('confirmDeleteVodModalCtrl', ['$scope', '$uibModalInstance',
     $scope.deleteFilePath = filepath;
 
     $scope.delete = function () {
-        console.log('confirmDeleteVodModalCtrl ok');
-        // $uibModalInstance.dismiss('cancel');
-
-        // $http.get("/ems/api/removeconfig?configid=" + configId).then(function (response) {
-        //
-        //     console.log('response ' + JSON.stringify(response));
-        //
-        //     $uibModalInstance.dismiss('cancel');
-        //
-        // });
 
         var data = $.param({
             filepath: filepath
@@ -224,7 +181,6 @@ webuiApp.controller('confirmDeleteVodModalCtrl', ['$scope', '$uibModalInstance',
             data: data,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (response) {
-            console.log('response '+ JSON.stringify(response));
 
             if(response.data == filepath){
                 $uibModalInstance.close({$value: filepath});
@@ -235,7 +191,6 @@ webuiApp.controller('confirmDeleteVodModalCtrl', ['$scope', '$uibModalInstance',
     };
 
     $scope.cancel = function () {
-        console.log('confirmDeleteVodModalCtrl cancel');
         $uibModalInstance.dismiss('cancel');
     };
 

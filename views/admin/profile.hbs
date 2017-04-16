@@ -69,8 +69,7 @@
                                         <div class="evo-well">
                                             <img class="evo-push" src="/images/facebook-logo.png"
                                                  alt="Facebook"/><br>
-                                            <p><strong>Token:</strong></p>
-                                            <p class="evo-break">{[{profileInfo.fbtoken}]}</p>
+                                            <p><strong>Name:</strong> {[{profileInfo.fbname}]}</p>
                                             <p><strong>Email:</strong> {[{profileInfo.fbemail}]}</p>
                                             <button type="button" class="btn btn-evo-clear" ng-disabled="fbExists" ng-click="unlinkFbToken()" ladda="unlinkFbLoading" >
                                                 <span>Unlink</span>
@@ -82,8 +81,7 @@
                                         <div class="evo-well">
                                             <img class="evo-push-google" src="/images/googlelogo_color.png"
                                                  alt="Google"/><br>
-                                            <p><strong>Token:</strong></p>
-                                            <p class="evo-break">{[{profileInfo.googletoken}]}</p>
+                                            <p><strong>Name:</strong> {[{profileInfo.googlename}]}</p>
                                             <p><strong>Email:</strong>{[{profileInfo.googleemail}]}</p>
                                             <button type="button" class="btn btn-evo-clear" ng-disabled="googleExists" ng-click="unlinkGoogleToken()" ladda="unlinkGoogleLoading" >
                                                 <span>Unlink</span>

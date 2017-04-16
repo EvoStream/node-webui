@@ -15,7 +15,6 @@ router.get('/', restrict, function (req, res, next) {
 
     //Execute command for pushStream using destination address
     ems.version(parameters, function (result) {
-        console.log("version result" + JSON.stringify(result));
 
         var view = 'admin/error';
 
@@ -38,38 +37,21 @@ router.get('/', restrict, function (req, res, next) {
 /* displaying play stream page */
 router.get('/play', restrict, function (req, res, next) {
 
-    // var view = 'admin/streams/players/html5';
     var view = 'admin/streams/play';
 
     var fullUrl = req.protocol + '://' + req.get('host');
-
-    console.log('req.query ' + JSON.stringify(req.query));
-    console.log('fullUrl ' + fullUrl);
-
-    // var origin = req.get('origin');
-
-    console.log('req.app.settings.address  ' + req.app.settings.address);
-    console.log('req.app.settings.port  ' + req.app.settings.port);
-
-
     var info = new Buffer(req.query.info, 'base64');
     var infoRow = JSON.parse(info);
-
-    console.log('infoRow ' + JSON.stringify(infoRow));
 
     var streamFormat = infoRow.streamFormat;
 
     var vm = {
-        title: 'Player - Evostream Web UI',
-        // streamsActive: "active",
-        // layout: 'admin/streams/play',
+        title: 'Player - Evostream Web UI'
     };
 
     var playUrl = null;
 
     var mediaFolder = '/media/';
-
-    console.log('streamFormat ' + streamFormat);
 
     if (streamFormat == 'PULL') {
         var host = req.get('host');
@@ -81,8 +63,6 @@ router.get('/play', restrict, function (req, res, next) {
 
         var host = req.get('host');
         vm['emsIp'] = host.replace(":" + req.app.settings.port, "");
-
-        winston.log("verbose", "infoRow.localStreamName " +infoRow.localStreamName );
 
         if(infoRow.localStreamName){
             vm['streamName'] = infoRow.localStreamName;
@@ -104,9 +84,6 @@ router.get('/play', restrict, function (req, res, next) {
     }
 
     vm[streamFormat] = true;
-    
-    console.log('vm '+ JSON.stringify(vm));
-    
     res.render(view, vm);
 
 });

@@ -176,6 +176,8 @@ app.use(function (err, req, res, next) {
     });
 });
 
+console.log("[webui] starting app ");
+winston.log("verbose", "[webui] starting app ");
 
 module.exports = app;
 
