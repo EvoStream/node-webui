@@ -7,6 +7,9 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 
     //Select the Inbound Stream Table
     $scope.streamTypeSelected = 'inbound';
+    $scope.bsTableControlPageSize = 0;
+    $scope.bsTableControlPageNumber = 0;
+
 
     var vm = this;
 
@@ -245,7 +248,7 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                         if ($scope.listStreamsData[i].hasOwnProperty('pullSettings')) {
                             sourceURI = $scope.listStreamsData[i].pullSettings.uri;
                             streamFormat = 'PULL';
-                        }else if ($scope.listStreamsData[i].type = 'IFR') {
+                        } else if ($scope.listStreamsData[i].type = 'IFR') {
                             streamFormat = 'VOD';
                             $scope.listStreamsData[i].name = $scope.listStreamsData[i].name.split('\\').pop().split('/').pop();
                         }
@@ -341,13 +344,29 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                     bsTableData = $scope.streamData.file;
                 }
 
-                var pageSize = 7;
-                var pageNumber = 1;
-                if($scope.bsTableControl){
-                    if(typeof $scope.bsTableControl.state != 'undefined' ){
-                        pageSize = $scope.bsTableControl.state.pageSize;
-                        pageNumber = $scope.bsTableControl.state.pageNumber;
+                if ($scope.bsTableControl) {
+
+                    if (typeof $scope.bsTableControl.state !== 'undefined') {
+
+                        if (typeof $scope.bsTableControl.state.pageSize !== 'undefined') {
+
+                            pageSize = $scope.bsTableControl.state.pageSize;
+                            pageNumber = $scope.bsTableControl.state.pageNumber;
+
+                            $scope.bsTableControlPageSize = pageSize;
+                            $scope.bsTableControlPageNumber = pageNumber;
+                        }
+
+                        if ($scope.bsTableControlPageSize != 0) {
+                            pageSize = $scope.bsTableControlPageSize;
+                            pageNumber = $scope.bsTableControlPageNumber;
+                        }
+
+
                     }
+                } else {
+                    var pageSize = 7;
+                    var pageNumber = 1;
                 }
 
 
@@ -572,17 +591,17 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
                     var deleteMessage = '';
 
                     if (streamRowTemp.hasOwnProperty('pullSettings')) {
-                        deleteMessage = 'stream '+streamRowTemp.pullSettings.localStreamName;
+                        deleteMessage = 'stream ' + streamRowTemp.pullSettings.localStreamName;
                     } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
-                        deleteMessage = 'stream '+streamRowTemp.pushSettings.localStreamName;
+                        deleteMessage = 'stream ' + streamRowTemp.pushSettings.localStreamName;
                     } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
-                        deleteMessage = 'groupname '+streamRowTemp.hlsSettings.groupName;
+                        deleteMessage = 'groupname ' + streamRowTemp.hlsSettings.groupName;
                     } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
-                        deleteMessage = 'groupname '+streamRowTemp.hdsSettings.groupName;
+                        deleteMessage = 'groupname ' + streamRowTemp.hdsSettings.groupName;
                     } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
-                        deleteMessage = 'groupname '+streamRowTemp.dashSettings.groupName;
+                        deleteMessage = 'groupname ' + streamRowTemp.dashSettings.groupName;
                     } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
-                        deleteMessage = 'groupname '+streamRowTemp.mssSettings.groupName;
+                        deleteMessage = 'groupname ' + streamRowTemp.mssSettings.groupName;
                     }
 
                     $scope.deleteMessage = deleteMessage;
@@ -698,17 +717,17 @@ webuiApp.controller('activeInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
                     var deleteMessage = '';
 
                     if (streamRowTemp.hasOwnProperty('pullSettings')) {
-                        deleteMessage = 'stream '+streamRowTemp.pullSettings.localStreamName;
+                        deleteMessage = 'stream ' + streamRowTemp.pullSettings.localStreamName;
                     } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
-                        deleteMessage = 'stream '+streamRowTemp.pushSettings.localStreamName;
+                        deleteMessage = 'stream ' + streamRowTemp.pushSettings.localStreamName;
                     } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
-                        deleteMessage = 'groupname '+streamRowTemp.hlsSettings.groupName;
+                        deleteMessage = 'groupname ' + streamRowTemp.hlsSettings.groupName;
                     } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
-                        deleteMessage = 'groupname '+streamRowTemp.hdsSettings.groupName;
+                        deleteMessage = 'groupname ' + streamRowTemp.hdsSettings.groupName;
                     } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
-                        deleteMessage = 'groupname '+streamRowTemp.dashSettings.groupName;
+                        deleteMessage = 'groupname ' + streamRowTemp.dashSettings.groupName;
                     } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
-                        deleteMessage = 'groupname '+streamRowTemp.mssSettings.groupName;
+                        deleteMessage = 'groupname ' + streamRowTemp.mssSettings.groupName;
                     }
 
                     $scope.deleteMessage = deleteMessage;

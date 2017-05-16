@@ -156,7 +156,7 @@ router.get('/profile-change-password', restrict, function (req, res, next) {
                 userService.updateUserPassword(userResult, function (response) {
                     winston.log("info", '[webui] profile - setting the new password response '+JSON.stringify(response) );
 
-                    if (response.status == 'success') {
+                    if ((response.email == userResult.email) && (response.status == true)) {
                         result.status = true;
                     }
 
@@ -202,6 +202,9 @@ router.get('/unlink-social-token', restrict, function (req, res, next) {
                     //remove token in session
                     if(req.session.passport){
                         req.session.passport.user.fbtoken = '';
+
+                    }else{
+                        result.logout = true;
                     }
                     req.session.fbUser = {};
 
@@ -209,8 +212,6 @@ router.get('/unlink-social-token', restrict, function (req, res, next) {
                 }
 
             });
-
-
 
 
         }else if(parameter.social == 'google'){
@@ -222,6 +223,8 @@ router.get('/unlink-social-token', restrict, function (req, res, next) {
                     //remove token in session
                     if(req.session.passport){
                         req.session.passport.user.googletoken = '';
+                    }else{
+                        result.logout = true;
                     }
                     req.session.googleUser = {};
 

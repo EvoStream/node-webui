@@ -1,4 +1,4 @@
-webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
+webuiApp.controller('profileCtrl', ['$scope', '$http', '$window', '$timeout',  function ($scope, $http, $window, $timeout) {
 
     $scope.fbExists = true;
     $scope.googleExists = true;
@@ -40,11 +40,21 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) 
                     if (response.data) {
 
                         if (response.data.status == true) {
+                            $scope.profileInfo.fbname = '';
                             $scope.profileInfo.fbemail = '';
                             $scope.profileInfo.fbtoken = '';
 
                             $scope.fbTokenMessage = 'Facebook Token removed.';
                             $scope.fbExists = true;
+
+                            if (response.data.logout == true) {
+
+                                $timeout(function () {
+                                    $scope.fbTokenMessage = 'Logging out the user';
+                                    $window.location.href = '/users/logout';
+                                }, 1000);
+                            }
+
                         } else {
                             $scope.fbTokenMessage = 'Facebook Token not removed. Please try again.';
                         }
@@ -78,11 +88,20 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) 
                     if (response.data) {
 
                         if (response.data.status == true) {
+                            $scope.profileInfo.googlename = '';
                             $scope.profileInfo.googleemail = '';
                             $scope.profileInfo.googletoken = '';
 
                             $scope.googleTokenMessage = 'Google Token removed.';
                             $scope.googleExists = true;
+
+                            if (response.data.logout == true) {
+
+                                $timeout(function () {
+                                    $scope.fbTokenMessage = 'Logging out the user';
+                                    $window.location.href = '/users/logout';
+                                }, 1000);
+                            }
 
                         } else {
                             $scope.googleTokenMessage = 'Google Token not removed. Please try again.';

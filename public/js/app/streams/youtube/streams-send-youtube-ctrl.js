@@ -14,6 +14,7 @@
              */
 
             $scope.seeAddedSendStream = false;
+            $scope.disableSelectStreamYt = false;
             $scope.ytButtonText = 'Send Stream to Youtube';
 
             //Get the List of Inbound Streams
@@ -228,6 +229,7 @@
             $scope.sendYoutubeStream = function () {
                 console.log('sendYoutubeStream sendYoutubeStream');
 
+                $scope.disableSelectStreamYt = true;
                 $scope.sendYoutubeStreamLoading = true;
                 $scope.ytButtonText = 'Sending.... ';
 
@@ -288,15 +290,16 @@
 
                         $http.get('/ems/api/send-youtube?' + data).then(function (response) {
 
+                            $scope.disableSelectStreamYt = false;
                             $scope.sendYoutubeStreamLoading = false;
                             $scope.ytButtonText = 'Send Stream to Youtube';
 
                             if (response.data.status){
 
+                                $scope.setToDefaultValuesYoutubeStreamForm();
                                 $scope.seeAddedSendStream = true;
                                 $scope.youtubeStreamUrl = response.data.url;
-                                $scope.setToDefaultValuesYoutubeStreamForm();
-
+                                
                             } else {
                                 $scope.invalidArgumentModal();
                             }
@@ -311,6 +314,9 @@
             };
 
             $scope.setToDefaultValuesYoutubeStreamForm = function () {
+
+                $scope.seeAddedSendStream = false;
+
                 $scope.ytTitle = '';
                 $scope.ytDescription = '';
                 $scope.ytInboundList.selected = $scope.ytInboundList[0];

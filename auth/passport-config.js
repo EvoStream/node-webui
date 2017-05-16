@@ -61,6 +61,7 @@ module.exports = function(){
 
     passport.deserializeUser(function(user, next) {
         winston.log("info", '[webui] passport deserialize user');
+        
         userService.findUser(user.email, function(user) {
 
             if (typeof user ['error'] !== "undefined") {

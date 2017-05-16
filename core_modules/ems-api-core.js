@@ -66,7 +66,7 @@ module.exports = function(serverUrl) {
     this.buildqs = function(parameters) {
 
         //Apply Logs
-        winston.log("verbose", "EMS API this.buildqs ");
+        // winston.log("verbose", "EMS API this.buildqs ");
 
         var qs = "?params=";
         var params = "";
@@ -89,7 +89,7 @@ module.exports = function(serverUrl) {
     this.sendCommand = function(command, parameters, callbackResponse) {
 
         //Apply Logs
-        winston.log("verbose", "EMS API this.sendCommand ");
+        // winston.log("verbose", "EMS API this.sendCommand ");
 
         var queryString = self.buildqs(parameters);
 
@@ -99,8 +99,8 @@ module.exports = function(serverUrl) {
             self.options["url"] = self.serverUrl + "/" + command + queryString;
         }
 
-        winston.log("verbose", "EMS API this.sendCommand command " + command);
-        winston.log("verbose", "EMS API this.sendCommand parameters " + JSON.stringify(parameters));
+        // winston.log("verbose", "EMS API this.sendCommand command " + command);
+        // winston.log("verbose", "EMS API this.sendCommand parameters " + JSON.stringify(parameters));
         winston.log("verbose", "EMS API this.sendCommand url " + self.options["url"]);
 
         request.get(self.options, function(err, response) {
@@ -186,7 +186,6 @@ module.exports = function(serverUrl) {
         removeStorage: "removeStorage",
         setAuthentication: "setAuthentication",
         setLogLevel: "setLogLevel",
-        quit: "quit",
         help: "help",
         shutdownServer: "shutdownServer",
 

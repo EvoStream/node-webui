@@ -158,7 +158,7 @@ router.post('/api/get-vod-files', restrict, function (req, res, next) {
                     var ext = filePath.split('.').pop();
 
                     //Only add files that can be played
-                    var fileToPlay = ["mp4", "ts", "flv", "m4v", "vod", "lst"];
+                    var fileToPlay = ["mp4", "ts", "flv", "m4v", "vod", "lst", "mov"];
 
                     var playFile = fileToPlay.indexOf(ext);
 
@@ -284,6 +284,7 @@ router.post('/api/execute-command', function (req, res, next) {
     var parameters = null;
 
     if (data.parameters != "") {
+
         parameters = JSON.parse('{"' + decodeURI(data.parameters).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
 
         for (var i in parameters) {
@@ -291,6 +292,22 @@ router.post('/api/execute-command', function (req, res, next) {
 
         }
     }
+
+    if((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
+        if(parameters.targetFolder.charAt(0) !== '/'){
+            var str = parameters.targetFolder;
+            parameters.targetFolder = str.replace("file:///", "");
+        }
+    }
+
+    if((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
+        if(parameters.pathToFile.charAt(0) !== '/'){
+            var str = parameters.pathToFile;
+            parameters.pathToFile = str.replace("file:///", "");
+        }
+    }
+
+    winston.log("verbose", "parameters " + JSON.stringify(parameters));
 
     //Execute command for pushStream using destination address
     ems[data.command](parameters, function (result) {

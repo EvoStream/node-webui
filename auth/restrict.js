@@ -1,7 +1,7 @@
 module.exports = function(req, res, next){
     var winston = require('winston');
 
-    winston.log("verbose", '[webui] passport deserialize user');
+    winston.log("verbose", '[webui] check user authentication');
 
     if(req.isAuthenticated()){
         return next();

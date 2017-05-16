@@ -15,6 +15,7 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
              */
 
             $scope.seeAddedSendStream = false;
+            $scope.disableSelectStreamFb = false;
             $scope.fbButtonText = 'Post to Facebook';
 
             //Get the List of Inbound Streams
@@ -177,6 +178,9 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
 
 
             $scope.setToDefaultValuesFbStreamForm = function () {
+
+                $scope.seeAddedSendStream = false;
+
                 $scope.fbInboundList.selected = $scope.fbInboundList[0];
                 $scope.fbPrivacyStatus.selected = $scope.fbPrivacyStatus[0];
                 $scope.fbEdge = {
@@ -191,7 +195,9 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
 
             $scope.sendFacebookStream = function() {
 
+
                 $scope.sendFacebookStreamLoading = true;
+                $scope.disableSelectStreamFb = true;
                 $scope.seeAddedSendStream = false;
                 $scope.fbButtonText = 'Sending.... ';
 
@@ -224,13 +230,14 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
                 $http.get('/ems/api/send-facebook?' + data).then(function (response) {
 
                     $scope.seeAddedSendStream = false;
+                    $scope.disableSelectStreamFb = false;
                     $scope.fbButtonText = 'Post to Facebook';
                     $scope.sendFacebookStreamLoading = false;
 
                     if (response.data.status){
 
-                        $scope.seeAddedSendStream = true;
                         $scope.setToDefaultValuesFbStreamForm();
+                        $scope.seeAddedSendStream = true;
 
                     } else {
                         $scope.invalidArgumentModal();

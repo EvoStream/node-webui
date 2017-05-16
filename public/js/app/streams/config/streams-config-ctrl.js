@@ -8,6 +8,8 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
     $scope.activeTab = '/config';
 
     $scope.configType = [];
+    $scope.bsConfigTableControlPageSize = 0;
+    $scope.bsConfigTableControlPageNumber = 0;
 
     //Load using routeParameters
     if ($routeParams.configTypeSelected != null) {
@@ -53,14 +55,15 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                                     'click .info': function (e, value, row, index) {
                                         var settingsInfo = configData[configTypeSelected][index];
 
-                                        var rowHeaderConfig = $scope.rowConfigData[index];
+
+                                        var rowHeaderConfig = row;
 
                                         $scope.configInfoModal($scope.configType.selected, settingsInfo, rowHeaderConfig);
 
                                     },
                                     'click .delete': function (e, value, row, index) {
 
-                                        var rowHeaderConfig = $scope.rowConfigData[index];
+                                        var rowHeaderConfig = row;
 
                                         $scope.configDeleteModal(rowHeaderConfig);
 
@@ -127,7 +130,8 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                                         columnCollection: [
                                             {field: 'configId', sortable: true, title: 'Config ID'},
                                             {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
-                                            {field: 'fullBinaryPath', sortable: true, title: 'fullBinaryPath'}
+                                            {field: 'fullBinaryPath', sortable: true, title: 'fullBinaryPath'},
+                                            {field: 'groupName', sortable: true, title: 'Group Name'}
                                         ]
                                     },
                                 }
@@ -170,7 +174,7 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                                     },
                                 }
                                 $scope.tableConfigData.record.columnCollection.push(actionColumn);
-                                $scope.tableConfigData.webrecordrtc.rowConfigData = [];
+                                $scope.tableConfigData.record.rowConfigData = [];
                             }else if(configTypeSelected == 'webrtc'){
                                 $scope.tableConfigData = {
                                     webrtc: {
@@ -230,7 +234,8 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                                     $scope.tableConfigData.process.rowConfigData.push({
                                         "configId": settingsData[y].configId,
                                         "localStreamName": localStreamName,
-                                        "fullBinaryPath": settingsData[y].fullBinaryPath
+                                        "fullBinaryPath": settingsData[y].fullBinaryPath,
+                                        "groupName": settingsData[y].groupName
                                     });
                                 }else if(configTypeSelected == 'pull'){
                                     $scope.tableConfigData.pull.rowConfigData.push({
@@ -260,9 +265,9 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                                         "roomid": settingsData[y].roomid
                                     });
                                 }
-
-
                             }
+
+
                         }else{
                             $scope.tableConfigData = [];
                         }
@@ -272,13 +277,26 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                 }
 
 
-                var pageSize = 7;
-                var pageNumber = 1;
+
                 if($scope.bsConfigTableControl){
                     if(typeof $scope.bsConfigTableControl.state != 'undefined' ){
-                        pageSize = $scope.bsConfigTableControl.state.pageSize;
-                        pageNumber = $scope.bsConfigTableControl.state.pageNumber;
+
+                        if (typeof $scope.bsConfigTableControl.state.pageSize !== 'undefined') {
+                            pageSize = $scope.bsConfigTableControl.state.pageSize;
+                            pageNumber = $scope.bsConfigTableControl.state.pageNumber;
+
+                            $scope.bsConfigTableControlPageSize = pageSize;
+                            $scope.bsConfigTableControlPageNumber = pageNumber;
+                        }
+
+                        if($scope.bsConfigTableControlPageSize != 0){
+                            pageSize = $scope.bsConfigTableControlPageSize;
+                            pageNumber = $scope.bsConfigTableControlPageNumber;
+                        }
                     }
+                }else{
+                    var pageSize = 7;
+                    var pageNumber = 1;
                 }
 
                 var bsTableData = null;
@@ -303,41 +321,60 @@ webuiApp.controller('streamsConfigCtrl', ['$uibModal', '$scope', '$http', '$time
                     bsTableData = $scope.tableConfigData.webrtc;
                 }
 
-                //Build the Table
-                $scope.bsConfigTableControl = {
-                    options: {
-                        data: bsTableData.rowConfigData,
-                        rowStyle: function (row, index) {
-                            return {classes: 'none'};
-                        },
-                        cache: false,
-                        height: 600,
-                        striped: true,
-                        pagination: true,
-                        pageSize: pageSize,
-                        pageNumber: pageNumber,
-                        pageList: [5, 10, 25, 50, 100, 200],
-                        search: true,
-                        showColumns: false,
-                        showRefresh: false,
-                        minimumCountColumns: 2,
-                        clickToSelect: false,
-                        showToggle: false,
-                        maintainSelected: true,
-                        dataSortOrder: "desc",
-                        columns: bsTableData.columnCollection
+                if(bsTableData !== undefined){
+
+                    if(bsTableData){
+                        $scope.noActiveStreams = false;
+
+                        //Build the Table
+                        $scope.bsConfigTableControl = {
+                            options: {
+                                data: bsTableData.rowConfigData,
+                                rowStyle: function (row, index) {
+                                    return {classes: 'none'};
+                                },
+                                cache: false,
+                                height: 600,
+                                striped: true,
+                                pagination: true,
+                                pageSize: pageSize,
+                                pageNumber: pageNumber,
+                                pageList: [5, 10, 25, 50, 100, 200],
+                                search: true,
+                                showColumns: false,
+                                showRefresh: false,
+                                minimumCountColumns: 2,
+                                clickToSelect: false,
+                                showToggle: false,
+                                maintainSelected: true,
+                                dataSortOrder: "desc",
+                                columns: bsTableData.columnCollection
+                            }
+                        };
                     }
-                };
+
+
+                }else{
+                    $scope.noActiveStreams = true;
+                }
 
                 $scope.configType.selected = configTypeSelected;
 
             }
         });
+
+        //Check ListStream Update
+        $timeout(function () {
+            console.log('config $timeout ------------------- ');
+            listConfigs($scope.configType.selected);
+        }, 3000);
     }
 
     $scope.selectedConfigType = function () {
         listConfigs($scope.configType.selected);
     };
+
+
 
     function configActionFormatter(value, row, index) {
 
@@ -452,7 +489,7 @@ webuiApp.controller('configInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
 
 
     //Only show Play button on Inbound and HTTP Streams
-    var configTypetoPlay = ["pull", "hls", "hds", "mss", "dash"];
+    var configTypetoPlay = ["pull", "hls", "dash"];
 
     var playStream = configTypetoPlay.indexOf(configTypeSelected);
 
@@ -497,8 +534,6 @@ webuiApp.controller('configInfoModalCtrl', ['$scope', '$uibModal', '$uibModalIns
         }, function () {
         });
     };
-
-
 
 }]);
 

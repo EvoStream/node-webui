@@ -101,6 +101,8 @@
 
     $scope.setDefaultValuesAddStreamForm = function () {
 
+        $scope.seeAddedStream = false;
+
         $scope.inbound.uri = '';
         $scope.inbound.localStreamName = '';
 
@@ -170,6 +172,10 @@
                     bandwidths = $scope.mss.bandwidths.split(",");
                 }
 
+                if(bandwidths[0] == ''){
+                    delete parameters.bandwidths;
+                }
+
                 if(bandwidths.length > 1){
                     var ctr = 1;
                     for (var b = 0; b < bandwidths.length; b++) {
@@ -205,12 +211,29 @@
             parameters = $scope.inbound;
         }
 
+        //Check if directory is windows
+        if((typeof parameters.targetFolder !== 'undefined') || (parameters.targetFolder !== null )) {
+            if(parameters.targetFolder.charAt(0) !== '/'){
+                parameters.targetFolder = parameters.targetFolder.replace(/\\/g, '/');
+                parameters.targetFolder = '/' + parameters.targetFolder;
+                parameters.targetFolder = 'file://' + parameters.targetFolder;
+            }
+        }
+
+        if((typeof parameters.pathToFile !== 'undefined') || (parameters.pathToFile !== null )) {
+            if(parameters.pathToFile.charAt(0) !== '/'){
+                parameters.pathToFile = parameters.pathToFile.replace(/\\/g, '/');
+                parameters.pathToFile = '/' + parameters.pathToFile;
+                parameters.pathToFile = 'file://' + parameters.pathToFile;
+            }
+        }
+
+        console.log('parameters '+ JSON.stringify(parameters));
 
         var data = $.param({
             command: command,
             parameters: $.param(parameters)
         });
-
 
         $http({
             method: 'POST',
@@ -220,8 +243,9 @@
         }).then(function (response) {
 
             if (response.data.data != null || response.data.status != 'FAIL') {
-                $scope.seeAddedStream = true;
+
                 $scope.setDefaultValuesAddStreamForm();
+                $scope.seeAddedStream = true;
 
                 if ($scope.addStreamType.selected.value != 'inbound') {
                     $scope.seeAddedStreamType = '/streams#/active/http';

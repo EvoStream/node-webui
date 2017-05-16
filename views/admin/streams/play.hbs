@@ -195,12 +195,11 @@
                         <h3 class="evo-h3">EvoStream playing your VOD Stream</h3>
                         <div class="row">
                             <div class="col-md-10">
-                                <p><label>url:&nbsp;</label>{{playUrl}}</p>
-                                <!--<p><label>url:&nbsp;</label>rtsp://50.56.172.81:5544/vod/subfolder1/bunny06.mp4</p>-->
+                                <p><label>url:&nbsp;</label>{{emsPlayUrl}}</p>
+
                                 <video id=vod-video width=720 height=480 class="video-js vjs-default-skin" controls preload="auto">
                                     <source src="{{playUrl}}" type={{playType}}>
-                                    <!--<source src="rtsp://50.56.172.81:5544/vod/subfolder1/bunny06.mp4" type='rtsp/mp4'>-->
-                                    <!--<source src="rtmp://50.56.172.81/vod/bunny05.mp4" type='rtmp/mp4'>-->
+
                                 </video>
                                 <link href="http://vjs.zencdn.net/5.8.8/video-js.css"  rel="stylesheet">
                                 <!-- If you'd like to support IE8 -->

@@ -83,38 +83,40 @@ exports.addUser = function (user, next) {
 };
 
 exports.findUser = function (email, user) {
+
     winston.log("info", '[webui] find user');
 
-    //load the database
-    db.loadDatabase({}, function () {
+    //get the users collection
+    var users = db.getCollection('users');
 
-        //get the users collection
-        var users = db.getCollection('users');
+    // winston.log("verbose", "[webui] find users " + JSON.stringify(users));
+    // winston.log("verbose", "(typeof(users) == undefined) " + (typeof(users) == "undefined"));
+    // winston.log("verbose", "(users == null) " + (users == null));
 
-        if ((typeof(users) == "undefined") || users == null) {
+    if ((typeof(users) == "undefined") || users == null) {
+        var response = {
+            error: 'there are no existing users'
+        };
+        winston.log("error", '[webui] find user - there are no existing users');
+        return user(response);
+
+    } else {
+        var result = users.findOne({'email': email.toLowerCase()});
+
+        winston.log("verbose", "[webui] find user - result " + JSON.stringify(result));
+
+        if (!result) {
             var response = {
                 error: 'there are no existing users'
             };
-            winston.log("error", '[webui] find user - there are no existing users');
+            winston.log("verbose", '[webui] find user - there are no existing users');
             return user(response);
-
-        } else {
-            var result = users.findOne({'email': email.toLowerCase()});
-
-            if(!result){
-                var response = {
-                    error: 'there are no existing users'
-                };
-                winston.log("verbose", '[webui] find user - there are no existing users');
-                return user(response);
-            }
-
-            winston.log("verbose", "result " + JSON.stringify(result));
-
-            return user(result);
         }
 
-    });
+        winston.log("verbose", "result " + JSON.stringify(result));
+
+        return user(result);
+    }
 };
 
 exports.countUser = function (next) {
@@ -128,7 +130,7 @@ exports.countUser = function (next) {
         //get the users collection
         var users = db.getCollection('users');
 
-        winston.log("info", '[webui] count user data '+JSON.stringify(users));
+        winston.log("info", '[webui] count user data ' + JSON.stringify(users));
 
         if ((typeof(users) == "undefined") || users == null) {
             return next(count);
@@ -247,9 +249,9 @@ exports.findUserOldPassword = function (user, next) {
 
             var result = users.findOne({'email': user.email.toLowerCase()});
 
-            bcrypt.compare(user.oldpassword, result.password, function(err, res){
-                
-                if(err){
+            bcrypt.compare(user.oldpassword, result.password, function (err, res) {
+
+                if (err) {
                     var response = {
                         status: false,
                         error: 'match password failed'
@@ -257,14 +259,14 @@ exports.findUserOldPassword = function (user, next) {
                     winston.log("error", '[webui] user old password did not match ');
                     return next(response);
                 }
-                if(res === false){
+                if (res === false) {
                     var response = {
                         status: false,
                         error: 'user old password did not match'
                     };
                     winston.log("error", '[webui] user old password did not match ');
                     return next(response);
-                }else{
+                } else {
                     var response = {
                         status: true,
                         message: 'password match'
@@ -278,9 +280,6 @@ exports.findUserOldPassword = function (user, next) {
         }
 
     });
-
-
-
 
 
 };
@@ -326,6 +325,7 @@ exports.updateUserPassword = function (user, next) {
                     result.password = hash;
                     result.resetPasswordToken = undefined;
                     result.resetPasswordExpires = undefined;
+                    result.status = true;
 
                     users.update(result);
 

@@ -52,10 +52,7 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
         $scope.indexParameterNotMandatory = 0;
         $scope.parameterCollectionsNotMandatory.push({
             "id": $scope.indexParameterNotMandatory,
-            "listing": $scope.parameterListNotMandatory,
-            // "defaultName": {selected: $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].name},
-            // "defaultDescription": $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].description,
-            // "defaultMandatory": $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].mandatory,
+            "listing": $scope.parameterListNotMandatory
         });
 
         $scope.checkingParameterListNotMandatory = tempParameterListNotMandatory;
@@ -103,18 +100,8 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
         $scope.parameterCollectionsNotMandatory.push({
             "id": newIndex,
             "listing": $scope.checkingParameterListNotMandatory,
-            // "defaultName": {selected: $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].name},
-            // "defaultDescription": $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].description,
-            // "defaultMandatory": $scope.parameterListNotMandatory[$scope.indexParameterNotMandatory].mandatory,
         });
 
-
-        // if($scope.parameters.length > 0) {
-        //     $scope.selectedParameters.push(param);
-        //
-        //     var index =  $scope.parameters.indexOf(param);
-        //     $scope.parameters.splice(index, 1);
-        // }
 
     };
 
@@ -184,6 +171,23 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
 
 
             });
+        }
+
+        //Check if directory is windows
+        if((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
+            if(parameters.targetFolder.charAt(0) !== '/'){
+                parameters.targetFolder = parameters.targetFolder.replace(/\\/g, '/');
+                parameters.targetFolder = '/' + parameters.targetFolder;
+                parameters.targetFolder = 'file://' + parameters.targetFolder;
+            }
+        }
+
+        if((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
+            if(parameters.pathToFile.charAt(0) !== '/'){
+                parameters.pathToFile = parameters.pathToFile.replace(/\\/g, '/');
+                parameters.pathToFile = '/' + parameters.pathToFile;
+                parameters.pathToFile = 'file://' + parameters.pathToFile;
+            }
         }
 
         var data = $.param({

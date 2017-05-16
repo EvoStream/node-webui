@@ -72,7 +72,8 @@ router.get('/play', restrict, function (req, res, next) {
             ext =  infoRow.file.split('.').pop();
         }
 
-        vm['playUrl'] = 'rtmp://' + vm['emsIp'] + '/vod/mp4:' + vm['streamName'];
+        vm['emsPlayUrl'] = 'rtmp://' + vm['emsIp'] + '/vod/mp4:' + vm['streamName'];
+        vm['playUrl'] = 'rtmp://' + vm['emsIp'] + '/vod/&mp4:' + vm['streamName'];
         vm['playType'] = 'rtmp/'+ext;
 
     } else if (streamFormat == 'DASH') {
