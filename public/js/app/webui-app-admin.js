@@ -158,7 +158,11 @@ webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', func
 
     $scope.connectionStatus = 'disconnected';
     $scope.connectionText = 'EMS Offline. Please Start EMS.';
-
+    $scope.licenseId = null;
+    $scope.emsVersion = null;
+    $scope.buildNumber = null;
+    $scope.streamCount = null;
+    
     checkEmsConnection();
     function checkEmsConnection() {
         $http.get("/ems/api/check-connection").then(function (response) {
@@ -177,6 +181,64 @@ webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', func
                 $scope.connectionText = 'EMS ONLINE';
                 $scope.dashboardConnectionText = 'CONNECTED';
                 $scope.statusConnected = 'statusConnected';
+
+                var dataInfo = response.data.data;
+
+                console.log('dataInfo '+ JSON.stringify(dataInfo));
+
+                $scope.emsVersion = dataInfo.releaseNumber;
+                $scope.buildNumber = dataInfo.buildNumber;
+
+                console.log('$scope.emsVersion '+$scope.emsVersion );
+                console.log('$scope.buildNumber '+$scope.buildNumber );
+
+                $http.get("/ems/api/get-inbound-outbound-count").then(function (response) {
+
+                    $scope.streamCount = response.data;
+
+                    $scope.labels = ['Stream Count Chart'];
+                    $scope.series = ['Stream Count'];
+
+                    $scope.dataCount = [
+                        [$scope.streamCount.inbound],
+                        [$scope.streamCount.outbound],
+                        [$scope.streamCount.http]
+                    ];
+
+                    $scope.datasetOverride = [{yAxisID: 'y-axis-1'}];
+                    var maxValue = Math.max($scope.streamCount.inbound, $scope.streamCount.outbound, $scope.streamCount.http ) + 1;
+
+                    $scope.options = {
+                        scales: {
+                            yAxes: [
+                                {
+                                    id: 'y-axis-1',
+                                    display: true,
+                                    ticks: {
+                                        max: maxValue,
+                                        stepSize: 1,
+                                        beginAtZero: true   // minimum value will be 0.
+                                    }
+                                }
+                            ]
+                        }
+                    };
+
+                });
+
+
+                $http.get("/ems/api/get-license-id").then(function (response) {
+
+                    var data = response.data.data;
+
+                    if (data != null) {
+                        $scope.licenseId = data.licenseId;
+                    } else {
+                        $scope.licenseId = null;
+                    }
+
+                });
+
             }else{
                 $scope.connectionStatus = 'disconnected';
                 $scope.connectionText = 'EMS OFFLINE';
