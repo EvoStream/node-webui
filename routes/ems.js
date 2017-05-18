@@ -291,23 +291,22 @@ router.post('/api/execute-command', function (req, res, next) {
             parameters[i] = decodeURIComponent(parameters[i]);
 
         }
-    }
+		
+		if((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
+			if(parameters.targetFolder.charAt(0) !== '/'){
+				var str = parameters.targetFolder;
+				parameters.targetFolder = str.replace("file:///", "");
+			}
+		}
 
-    if((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
-        if(parameters.targetFolder.charAt(0) !== '/'){
-            var str = parameters.targetFolder;
-            parameters.targetFolder = str.replace("file:///", "");
-        }
-    }
+		if((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
+			if(parameters.pathToFile.charAt(0) !== '/'){
+				var str = parameters.pathToFile;
+				parameters.pathToFile = str.replace("file:///", "");
+			}
+		}
 
-    if((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
-        if(parameters.pathToFile.charAt(0) !== '/'){
-            var str = parameters.pathToFile;
-            parameters.pathToFile = str.replace("file:///", "");
-        }
     }
-
-    winston.log("verbose", "parameters " + JSON.stringify(parameters));
 
     //Execute command for pushStream using destination address
     ems[data.command](parameters, function (result) {
