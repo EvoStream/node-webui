@@ -212,7 +212,7 @@
         }
 
         //Check if directory is windows
-        if((typeof parameters.targetFolder !== 'undefined') || (parameters.targetFolder !== null )) {
+        if((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
             if(parameters.targetFolder.charAt(0) !== '/'){
                 parameters.targetFolder = parameters.targetFolder.replace(/\\/g, '/');
                 parameters.targetFolder = '/' + parameters.targetFolder;
@@ -220,7 +220,7 @@
             }
         }
 
-        if((typeof parameters.pathToFile !== 'undefined') || (parameters.pathToFile !== null )) {
+        if((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
             if(parameters.pathToFile.charAt(0) !== '/'){
                 parameters.pathToFile = parameters.pathToFile.replace(/\\/g, '/');
                 parameters.pathToFile = '/' + parameters.pathToFile;
