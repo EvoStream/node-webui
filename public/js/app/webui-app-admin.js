@@ -184,13 +184,8 @@ webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', func
 
                 var dataInfo = response.data.data;
 
-                console.log('dataInfo '+ JSON.stringify(dataInfo));
-
                 $scope.emsVersion = dataInfo.releaseNumber;
                 $scope.buildNumber = dataInfo.buildNumber;
-
-                console.log('$scope.emsVersion '+$scope.emsVersion );
-                console.log('$scope.buildNumber '+$scope.buildNumber );
 
                 $http.get("/ems/api/get-inbound-outbound-count").then(function (response) {
 

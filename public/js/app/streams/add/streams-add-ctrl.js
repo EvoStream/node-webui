@@ -172,10 +172,6 @@
                     bandwidths = $scope.mss.bandwidths.split(",");
                 }
 
-                if(bandwidths[0] == ''){
-                    delete parameters.bandwidths;
-                }
-
                 if(bandwidths.length > 1){
                     var ctr = 1;
                     for (var b = 0; b < bandwidths.length; b++) {
@@ -189,6 +185,10 @@
                     }
                 }else{
                     parameters.localStreamNames = $scope.inboundList.selected[0].name;
+                }
+
+                if(bandwidths[0] == ''){
+                    delete parameters.bandwidths;
                 }
 
             }else{
@@ -213,7 +213,8 @@
 
         //Check if directory is windows
         if((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
-            if(parameters.targetFolder.charAt(0) !== '/'){
+
+            if((parameters.targetFolder.charAt(0) !== '/') && (parameters.targetFolder.indexOf("file://") === -1)){
                 parameters.targetFolder = parameters.targetFolder.replace(/\\/g, '/');
                 parameters.targetFolder = '/' + parameters.targetFolder;
                 parameters.targetFolder = 'file://' + parameters.targetFolder;
@@ -221,14 +222,13 @@
         }
 
         if((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
-            if(parameters.pathToFile.charAt(0) !== '/'){
+
+            if((parameters.pathToFile.charAt(0) !== '/') && (parameters.pathToFile.indexOf("file://") === -1)){
                 parameters.pathToFile = parameters.pathToFile.replace(/\\/g, '/');
                 parameters.pathToFile = '/' + parameters.pathToFile;
                 parameters.pathToFile = 'file://' + parameters.pathToFile;
             }
         }
-
-        console.log('parameters '+ JSON.stringify(parameters));
 
         var data = $.param({
             command: command,

@@ -172,10 +172,11 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
 
             });
         }
-
+        
         //Check if directory is windows
         if((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
-            if(parameters.targetFolder.charAt(0) !== '/'){
+
+            if((parameters.targetFolder.charAt(0) !== '/') && (parameters.targetFolder.indexOf("file://") === -1)){
                 parameters.targetFolder = parameters.targetFolder.replace(/\\/g, '/');
                 parameters.targetFolder = '/' + parameters.targetFolder;
                 parameters.targetFolder = 'file://' + parameters.targetFolder;
@@ -183,7 +184,8 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
         }
 
         if((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
-            if(parameters.pathToFile.charAt(0) !== '/'){
+
+            if((parameters.pathToFile.charAt(0) !== '/') && (parameters.pathToFile.indexOf("file://") === -1)){
                 parameters.pathToFile = parameters.pathToFile.replace(/\\/g, '/');
                 parameters.pathToFile = '/' + parameters.pathToFile;
                 parameters.pathToFile = 'file://' + parameters.pathToFile;
