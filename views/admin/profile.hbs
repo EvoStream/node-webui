@@ -1,0 +1,104 @@
+<div id="page-wrapper">
+    <div class="container-fluid" ng-controller="profileCtrl" >
+        <!-- Page Heading -->
+        <div class="row row-header banner4" >
+            <div class="col-lg-12 page-header">
+                <h1>
+                    Profile
+                </h1>
+                <small class="descr-sub-header">This is where you can edit or update your profile.
+                </small>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="evo-form-panel">
+                                    <div class="form-group">
+                                        <label class="evo-push evo-head">Local Account</label><br>
+                                        <form name="profilepassword" method="post" novalidate >
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="sr-only">Email
+                                                    address</label>
+                                                <input type="email" class="form-control" disabled
+                                                       placeholder="Email" ng-model="profileInfo.email">
+                                            </div>
+
+                                            <!-- Change Password-->
+                                            <label class="evo-push evo-head">Change Password</label>
+                                            <div class="form-group">
+                                                <label for="oldpassword" class="sr-only">Enter Old
+                                                    Password</label>
+                                                <input type="password" class="form-control" autocomplete="off" id="poldpassword" name="poldpassword"
+                                                       placeholder="Old Password" ng-model="poldpassword">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="newpassword" class="sr-only">Enter New
+                                                    Password</label>
+                                                <input type="password" id="pnewpassword" name="pnewpassword" class="form-control" autocomplete="off" ng-minlength="5" ng-maxlength="20" required
+                                                       placeholder="New Password" ng-model="pnewpassword">
+                                                <div class="profilePasswordError" ng-show="profilepassword.pnewpassword.$dirty && profilepassword.pnewpassword.$error.minlength" ><span >Password too short. Minimum of 5 characters</span></div>
+                                                <div class="profilePasswordError" ng-show="profilepassword.pnewpassword.$dirty && profilepassword.pnewpassword.$error.required" ><span >Password required.</span></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="confirmpassword" class="sr-only">Confirm New
+                                                    Password</label>
+                                                <input type="password" id="pconfirmpassword" name="pconfirmpassword" class="form-control" autocomplete="off" required
+                                                       ng-minlength="5" ng-maxlength="20" password-check="pnewpassword" placeholder="Confirm New Password" ng-model="pconfirmpassword">
+                                                <div class="profilePasswordError" ng-show="profilepassword.pconfirmpassword.$error.passwordMatch" ><span >Passwords do not match</span></div>
+                                                <div class="profilePasswordError" ng-show="profilepassword.pconfirmpassword.$dirty && profilepassword.pconfirmpassword.$error.required" ><span >Confirm New Password required.</span></div>
+                                            </div>
+                                            <button ng-disabled="profilepassword.$invalid" type="submit" class="btn btn-evo" ng-click="profileChangePassword()" ladda="profilePasswordLoading" >Submit New Password</button>
+                                            <span >
+                                                {[{changePasswordMessage}]}
+                                            </span>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-md-push-1">
+                                <label class="evo-push evo-head">Social Media Accounts</label><br>
+                                <div class="row">
+                                    <div class="well col-sm-12">
+                                        <div class="evo-well">
+                                            <img src="/images/facebook-logo.png"
+                                                 alt="Facebook"/><br>
+                                            <p><strong>Name:</strong> {[{profileInfo.fbname}]}</p>
+                                            <p><strong>Email:</strong> {[{profileInfo.fbemail}]}</p>
+                                            <button type="button" class="btn btn-evo-clear" ng-disabled="fbExists" ng-click="unlinkFbToken()" ladda="unlinkFbLoading" >
+                                                <span>Unlink</span>
+                                            </button>
+                                            <span >
+                                                {[{fbTokenMessage}]}
+                                            </span>
+                                        </div>
+                                        <div class="evo-well">
+                                            <img class="evo-push-google" src="/images/googlelogo_color.png"
+                                                 alt="Google"/><br>
+                                            <p><strong>Name:</strong> {[{profileInfo.googlename}]}</p>
+                                            <p><strong>Email:</strong>{[{profileInfo.googleemail}]}</p>
+                                            <button type="button" class="btn btn-evo-clear" ng-disabled="googleExists" ng-click="unlinkGoogleToken()" ladda="unlinkGoogleLoading" >
+                                                <span>Unlink</span>
+                                            </button>
+                                            <span >
+                                                {[{googleTokenMessage}]}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
+</div>

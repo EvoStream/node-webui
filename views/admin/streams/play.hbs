@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/images/fav-icon.ico" type='image/x-icon' >
+
+    <title>Evostream Web UI Video</title>
+
+    <!-- CSS -->
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-social.css">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/login-style.css">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+
+    <!-- Additional CSS Libraries for Admin Screens -->
+    <link rel="stylesheet" href="/css/sb-admin.css">
+    <link rel="stylesheet" href="/css/acute.select.css">
+    <link rel="stylesheet" href="/css/bootstrap-table.css">
+    <link rel="stylesheet" href="/css/video-player.css">
+    <!-- Date Picker CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
+
+    <!-- CSS Styling Made by Web Designer-->
+    <link rel="stylesheet" href="/css/admin-style.css">
+
+
+    <!-- Javascript -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script type="text/javascript" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+
+    <!-- Additional JS Libraries for Admin Screens -->
+    <!--<script type="text/javascript" src="/js/acute.select.js"></script>-->
+    <!--<script type="text/javascript" src="/js/bootstrap-table.js"></script>-->
+    <!--<script type="text/javascript" src="/js/bootstrap-table-angular.js"></script>-->
+
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+    <!-- Players -->
+    <!--html5 player -->
+    <script src="/js/players/evohtml5player-2.0.13.bundle.js"></script>
+
+    <!--dash-if player-->
+    <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
+
+    <!--bitdash player-->
+    <!--<script src="/js/players/bitdash.min.js"></script>-->
+
+    <script>
+
+        function playWs(useSsl) {
+
+//            var emsIp = '50.56.172.81';
+//            var streamName = '01';
+            var emsIp = document.getElementById('emsIp').value;
+            var streamName = document.getElementById('streamName').value;
+            var opts = {
+                emsIp: emsIp,
+                streamName: streamName,
+                videoTagId: 'videoHtml5Player',
+                debugDivId: 'debugHtml5Player',
+            };
+
+            if (useSsl) {
+
+                opts.useSsl = true;
+                opts.emsPort = 8420;
+            }
+
+            window['player'] = new EvoWsPlayer(opts);
+            window['player'].play();
+        }
+
+        function playWrtc() {
+
+            var ersIp = document.getElementById('ersIp').value;
+            var streamName = document.getElementById('streamName').value;
+            var roomName = document.getElementById('roomName').value;
+            var opts = {
+                ersIp: ersIp,
+                streamName: streamName,
+                roomName: roomName,
+                videoTagId: 'videoHtml5Player',
+                debugDivId: 'debugHtml5Player',
+            };
+
+            window['player'] = new EvoWrtcPlayer(opts);
+            window['player'].play();
+        }
+
+        function stop() {
+            if (window['player']) {
+                window['player'].stop();
+                window['player'] = null;
+            }
+        }
+
+        function showDebugMessages(show, number) {
+            if (show) {
+                document.getElementById('debugHtml5Player').style.display = "block";
+            } else {
+                document.getElementById('debugHtml5Player').style.display = "none";
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+<div class="video">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-push-2">
+                {{#if PULL}}
+                    <div>
+                        <h3 class="evo-h3">EvoStream HTML5 Player</h3>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="localstreamname"><label>localStreamName:&nbsp;</label>{{localStreamName}}</p>
+                                <p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>
+                                <p class="streamLabels"><label>{{aliasDescr}}</label></p>
+
+                                <input type="hidden" id="emsIp" value="{{emsIp}}">
+                                <input type="hidden" id="streamName" value="{{streamName}}">
+                                <button class="btn btn-evo" onclick="playWs(false)">Play</button>
+                                <button class="btn btn-evo-clear" onclick="stop()">Stop</button>
+                                <br><br>
+                                <video id="videoHtml5Player" class="videoElement" controls=""></video>
+                                <!--<br>-->
+                                <p>Show debug messages</p>
+                                <!--<br>-->
+                                <div id="debugHtml5Player" class="debugPane" style="overflow:scroll;" ></div>
+                            </div>
+                            <script>
+                                playWs(false);
+                            </script>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#if HTML5-VOD}}
+                    <div>
+                        <h3 class="evo-h3">EvoStream HTML5 Player</h3>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="localstreamname"><label>localStreamName:&nbsp;</label>{{localStreamName}}</p>
+                                <p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>
+                                <p class="streamLabels"><label>{{aliasDescr}}</label></p>
+
+                                <input type="hidden" id="emsIp" value="{{emsIp}}">
+                                <input type="hidden" id="streamName" value="{{streamName}}">
+                                <button class="btn btn-evo" onclick="playWs(false)">Play</button>
+                                <button class="btn btn-evo-clear" onclick="stop()">Stop</button>
+                                <br><br>
+                                <video id="videoHtml5Player" class="videoElement" controls=""></video>
+                                <!--<br>-->
+                                <p>Show debug messages</p>
+                                <!--<br>-->
+                                <div id="debugHtml5Player" class="debugPane" style="overflow:scroll;" ></div>
+                            </div>
+                            <script>
+                                playWs(false);
+                            </script>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#if VOD}}
+                    <div>
+                        <h3 class="evo-h3">EvoStream playing your VOD Stream</h3>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p>{{emsPlayUrl}}</p>
+                                <p class="streamLabels"><label>{{aliasDescr}}</label></p>
+                                <p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>
+
+                                <video id=vod-video width=720 height=480 class="video-js vjs-default-skin" controls preload="auto">
+                                    <source src="{{playUrl}}" type={{playType}}>
+
+                                </video>
+                                <link href="http://vjs.zencdn.net/5.8.8/video-js.css"  rel="stylesheet">
+                                <!--videojs-->
+                                <!-- If you'd like to support IE8 -->
+                                <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+                                <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+                                <script>
+                                    var player = videojs('vod-video');
+                                    player.play();
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+
+
+                {{#if HLS}}
+                    <div>
+                        <h3 class="evo-h3">EvoStream playing your HLS Stream</h3>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p><label>url:&nbsp;</label>{{playUrl}}</p>
+                                <p class="streamLabels"><label>{{aliasDescr}}</label></p>
+                                <p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>
+
+                                <video id=hls-video width=720 height=480 class="video-js vjs-default-skin" controls>
+                                    <!--<source src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8" type="application/x-mpegURL">-->
+                                    <!--<source src="http://50.56.172.81:3000/media/hls02/playlist.m3u8" type="application/x-mpegURL">-->
+                                    <source src="{{playUrl}}" type="application/x-mpegURL">
+                                </video>
+                                <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+                                <!-- If you'd like to support IE8 -->
+                                <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+                                <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+                                <script src="/js/players/videojs-contrib-hls.js"></script>
+                                <script>
+                                    var player = videojs('hls-video');
+                                    player.play();
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#if DASH}}
+                    <div>
+                        <h3 class="evo-h3">EvoStream playing your DASH Stream</h3>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p><label>url:&nbsp;</label>{{playUrl}}</p>
+                                <p style="font-size: medium; margin-bottom: 10px;"><label>{{aliasDescr}}</label></p>
+                                <p style="font-size: medium; margin-bottom: 10px;"><label style="color: #ff0000">{{aliasDescrError}}</label></p>
+                                <!--<video data-dashjs-player autoplay src="http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd" controls></video>-->
+                                <!--<video data-dashjs-player autoplay src="http://50.56.172.81:3000/media/dash01/manifest.mpd" controls></video>-->
+                                <video id="videoDashPlayer" data-dashjs-player autoplay src="{{playUrl}}" controls></video>
+                                <!--<video id="videoDashPlayer" controls></video>-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div>-->
+                        <!--<h3 class="evo-h3">EvoStream playing your DASH Stream</h3>-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-10">-->
+                                <!--<p><label>url:&nbsp;</label>{{playUrl}}</p>-->
+                                <!--<p class="streamLabels"><label>{{aliasDescr}}</label></p>-->
+                                <!--<p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>-->
+                                <!--&lt;!&ndash;<video data-dashjs-player autoplay src="http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd" controls></video>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<video data-dashjs-player autoplay src="http://50.56.172.81:3000/media/dash01/manifest.mpd" controls></video>&ndash;&gt;-->
+                                <!--<div id="bitDashPlayer"></div>-->
+                                <!--&lt;!&ndash;<video id="videoDashPlayer" controls></video>&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<script type="text/javascript">-->
+                        <!--var conf = {-->
+                            <!--key:       "5b2125410278d33b5cabd5ebeb93ee97",-->
+                            <!--source:    {-->
+                                <!--dash:       "{{playUrl}}"-->
+                            <!--},-->
+                            <!--playback: {-->
+                                <!--autoplay:  true,-->
+                                <!--muted:     false-->
+                            <!--},-->
+                            <!--events: {-->
+                                <!--onError: function(data) {-->
+                                    <!--console.error("bitdash error: " + data.code + ": " + data.message);-->
+                                <!--},-->
+                                <!--onReady: function(obj)  {-->
+                                    <!--console.log(this.getVersion() + ' onReady: ', obj);-->
+                                <!--},-->
+                                <!--onMetadata: function(data) {-->
+                                    <!--//console.log("Metadata wrapper object: ", data);-->
+                                    <!--//console.log("Metadata object: ", data.metadata);-->
+                                    <!--//console.log("Metadata: ", data.metadata.frames[0]);-->
+                                    <!--//console.log("Content of GEOB frame (as Base64): ", window.btoa(data.metadata.frames[0].data));-->
+                                    <!--console.log("Content of GEOB frame (as JSON): ", window.atob(data.metadata.frames[0].data));-->
+                                <!--}-->
+                            <!--}-->
+                        <!--};-->
+
+                        <!--var player = bitdash("bitDashPlayer").setup(conf);-->
+                    <!--</script>-->
+                {{/if}}
+
+
+                {{#if OTHERS}}
+                    <div>
+                        <h3 class="evo-h3">Player not available yet</h3>
+                    </div>
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

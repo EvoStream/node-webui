@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+
+    <!-- Panel Header -->
+    <div class="row banner4">
+        <div class="col-lg-12 page-header-streams" >
+            <h1>Video On Demand</h1>
+            <small class="descr-sub-header"  >The first critical step to getting Video on Demand (VOD) working is to place all of the media files into the appropriate directory.
+                <br>
+                By default that directory is the media folder in the main EMS folder. If a different folder is to be used for the <code>media</code> files, simply modify the config.lua file and change the <code>mediaFolder</code> parameter with the new path.</small>
+        </div>
+    </div>
+
+    <div class=" col-lg-12">
+        <!-- Panel Content -->
+        <div class="panel-body">
+            <form class="ng-pristine ng-valid ng-scope">
+                <div class="col-md-6 ">
+                    <div class="form-group" >
+                        <label class="evo-head">Enter the Media Folder Directory</label>
+                        <!--<input type="text" class="form-control" name="vodMediaFolder" ng-model="vodMediaFolder" style="margin-bottom: 20px;"-->
+                               <!--placeholder="Input Media Folder Directory">-->
+
+                        <ui-select ng-model="mediaFolderList.selected" theme="bootstrap" ng-change="loadFiles()"
+                                   title="Choose a media folder to load" search-enabled="false" ng-disabled="disabled" >
+                            <ui-select-match placeholder="Select the mediafolder...">{[{$select.selected.mediaFolder}]}</ui-select-match>
+                            <ui-select-choices
+                                    repeat="mediaFolder in mediaFolderList | propsFilter: {name: $select.search} ">
+                                <div ng-bind-html="mediaFolder.mediaFolder | highlight: $select.search"></div>
+                                <small style="font-size: smaller; ">
+                                    source: {[{mediaFolder.description}]}
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+
+                        <button type="button" class="btn btn-evo" style="margin-top: 10px;"
+                                ng-disabled=""
+                                ladda="loadFilesLoading" ng-click="loadFiles()">
+                            <span>{[{loadFilesText}]}</span>
+                        </button>
+                        <span class="successMessage" ng-show="seeVodErrorMessage">
+                            <span>There are no files found. Please click the button again.</span>
+                        </span>
+                    </div>
+                </div>
+
+                <hr>
+                <div>
+                    <table ng-if="bsVodTableControl" bs-table-control="bsVodTableControl"></table>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

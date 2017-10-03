@@ -1,0 +1,318 @@
+﻿<div class="panel panel-default">
+
+    <!-- Panel Header -->
+    <div class="row banner4">
+        <div class="col-lg-12 page-header-streams">
+            <h1>Add a Stream</h1>
+            <p>
+                <small class="descr-sub-header">The commands provided in this section will try to create a stream from
+                    an external source.
+                    <br>
+                    Once the stream has been successfully created it is assigned a “local stream name” which can be used
+                    to access the stream from the EMS.
+                </small>
+            </p>
+
+        </div>
+    </div>
+
+    <div class=" col-lg-12">
+        <!-- Panel Content -->
+        <div class="panel-body" >
+            <form name="addStreamForm" class="ng-pristine ng-valid ng-scope " ng-click="removeSuccessInfo()">
+                <fieldset ng-disabled="addStreamLoading">
+                    <div class="col-md-8 ">
+                        <div class="form-group">
+                            <label class="evo-head" style="margin-bottom: 15px;">Choose the Stream Type to Add</label>
+                            <ui-select ng-model="addStreamType.selected" ng-change="refreshInboundList()"
+                                       theme="bootstrap" search-enabled="false" ng-disabled="disabled"
+                                       style="min-width: 300px;" title="Choose a Stream Type to Add">
+                                <ui-select-match placeholder="Select a Stream Type to Add...">{[{$select.selected.text}]}
+                                </ui-select-match>
+                                <ui-select-choices
+                                        repeat="streamType in addStreamType  | propsFilter: {text: $select.search} ">
+                                    <div ng-bind-html="streamType.text | highlight: $select.search"></div>
+                                    <small style="font-size: smaller; ">
+                                        &emsp; - {[{streamType.description}]}
+                                    </small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                        <div ng-if="addStreamType.selected.value == 'inbound'">
+                            <div class="form-group">
+                                <label>URI Stream Source </label>
+                                <input type="text" class="form-control" name="inboundStreamSource"
+                                       ng-focus="inboundStreamSourceFocus=true" ng-blur="inboundStreamSourceFocus=false"
+                                       ng-model="inbound.uri" required
+                                       placeholder="Input URI Stream Source">
+                                <div class="errorMessage"
+                                     ng-show="inboundStreamSourceFocus && addStreamForm.inboundStreamSource.$error.required">
+                                    <span>Enter a valid URI</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Local Stream Name </label>
+                                <input type="text" class="form-control" name="inboundLocalStreamName"
+                                       ng-model="inbound.localStreamName" required
+                                       ng-focus="inboundLocalStreamNameFocus=true"
+                                       ng-blur="inboundLocalStreamNameFocus=false"
+                                       placeholder="Input Local Stream Name">
+                                <div class="errorMessage"
+                                     ng-show="inboundLocalStreamNameFocus && addStreamForm.inboundLocalStreamName.$error.required">
+                                    <span>Enter a LocalStreamName</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="addStreamType.selected.value == 'hls'">
+                            <div class="form-group">
+                                <label class="bottom-spacing">Choose the Stream Source you want to create for
+                                    HLS</label>
+                                <ui-select ng-model="inboundList.selected" multiple theme="bootstrap"
+                                           title="Choose a stream to add" search-enabled="true">
+                                    <ui-select-match placeholder="Select a stream...">{[{$item.name}]}</ui-select-match>
+                                    <ui-select-choices
+                                            repeat="inbound in inboundList | propsFilter: {name: $select.search} ">
+                                        <div ng-bind-html="inbound.name | highlight: $select.search"></div>
+                                        <small>
+                                            source: {[{inbound.sourceUri}]}
+                                        </small>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Folder</label>
+                                <input type="text" class="form-control" name="hlsTargetFolder" ng-model="hls.targetFolder"
+                                       required ng-focus="hlsTargetFolderFocus=true" ng-blur="hlsTargetFolderFocus=false"
+                                       placeholder="Input Target Folder">
+                                <div class="errorMessage"
+                                     ng-show="hlsTargetFolderFocus && addStreamForm.hlsTargetFolder.$error.required"><span>Enter a valid Target Folder</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Group Name</label>
+                                <input type="text" class="form-control" name="hlsGroupName" ng-model="hls.groupName"
+                                       required ng-focus="hlsGroupNameFocus=true" ng-blur="hlsGroupNameFocus=false"
+                                       placeholder="Input Group Name">
+                                <div class="errorMessage"
+                                     ng-show="hlsGroupNameFocus && addStreamForm.hlsGroupName.$error.required"><span>Enter a Group Name</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Chunk Length</label>
+                                <input type="number" class="form-control" name="hlsChunkLength" ng-model="hls.chunkLength"
+                                       ng-focus="hlsChunkLengthFocus=true" ng-blur="hlsChunkLengthFocus=false"
+                                       ng-pattern="onlyNumbers"
+                                       placeholder="Input Chunk Length">
+                                <div class="errorMessage"
+                                     ng-show="hlsChunkLengthFocus && addStreamForm.hlsChunkLength.$invalid"><span>Enter a valid Chunk Length</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="bottom-spacing">Bandwidths</label>&nbsp;<p style="display: inline;"><small> (optional)</small></p>
+                                <input type="text" class="form-control" name="hlsBandwidths" ng-model="hls.bandwidths"
+                                       ng-focus="hlsBandwidthsFocus=true" ng-blur="hlsBandwidthsFocus=false"
+                                       placeholder="Input Bandwidths e.g. 10000000,20000000">
+                                <div class="errorMessage"
+                                     ng-show="hlsBandwidthsFocus && addStreamForm.hlsBandwidths.$error.required"><span>Enter valid Bandwidths</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="addStreamType.selected.value == 'hds'">
+                            <div class="form-group">
+                                <label class="bottom-spacing">Choose the Stream Source you want to create for
+                                    HDS</label>
+                                <ui-select ng-model="inboundList.selected" multiple theme="bootstrap"
+                                           title="Choose a stream to add" search-enabled="true">
+                                    <ui-select-match placeholder="Select a stream...">{[{$item.name}]}</ui-select-match>
+                                    <ui-select-choices
+                                            repeat="inbound in inboundList | propsFilter: {name: $select.search} ">
+                                        <div ng-bind-html="inbound.name | highlight: $select.search"></div>
+                                        <small>
+                                            source: {[{inbound.sourceUri}]}
+                                        </small>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Folder</label>
+                                <input type="text" class="form-control" name="hdsTargetFolder" ng-model="hds.targetFolder"
+                                       required ng-focus="hdsTargetFolderFocus=true" ng-blur="hdsTargetFolderFocus=false"
+                                       placeholder="Input Target Folder">
+                                <div class="errorMessage"
+                                     ng-show="hdsTargetFolderFocus && addStreamForm.hdsTargetFolder.$error.required"><span>Enter a valid Target Folder</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Group Name</label>
+                                <input type="text" class="form-control" name="hdsGroupName" ng-model="hds.groupName"
+                                       required ng-focus="hdsGroupNameFocus=true" ng-blur="hdsGroupNameFocus=false"
+                                       placeholder="Input Group Name">
+                                <div class="errorMessage"
+                                     ng-show="hdsGroupNameFocus && addStreamForm.hdsGroupName.$error.required"><span>Enter a Group Name</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Chunk Length</label>
+                                <input type="number" class="form-control" name="hdsChunkLength" ng-model="hds.chunkLength"
+                                       ng-focus="hdsChunkLengthFocus=true" ng-blur="hdsChunkLengthFocus=false"
+                                       ng-pattern="onlyNumbers"
+                                       placeholder="Input Chunk Length">
+                                <div class="errorMessage"
+                                     ng-show="hdsChunkLengthFocus && addStreamForm.hdsChunkLength.$invalid"><span>Enter a valid Chunk Length</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="bottom-spacing">Bandwidths</label>&nbsp;<p style="display: inline;"><small> (optional)</small></p>
+                                <input type="text" class="form-control" name="hdsBandwidths" ng-model="hds.bandwidths"
+                                       ng-focus="hdsBandwidthsFocus=true" ng-blur="hdsBandwidthsFocus=false"
+                                       placeholder="Input Bandwidths e.g. 10000000,20000000">
+                                <div class="errorMessage"
+                                     ng-show="hdsBandwidthsFocus && addStreamForm.hdsBandwidths.$error.required"><span>Enter valid Bandwidths</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="addStreamType.selected.value == 'dash'">
+                            <div class="form-group">
+                                <label class="bottom-spacing">Choose the Stream Source you want to create for
+                                    DASH</label>
+                                <ui-select ng-model="inboundList.selected" multiple theme="bootstrap"
+                                           title="Choose a stream to add" search-enabled="true">
+                                    <ui-select-match placeholder="Select a stream...">{[{$item.name}]}</ui-select-match>
+                                    <ui-select-choices
+                                            repeat="inbound in inboundList | propsFilter: {name: $select.search} ">
+                                        <div ng-bind-html="inbound.name | highlight: $select.search"></div>
+                                        <small>
+                                            source: {[{inbound.sourceUri}]}
+                                        </small>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Target Folder</label>
+                                <input type="text" class="form-control" name="dashTargetFolder" ng-model="dash.targetFolder"
+                                       required ng-focus="dashTargetFolderFocus=true" ng-blur="dashTargetFolderFocus=false"
+                                       placeholder="Input Target Folder">
+                                <div class="errorMessage"
+                                     ng-show="dashTargetFolderFocus && addStreamForm.dashTargetFolder.$error.required">
+                                    <span>Enter a valid Target Folder</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Group Name</label>
+                                <input type="text" class="form-control" name="dashGroupName" ng-model="dash.groupName"
+                                       required ng-focus="dashGroupNameFocus=true" ng-blur="dashGroupNameFocus=false"
+                                       placeholder="Input Group Name">
+                                <div class="errorMessage"
+                                     ng-show="dashGroupNameFocus && addStreamForm.dashGroupName.$error.required"><span>Enter a Group Name</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Chunk Length</label>
+                                <input type="number" class="form-control" name="dashChunkLength" ng-model="dash.chunkLength"
+                                       ng-focus="dashChunkLengthFocus=true" ng-blur="dashChunkLengthFocus=false"
+                                       ng-pattern="onlyNumbers"
+                                       placeholder="Input Chunk Length">
+                                <div class="errorMessage"
+                                     ng-show="dashChunkLengthFocus && addStreamForm.dashChunkLength.$invalid"><span>Enter a valid Chunk Length</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="bottom-spacing">Bandwidths</label>&nbsp;<p style="display: inline;"><small> (optional)</small></p>
+                                <input type="text" class="form-control" name="dashBandwidths" ng-model="dash.bandwidths"
+                                       ng-focus="dashBandwidthsFocus=true" ng-blur="dashBandwidthsFocus=false"
+                                       placeholder="Input Bandwidths e.g. 10000000,20000000">
+                                <div class="errorMessage"
+                                     ng-show="dashBandwidthsFocus && addStreamForm.dashBandwidths.$error.required"><span>Enter valid Bandwidths</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="addStreamType.selected.value == 'mss'">
+                            <div class="form-group">
+                                <label class="bottom-spacing">Choose the Stream Source you want to create for
+                                    MSS</label>
+                                <ui-select ng-model="inboundList.selected" multiple theme="bootstrap"
+                                           title="Choose a stream to add" search-enabled="true">
+                                    <ui-select-match placeholder="Select a stream...">{[{$item.name}]}</ui-select-match>
+                                    <ui-select-choices
+                                            repeat="inbound in inboundList | propsFilter: {name: $select.search} ">
+                                        <div ng-bind-html="inbound.name | highlight: $select.search"></div>
+                                        <small>
+                                            source: {[{inbound.sourceUri}]}
+                                        </small>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Target Folder</label>
+                                <input type="text" class="form-control" name="mssTargetFolder" ng-model="mss.targetFolder"
+                                       required ng-focus="mssTargetFolderFocus=true" ng-blur="mssTargetFolderFocus=false"
+                                       placeholder="Input Target Folder">
+                                <div class="errorMessage"
+                                     ng-show="mssTargetFolderFocus && addStreamForm.mssTargetFolder.$error.required"><span>Enter a valid Target Folder</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Group Name</label>
+                                <input type="text" class="form-control" name="mssGroupName" ng-model="mss.groupName"
+                                       required ng-focus="mssGroupNameFocus=true" ng-blur="mssGroupNameFocus=false"
+                                       placeholder="Input Group Name">
+                                <div class="errorMessage"
+                                     ng-show="mssGroupNameFocus && addStreamForm.mssGroupName.$error.required"><span>Enter a Group Name</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Chunk Length</label>
+                                <input type="number" class="form-control" name="mssChunkLength" ng-model="mss.chunkLength"
+                                       ng-focus="mssChunkLengthFocus=true" ng-blur="mssChunkLengthFocus=false"
+                                       ng-pattern="onlyNumbers"
+                                       placeholder="Input Chunk Length">
+                                <div class="errorMessage"
+                                     ng-show="mssChunkLengthFocus && addStreamForm.mssChunkLength.$invalid"><span>Enter a valid Chunk Length</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="bottom-spacing">Bandwidths</label>&nbsp;<p style="display: inline;"><small> (optional)</small></p>
+                                <input type="text" class="form-control" name="mssBandwidths" ng-model="mss.bandwidths"
+                                       ng-focus="mssBandwidthsFocus=true" ng-blur="mssBandwidthsFocus=false"
+                                       placeholder="Input Bandwidths e.g. 10000000,20000000">
+                                <div class="errorMessage"
+                                     ng-show="mssBandwidthsFocus && addStreamForm.mssBandwidths.$error.required"><span>Enter valid Bandwidths</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="btn btn-evo"
+                                    ng-disabled="addStreamForm.$invalid || streamsNotAvailable"
+                                    ladda="addStreamLoading" ng-click="addStream()">
+                                <!--<span>Add Stream </span>-->
+                                <span>{[{addButtonText}]}</span>
+                            </button>
+
+                            <button type="button" class="btn btn-evo" ng-click="setDefaultValuesAddStreamForm()">
+                                <span>Clear</span>
+                            </button>
+
+                            <a class="btn btn-evo" role="button" ng-show="seeAddedStream" target="_blank" ng-show="seeAddedStream"
+                               href="{[{seeAddedStreamType}]}">
+                                <span>View Stream</span></a>
+
+                        <span class="successMessage" ng-show="seeAddedStream">
+                            <span>Stream successfully added.</span>
+                        </span>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+</div>

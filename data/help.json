@@ -1,0 +1,1918 @@
+[
+  {
+    "command": "pullStream",
+    "deprecated": false,
+    "description": "Will try to pull in a stream from an external source.  Once a stream has been successfully pulled it is assigned a local stream name which can be used to access the stream from the EvoStream Media Server",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The URI of the external stream. Can be RTMP, RTSP, RTP or unicast/multicast (d)mpegts",
+        "mandatory": true,
+        "name": "uri"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If keepAlive is set to 1, the server will attempt to reestablish connection with a stream source after a connection has been lost. The reconnect will be attempted once every second.",
+        "mandatory": true,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": "random stream name",
+        "description": "If provided, the stream will be given this name. Otherwise, a fall-back technique is used to determine the stream name (based on the URI)",
+        "mandatory": true,
+        "name": "localStreamName"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If 1 and if the stream is RTSP, a TCP connection will be forced.  Otherwise the transport mechanism will be negotiated (UDP or TCP).",
+        "mandatory": false,
+        "name": "forceTcp"
+      },
+      {
+        "defaultValue": "EvoStream Media Server (www.evostream.com)",
+        "description": "When specified, that value will be used as the user agent string. It is meaningful only for RTMP",
+        "mandatory": false,
+        "name": "emulateUserAgent"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the originating swf URL in the initial RTMP connect invoke",
+        "mandatory": false,
+        "name": "swfUrl"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the originating web page address in the initial RTMP connect invoke.",
+        "mandatory": false,
+        "name": "pageUrl"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the TC URL in the initial RTMP connect invoke",
+        "mandatory": false,
+        "name": "tcUrl"
+      },
+      {
+        "defaultValue": "operating system supplied",
+        "description": "Sets the IP_TTL (time to live) option on the socket",
+        "mandatory": false,
+        "name": "ttl"
+      },
+      {
+        "defaultValue": "operating system supplied",
+        "description": "Sets the IP_TOS (Type of Service) option on the socket",
+        "mandatory": false,
+        "name": "tos"
+      },
+      {
+        "defaultValue": 10,
+        "description": "How much time (in seconds) should the server wait for RTCP packets before declaring the RTSP stream as a RTCP-less stream",
+        "mandatory": false,
+        "name": "rtcpDetectionInterval"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If 1 and if the stream is RTP, it indicates that the currently pulled stream is an audio source. Otherwise the pulled source is assumed as a video source",
+        "mandatory": false,
+        "name": "isAudio"
+      },
+      {
+        "defaultValue": "hex format without '0x' or 'h'.",
+        "description": "The audio codec setup of this RTP stream if it is audio.",
+        "mandatory": false,
+        "name": "audioCodecBytes"
+      },
+      {
+        "defaultValue": "base 64 encoded bytes",
+        "description": "The video SPS bytes of this RTP stream if it is video.",
+        "mandatory": false,
+        "name": "spsBytes"
+      },
+      {
+        "defaultValue": "base 64 encoded bytes",
+        "description": "The video PPS bytes of this RTP stream if it is video.",
+        "mandatory": false,
+        "name": "ppsBytes"
+      },
+      {
+        "defaultValue": "",
+        "description": "The source IP from source-specific-multicast. Only usable when doing UDP based pull",
+        "mandatory": false,
+        "name": "ssmIp"
+      },
+      {
+        "defaultValue": "",
+        "description": "The ip:port for the http proxy to be used. Only used for rtsp:// pulls. The format is in the form of ip[:port]. The special value of \"self\" (case insensitive) can be used to force the RTSP connection to be HTTP tunneled but without using any proxy",
+        "mandatory": false,
+        "name": "httpProxy"
+      },
+      {
+        "defaultValue": -2,
+        "description": "A value from which the playback should start expressed in seconds. There are 2 special values: -2 and -1. For more information, please read about start/len parameters here: http://livedocs.adobe.com/flashmediaserver/3.0/hpdocs/help.html?content=00000185.html",
+        "mandatory": false,
+        "name": "rangeStart"
+      },
+      {
+        "defaultValue": -1,
+        "description": "The length in seconds for the playback. -1 is a special value. For more information, please read about start/len parameters here: http://livedocs.adobe.com/flashmediaserver/3.0/hpdocs/help.html?content=00000185.html",
+        "mandatory": false,
+        "name": "rangeEnd"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If sendRenewStream is 1, the server will send RenewStream via SET_PARAMETER when a new client connects. Only valid for RTSP URIs",
+        "mandatory": false,
+        "name": "sendRenewStream"
+      }
+    ]
+  },
+  {
+    "command": "pushStream",
+    "deprecated": false,
+    "description": "Will try to push a local stream to an external destination. The pushed stream can use the RTMP, RTSP and mpegts unicast/multicast protocols.",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The URI of the destination point (without stream name).",
+        "mandatory": true,
+        "name": "uri"
+      },
+      {
+        "defaultValue": null,
+        "description": "The name of the local stream which needs to be pushed on the target URI",
+        "mandatory": true,
+        "name": "localStreamName"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If keepAlive is set to 1, the server will attempt to reestablish connection with a stream source after a connection has been lost. The reconnect will be attempted once every second.",
+        "mandatory": false,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": "If missing, the stream name will be the same as the localStreamName",
+        "description": "The name of the stream at destination",
+        "mandatory": true,
+        "name": "targetStreamName"
+      },
+      {
+        "defaultValue": "live",
+        "description": "It can be one of following: live, record, append. It is meaningful only for RTMP",
+        "mandatory": false,
+        "name": "targetStreamType"
+      },
+      {
+        "defaultValue": "EvoStream Media Server (www.evostream.com)",
+        "description": "When specified, that value will be used as the user agent string. It is meaningful only for RTMP",
+        "mandatory": false,
+        "name": "emulateUserAgent"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the originating swf URL in the initial RTMP connect invoke",
+        "mandatory": false,
+        "name": "swfUrl"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the originating web page address in the initial RTMP connect invoke.",
+        "mandatory": false,
+        "name": "pageUrl"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the TC URL in the initial RTMP connect invoke",
+        "mandatory": false,
+        "name": "tcUrl"
+      },
+      {
+        "defaultValue": "operating system supplied",
+        "description": "Sets the IP_TTL (Time To Live) option on the socket",
+        "mandatory": false,
+        "name": "ttl"
+      },
+      {
+        "defaultValue": "operating system supplied",
+        "description": "Sets the IP_TOS (Type of Service) option on the socket",
+        "mandatory": false,
+        "name": "tos"
+      },
+      {
+        "defaultValue": 0,
+        "description": "Forces the timestamps to be absolute when doing RTMP push",
+        "mandatory": false,
+        "name": "rtmpAbsoluteTimestamps"
+      },
+      {
+        "defaultValue": "",
+        "description": "The ip:port for the http proxy to be used. Only used for rtsp:// pushes. The format is in the form of ip[:port]. The special value of \"self\" (case insensitive) can be used to force the RTSP connection to be HTTP tunneled but without using any proxy",
+        "mandatory": false,
+        "name": "httpProxy"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If useSourcePts set to 1, the outbound stream will use the PTS of the source stream. Otherwise, the pushed stream will start at 0",
+        "mandatory": false,
+        "name": "useSourcePts"
+      }
+    ]
+  },
+  {
+    "command": "createHLSStream",
+    "deprecated": false,
+    "description": "Create an HTTP Live Stream (HLS) out of an existing H.264/AAC stream.  HLS is used to stream live feeds to iOS devices such as iPhones and iPads.  ",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The stream(s) that will be used as the input. This is a comma-delimited list of active stream names (local stream names).",
+        "mandatory": true,
+        "name": "localStreamNames"
+      },
+      {
+        "defaultValue": null,
+        "description": "The folder where all the *.ts/*.m3u8 files will be stored.  This folder must be accessible by the HLS clients.  It is usually in the web-root of the server.",
+        "mandatory": true,
+        "name": "targetFolder"
+      },
+      {
+        "defaultValue": "",
+        "description": "The corresponding bandwidths for each stream listed in localStreamNames. Again, this can be a comma-delimited list",
+        "mandatory": false,
+        "name": "bandwidths"
+      },
+      {
+        "defaultValue": "hls_group_xxxx (random)",
+        "description": "The name assigned to the HLS stream or group. If the localStreamNames parameter contains only one entry and groupName is not specified, groupName will have a random value",
+        "mandatory": true,
+        "name": "groupName"
+      },
+      {
+        "defaultValue": "appending",
+        "description": "Either `appending` or `rolling`",
+        "mandatory": false,
+        "name": "playlistType"
+      },
+      {
+        "defaultValue": 10,
+        "description": "The length (number of elements) of the playlist. Used only when playlistType == `rolling`. Ignored otherwise",
+        "mandatory": false,
+        "name": "playlistLength"
+      },
+      {
+        "defaultValue": "playlist.m3u8",
+        "description": "The *.m3u8 file name",
+        "mandatory": false,
+        "name": "playlistName"
+      },
+      {
+        "defaultValue": 10,
+        "description": "The length (in seconds) of each playlist element (*.ts file)",
+        "mandatory": false,
+        "name": "chunkLength"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, chunking is performed ONLY on IDR. Otherwise, chunking is performed whenever chunk length is achieved",
+        "mandatory": false,
+        "name": "chunkOnIDR"
+      },
+      {
+        "defaultValue": "segment",
+        "description": "The base name used to generate the *.ts chunks",
+        "mandatory": false,
+        "name": "chunkBaseName"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, the EMS will attempt to reconnect to the stream source if the connection is severed.",
+        "mandatory": false,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, it will force overwrite of destination files.",
+        "mandatory": false,
+        "name": "overwriteDestination"
+      },
+      {
+        "defaultValue": "If not specified, it will have the value of playlistLength",
+        "description": "How many old files are kept besides the ones present in the current version of the playlist. Only applicable for rolling playlists",
+        "mandatory": false,
+        "name": "staleRetentionCount"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, a master playlist will be created",
+        "mandatory": false,
+        "name": "createMasterPlaylist"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If 1 (true), all *.ts and *.m3u8 files in the target folder will be removed before HLS creation is started.",
+        "mandatory": false,
+        "name": "cleanupDestination"
+      },
+      {
+        "defaultValue": 5,
+        "description": "The maximum number of files encrypted using the same key",
+        "mandatory": false,
+        "name": "AESKeyCount"
+      },
+      {
+        "defaultValue": 0,
+        "description": "The maximum chunk length (in seconds) of each playlist element if chunkOnIDR is set to true",
+        "mandatory": false,
+        "name": "maxChunkLength"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If true, the EMS will only stream audio.",
+        "mandatory": false,
+        "name": "audioOnly"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If 1 (true), hls will resume in appending segments to previously created child playlist even in cases of EMS shutdown or cut off stream source.",
+        "mandatory": false,
+        "name": "hlsResume"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If 1 (true), corresponding hls files to a stream will be deleted if the said stream is removed/shut down/disconnected.",
+        "mandatory": false,
+        "name": "cleanupOnClose"
+      },
+      {
+        "defaultValue": 0,
+        "description": "Set this parameter to 1 to use the EXT-X-BYTERANGE feature of HLS (version 4 and up)",
+        "mandatory": false,
+        "name": "useByteRange"
+      },
+      {
+        "defaultValue": "usage is in combination with useByteRange=1",
+        "description": "When using useByteRange=1, this parameter needs to be set too. This will be the size of file before chunking it to another file, this replace the chunkLength in case of EXT-X-BYTERANGE, since chunkLength will be the byterange chunk",
+        "mandatory": false,
+        "name": "fileLength"
+      },
+      {
+        "defaultValue": 0,
+        "description": "A parameter valid only for HLS v.6 onwards. This will indicate the start offset time (in seconds) for the playback of the playlist.",
+        "mandatory": false,
+        "name": "startOffset"
+      },
+      {
+        "defaultValue": "none",
+        "description": "The DRM type used for encryption: none (default), evo, verimatrix, sample-aes(HLS version 5 and up). Replaces encryptStream parameter.",
+        "mandatory": false,
+        "name": "drmType"
+      }
+    ]
+  },
+  {
+    "command": "createDASHStream",
+    "deprecated": false,
+    "description": "Create an MPEG-DASH Stream (DASH) out of an existing H.264/AAC stream. DASH was developed by the Moving Picture Experts Group (MPEG) to standardize HTTP adaptive bitrate streaming",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The stream(s) that will be used as the input. This is a comma-delimited list of active stream names (local stream names).",
+        "mandatory": true,
+        "name": "localStreamNames"
+      },
+      {
+        "defaultValue": null,
+        "description": "The folder where the manifest and other DASH subfolders/files will be stored. This folder must be accessible by the DASH clients. It is usually in the web-root of the server.",
+        "mandatory": true,
+        "name": "targetFolder"
+      },
+      {
+        "defaultValue": "",
+        "description": "The corresponding bandwidths for each stream listed in localStreamNames. Again, this can be a comma-delimited list",
+        "mandatory": false,
+        "name": "bandwidths"
+      },
+      {
+        "defaultValue": "dash_group_xxxx (random)",
+        "description": "The name assigned to the DASH stream or group. If the localStreamNames parameter contains only one entry and groupName is not specified, groupName will have a random value",
+        "mandatory": true,
+        "name": "groupName"
+      },
+      {
+        "defaultValue": "appending",
+        "description": "Either `appending` or `rolling`",
+        "mandatory": false,
+        "name": "playlistType"
+      },
+      {
+        "defaultValue": 10,
+        "description": "The number of fragments before the server starts to overwrite the older fragments. Used only when playlistType is 'rolling'. Ignored otherwise.",
+        "mandatory": false,
+        "name": "playlistLength"
+      },
+      {
+        "defaultValue": "defaults to 'manifest.mpd'",
+        "description": "The manifest file name",
+        "mandatory": false,
+        "name": "manifestName"
+      },
+      {
+        "defaultValue": 10,
+        "description": "The length (in seconds) of fragments to be made.",
+        "mandatory": false,
+        "name": "chunkLength"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, chunking is performed ONLY on IDR. Otherwise, chunking is performed whenever chunk length is achieved",
+        "mandatory": false,
+        "name": "chunkOnIDR"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, the EMS will attempt to reconnect to the stream source if the connection is severed.",
+        "mandatory": false,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, it will allow overwrite of destination files.",
+        "mandatory": false,
+        "name": "overwriteDestination"
+      },
+      {
+        "defaultValue": "If not specified, it will have the value of playlistLength",
+        "description": "How many old files are kept besides the ones present in the current version of the playlist. Only applicable for rolling playlists",
+        "mandatory": false,
+        "name": "staleRetentionCount"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If 1 (true), all manifest and fragment files in the target folder will be removed before DASH creation is started.",
+        "mandatory": false,
+        "name": "cleanupDestination"
+      },
+      {
+        "defaultValue": 1,
+        "description": "Set this parameter to 1 (default) for a live dash, otherwise set it to 0 for a VOD",
+        "mandatory": false,
+        "name": "dynamicProfile"
+      }
+    ]
+  },
+  {
+    "command": "createHDSStream",
+    "deprecated": false,
+    "description": "Create an HTTP Dynamic Stream (HDS) out of an existing H.264/AAC stream. HDS is a new technology developed by Adobe in response to HLS from Apple",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The stream(s) that will be used as the input. This is a comma-delimited list of active stream names (local stream names).",
+        "mandatory": true,
+        "name": "localStreamNames"
+      },
+      {
+        "defaultValue": null,
+        "description": "The folder where all the manifest (*.f4m) and fragment (f4v*) files will be stored. This folder must be accessible by the HDS clients. It is usually in the web-root of the server.",
+        "mandatory": true,
+        "name": "targetFolder"
+      },
+      {
+        "defaultValue": "",
+        "description": "The corresponding bandwidths for each stream listed in localStreamNames. Again, this can be a comma-delimited list",
+        "mandatory": false,
+        "name": "bandwidths"
+      },
+      {
+        "defaultValue": "hds_group_xxxx (random)",
+        "description": "The name assigned to the HDS stream or group. If the localStreamNames parameter contains only one entry and groupName is not specified, groupName will have a random value",
+        "mandatory": true,
+        "name": "groupName"
+      },
+      {
+        "defaultValue": "appending",
+        "description": "Either `appending` or `rolling`",
+        "mandatory": false,
+        "name": "playlistType"
+      },
+      {
+        "defaultValue": 10,
+        "description": "The number of fragments before the server starts to overwrite the older fragments. Used only when playlistType is 'rolling'. Ignored otherwise.",
+        "mandatory": false,
+        "name": "playlistLength"
+      },
+      {
+        "defaultValue": "defaults to stream name",
+        "description": "The manifest file name",
+        "mandatory": false,
+        "name": "manifestName"
+      },
+      {
+        "defaultValue": 10,
+        "description": "The length (in seconds) of fragments to be made.",
+        "mandatory": false,
+        "name": "chunkLength"
+      },
+      {
+        "defaultValue": "f4v",
+        "description": "The base name used to generate the fragments. The default value follows this format: f4vSeg1-FragXXX.",
+        "mandatory": false,
+        "name": "chunkBaseName"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, chunking is performed ONLY on IDR. Otherwise, chunking is performed whenever chunk length is achieved",
+        "mandatory": false,
+        "name": "chunkOnIDR"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, the EMS will attempt to reconnect to the stream source if the connection is severed.",
+        "mandatory": false,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, it will allow overwrite of destination files.",
+        "mandatory": false,
+        "name": "overwriteDestination"
+      },
+      {
+        "defaultValue": "If not specified, it will have the value of playlistLength",
+        "description": "How many old files are kept besides the ones present in the current version of the playlist. Only applicable for rolling playlists",
+        "mandatory": false,
+        "name": "staleRetentionCount"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, a master playlist will be created",
+        "mandatory": false,
+        "name": "createMasterPlaylist"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If 1 (true), all manifest and fragment files in the target folder will be removed before HDS creation is started.",
+        "mandatory": false,
+        "name": "cleanupDestination"
+      }
+    ]
+  },
+  {
+    "command": "createMSSStream",
+    "deprecated": false,
+    "description": "Create a Microsoft Smooth Stream (MSS) out of an existing H.264/AAC stream. Smooth Streaming was developed by Microsoft to compete with other adaptive streaming technologies",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The stream(s) that will be used as the input. This is a comma-delimited list of active stream names (local stream names).",
+        "mandatory": true,
+        "name": "localStreamNames"
+      },
+      {
+        "defaultValue": null,
+        "description": "The folder where the manifest and other MSS subfolders/files will be stored. This folder must be accessible by the MSS clients. It is usually in the web-root of the server.",
+        "mandatory": true,
+        "name": "targetFolder"
+      },
+      {
+        "defaultValue": "",
+        "description": "The corresponding bandwidths for each stream listed in localStreamNames. Again, this can be a comma-delimited list",
+        "mandatory": false,
+        "name": "bandwidths"
+      },
+      {
+        "defaultValue": "mss_group_xxxx (random)",
+        "description": "The name assigned to the MSS stream or group. If the localStreamNames parameter contains only one entry and groupName is not specified, groupName will have a random value",
+        "mandatory": true,
+        "name": "groupName"
+      },
+      {
+        "defaultValue": "appending",
+        "description": "Either `appending` or `rolling`",
+        "mandatory": false,
+        "name": "playlistType"
+      },
+      {
+        "defaultValue": 10,
+        "description": "The number of fragments before the server starts to overwrite the older fragments. Used only when playlistType is 'rolling'. Ignored otherwise.",
+        "mandatory": false,
+        "name": "playlistLength"
+      },
+      {
+        "defaultValue": "defaults to 'manifest.ismc'",
+        "description": "The manifest file name",
+        "mandatory": false,
+        "name": "manifestName"
+      },
+      {
+        "defaultValue": 10,
+        "description": "The length (in seconds) of fragments to be made.",
+        "mandatory": false,
+        "name": "chunkLength"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, chunking is performed ONLY on IDR. Otherwise, chunking is performed whenever chunk length is achieved",
+        "mandatory": false,
+        "name": "chunkOnIDR"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, the EMS will attempt to reconnect to the stream source if the connection is severed.",
+        "mandatory": false,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true, it will allow overwrite of destination files.",
+        "mandatory": false,
+        "name": "overwriteDestination"
+      },
+      {
+        "defaultValue": "If not specified, it will have the value of playlistLength",
+        "description": "How many old files are kept besides the ones present in the current version of the playlist. Only applicable for rolling playlists",
+        "mandatory": false,
+        "name": "staleRetentionCount"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If 1 (true), all manifest and fragment files in the target folder will be removed before MSS creation is started.",
+        "mandatory": false,
+        "name": "cleanupDestination"
+      },
+      {
+        "defaultValue": "ismc",
+        "description": "Either `ismc` for serving content to client or `isml` for serving content to smooth server",
+        "mandatory": false,
+        "name": "ismType"
+      },
+      {
+        "defaultValue": "",
+        "description": "This parameter is needed when ismType=`isml`, it is the REST URI where the mss contents will be ingested",
+        "mandatory": false,
+        "name": "publishingPoint"
+      },
+      {
+        "defaultValue": "single",
+        "description": "Either `single` for a non looping ingest or `loop` for looping an ingest",
+        "mandatory": false,
+        "name": "ingestMode"
+      },
+      {
+        "defaultValue": 0,
+        "description": "The bitrates of the audio in bytes/second. When this parameter is supplied it will override the values in the bandwidths parameter for audio tracks",
+        "mandatory": false,
+        "name": "audioBitrates"
+      },
+      {
+        "defaultValue": 0,
+        "description": "The bitrates of the video in bytes/second. When this parameter is supplied it will override the values in the bandwidths parameter for video tracks",
+        "mandatory": false,
+        "name": "videoBitrates"
+      },
+      {
+        "defaultValue": 1,
+        "description": "Set this parameter to 1(default value) to create a live MSS stream, otherwise set to 0 for VOD",
+        "mandatory": false,
+        "name": "isLive"
+      }
+    ]
+  },
+  {
+    "command": "record",
+    "deprecated": false,
+    "description": "The record command shall allow users to record a stream that does or does not yet exist.  When a new stream is brought into the server, it shall be checked against the streams to record and will be recorded if it is on that list.  Records an RTMP/RTSP/TS streams.",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The stream that will be used as the input for recording.",
+        "mandatory": true,
+        "name": "localStreamName"
+      },
+      {
+        "defaultValue": null,
+        "description": "Specify path for file to write",
+        "mandatory": true,
+        "name": "pathToFile"
+      },
+      {
+        "defaultValue": "mp4",
+        "description": "Optional. The type of file that the recorded stream will have.",
+        "mandatory": true,
+        "name": "type"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If false, when a file already exists for the stream name, a new file will be created with the next appropriate number appended. If 1 (true), files with the same name will be overwritten.",
+        "mandatory": false,
+        "name": "overwrite"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If keepAlive is set to 1, the server will restart recording every time the stream becomes available again",
+        "mandatory": false,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": 0,
+        "description": "The length (in seconds) of record file chunks. If 0, only one file of any length is recorded.",
+        "mandatory": false,
+        "name": "chunkLength"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If true (1), recording is made compatible with Windows Quicktime.",
+        "mandatory": false,
+        "name": "winQtCompat"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If true (1), recording starts on IDR frames. Otherwise, recording starts on any frame.",
+        "mandatory": false,
+        "name": "waitForIDR"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If true (1), this will make the recording have a special naming scheme for the files(chunks) and folders that will be generated. See documentation for the specifics of this naming scheme.",
+        "mandatory": false,
+        "name": "dateFolderStructure"
+      }
+    ]
+  },
+  {
+    "command": "transcode",
+    "deprecated": false,
+    "description": "Transcodes a source to one or more destinations.",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "Can be a URI or a local stream name from EMS.",
+        "mandatory": true,
+        "name": "source"
+      },
+      {
+        "defaultValue": null,
+        "description": "The target URI(s) or stream name(s) of the transcoded stream. If only a name is given, it will be pushed back to EMS. Comma-delimited if multiple destinations.",
+        "mandatory": true,
+        "name": "destinations"
+      },
+      {
+        "defaultValue": "transcoded_xxxx (timestamp)",
+        "description": "The name of the stream(s) at destination(s). If not specified, name will have a time stamped value.",
+        "mandatory": false,
+        "name": "targetStreamNames"
+      },
+      {
+        "defaultValue": "transcoded_group_xxxx (random)",
+        "description": "The group name assigned to this process. If not specified, groupName will have a random value.",
+        "mandatory": false,
+        "name": "groupName"
+      },
+      {
+        "defaultValue": "",
+        "description": "Target output video bitrate(s) (in bits/s, append 'k' to value for kbits/s). Comma-delimited if multiple bitrates. Should match the sequence and number of elements of destinations.",
+        "mandatory": false,
+        "name": "videoBitrates"
+      },
+      {
+        "defaultValue": "",
+        "description": "Target output video size(s). Should match the sequence and number of elements of videoBitrates. Ignored if videoBitrates parameter not given.",
+        "mandatory": false,
+        "name": "videoSizes"
+      },
+      {
+        "defaultValue": "",
+        "description": "Name of video profile template that will be used. Should match the sequence and number of elements of videoBitrates. Ignored if videoBitrates parameter not given.",
+        "mandatory": false,
+        "name": "videoAdvancedParamsProfiles"
+      },
+      {
+        "defaultValue": "",
+        "description": "Target output audio bitrate(s) (in bits/s, append 'k' to value for kbits/s). Comma-delimited if multiple bitrates. Should match the sequence and number of elements of destinations.",
+        "mandatory": false,
+        "name": "audioBitrates"
+      },
+      {
+        "defaultValue": "",
+        "description": "Target output audio channel(s) count(s). Should match the sequence and number of elements of audioBitrates. Ignored if audioBitrates parameter not given.",
+        "mandatory": false,
+        "name": "audioChannelsCounts"
+      },
+      {
+        "defaultValue": "",
+        "description": "Target output audio frequency(ies) (in Hz). Should match the sequence and number of elements of audioBitrates. Ignored if audioBitrates parameter not given.",
+        "mandatory": false,
+        "name": "audioFrequencies"
+      },
+      {
+        "defaultValue": "",
+        "description": "Name of audio profile template that will be used. Should match the sequence and number of elements of audioBitrates. Ignored if audioBitrates parameter not given.",
+        "mandatory": false,
+        "name": "audioAdvancedParamsProfiles"
+      },
+      {
+        "defaultValue": "",
+        "description": "Location of the overlay source(s) to be used. Should match the sequence and number of elements of videoBitrates.",
+        "mandatory": false,
+        "name": "overlays"
+      },
+      {
+        "defaultValue": "",
+        "description": "Target video cropping position(s) and size(s) in 'left : top : width : height' format (e.g. 0:0:200:100. Positions are optional (200:100 for a centered cropping of size 200x100 [wxh]). Should match the sequence and number of elements of videoBitrates.",
+        "mandatory": false,
+        "name": "croppings"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If keepAlive is set to 1, the server will restart transcoding if it was previously activated.",
+        "mandatory": false,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": "",
+        "description": "Other commands to the transcode process that are not supported by the baseline transcode command.",
+        "mandatory": false,
+        "name": "commandFlags"
+      }
+    ]
+  },
+  {
+    "command": "listStreamsIds",
+    "deprecated": false,
+    "description": "Get a list of IDs from every active stream.",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "getStreamInfo",
+    "deprecated": false,
+    "description": "Returns a detailed set of information about a stream",
+    "parameters": [
+      {
+        "defaultValue": 0,
+        "description": "The uniqueId of the stream. Usually a value returned by listStreamsIds",
+        "mandatory": false,
+        "name": "id"
+      },
+      {
+        "defaultValue": "",
+        "description": "The name of the stream that we want to have its information",
+        "mandatory": true,
+        "name": "localStreamName"
+      }
+    ]
+  },
+  {
+    "command": "listStreams",
+    "deprecated": true,
+    "description": "Provides a detailed description of every active stream.",
+    "parameters": [
+      {
+        "defaultValue": 1,
+        "description": "If this is 1 (true), internal streams (origin-edge related) are filtered out from the list (default).",
+        "mandatory": false,
+        "name": "disableInternalStreams"
+      }
+    ]
+  },
+  {
+    "command": "getStreamsCount",
+    "deprecated": false,
+    "description": "Returns the number of active streams",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "shutdownStream",
+    "deprecated": false,
+    "description": "Terminates a specific stream. One of the id or localStreamName parameters are mandatory.",
+    "parameters": [
+      {
+        "defaultValue": 0,
+        "description": "The uniqueId of the stream that needs to be terminated",
+        "mandatory": false,
+        "name": "id"
+      },
+      {
+        "defaultValue": "",
+        "description": "The name of an inbound stream which needs to be terminated.",
+        "mandatory": true,
+        "name": "localStreamName"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If this is 1, the corresponding push/pull configuration will also be terminated. Therefore, the stream will NOT be reconnected when the server restarts.",
+        "mandatory": false,
+        "name": "permanently"
+      }
+    ]
+  },
+  {
+    "command": "listConfig",
+    "deprecated": false,
+    "description": "Returns a list with all push/pull configurations. Whenever the pullStream or pushStream interfaces are called, a record containing the details of the pull or push is created in the pullpushconfig.xml file.  Then, the next time the EMS is started, the pullpushconfig.xml file is read, and the EMS attempts to reconnect all of the previous pulled or pushed streams.",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "removeConfig",
+    "deprecated": false,
+    "description": "Removes a pull/push configuration. It also stops the corresponding stream if active",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The configId of the configuration that needs to be removed. Mandatory only if groupName not specified",
+        "mandatory": true,
+        "name": "id"
+      },
+      {
+        "defaultValue": null,
+        "description": "The name of the group that needs to be removed (applicable to HLS, HDS and external processes). Mandatory only if configId not specified",
+        "mandatory": false,
+        "name": "groupName"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If true and the stream is HLS/HDS, the folder associated with it will be removed",
+        "mandatory": false,
+        "name": "removeHlsHdsFiles"
+      }
+    ]
+  },
+  {
+    "command": "getConfigInfo",
+    "deprecated": false,
+    "description": "Returns the configuration details of a specific configID. Returns success when configID is found",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The uniqueId of the config. Usually a value returned by listConfig",
+        "mandatory": true,
+        "name": "id"
+      }
+    ]
+  },
+  {
+    "command": "isStreamRunning",
+    "deprecated": false,
+    "description": "Checks a specific stream if it is running or not.",
+    "parameters": [
+      {
+        "defaultValue": 0,
+        "description": "The unique id of the stream to check",
+        "mandatory": false,
+        "name": "id"
+      },
+      {
+        "defaultValue": "",
+        "description": "The name of the stream to check",
+        "mandatory": true,
+        "name": "localStreamName"
+      }
+    ]
+  },
+  {
+    "command": "addStreamAlias",
+    "deprecated": false,
+    "description": "Allows you to create secondary name(s) for internal streams. Once an alias is created the localstreamname cannot be used to request playback of that stream.  Once an alias is used (requested by a client) the alias is removed. Aliases are designed to be used to protect/hide your source streams.",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The original stream name",
+        "mandatory": true,
+        "name": "localStreamName"
+      },
+      {
+        "defaultValue": null,
+        "description": "The alias alternative to the localStreamName",
+        "mandatory": true,
+        "name": "aliasName"
+      },
+      {
+        "defaultValue": -600,
+        "description": "The expiration period for this alias. Negative values will be treated as one-shot but no longer than the absolute positive value in seconds, 0 means it will not expire, positive values mean the alias can be used multiple times but expires after this many seconds. Defaulted to -600 (one-shot, 10 mins)",
+        "mandatory": false,
+        "name": "expirePeriod"
+      }
+    ]
+  },
+  {
+    "command": "removeStreamAlias",
+    "deprecated": false,
+    "description": "Removes an alias of a stream",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The alias alternative to be removed from the localStreamName",
+        "mandatory": true,
+        "name": "aliasName"
+      }
+    ]
+  },
+  {
+    "command": "listStreamAliases",
+    "deprecated": false,
+    "description": "Returns a complete list of aliases",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "flushStreamAliases",
+    "deprecated": false,
+    "description": "Invalidates all streams aliases",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "addGroupNameAlias",
+    "deprecated": false,
+    "description": "Allows you to create secondary name(s) for group names. Once an alias is created the group name cannot be used to request HTTP playback of that stream.  Once an alias is used (requested by a client) the alias is removed. Aliases are designed to be used to protect/hide your source streams.",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The original group name",
+        "mandatory": true,
+        "name": "groupName"
+      },
+      {
+        "defaultValue": null,
+        "description": "The alias alternative to the groupName",
+        "mandatory": true,
+        "name": "aliasName"
+      }
+    ]
+  },
+  {
+    "command": "getGroupNameByAlias",
+    "deprecated": false,
+    "description": "Returns the group name associated with an alias.",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The alias alternative to the groupName",
+        "mandatory": true,
+        "name": "aliasName"
+      }
+    ]
+  },
+  {
+    "command": "removeGroupNameAliases",
+    "deprecated": false,
+    "description": "Removes an alias of a group name",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The alias alternative to be removed from the groupName",
+        "mandatory": true,
+        "name": "aliasName"
+      }
+    ]
+  },
+  {
+    "command": "listGroupNameAliases",
+    "deprecated": false,
+    "description": "Returns a complete list of group name aliases",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "flushGroupNameAliases",
+    "deprecated": false,
+    "description": "Invalidates all group name aliases",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "listHTTPStreamingSessions",
+    "deprecated": false,
+    "description": "Lists currently active HTTP streaming sessions",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "createIngestPoint",
+    "deprecated": false,
+    "description": "Creates a protected ingest point.",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The secret ingest point name",
+        "mandatory": true,
+        "name": "privateStreamName"
+      },
+      {
+        "defaultValue": null,
+        "description": "The public ingest point name.",
+        "mandatory": true,
+        "name": "publicStreamName"
+      }
+    ]
+  },
+  {
+    "command": "removeIngestPoint",
+    "deprecated": false,
+    "description": "Removes a protected ingest point.",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The secret ingest point name",
+        "mandatory": true,
+        "name": "privateStreamName"
+      }
+    ]
+  },
+  {
+    "command": "listIngestPoints",
+    "deprecated": false,
+    "description": "Lists currently active ingest points",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "startWebRTC",
+    "deprecated": false,
+    "description": "Starts a WebRTC Signalling client to an ERS (Evostream Rendezvous Server)",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "IP address (xx.yy.zz.xx) of ERS (EvoStream Rendezvous Server)",
+        "mandatory": true,
+        "name": "ersip"
+      },
+      {
+        "defaultValue": null,
+        "description": "Port (pppp) of ERS (EvoStream Rendezvous Server)",
+        "mandatory": true,
+        "name": "ersport"
+      },
+      {
+        "defaultValue": null,
+        "description": "Room Identifier (string) within ERS (EvoStream Rendezvous Server)",
+        "mandatory": true,
+        "name": "roomId"
+      }
+    ]
+  },
+  {
+    "command": "stopWebRTC",
+    "deprecated": false,
+    "description": "Stops the WebRTC Signalling client to an ERS (Evostream Rendezvous Server)",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "getMetadata",
+    "deprecated": false,
+    "description": "Returns the specified Metadata block",
+    "parameters": [
+      {
+        "defaultValue": 0,
+        "description": "Metadata associated with this incoming streamName(default most recent)",
+        "mandatory": false,
+        "name": "localStreamName"
+      },
+      {
+        "defaultValue": 0,
+        "description": "Metadata associated with this streamId (default most recent)",
+        "mandatory": false,
+        "name": "streamId"
+      }
+    ]
+  },
+  {
+    "command": "pushMetadata",
+    "deprecated": false,
+    "description": "Starts a metadata pseudo-stream",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "Metadata associated with this incoming stream Name",
+        "mandatory": true,
+        "name": "localStreamName"
+      },
+      {
+        "defaultValue": "vmf",
+        "description": "type of push stream, just a hook for now",
+        "mandatory": false,
+        "name": "type"
+      },
+      {
+        "defaultValue": "127.0.0.1",
+        "description": "ip address to push to",
+        "mandatory": false,
+        "name": "ip"
+      },
+      {
+        "defaultValue": 8110,
+        "description": "port address to push to",
+        "mandatory": false,
+        "name": "port"
+      }
+    ]
+  },
+  {
+    "command": "shutdownMetadata",
+    "deprecated": false,
+    "description": "Stops a metadata pseudo-stream",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "Metadata associated with this incoming stream Name",
+        "mandatory": true,
+        "name": "localStreamName"
+      }
+    ]
+  },
+  {
+    "command": "launchProcess",
+    "deprecated": false,
+    "description": "Launch an external process",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "Full path to the binary that needs to be launched",
+        "mandatory": true,
+        "name": "fullBinaryPath"
+      },
+      {
+        "defaultValue": "",
+        "description": "Complete list of arguments that needs to be passed to the process",
+        "mandatory": false,
+        "name": "arguments"
+      },
+      {
+        "defaultValue": "",
+        "description": "Any number of environment variables that needs to be set just before launching the process",
+        "mandatory": false,
+        "name": "$<ENV>=<VALUE>"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If keepAlive is set to 1, the server will restart the process if it exits",
+        "mandatory": false,
+        "name": "keepAlive"
+      },
+      {
+        "defaultValue": "process_group_xxxx (random)",
+        "description": "The group name assigned to this process. If not specified, groupName will have a random value.",
+        "mandatory": false,
+        "name": "groupName"
+      },
+      {
+        "defaultValue": "0",
+        "description": "Will kill the process if it is still running after the specified number of seconds.",
+        "mandatory": false,
+        "name": "processKillTimer"
+      }
+    ]
+  },
+  {
+    "command": "setTimer",
+    "deprecated": false,
+    "description": "Adds a timer. When triggered, it will send an event to the event logger",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The time value for the timer. It can be either the absolute time at which the trigger will be fired (YYYY-MM-DDTHH:MM:SS or HH:MM:SS) or period of time between pulses expressed in seconds between 1 and 86399 (1 sec up to a day)",
+        "mandatory": true,
+        "name": "value"
+      }
+    ]
+  },
+  {
+    "command": "listTimers",
+    "deprecated": false,
+    "description": "Lists currently active timers",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "removeTimer",
+    "deprecated": false,
+    "description": "Removes a previously armed timer",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The id of the timer",
+        "mandatory": true,
+        "name": "id"
+      }
+    ]
+  },
+  {
+    "command": "generateLazyPullFile",
+    "deprecated": false,
+    "description": "Will try to generate a lazy pull file. Parameters are similar to pullStream command. Optional parameters that are not stated will not be written",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The URI of the external stream. Can be RTMP, RTSP, RTP or unicast/multicast (d)mpegts",
+        "mandatory": true,
+        "name": "uri"
+      },
+      {
+        "defaultValue": null,
+        "description": "The path where the file will be saved, with a \".vod\" extension",
+        "mandatory": true,
+        "name": "pathToFile"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If 1 and if the stream is RTSP, a TCP connection will be forced.  Otherwise the transport mechanism will be negotiated (UDP or TCP).",
+        "mandatory": false,
+        "name": "forceTcp"
+      },
+      {
+        "defaultValue": "EvoStream Media Server (www.evostream.com)",
+        "description": "When specified, that value will be used as the user agent string. It is meaningful only for RTMP",
+        "mandatory": false,
+        "name": "emulateUserAgent"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the originating swf URL in the initial RTMP connect invoke",
+        "mandatory": false,
+        "name": "swfUrl"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the originating web page address in the initial RTMP connect invoke.",
+        "mandatory": false,
+        "name": "pageUrl"
+      },
+      {
+        "defaultValue": "",
+        "description": "When specified, this value will be used to set the TC URL in the initial RTMP connect invoke",
+        "mandatory": false,
+        "name": "tcUrl"
+      },
+      {
+        "defaultValue": "operating system supplied",
+        "description": "Sets the IP_TTL (time to live) option on the socket",
+        "mandatory": false,
+        "name": "ttl"
+      },
+      {
+        "defaultValue": "operating system supplied",
+        "description": "Sets the IP_TOS (Type of Service) option on the socket",
+        "mandatory": false,
+        "name": "tos"
+      },
+      {
+        "defaultValue": 10,
+        "description": "How much time (in seconds) should the server wait for RTCP packets before declaring the RTSP stream as a RTCP-less stream",
+        "mandatory": false,
+        "name": "rtcpDetectionInterval"
+      },
+      {
+        "defaultValue": 1,
+        "description": "If 1 and if the stream is RTP, it indicates that the currently pulled stream is an audio source. Otherwise the pulled source is assumed as a video source",
+        "mandatory": false,
+        "name": "isAudio"
+      },
+      {
+        "defaultValue": "hex format without '0x' or 'h'.",
+        "description": "The audio codec setup of this RTP stream if it is audio.",
+        "mandatory": false,
+        "name": "audioCodecBytes"
+      },
+      {
+        "defaultValue": "base 64 encoded bytes",
+        "description": "The video SPS bytes of this RTP stream if it is video.",
+        "mandatory": false,
+        "name": "spsBytes"
+      },
+      {
+        "defaultValue": "base 64 encoded bytes",
+        "description": "The video PPS bytes of this RTP stream if it is video.",
+        "mandatory": false,
+        "name": "ppsBytes"
+      },
+      {
+        "defaultValue": "",
+        "description": "The source IP from source-specific-multicast. Only usable when doing UDP based pull",
+        "mandatory": false,
+        "name": "ssmIp"
+      },
+      {
+        "defaultValue": "",
+        "description": "The ip:port for the http proxy to be used. Only used for rtsp:// pulls. The format is in the form of ip[:port]. The special value of \"self\" (case insensitive) can be used to force the RTSP connection to be HTTP tunneled but without using any proxy",
+        "mandatory": false,
+        "name": "httpProxy"
+      },
+      {
+        "defaultValue": -2,
+        "description": "A value from which the playback should start expressed in seconds. There are 2 special values: -2 and -1. For more information, please read about start/len parameters here: http://livedocs.adobe.com/flashmediaserver/3.0/hpdocs/help.html?content=00000185.html",
+        "mandatory": false,
+        "name": "rangeStart"
+      },
+      {
+        "defaultValue": -1,
+        "description": "The length in seconds for the playback. -1 is a special value. For more information, please read about start/len parameters here: http://livedocs.adobe.com/flashmediaserver/3.0/hpdocs/help.html?content=00000185.html",
+        "mandatory": false,
+        "name": "rangeEnd"
+      },
+      {
+        "defaultValue": 0,
+        "description": "If sendRenewStream is 1, the server will send RenewStream via SET_PARAMETER when a new client connects. Only valid for RTSP URIs",
+        "mandatory": false,
+        "name": "sendRenewStream"
+      },
+      {
+        "defaultValue": 0,
+        "description": "KeepAlive parameter in lazy pull files is a special case compared to pullstream's. KeepAlive=1 will retain the stream in the config even if the playback stopped.",
+        "mandatory": false,
+        "name": "keepAlive"
+      }
+    ]
+  },
+  {
+    "command": "generateServerPlaylist",
+    "deprecated": false,
+    "description": "Generates a server playlist. Parameters are similar to createHlsStream command. Optional parameters that omitted will not be written",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The stream or media file source(s) to be used as input. This is a comma-delimited list of active stream names or media files.",
+        "mandatory": true,
+        "name": "sources"
+      },
+      {
+        "defaultValue": null,
+        "description": "The path to the output server playlist file.",
+        "mandatory": true,
+        "name": "pathToFile"
+      },
+      {
+        "defaultValue": "",
+        "description": "The corresponding offsets for the source streams/files listed in sources. This can be a comma-delimited list",
+        "mandatory": false,
+        "name": "sourceOffsets"
+      },
+      {
+        "defaultValue": "",
+        "description": "The corresponding durations for the source streams/files listed in sources. This can be a comma-delimited list",
+        "mandatory": false,
+        "name": "durations"
+      }
+    ]
+  },
+  {
+    "command": "insertPlaylistItem",
+    "deprecated": false,
+    "description": "Inserts a new item into an RTMP playlist",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The name of the *.lst file into which the stream will be inserted.",
+        "mandatory": true,
+        "name": "playlistName"
+      },
+      {
+        "defaultValue": null,
+        "description": "The name of the live stream or file that needs to be inserted. If a file is specified, the path must be relative to any of the mediaStorage locations",
+        "mandatory": true,
+        "name": "localStreamName"
+      },
+      {
+        "defaultValue": -1000,
+        "description": "The absolute time in milliseconds on the playlist timeline where the insertion will occur. Any negative value will be considered as \"immediate\" (starts the very next frame)",
+        "mandatory": false,
+        "name": "insertPoint"
+      },
+      {
+        "defaultValue": -2000,
+        "description": "The absolute time in milliseconds on the localStreamName's timeline from which the content will be drawn. View the EMS API Definition document for special values.",
+        "mandatory": false,
+        "name": "sourceOffset"
+      },
+      {
+        "defaultValue": -1000,
+        "description": "The duration in milliseconds of the inserted clip. View the EMS API Definition document for special values.",
+        "mandatory": false,
+        "name": "duration"
+      }
+    ]
+  },
+  {
+    "command": "uploadMedia",
+    "deprecated": false,
+    "description": "Creates an acceptor which receives an HTTP POST binary upload",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "port value to bind on",
+        "mandatory": true,
+        "name": "port"
+      },
+      {
+        "defaultValue": null,
+        "description": "the folder where the binary upload will be serialized",
+        "mandatory": true,
+        "name": "targetFolder"
+      }
+    ]
+  },
+  {
+    "command": "addStorage",
+    "deprecated": false,
+    "description": "Adds a new storage location",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The path to the media folder",
+        "mandatory": true,
+        "name": "mediaFolder"
+      },
+      {
+        "defaultValue": "",
+        "description": "Name given to this storage. Used to better identify the storage",
+        "mandatory": true,
+        "name": "name"
+      },
+      {
+        "defaultValue": "",
+        "description": "Description given to this storage. Used to better identify the storage",
+        "mandatory": false,
+        "name": "description"
+      },
+      {
+        "defaultValue": "",
+        "description": "Path to the folder which is going to contain all the seek/meta files. If missing, the seek/meta files are going to be generated inside the media folder",
+        "mandatory": false,
+        "name": "metaFolder"
+      },
+      {
+        "defaultValue": false,
+        "description": "If true, *.stats files are going to be generated once the media files are used",
+        "mandatory": false,
+        "name": "enableStats"
+      },
+      {
+        "defaultValue": false,
+        "description": "If true, the seek/meta files are going to be generated having only keyframe seek points",
+        "mandatory": false,
+        "name": "keyframeSeek"
+      },
+      {
+        "defaultValue": 15,
+        "description": "How much data should be maintained on the client side when a file is played from this storage",
+        "mandatory": false,
+        "name": "clientSideBuffer"
+      },
+      {
+        "defaultValue": 1.0,
+        "description": "Voodoo stuff! You didn't see this one!",
+        "mandatory": false,
+        "name": "seekGranularity"
+      },
+      {
+        "defaultValue": false,
+        "description": "If true, *.seek and *.meta files are going to be generated by another external tool",
+        "mandatory": false,
+        "name": "externalSeekGenerator"
+      }
+    ]
+  },
+  {
+    "command": "listStorage",
+    "deprecated": false,
+    "description": "Lists currently available media storage locations",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "removeStorage",
+    "deprecated": false,
+    "description": "Removes a storage location",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The path to the media folder for which the storage needs to be removed",
+        "mandatory": true,
+        "name": "mediaFolder"
+      }
+    ]
+  },
+  {
+    "command": "setAuthentication",
+    "deprecated": false,
+    "description": "Will enable/disable RTMP authentication",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "1 to enable, 0 to disable authentication",
+        "mandatory": true,
+        "name": "enabled"
+      }
+    ]
+  },
+  {
+    "command": "setLogLevel",
+    "deprecated": false,
+    "description": "Change the log level for all log appenders",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "a value between 0 and 7. 0 - no logging; 7 - detailed logs",
+        "mandatory": true,
+        "name": "level"
+      }
+    ]
+  },
+  {
+    "command": "version",
+    "deprecated": false,
+    "description": "returns the versions for framework and this application",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "help",
+    "deprecated": false,
+    "description": "prints this help",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "shutdownServer",
+    "deprecated": false,
+    "description": "Shuts down the server",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The key to shutdown the server. shutdownServer must be called without the key to obtain the key and once again with the returned key to shutdown the server",
+        "mandatory": false,
+        "name": "key"
+      }
+    ]
+  },
+  {
+    "command": "getLicenseId",
+    "deprecated": false,
+    "description": "Returns the License Id",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "listInboundStreamNames",
+    "deprecated": false,
+    "description": "Provides a list of all the current inbound localstreamnames.",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "listInboundStreams",
+    "deprecated": false,
+    "description": "Provides a complete detailed list of all the current inbound localstreamnames.",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "getInboundStreamsCount",
+    "deprecated": false,
+    "description": "Returns the number of active Inbound streams",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "getConnectionInfo",
+    "deprecated": false,
+    "description": "Returns a detailed set of information about a connection",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The uniqueId of the connection. Usually a value returned by listConnectionsIds",
+        "mandatory": true,
+        "name": "id"
+      }
+    ]
+  },
+  {
+    "command": "listConnections",
+    "deprecated": true,
+    "description": "Returns details about every active connection",
+    "parameters": [
+      {
+        "defaultValue": 1,
+        "description": "If true (non-zero), all the non-networking protocols will be excluded",
+        "mandatory": false,
+        "name": "excludeNonNetworkProtocols"
+      }
+    ]
+  },
+  {
+    "command": "listConnectionsIds",
+    "deprecated": false,
+    "description": "Returns a list containing the IDs of every active connection",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "clientsConnected",
+    "deprecated": false,
+    "description": "Returns the number of REAL outbound streams, not counting the outbound streams generated internally",
+    "parameters": [
+      {
+        "defaultValue": "",
+        "description": "The name of the stream that we want to have its information. If this parameter is present, it will return the count of the corresponding outbound streams associated with this stream name",
+        "mandatory": false,
+        "name": "localStreamName"
+      }
+    ]
+  },
+  {
+    "command": "httpClientsConnected",
+    "deprecated": false,
+    "description": "Returns the number of all the HTTP streaming sessions active within the Evostream Web Server",
+    "parameters": [
+      {
+        "defaultValue": "",
+        "description": "If this parameter is present, it will return the count of the http streams associated with the group name",
+        "mandatory": false,
+        "name": "groupName"
+      }
+    ]
+  },
+  {
+    "command": "getExtendedConnectionCounters",
+    "deprecated": false,
+    "description": "Returns a detailed description of the network descriptors counters.  This includes historical high-water-marks for different connection types and cumulative totals.",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "resetMaxFdCounters",
+    "deprecated": false,
+    "description": "Reset the maximum, or high-water-mark, from the Connection Counters",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "resetTotalFdCounters",
+    "deprecated": false,
+    "description": "Reset the cumulative totals from the Connection Counters",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "getConnectionsCount",
+    "deprecated": false,
+    "description": "Returns the number of active connections",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "setConnectionsCountLimit",
+    "deprecated": false,
+    "description": "This interface sets a limit on the number of concurrent connections the EMS will allow",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The maximum number of connections allowed on this instance. 0 means disabled. CLI connections are not affected",
+        "mandatory": true,
+        "name": "count"
+      }
+    ]
+  },
+  {
+    "command": "getConnectionsCountLimit",
+    "deprecated": false,
+    "description": "Returns the limit of concurrent connections. This is the maximum number of connections this EMS instance will allow at one time.",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "setBandwidthLimit",
+    "deprecated": false,
+    "description": "This interface enforces a limit on the input and output bandwidth. ",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "maximum input bandwidth. 0 means disabled. CLI connections are not affected",
+        "mandatory": true,
+        "name": "in"
+      },
+      {
+        "defaultValue": null,
+        "description": "maximum output bandwidth. 0 means disabled. CLI connections are not affected",
+        "mandatory": true,
+        "name": "out"
+      }
+    ]
+  },
+  {
+    "command": "getBandwidth",
+    "deprecated": false,
+    "description": "Returns bandwidth information: limits and current values.",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "addMetadataListener",
+    "deprecated": false,
+    "description": "Adds a new metadata listener",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "port value to bind on",
+        "mandatory": true,
+        "name": "port"
+      },
+      {
+        "defaultValue": "0.0.0.0",
+        "description": "IP address to bind on",
+        "mandatory": false,
+        "name": "ip"
+      },
+      {
+        "defaultValue": "0~0~0",
+        "description": "Stream Name to bind on",
+        "mandatory": false,
+        "name": "localStreamName"
+      }
+    ]
+  },
+  {
+    "command": "listMetadataListeners",
+    "deprecated": false,
+    "description": "Lists all metadata listener",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "createService",
+    "deprecated": false,
+    "description": "Creates a new service",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "IP address to bind on",
+        "mandatory": true,
+        "name": "ip"
+      },
+      {
+        "defaultValue": null,
+        "description": "port value to bind on",
+        "mandatory": true,
+        "name": "port"
+      },
+      {
+        "defaultValue": null,
+        "description": "Protocol stack name to bind on",
+        "mandatory": true,
+        "name": "protocol"
+      },
+      {
+        "defaultValue": "",
+        "description": "The SSL certificate path to be used",
+        "mandatory": false,
+        "name": "sslCert"
+      },
+      {
+        "defaultValue": "",
+        "description": "The SSL certificate key to be used",
+        "mandatory": false,
+        "name": "sslKey"
+      }
+    ]
+  },
+  {
+    "command": "enableService",
+    "deprecated": false,
+    "description": "enable/disable a service",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The id of the service",
+        "mandatory": true,
+        "name": "id"
+      },
+      {
+        "defaultValue": null,
+        "description": "If true, the service will be enabled. Else, it will be disabled",
+        "mandatory": true,
+        "name": "enable"
+      }
+    ]
+  },
+  {
+    "command": "shutdownService",
+    "deprecated": false,
+    "description": "terminates a service",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "The id of the service",
+        "mandatory": true,
+        "name": "id"
+      }
+    ]
+  },
+  {
+    "command": "listServices",
+    "deprecated": false,
+    "description": "returns a list of available services",
+    "parameters": [
+    ]
+  }
+]
