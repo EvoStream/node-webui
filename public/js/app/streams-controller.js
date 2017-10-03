@@ -1,4 +1,4 @@
-webuiApp.controller('streamsCtrl', ['$scope', '$http', '$timeout', '$location', 'listPullStreamFactory', function ($scope, $http, $timeout, $location, listPullStreamFactory) {
+webuiApp.controller('streamsCtrl', ['$scope', '$http', '$timeout', '$location', function ($scope, $http, $timeout, $location) {
 
     $scope.streamsNotAvailable = false;
 

@@ -56,14 +56,16 @@ var logFileName = path.join(__dirname, '/logs/webui.') + process.pid + "." + new
 // Set Winston Log
 winston.add(winston.transports.File, {
     level: configLog.options.level,
-    // filename: "./logs/evowebservices." + process.pid + "." + new Date().getTime() + "-" + ".log",
     filename: logFileName,
     handleExceptions: configLog.options.handleExceptions,
     json: configLog.options.json,
     maxsize: configLog.options.maxsize,
     timestamp: function () {
 
-        var timestamp = new Date().getTime() + ":" + process.pid;
+        var d = new Date();
+        var dISO = d.toISOString();
+
+        var timestamp = dISO + " - " + process.pid;
 
         return timestamp;
     }
@@ -77,7 +79,7 @@ winston.add(winston.transports.Console, {
 
 winston.stream = {
     write: function(message, encoding){
-        winston.info("[webui] "+message.trim());
+        winston.log("verbose", "[webui] " + message.trim());
     }
 };
 
@@ -175,6 +177,15 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
+
+app.use(function(req, res, next){
+    //concat the stream of response from ems
+    req.pipe(concat(function(data){
+        req.body = data;
+        next();
+    }));
+});
+
 
 console.log("[webui] starting app ");
 winston.log("verbose", "[webui] starting app ");

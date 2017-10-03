@@ -1152,13 +1152,24 @@ div.profilePasswordError span{
     color:red;
 }
 
-
 .err{
     color:red;
 }
 
-
-
 .ui-select-bootstrap > .ui-select-choices, .ui-select-bootstrap > .ui-select-no-choice {
     z-index: 11;
+}
+
+
+
+/* Play Page */
+
+p.localstreamname{
+    font-size: medium;
+    margin-bottom: 20px;
+}
+
+p.streamLabels{
+    font-size: medium;
+    margin-bottom: 10px;
 }

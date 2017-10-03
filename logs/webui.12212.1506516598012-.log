@@ -1,0 +1,565 @@
+2017-09-27T12:49:58.471Z - 12212 - verbose: [webui] starting app 
+2017-09-27T12:49:58.877Z - 12212 - info: [webui] index-routes: login user 
+2017-09-27T12:49:58.878Z - 12212 - info: [webui] user-model: counting user
+2017-09-27T12:49:58.904Z - 12212 - info: [webui] user-model: user count - 1
+2017-09-27T12:49:59.592Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:49:59 +0000] "GET /login HTTP/1.1" 200 6174 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:49:59.692Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:49:59 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 200 33978 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:49:59.722Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:49:59 +0000] "GET /css/login-style.css HTTP/1.1" 200 6080 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:49:59.725Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:49:59 +0000] "GET /css/bootstrap.css HTTP/1.1" 200 153018 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:49:59.729Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:49:59 +0000] "GET /js/app/webui-app-login.js HTTP/1.1" 200 899 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:49:59.740Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:49:59 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 200 37051 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:49:59.753Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:49:59 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 200 37327 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:00.623Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:00 +0000] "GET /images/manage-icon.png HTTP/1.1" 200 1883 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:00.625Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:00 +0000] "GET /images/dashboard-icon.png HTTP/1.1" 200 2461 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:00.626Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:00 +0000] "GET /images/fav-icon.ico HTTP/1.1" 200 1150 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:00.631Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:00 +0000] "GET /images/api-icon.png HTTP/1.1" 200 2978 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:00.642Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:00 +0000] "GET /images/logo.png HTTP/1.1" 200 18442 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:00.841Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:00 +0000] "GET /css/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 71896 "http://localhost:4100/css/font-awesome/css/font-awesome.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.345Z - 12212 - info: [webui] index-routes: post request for login user 
+2017-09-27T12:50:02.346Z - 12212 - info: [webui] passport: checking user qwerty01.evostream@gmail.com
+2017-09-27T12:50:02.347Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:02.487Z - 12212 - info: [webui] passport: serialize user 
+2017-09-27T12:50:02.495Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "POST /login HTTP/1.1" 302 64 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.500Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:02.501Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:02.503Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:02.503Z - 12212 - info: [webui] dashboard: index page
+2017-09-27T12:50:02.579Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /dashboard HTTP/1.1" 200 18872 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.672Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 200 7717 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.685Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 200 7290 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.708Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 200 109587 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.714Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /css/admin-style.css HTTP/1.1" 200 23077 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.720Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 200 340670 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.724Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /css/sb-admin.css HTTP/1.1" 200 22988 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.733Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/spin.min.js HTTP/1.1" 200 4107 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.745Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 200 1360 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.751Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/ladda.min.js HTTP/1.1" 200 3842 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.757Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 200 1338 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.758Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 200 4080 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.773Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 200 8422 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.775Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 200 156 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.780Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/angular-chart.js HTTP/1.1" 200 14480 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.785Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/profile-controller.js HTTP/1.1" 200 5046 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.786Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 200 431 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.795Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/socket.io.2.js HTTP/1.1" 200 61213 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.802Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 200 8822 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.804Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 200 9439 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.818Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 200 12987 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.827Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 200 24813 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.835Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 200 17367 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.846Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 200 10450 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.849Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.852Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.855Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 200 3644 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.856Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.867Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 200 7685 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.885Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 200 469311 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.894Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.899Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /images/terminal-logo.png HTTP/1.1" 200 1240 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.925Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /images/stream-logo.png HTTP/1.1" 200 1356 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.931Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 200 1355 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.943Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 200 28923 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:02.999Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:02 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:03.360Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:03 +0000] "GET /images/manual.png HTTP/1.1" 200 14874 "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:03.370Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:03 +0000] "GET /images/user.png HTTP/1.1" 200 14816 "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:03.378Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:03.379Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:03.388Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:03.391Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:50:03.391Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:03.392Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:03.393Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:03.394Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:03.409Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:03.409Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:03.411Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:03.418Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:50:03.420Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:03.421Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:03.422Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:03.423Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:03.489Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:03 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:03.490Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:03 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.390Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:05.391Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:05.392Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:05.393Z - 12212 - info: [webui] api-explorer: index page
+2017-09-27T12:50:05.393Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:05.394Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:05.395Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:05.395Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:05.410Z - 12212 - verbose: [webui] api-explorer: version result"{\"data\":{\"banner\":\"EvoStream Media Server (www.evostream.com) version 2.0.0 build 5541 with hash: b013226eae71ae5e06e2beb2dfd7fece01464c4b on branch: release\\/2.0.0\\/main - QBert - (built for Microsoft Windows 10 Pro-10.0.14393-x86_64 on 2017-09-20T06:03:02.000)\",\"branchName\":\"release\\/2.0.0\\/main\",\"buildDate\":\"2017-09-20T06:03:02.000\",\"buildNumber\":\"5541\",\"codeName\":\"QBert\",\"hash\":\"b013226eae71ae5e06e2beb2dfd7fece01464c4b\",\"releaseNumber\":\"2.0.0\"},\"description\":\"Version\",\"status\":\"SUCCESS\"}\r\n\r\nHTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 500\r\nContent-Type: text/plain\r\nServer: EvoStream Media Server (www.evostream.com)\r\nUser-Agent: EvoStream Media Server (www.evostream.com)\r\nX-Powered-By: EvoStream Media Server (www.evostream.com)\r\n\r\n{\"data\":{\"banner\":\"EvoStream Media Server (www.evostream.com) version 2.0.0 build 5541 with hash: b013226eae71ae5e06e2beb2dfd7fece01464c4b on branch: release\\/2.0.0\\/main - QBert - (built for Microsoft Windows 10 Pro-10.0.14393-x86_64 on 2017-09-20T06:03:02.000)\",\"branchName\":\"release\\/2.0.0\\/main\",\"buildDate\":\"2017-09-20T06:03:02.000\",\"buildNumber\":\"5541\",\"codeName\":\"QBert\",\"hash\":\"b013226eae71ae5e06e2beb2dfd7fece01464c4b\",\"releaseNumber\":\"2.0.0\"},\"description\":\"Version\",\"status\":\"SUCCESS\"}\r\n\r\n"
+2017-09-27T12:50:05.423Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /api-explorer HTTP/1.1" 200 10256 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.477Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.480Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.482Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.485Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.493Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.497Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.499Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.501Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.508Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.512Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.523Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.524Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.526Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.527Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.530Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.535Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.537Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/socket.io.2.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.540Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.542Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/profile-controller.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.544Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.551Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.554Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.556Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.559Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.578Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.580Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.589Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.590Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.591Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.592Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.594Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.831Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.842Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.844Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.847Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.848Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:05 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:05.849Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:05.850Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:05.852Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:05.859Z - 12212 - info: [webui] ems-routes: get-commands-parameters
+2017-09-27T12:50:06.026Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.034Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /ems/api/get-commands-parameters HTTP/1.1" 200 52679 "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.036Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:06.037Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:06.041Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:06.041Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:50:06.042Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:06.043Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:06.044Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:06.045Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:06.071Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.862Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:06.863Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:06.864Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:06.865Z - 12212 - info: [webui] streams-route: index 
+2017-09-27T12:50:06.866Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:06.866Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:06.867Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:06.867Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:06.892Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /streams HTTP/1.1" 200 10251 "http://localhost:4100/api-explorer" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.928Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.930Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.933Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.942Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.943Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.945Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.948Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.950Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.955Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.968Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.972Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.976Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.979Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.980Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.982Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.989Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.990Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.992Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/socket.io.2.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.997Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:06.999Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:06 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.000Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/profile-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.006Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.010Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.011Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.017Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.020Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.022Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.025Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.029Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.030Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.053Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.200Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.201Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.281Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.283Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.295Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.303Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.310Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:07.311Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:07.312Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:07.313Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:50:07.314Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:07.315Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:07.316Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:07.319Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:07.327Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:07.328Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:07.329Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:07.333Z - 12212 - info: [webui] ems-routes: get-commands-parameters
+2017-09-27T12:50:07.342Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /ems/api/get-commands-parameters HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:07.364Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:07 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:17.380Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:17.381Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:17.383Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:17.384Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:50:17.385Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:17.386Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:17.387Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:17.388Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:17.410Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:17 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:27.429Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:27.431Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:27.450Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:27.453Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:50:27.455Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:27.455Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:27.457Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:27.458Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:27.481Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:27 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:37.498Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:37.499Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:37.502Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:37.503Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:50:37.506Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:37.511Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:37.514Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:37.517Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:37.543Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:37 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:47.551Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:47.552Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:47.553Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:47.553Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:50:47.555Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:50:47.555Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:50:47.556Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:50:47.557Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:50:47.569Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:47 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.726Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:50:56.727Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:56.728Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:50:56.729Z - 12212 - info: [webui] users-route: user logging out.....
+2017-09-27T12:50:56.730Z - 12212 - info: [webui] user-model: update user - qwerty01.evostream@gmail.com
+2017-09-27T12:50:56.733Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET /users/logout HTTP/1.1" 302 46 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.738Z - 12212 - info: [webui] user-model: user successfully updated - qwerty01.evostream@gmail.com
+2017-09-27T12:50:56.744Z - 12212 - info: [webui] index-routes: index page
+2017-09-27T12:50:56.744Z - 12212 - info: [webui] index-routes: count user
+2017-09-27T12:50:56.746Z - 12212 - info: [webui] user-model: counting user
+2017-09-27T12:50:56.792Z - 12212 - info: [webui] user-model: user count - 1
+2017-09-27T12:50:56.793Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET / HTTP/1.1" 302 54 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.798Z - 12212 - info: [webui] index-routes: login user 
+2017-09-27T12:50:56.799Z - 12212 - info: [webui] user-model: counting user
+2017-09-27T12:50:56.801Z - 12212 - info: [webui] user-model: user count - 1
+2017-09-27T12:50:56.812Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET /login HTTP/1.1" 200 6174 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.853Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.854Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.856Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.858Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.865Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET /css/login-style.css HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:56.871Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:56 +0000] "GET /js/app/webui-app-login.js HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:57.018Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:57 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:57.041Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:57 +0000] "GET /images/logo.png HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:57.045Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:57 +0000] "GET /images/dashboard-icon.png HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:57.046Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:57 +0000] "GET /images/manage-icon.png HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:50:57.048Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:50:57 +0000] "GET /images/api-icon.png HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.474Z - 12212 - info: [webui] index-routes: post request for login user 
+2017-09-27T12:51:28.475Z - 12212 - info: [webui] passport: checking user qwerty01.evostream@gmail.com
+2017-09-27T12:51:28.476Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:28.603Z - 12212 - info: [webui] passport: serialize user 
+2017-09-27T12:51:28.605Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "POST /login HTTP/1.1" 302 64 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.612Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:28.613Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:28.614Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:28.615Z - 12212 - info: [webui] dashboard: index page
+2017-09-27T12:51:28.624Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /dashboard HTTP/1.1" 200 18872 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.677Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.683Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.689Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.694Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.698Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.700Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.703Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.705Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.712Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.715Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.718Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.719Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.720Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.725Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.727Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.731Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.732Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/socket.io.2.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.736Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.738Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.741Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.747Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/profile-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.751Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.754Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.757Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.760Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.762Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.764Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.767Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.769Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.770Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:28.804Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:28 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:29.120Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:29 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:29.122Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:29 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:29.130Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:29.130Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:29.132Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:29.133Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:51:29.134Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:51:29.137Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:51:29.140Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:51:29.141Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:51:29.143Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:29.143Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:29.144Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:29.145Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:51:29.146Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:51:29.147Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:51:29.147Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:51:29.154Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:51:29.156Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:29 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:29.157Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:29 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:29.159Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:29 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:29.160Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:29 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:29.193Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:29 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:29.203Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:29 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:39.212Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:39.213Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:39.214Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:39.214Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:51:39.215Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:51:39.215Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:51:39.216Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:51:39.217Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:51:39.222Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:39.223Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:39.225Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:39.227Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:51:39.229Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:51:39.230Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:51:39.235Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:51:39.236Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:51:39.241Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:39 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:39.250Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:39 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:49.265Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:49.266Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:49.269Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:49.269Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:51:49.270Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:51:49.272Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:51:49.273Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:51:49.277Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:51:49.282Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:49.283Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:49.284Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:49.287Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:51:49.288Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:51:49.290Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:51:49.292Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:51:49.292Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:51:49.310Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:49 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:49.320Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:49 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:59.325Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:59.329Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:59.334Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:59.345Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:51:59.347Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:51:59.348Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:51:59.350Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:51:59.351Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:51:59.361Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:51:59.362Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:51:59.369Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:51:59.373Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:51:59.384Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:51:59.385Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:51:59.386Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:51:59.388Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:51:59.400Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:59 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:51:59.413Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:51:59 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:09.412Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:09.413Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:09.415Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:09.420Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:09.421Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:09.424Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:09.425Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:09.427Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:09.434Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:09.438Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:09.440Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:09.442Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:09.446Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:09.447Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:09.448Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:09.452Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:09.458Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:09 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:09.465Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:09 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:19.466Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:19.467Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:19.469Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:19.471Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:19.474Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:19.478Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:19.481Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:19.485Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:19.493Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:19.494Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:19.496Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:19.502Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:19.505Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:19.508Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:19.517Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:19.518Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:19.522Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:19 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:19.533Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:19 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:29.546Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:29.548Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:29.553Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:29.554Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:29.556Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:29.558Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:29.559Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:29.560Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:29.568Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:29.570Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:29.573Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:29.575Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:29.578Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:29.584Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:29.586Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:29.587Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:29.594Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:29 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:29.611Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:29 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:39.610Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:39.611Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:39.613Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:39.614Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:39.615Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:39.617Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:39.619Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:39.624Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:39.635Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:39.635Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:39.637Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:39.639Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:39.646Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:39.647Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:39.648Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:39.649Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:39.653Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:39 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:39.666Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:39 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:49.672Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:49.680Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:49.689Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:49.691Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:49.692Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:49.693Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:49.694Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:49.696Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:49.704Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:49.705Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:49.710Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:49.714Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:49.723Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:49.730Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:49.731Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:49.731Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:49.742Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:49 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:49.761Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:49 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:59.751Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:59.752Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:59.755Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:59.757Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:59.758Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:59.759Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:59.762Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:59.766Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:59.773Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:52:59.779Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:52:59.781Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:52:59.783Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:52:59.785Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:52:59.788Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:52:59.789Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:52:59.790Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:52:59.797Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:59 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:52:59.808Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:52:59 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:53:09.810Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:53:09.813Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:53:09.814Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:53:09.815Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:53:09.816Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:53:09.824Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:53:09.824Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:53:09.825Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:53:09.831Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:53:09.835Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:53:09.839Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:53:09.842Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:53:09.845Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:53:09.847Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:53:09.849Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:53:09.850Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:53:09.855Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:53:09 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:53:09.863Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:53:09 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:53:19.864Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:53:19.865Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:53:19.867Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:53:19.868Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:53:19.869Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:53:19.869Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:53:19.870Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:53:19.870Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:53:19.875Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:53:19.876Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:53:19.878Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:53:19.886Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:53:19.889Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:53:19.898Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:53:19.902Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:53:19.903Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:53:19.910Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:53:19 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:53:19.916Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:53:19 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:53:29.943Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:53:29.944Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:53:29.945Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:53:29.946Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:53:29.947Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:53:29.948Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:53:29.949Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:53:29.949Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:53:29.955Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:53:29.956Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:53:29.957Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:53:29.958Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:53:29.959Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:53:29.960Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:53:29.960Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:53:29.961Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:53:29.983Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:53:29 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:53:29.991Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:53:29 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:53:40.017Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:53:40.018Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:53:40.022Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:53:40.023Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:53:40.024Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:53:40.025Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:53:40.028Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:53:40.031Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:53:40.036Z - 12212 - info: [webui] passport: deserialize user
+2017-09-27T12:53:40.038Z - 12212 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-27T12:53:40.040Z - 12212 - verbose: [webui] restirct: checking user authentication
+2017-09-27T12:53:40.040Z - 12212 - info: [webui] ems-routes: check-connection
+2017-09-27T12:53:40.041Z - 12212 - info: [EMS-API] building the command
+2017-09-27T12:53:40.043Z - 12212 - info: [EMS-API] building the query string 
+2017-09-27T12:53:40.044Z - 12212 - verbose: [EMS-API] parameters: 
+2017-09-27T12:53:40.047Z - 12212 - verbose: [EMS-API] base64 parameters: 
+2017-09-27T12:53:40.072Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:53:40 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-27T12:53:40.078Z - 12212 - verbose: [webui] ::1 - - [27/Sep/2017:12:53:40 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 1361 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"

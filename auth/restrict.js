@@ -1,7 +1,10 @@
+/**
+ * restrict user authentication
+ */
 module.exports = function(req, res, next){
     var winston = require('winston');
 
-    winston.log("verbose", '[webui] check user authentication');
+    winston.log("verbose", '[webui] restirct: checking user authentication');
 
     if(req.isAuthenticated()){
         return next();

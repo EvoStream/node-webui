@@ -1,5 +1,3 @@
-// webuiApp.controller('streamsActiveCtrl', ['$scope', '$http', '$timeout', 'listStreamFactory', function ($scope, $http, listStreamFactory) {
-// webuiApp.controller('streamsActiveCtrl', ['$scope', '$http', '$timeout', function ($scope, $http) {
 webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout', '$window', '$base64', '$routeParams', function ($uibModal, $scope, $http, $timeout, $window, $base64, $routeParams) {
 
     //Select the Tab
@@ -11,18 +9,45 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
     $scope.noFilesFound = false;
     $scope.seeVodErrorMessage = false;
 
-    $http.get("/ems/api/get-default-media-folder").then(function (response) {
 
-        var defaultMediaFolder = response.data;
+    //Get the List of media folders
+    $scope.mediaFolderList = [];
 
-        $scope.vodMediaFolder = defaultMediaFolder;
+    $scope.refreshMediaFolderList = function () {
 
-        $scope.loadFiles();
+        //get the ems default media folder
+        $http.get("/ems/api/get-media-folders").then(function (response) {
 
+            $scope.mediaFolderList = response.data.data;
 
-    });
+            if($scope.mediaFolderList){
+
+                $scope.mediaFolderList.selected = $scope.mediaFolderList[0];
+                $scope.vodMediaFolder = $scope.mediaFolderList.selected.mediaFolder;
+                $scope.loadFiles();
+            }
+
+        });
+
+    };
+
+    $scope.refreshMediaFolderList();
+
+    //get the ems default media folder
+    // $http.get("/ems/api/get-default-media-folder").then(function (response) {
+    //
+    //     var defaultMediaFolder = response.data;
+    //
+    //     $scope.vodMediaFolder = defaultMediaFolder;
+    //
+    //     $scope.loadFiles();
+    //
+    //
+    // });
 
     $scope.loadFiles = function () {
+
+        $scope.vodMediaFolder = $scope.mediaFolderList.selected.mediaFolder;
 
         $scope.loadFilesLoading = true;
         $scope.seeVodErrorMessage = false;
@@ -42,7 +67,6 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function (response) {
                 var listFiles = response.data;
-
                 $scope.loadFilesLoading = false;
 
                 //Build the Column
@@ -57,7 +81,19 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
                         formatter: vodActionFormatter,
                         events: {
                             'click .play': function (e, value, row, index) {
-                                row.streamFormat = 'VOD';
+
+                                var ext = 'mp4';
+
+                                if(row.file.split('.').pop()){
+                                    ext = row.file.split('.').pop();
+                                }
+
+                                if((ext == 'vod') ||(ext == 'lst')){
+                                    row.streamFormat = 'HTML5-VOD';
+                                }else{
+                                    row.streamFormat = 'VOD';
+                                }
+                                
                                 $scope.playVod(row);
                             },
                             'click .delete': function (e, value, row, index) {
@@ -116,8 +152,6 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
 
     $scope.deleteVod = function (row) {
 
-        // $scope.vodMediaFolder;
-
         //add trailing slash to directory (if not present)
         var lastChar = $scope.vodMediaFolder.substr(-1); // Selects the last character
         if (lastChar != '/') {         // If the last character is not a slash
@@ -144,7 +178,6 @@ webuiApp.controller('streamsVodCtrl', ['$uibModal', '$scope', '$http', '$timeout
 
             $scope.loadFiles();
         }, function () {
-            // $log.info('Modal dismissed at: ' + new Date());
         });
     };
 
@@ -177,7 +210,7 @@ webuiApp.controller('confirmDeleteVodModalCtrl', ['$scope', '$uibModalInstance',
 
         $http({
             method: 'POST',
-            url: '/ems/api/get-delete-vod-files',
+            url: '/ems/api/delete-vod-files',
             data: data,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (response) {

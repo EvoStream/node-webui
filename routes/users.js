@@ -6,15 +6,14 @@ var winston = require('winston');
 var userService = require(path.join(__dirname, '../models/user'));
 var restrict = require(path.join(__dirname, '../auth/restrict'));
 
-/* GET users listing. */
 router.get('/', restrict, function(req, res, next) {
-  redirect('/');
+    winston.log("info", '[webui] users-route: index restrict access ');
+    redirect('/');
 });
 
 /* GET /users/view listing. */
 router.get('/logout', restrict, function(req, res, next) {
-    winston.log("info", "[webui] user logging out.....");
-    winston.log("info", "[webui] user session "+JSON.stringify(req.session));
+    winston.log("info", "[webui] users-route: user logging out.....");
 
     if(typeof req.session.passport !== 'undefined'){
 
@@ -31,13 +30,13 @@ router.get('/logout', restrict, function(req, res, next) {
     req.logout();
     req.session.destroy();
     res.redirect('/');
-
-
+    
 });
 
 
 
 router.get('/check-google-login', function (req, res, next) {
+    winston.log("info", '[webui] users-route: check-google-login ');
 
     var result = {
         'status': 'not-login'
@@ -58,6 +57,7 @@ router.get('/check-google-login', function (req, res, next) {
 
 
 router.get('/check-fb-login', function (req, res, next) {
+    winston.log("info", '[webui] users-route: check-fb-login ');
 
     var result = {
         'status': 'not-login'
@@ -77,6 +77,7 @@ router.get('/check-fb-login', function (req, res, next) {
 
 
 router.get('/profile', restrict, function (req, res, next) {
+    winston.log("info", '[webui] users-route: profile ');
 
     var vm = {
         title: 'Profile - Evostream Web UI ',
@@ -90,8 +91,7 @@ router.get('/profile', restrict, function (req, res, next) {
 
 
 router.get('/profile-info', restrict, function (req, res, next) {
-
-    winston.log("info", '[webui] profile information');
+    winston.log("info", '[webui] users-route: profile-info ');
 
     var userInfo = {};
 
@@ -123,14 +123,12 @@ router.get('/profile-info', restrict, function (req, res, next) {
 
     //Get the user data
     res.json(userInfo);
-    // res.json(req.session);
 
 });
 
 
 router.get('/profile-change-password', restrict, function (req, res, next) {
-
-    winston.log("info", '[webui] profile - change password' );
+    winston.log("info", '[webui] users-route: profile - change password ');
     
     var result = {};
     result.status = false;
@@ -141,13 +139,9 @@ router.get('/profile-change-password', restrict, function (req, res, next) {
         email: parameter.email,
         password: parameter.password,
         oldpassword: parameter.oldpassword
-    }
+    };
 
     if(parameter){
-
-        //Check Old Password
-        winston.log("info", '[webui] profile - check old password' );
-
         userService.findUserOldPassword(userResult, function (response) {
             if (response.status != false) {
 
@@ -160,17 +154,14 @@ router.get('/profile-change-password', restrict, function (req, res, next) {
                         result.status = true;
                     }
 
-                    winston.log("verbose", "[webui] profile - setting the new password result" + JSON.stringify(result));
                     res.json(result);
                 });
             }else{
-                winston.log("verbose", "[webui] profile - setting the new password result" + JSON.stringify(result));
                 res.json(result);
             }
         });
 
     }else{
-        winston.log("verbose", "[webui] profile - setting the new password result" + JSON.stringify(result));
         res.json(result);
     }
 
@@ -178,8 +169,7 @@ router.get('/profile-change-password', restrict, function (req, res, next) {
 });
 
 router.get('/unlink-social-token', restrict, function (req, res, next) {
-
-    winston.log("info", '[webui] unlink social token');
+    winston.log("info", '[webui]  users-route: unlink social token ');
 
     var result = {};
     result.status = false;
@@ -233,10 +223,7 @@ router.get('/unlink-social-token', restrict, function (req, res, next) {
 
             });
         }
-
     }
-
-
 });
 
 

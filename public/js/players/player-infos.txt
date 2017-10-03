@@ -1,0 +1,19 @@
+
+Evostream HTML5 Player 
+
+evohtml5player-2.0.13.bundle.js
+
+
+Video.js 
+
+version 5.8.8
+
+
+Video.js HLS build
+
+version 2.0.1
+
+
+
+dash-if
+v2.5.0-d389aed

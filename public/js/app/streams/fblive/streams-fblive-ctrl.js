@@ -13,7 +13,6 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
             /*
              * Default Values
              */
-
             $scope.seeAddedSendStream = false;
             $scope.disableSelectStreamFb = false;
             $scope.fbButtonText = 'Post to Facebook';
@@ -151,7 +150,7 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
 
             };
 
-                //Load Default User Info
+            //Load Default User Info
             $scope.activeEdge = 'user';
             var parameters = {
                 edge: $scope.activeEdge
@@ -187,9 +186,9 @@ webuiApp.controller('streamsFbLiveCtrl', ['$scope', '$http', '$timeout', 'listPu
                     "list": $scope.fbEdgeList,
                     "default": {
                         selected: $scope.fbEdgeList[0]
-                    },
+                    }
                 };
-                $scope.activeEdge = 'user'
+                $scope.activeEdge = 'user';
                 $scope.fbDescription = '';
             };
 

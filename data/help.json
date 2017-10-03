@@ -758,7 +758,7 @@
       {
         "defaultValue": "transcoded_xxxx (timestamp)",
         "description": "The name of the stream(s) at destination(s). If not specified, name will have a time stamped value.",
-        "mandatory": true,
+        "mandatory": false,
         "name": "targetStreamNames"
       },
       {
@@ -1055,7 +1055,7 @@
     ]
   },
   {
-    "command": "removeGroupNameAlias",
+    "command": "removeGroupNameAliases",
     "deprecated": false,
     "description": "Removes an alias of a group name",
     "parameters": [
@@ -1256,6 +1256,12 @@
         "description": "The group name assigned to this process. If not specified, groupName will have a random value.",
         "mandatory": false,
         "name": "groupName"
+      },
+      {
+        "defaultValue": "0",
+        "description": "Will kill the process if it is still running after the specified number of seconds.",
+        "mandatory": false,
+        "name": "processKillTimer"
       }
     ]
   },
@@ -1798,6 +1804,38 @@
     "command": "getBandwidth",
     "deprecated": false,
     "description": "Returns bandwidth information: limits and current values.",
+    "parameters": [
+    ]
+  },
+  {
+    "command": "addMetadataListener",
+    "deprecated": false,
+    "description": "Adds a new metadata listener",
+    "parameters": [
+      {
+        "defaultValue": null,
+        "description": "port value to bind on",
+        "mandatory": true,
+        "name": "port"
+      },
+      {
+        "defaultValue": "0.0.0.0",
+        "description": "IP address to bind on",
+        "mandatory": false,
+        "name": "ip"
+      },
+      {
+        "defaultValue": "0~0~0",
+        "description": "Stream Name to bind on",
+        "mandatory": false,
+        "name": "localStreamName"
+      }
+    ]
+  },
+  {
+    "command": "listMetadataListeners",
+    "deprecated": false,
+    "description": "Lists all metadata listener",
     "parameters": [
     ]
   },

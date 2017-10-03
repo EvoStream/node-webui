@@ -17,10 +17,22 @@
                 <div class="col-md-6 ">
                     <div class="form-group" >
                         <label class="evo-head">Enter the Media Folder Directory</label>
-                        <input type="text" class="form-control" name="vodMediaFolder" ng-model="vodMediaFolder" style="margin-bottom: 20px;"
-                               placeholder="Input Media Folder Directory">
+                        <!--<input type="text" class="form-control" name="vodMediaFolder" ng-model="vodMediaFolder" style="margin-bottom: 20px;"-->
+                               <!--placeholder="Input Media Folder Directory">-->
 
-                        <button type="button" class="btn btn-evo"
+                        <ui-select ng-model="mediaFolderList.selected" theme="bootstrap" ng-change="loadFiles()"
+                                   title="Choose a media folder to load" search-enabled="false" ng-disabled="disabled" >
+                            <ui-select-match placeholder="Select the mediafolder...">{[{$select.selected.mediaFolder}]}</ui-select-match>
+                            <ui-select-choices
+                                    repeat="mediaFolder in mediaFolderList | propsFilter: {name: $select.search} ">
+                                <div ng-bind-html="mediaFolder.mediaFolder | highlight: $select.search"></div>
+                                <small style="font-size: smaller; ">
+                                    source: {[{mediaFolder.description}]}
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+
+                        <button type="button" class="btn btn-evo" style="margin-top: 10px;"
                                 ng-disabled=""
                                 ladda="loadFilesLoading" ng-click="loadFiles()">
                             <span>{[{loadFilesText}]}</span>

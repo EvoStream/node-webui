@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -60,41 +59,17 @@
 
     <!-- Players -->
     <!--html5 player -->
-    <script src="//ers.evostream.com:5050/demo/js/evohtml5player-latest.bundle.js"></script>
+    <script src="/js/players/evohtml5player-2.0.13.bundle.js"></script>
 
     <!--dash-if player-->
     <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
 
-    <!--videojs-->
-    <!--<link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">-->
-    <!--&lt;!&ndash; If you'd like to support IE8 &ndash;&gt;-->
-    <!--<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>-->
-    <!--<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>-->
+    <!--bitdash player-->
+    <!--<script src="/js/players/bitdash.min.js"></script>-->
 
     <script>
 
-
-        function $_GET(param) {
-            var vars = {};
-            window.location.href.replace(location.hash, '').replace(
-                    /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-                    function (m, key, value) { // callback
-                        vars[key] = value !== undefined ? value : '';
-                    }
-            );
-
-            if (param) {
-                return vars[param] ? vars[param] : null;
-            }
-            return vars;
-        }
-
-        //        var localStreamName = $_GET('localStreamName');
-
         function playWs(useSsl) {
-//            if (window['player']) return;
-
-            console.log('playWs playWs playWs ');
 
 //            var emsIp = '50.56.172.81';
 //            var streamName = '01';
@@ -108,15 +83,7 @@
             };
 
             if (useSsl) {
-                // This assumes that EMS has inboundWSSFMP4 acceptor (note WSS)
-                // enabled pn port 8420 with acceptable certificate and key files
-                //
-                // If the certs are self signed and does not match the domain,
-                // security exception needs to be added on the browser. This can be
-                // done by going to https://<ems IP address>:<wss port>/ using the browser.
-                // Example:
-                // https://127.0.0.1:8420/
-                // And then accepting the security exception option.
+
                 opts.useSsl = true;
                 opts.emsPort = 8420;
             }
@@ -126,7 +93,6 @@
         }
 
         function playWrtc() {
-//            if (window['player' + number]) return;
 
             var ersIp = document.getElementById('ersIp').value;
             var streamName = document.getElementById('streamName').value;
@@ -171,7 +137,10 @@
                         <h3 class="evo-h3">EvoStream HTML5 Player</h3>
                         <div class="row">
                             <div class="col-md-10">
-                                <p style="font-size: medium; margin-bottom: 20px;"><label>localStreamName:&nbsp;{{streamName}}</label></p>
+                                <p class="localstreamname"><label>localStreamName:&nbsp;</label>{{localStreamName}}</p>
+                                <p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>
+                                <p class="streamLabels"><label>{{aliasDescr}}</label></p>
+
                                 <input type="hidden" id="emsIp" value="{{emsIp}}">
                                 <input type="hidden" id="streamName" value="{{streamName}}">
                                 <button class="btn btn-evo" onclick="playWs(false)">Play</button>
@@ -181,7 +150,34 @@
                                 <!--<br>-->
                                 <p>Show debug messages</p>
                                 <!--<br>-->
-                                <div id="debugHtml5Player" class="debugPane"></div>
+                                <div id="debugHtml5Player" class="debugPane" style="overflow:scroll;" ></div>
+                            </div>
+                            <script>
+                                playWs(false);
+                            </script>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#if HTML5-VOD}}
+                    <div>
+                        <h3 class="evo-h3">EvoStream HTML5 Player</h3>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="localstreamname"><label>localStreamName:&nbsp;</label>{{localStreamName}}</p>
+                                <p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>
+                                <p class="streamLabels"><label>{{aliasDescr}}</label></p>
+
+                                <input type="hidden" id="emsIp" value="{{emsIp}}">
+                                <input type="hidden" id="streamName" value="{{streamName}}">
+                                <button class="btn btn-evo" onclick="playWs(false)">Play</button>
+                                <button class="btn btn-evo-clear" onclick="stop()">Stop</button>
+                                <br><br>
+                                <video id="videoHtml5Player" class="videoElement" controls=""></video>
+                                <!--<br>-->
+                                <p>Show debug messages</p>
+                                <!--<br>-->
+                                <div id="debugHtml5Player" class="debugPane" style="overflow:scroll;" ></div>
                             </div>
                             <script>
                                 playWs(false);
@@ -195,13 +191,16 @@
                         <h3 class="evo-h3">EvoStream playing your VOD Stream</h3>
                         <div class="row">
                             <div class="col-md-10">
-                                <p><label>url:&nbsp;</label>{{emsPlayUrl}}</p>
+                                <p>{{emsPlayUrl}}</p>
+                                <p class="streamLabels"><label>{{aliasDescr}}</label></p>
+                                <p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>
 
                                 <video id=vod-video width=720 height=480 class="video-js vjs-default-skin" controls preload="auto">
                                     <source src="{{playUrl}}" type={{playType}}>
 
                                 </video>
                                 <link href="http://vjs.zencdn.net/5.8.8/video-js.css"  rel="stylesheet">
+                                <!--videojs-->
                                 <!-- If you'd like to support IE8 -->
                                 <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
                                 <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
@@ -221,6 +220,9 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <p><label>url:&nbsp;</label>{{playUrl}}</p>
+                                <p class="streamLabels"><label>{{aliasDescr}}</label></p>
+                                <p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>
+
                                 <video id=hls-video width=720 height=480 class="video-js vjs-default-skin" controls>
                                     <!--<source src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8" type="application/x-mpegURL">-->
                                     <!--<source src="http://50.56.172.81:3000/media/hls02/playlist.m3u8" type="application/x-mpegURL">-->
@@ -246,12 +248,60 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <p><label>url:&nbsp;</label>{{playUrl}}</p>
+                                <p style="font-size: medium; margin-bottom: 10px;"><label>{{aliasDescr}}</label></p>
+                                <p style="font-size: medium; margin-bottom: 10px;"><label style="color: #ff0000">{{aliasDescrError}}</label></p>
                                 <!--<video data-dashjs-player autoplay src="http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd" controls></video>-->
                                 <!--<video data-dashjs-player autoplay src="http://50.56.172.81:3000/media/dash01/manifest.mpd" controls></video>-->
-                                <video data-dashjs-player autoplay src="{{playUrl}}" controls></video>
+                                <video id="videoDashPlayer" data-dashjs-player autoplay src="{{playUrl}}" controls></video>
+                                <!--<video id="videoDashPlayer" controls></video>-->
                             </div>
                         </div>
                     </div>
+
+                    <!--<div>-->
+                        <!--<h3 class="evo-h3">EvoStream playing your DASH Stream</h3>-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-10">-->
+                                <!--<p><label>url:&nbsp;</label>{{playUrl}}</p>-->
+                                <!--<p class="streamLabels"><label>{{aliasDescr}}</label></p>-->
+                                <!--<p class="streamLabels"><label class="err">{{aliasDescrError}}</label></p>-->
+                                <!--&lt;!&ndash;<video data-dashjs-player autoplay src="http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd" controls></video>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<video data-dashjs-player autoplay src="http://50.56.172.81:3000/media/dash01/manifest.mpd" controls></video>&ndash;&gt;-->
+                                <!--<div id="bitDashPlayer"></div>-->
+                                <!--&lt;!&ndash;<video id="videoDashPlayer" controls></video>&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<script type="text/javascript">-->
+                        <!--var conf = {-->
+                            <!--key:       "5b2125410278d33b5cabd5ebeb93ee97",-->
+                            <!--source:    {-->
+                                <!--dash:       "{{playUrl}}"-->
+                            <!--},-->
+                            <!--playback: {-->
+                                <!--autoplay:  true,-->
+                                <!--muted:     false-->
+                            <!--},-->
+                            <!--events: {-->
+                                <!--onError: function(data) {-->
+                                    <!--console.error("bitdash error: " + data.code + ": " + data.message);-->
+                                <!--},-->
+                                <!--onReady: function(obj)  {-->
+                                    <!--console.log(this.getVersion() + ' onReady: ', obj);-->
+                                <!--},-->
+                                <!--onMetadata: function(data) {-->
+                                    <!--//console.log("Metadata wrapper object: ", data);-->
+                                    <!--//console.log("Metadata object: ", data.metadata);-->
+                                    <!--//console.log("Metadata: ", data.metadata.frames[0]);-->
+                                    <!--//console.log("Content of GEOB frame (as Base64): ", window.btoa(data.metadata.frames[0].data));-->
+                                    <!--console.log("Content of GEOB frame (as JSON): ", window.atob(data.metadata.frames[0].data));-->
+                                <!--}-->
+                            <!--}-->
+                        <!--};-->
+
+                        <!--var player = bitdash("bitDashPlayer").setup(conf);-->
+                    <!--</script>-->
                 {{/if}}
 
 
@@ -267,55 +317,3 @@
 </div>
 </body>
 </html>
-
-
-<script>
-
-
-    //    var ws;
-    //    var started = false;
-    //
-    //    function stop() {
-    //        if (ws)
-    //            ws.close();
-    //
-    //        stopPlayer();
-    //        started = false;
-    //    }
-    //
-    //    function startPlay(stream) {
-    //
-    //        console.log("startPlay inside");
-    //
-    //        // Prevent accidental double clicks
-    //        if (started) return;
-    //
-    //        started = true;
-    //
-    //        console.log("startPlay before initializePlayer ");
-    //
-    //        initializePlayer();
-    //
-    //        console.log("startPlay after initializePlayer ");
-    //
-    //        var streamURI = "ws://50.56.172.81:8410/"+stream+"?progressive";
-    //        var streamURI = "ws://50.56.172.81:8410/01?progressive";
-    //
-    //        console.log("streamURI "+streamURI);
-    //
-    //        //connect to the streaming server via WS
-    //        ws = new WebSocket(streamURI);
-    //        ws.binaryType = 'arraybuffer';
-    //
-    //        //setup the handler for when data arrives via WS
-    //        ws.onmessage = function (msg) {
-    //            var arrayView = new Uint8Array(msg.data);
-    //            parseData(arrayView);
-    //        };
-    //    }
-    //
-    //    var localStreamName = $_GET('localStreamName');
-    //
-    //    startPlay(localStreamName);
-
-</script>

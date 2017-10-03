@@ -4,50 +4,62 @@ var path = require('path');
 var restrict = require(path.join(__dirname, '../auth/restrict'));
 var request = require('request');
 var winston = require('winston');
+var fs = require('fs');
 
 var recursive = require('recursive-readdir');
 
 //build the api proxy
-var ipApiProxy = null;
+var ipApiProxy = require(path.join(__dirname, "../core_modules/ems-api-proxy"));
+var ems = require(path.join(__dirname, "../core_modules/ems-api-core"))(ipApiProxy.url);
 
-var ems = require(path.join(__dirname, "../core_modules/ems-api-core"))(ipApiProxy);
-var fs = require('fs');
-
-//default media folder
-var dirConfig = require(path.join(__dirname, '../config/dir-config'));
+//load social configurations
 var socialConfig = require(path.join(__dirname, '../config/social-auth-config'));
 
+
 router.get('/', restrict, function (req, res, next) {
-    //Redirect to index
+    winston.log("info", '[webui] ems-routes: index restrict access ');
+    redirect('/');
+
+});
+
+
+router.get('/api/get-ems-dir', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: get-ems-dir');
+
+    var result = {
+        "directory": path.resolve(ipApiProxy.webconfig.webRootFolder)
+    }
+
+    res.json(result);
 
 });
 
 
 router.get('/api/check-connection', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: check-connection');
+
     var parameters = null;
 
-    //Execute command for version to check connection to ems
     ems.version(parameters, function (result) {
 
         res.json(result);
     });
 });
 
-/*
- * Dashboard Page
- */
 
 router.get('/api/get-license-id', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: get-license-id');
+
     var parameters = null;
 
-    //Execute command for version to check connection to ems
     ems.getLicenseId(parameters, function (result) {
-
         res.json(result);
     });
 });
 
+
 router.get('/api/get-inbound-outbound-count', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: get-inbound-outbound-count');
 
     var streamCountData = [];
     var parameters = null;
@@ -102,25 +114,18 @@ router.get('/api/get-inbound-outbound-count', restrict, function (req, res, next
                             res.json(streamCountData);
                         });
                     }
-
-
                 });
             }
         }
-
-
     });
 });
 
 
-/*
- * stream: List Configuration Page
- */
-
 router.get('/api/get-list-config', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: get-list-config');
+
     var parameters = null;
 
-    //Execute command for version to check connection to ems
     ems.listConfig(parameters, function (result) {
 
         res.json(result);
@@ -128,13 +133,21 @@ router.get('/api/get-list-config', restrict, function (req, res, next) {
 });
 
 
-router.get('/api/get-default-media-folder', restrict, function (req, res, next) {
+router.get('/api/get-media-folders', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: get-media-folders');
 
-    res.json(dirConfig.mediaFolder);
+    var parameters = null;
+
+    ems.listStorage(parameters, function (result) {
+
+        res.json(result);
+    });
+
 });
 
 
 router.post('/api/get-vod-files', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: get-vod-files');
 
     var data = req.body;
 
@@ -142,61 +155,32 @@ router.post('/api/get-vod-files', restrict, function (req, res, next) {
 
     var filesToPlayList = [];
 
-    // List all files in a directory in Node.js recursively in a synchronous fashion
-    function walk(currentDirPath, callback) {
-        var fs = require('fs'),
-            path = require('path');
-        fs.readdir(currentDirPath, function (err, files) {
-            if (err) {
-                throw new Error(err);
-            }
-            files.forEach(function (name) {
-                var filePath = path.join(currentDirPath, name);
-                var stat = fs.statSync(filePath);
-                if (stat.isFile()) {
-
-                    var ext = filePath.split('.').pop();
-
-                    //Only add files that can be played
-                    var fileToPlay = ["mp4", "ts", "flv", "m4v", "vod", "lst", "mov"];
-
-                    var playFile = fileToPlay.indexOf(ext);
-
-                    if (playFile != -1) {
-
-                        winston.log("verbose", 'name to add ' + name);
-
-                        callback(filePath, stat);
-
-                    }
-
-
-                } else if (stat.isDirectory()) {
-                    walk(filePath, callback);
-                }
-
-
-            });
-        });
-    }
-
     if (data.directory != "") {
 
         directory = data.directory;
+        if ((directory[directory.length - 1] == '/') || ((directory[directory.length - 1] == '\\'))) {
+            directory = directory.slice(0, -1);
+        }
 
         recursive(directory, function (err, files) {
+
+            if (directory.charAt(0) !== '/') {
+                directory = directory + "\\";
+            } else {
+                directory = directory + "/";
+            }
 
             for (var i in files) {
                 var ext = files[i].split('.').pop();
 
                 //Only add files that can be played
-                var fileToPlay = ["mp4", "ts", "flv", "m4v", "vod", "lst"];
+                var fileToPlay = ["mp4", "ts", "flv", "m4v", "vod", "lst", "mov"];
 
                 var playFile = fileToPlay.indexOf(ext);
 
                 if (playFile != -1) {
 
-                    var vodFile = files[i].replace(directory + "/", '');
+                    var vodFile = files[i].replace(directory, '');
                     filesToPlayList.push(vodFile);
                 }
             }
@@ -208,15 +192,12 @@ router.post('/api/get-vod-files', restrict, function (req, res, next) {
             }
 
         });
-
-
     }
-
-
 });
 
-router.post('/api/get-delete-vod-files', restrict, function (req, res, next) {
-
+router.post('/api/delete-vod-files', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: delete-vod-files');
+    
     var data = req.body;
 
     if (data.filepath != "") {
@@ -230,6 +211,7 @@ router.post('/api/get-delete-vod-files', restrict, function (req, res, next) {
 
 
 router.get('/api/get-commands-parameters', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: get-commands-parameters');
 
     //Get the list of commands on the local help.json
     try {
@@ -279,36 +261,60 @@ router.get('/api/get-commands-parameters', restrict, function (req, res, next) {
 });
 
 router.post('/api/execute-command', function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: execute-command');
 
     var data = req.body;
     var parameters = null;
 
     if (data.parameters != "") {
 
-        parameters = JSON.parse('{"' + decodeURI(data.parameters).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+        var decodedURI = decodeURI(data.parameters).split("&");
+
+        for (var i in decodedURI) {
+            decodedURI[i] = decodeURIComponent(decodedURI[i]);
+        }
+
+        var tempParams = '{';
+        var lastIndex = decodedURI.length - 1;
+
+        for (var i = 0; i < decodedURI.length; i++) {
+            tempParams += '"' + decodeURIComponent(decodedURI[i]).replace("=", '":"') + '"';
+
+            if (i != lastIndex) {
+                tempParams += ',';
+            }
+        }
+
+        tempParams += '}';
+
+        tempParams = tempParams.replace(/\+/g, ' ');
+
+        try {
+            parameters = JSON.parse(tempParams);
+        } catch (e) {
+            winston.log("error", "JSON parsing error: " + tempParams);
+        }
 
         for (var i in parameters) {
             parameters[i] = decodeURIComponent(parameters[i]);
-
         }
-		
-		if((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
-			if(parameters.targetFolder.charAt(0) !== '/'){
-				var str = parameters.targetFolder;
-				parameters.targetFolder = str.replace("file:///", "");
-			}
-		}
 
-		if((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
-			if(parameters.pathToFile.charAt(0) !== '/'){
-				var str = parameters.pathToFile;
-				parameters.pathToFile = str.replace("file:///", "");
-			}
-		}
+        if ((typeof parameters.targetFolder !== 'undefined') && (parameters.targetFolder !== null )) {
+            if (parameters.targetFolder.charAt(0) !== '/') {
+                var str = parameters.targetFolder;
+                parameters.targetFolder = str.replace("file:///", "");
+            }
+        }
+
+        if ((typeof parameters.pathToFile !== 'undefined') && (parameters.pathToFile !== null )) {
+            if (parameters.pathToFile.charAt(0) !== '/') {
+                var str = parameters.pathToFile;
+                parameters.pathToFile = str.replace("file:///", "");
+            }
+        }
 
     }
 
-    //Execute command for pushStream using destination address
     ems[data.command](parameters, function (result) {
 
         res.json(result);
@@ -318,6 +324,7 @@ router.post('/api/execute-command', function (req, res, next) {
 
 
 router.get('/api/liststreams', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: liststreams');
 
     var parameters = null;
 
@@ -330,6 +337,7 @@ router.get('/api/liststreams', restrict, function (req, res, next) {
 
 
 router.get('/api/removeconfig', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: removeconfig');
 
     var parameters = {
         id: req.query.configid
@@ -342,11 +350,58 @@ router.get('/api/removeconfig', restrict, function (req, res, next) {
     });
 });
 
+
+router.get('/api/shutdownstream', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: shutdownstream');
+
+    var parameters = {
+        id: req.query.uniqueid
+    };
+
+    //Execute command for version to check connection to ems
+    ems.removeConfig(parameters, function (result) {
+
+        res.json(result);
+    });
+});
+
+
+router.get('/api/getstreaminfo', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: getstreaminfo');
+
+    var parameters = {
+        id: req.query.uniqueid
+    };
+
+    //Execute command for version to check connection to ems
+    ems.getStreamInfo(parameters, function (result) {
+
+        res.json(result);
+    });
+});
+
+
+router.get('/api/getconfiginfo', restrict, function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: getconfiginfo');
+
+    var parameters = {
+        id: req.query.configid
+    };
+
+    //Execute command for version to check connection to ems
+    ems.getConfigInfo(parameters, function (result) {
+
+        res.json(result);
+    });
+});
+
+
 /*
  * Youtube
  */
 
 router.get('/api/send-youtube', function (req, res, next) {
+    winston.log("info", '[webui] ems-routes: send-youtube');
 
     var data = req.query;
     var parameters = null;
@@ -510,15 +565,8 @@ router.get('/api/send-youtube', function (req, res, next) {
 /*
  * Facebook
  */
-
-
 router.get('/api/get-fb-edge', restrict, function (req, res, next) {
-
-    winston.log("verbose", 'get-fb-user get-fb-user get-fb-user ');
-
-    winston.log("verbose", 'req.query ' + JSON.stringify(req.query));
-
-    winston.log("verbose", 'req.session.fbUser ' + JSON.stringify(req.session.fbUser));
+    winston.log("info", '[webui] ems-routes: get-fb-edge');
 
     var data = req.query;
     var parameters = null;
@@ -526,28 +574,19 @@ router.get('/api/get-fb-edge', restrict, function (req, res, next) {
 
     if (req.session.fbUser) {
         parameters = data.parameters + '&token=' + req.session.fbUser.fbtoken;
-        // parameters = 'edge=user&token=' + req.session.fbUser.fbtoken;
 
         var fbEdge = new Buffer(socialConfig.fbEdge, 'base64');
-
-        // var getInfoUrl = "http://webuiauth.evostream.com/verify/fbvideo/info?" + parameters;
         var getInfoUrl = fbEdge + parameters;
 
-
-        // winston.log("verbose", 'createBroadcastUrl ' + createBroadcastUrl);
-
         request(getInfoUrl, function (error, response, body) {
-
-            winston.log("verbose", 'response ' + JSON.stringify(response));
-            winston.log("verbose", 'body ' + JSON.stringify(body));
 
             if (response.statusCode == 200) {
                 res.json(body);
             }
 
-        });
+            winston.log("info", '[webui] ems-routes: facebook encountered an error - '+body);
 
-        // res.redirect(getInfoUrl);
+        });
 
     }
 
@@ -555,32 +594,18 @@ router.get('/api/get-fb-edge', restrict, function (req, res, next) {
 
 
 router.get('/api/send-facebook', function (req, res, next) {
-    // console.log('POST: api/send-youtube req.body ' + JSON.stringify(req.body));
-    winston.log("verbose", 'GET: api/send-facebook req.query ' + JSON.stringify(req.query));
+    winston.log("info", '[webui] ems-routes: send-facebook');
 
     var data = req.query;
     var parameters = null;
 
-    winston.log("verbose", 'data.command ' + data.command);
-
-
     if (req.session.fbUser) {
         parameters = data.parameters + '&token=' + req.session.fbUser.fbtoken;
 
-        winston.log("verbose", 'parameters ' + parameters);
-
         var fbVideo = new Buffer(socialConfig.fbVideo, 'base64');
-
-
         var createFbVideoUrl = fbVideo + parameters;
 
-        winston.log("verbose", 'createFbVideoUrl ' + createFbVideoUrl);
-
-        // res.redirect(createFbVideoUrl);
-
         request(createFbVideoUrl, function (error, response, body) {
-
-            winston.log("verbose", 'response ' + JSON.stringify(response));
 
             if (error) {
                 err = {
@@ -591,22 +616,18 @@ router.get('/api/send-facebook', function (req, res, next) {
             }
 
             if (response.statusCode == 200) {
-                // var importedJSON = JSON.parse(body);
-                // res.json(importedJSON);
-
-                winston.log("verbose", 'body' + JSON.stringify(body));
 
                 var facebookData = JSON.parse(body);
 
                 if (facebookData.error) {
-                    winston.log("error", 'Facebook Error Details: ' + body);
+                    winston.log("info", '[webui] ems-routes: facebook encountered an error - '+body);
 
                     var result = {
                         'status': false
                     };
 
                     res.json(result);
-                }else{
+                } else {
                     var facebookStreamUrl = facebookData.stream_url;
                     var facebookTargetProtocolUrl = 'rtmp://rtmp-api.facebook.com:80/rtmp/';
 
@@ -642,8 +663,6 @@ router.get('/api/send-facebook', function (req, res, next) {
             }
         });
     }
-
-
 });
 
 

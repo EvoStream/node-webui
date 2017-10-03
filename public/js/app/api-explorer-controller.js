@@ -16,7 +16,7 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
 
     $scope.sendCommandLoading = false;
 
-    $scope.selectedCommandAddParameters = function () {
+    $scope.selectedCommandAddParameters = function () { 
 
         var index = vm.apiList.findIndex(function (item, i) {
             return item.command === $scope.ctrl.api.selected;
@@ -56,7 +56,9 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
         });
 
         $scope.checkingParameterListNotMandatory = tempParameterListNotMandatory;
+        $scope.parameterCollectionsNotMandatory = [];
         $scope.commandResponse = '';
+
 
     };
 
@@ -190,6 +192,18 @@ webuiApp.controller('apiExplorerCtrl', ['$scope', '$http', '$timeout', '$window'
                 parameters.pathToFile = '/' + parameters.pathToFile;
                 parameters.pathToFile = 'file://' + parameters.pathToFile;
             }
+        }
+
+        if((typeof parameters.fullBinaryPath !== 'undefined') && (parameters.fullBinaryPath !== null )) {
+
+            if((parameters.fullBinaryPath.charAt(0) !== '/') && (parameters.fullBinaryPath.indexOf("file://") === -1)){
+                parameters.fullBinaryPath = parameters.fullBinaryPath.replace(/\\/g, '/');
+            }
+        }
+
+        if((typeof parameters.arguments !== 'undefined') && (parameters.arguments !== null )) {
+
+            parameters.arguments = parameters.arguments.replace(/\\/g, '\\\\');
         }
 
         var data = $.param({

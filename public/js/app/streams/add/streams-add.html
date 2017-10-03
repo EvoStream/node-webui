@@ -18,8 +18,8 @@
 
     <div class=" col-lg-12">
         <!-- Panel Content -->
-        <div class="panel-body">
-            <form name="addStreamForm" class="ng-pristine ng-valid ng-scope">
+        <div class="panel-body" >
+            <form name="addStreamForm" class="ng-pristine ng-valid ng-scope " ng-click="removeSuccessInfo()">
                 <fieldset ng-disabled="addStreamLoading">
                     <div class="col-md-8 ">
                         <div class="form-group">
@@ -300,7 +300,7 @@
                                 <span>Clear</span>
                             </button>
 
-                            <a class="btn btn-evo" role="button" ng-show="seeAddedStream" target="_blank"
+                            <a class="btn btn-evo" role="button" ng-show="seeAddedStream" target="_blank" ng-show="seeAddedStream"
                                href="{[{seeAddedStreamType}]}">
                                 <span>View Stream</span></a>
 

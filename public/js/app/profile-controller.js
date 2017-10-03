@@ -5,7 +5,7 @@ webuiApp.controller('profileCtrl', ['$scope', '$http', '$window', '$timeout',  f
     $scope.unlinkFbLoading = false;
     $scope.unlinkGoogleLoading = false;
 
-
+    
     $http.get("/users/profile-info").then(function (response) {
 
         if (response.data) {

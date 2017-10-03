@@ -5,7 +5,7 @@ var restrict = require(path.join(__dirname, '../auth/restrict'));
 var winston = require('winston');
 
 router.get('/', restrict, function(req, res, next) {
-    winston.log("info", '[webui] dashboard index page');
+    winston.log("info", '[webui] dashboard: index page');
 
     var vm = {
         title: 'Dashboard - Evostream Web UI ',

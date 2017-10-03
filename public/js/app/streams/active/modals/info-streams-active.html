@@ -46,12 +46,12 @@
                                 </td>
                                 <td colspan="2">
                                     <table class="table table-striped table-sm evo-rmar">
-                                        <tr>
+                                        <tr ng-if="streamRowSettings.content !== undefined ">
                                             <th class="info-sub-header" colspan="2" align="center" >
                                                 {[{streamRowSettings.header}]}
                                             </th>
                                         </tr>
-                                        <tr ng-repeat="(key, value) in streamRowSettings.content">
+                                        <tr ng-if="streamRowSettings.content !== undefined " ng-repeat="(key, value) in streamRowSettings.content">
                                             <td>{[{key}]}</td>
                                             <td>{[{value}]}</td>
                                         </tr>

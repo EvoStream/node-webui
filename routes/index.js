@@ -17,13 +17,14 @@ var crypto = require('crypto');
 
 /* GET index page. */
 router.get('/', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: index page');
 
     //Check if a index user exists
     if (req.user) {
         return res.redirect('dashboard');
     }
 
-    //Get the total number of Local Users
+    winston.log("info", '[webui] index-routes: count user');
     userService.countUser(function (count) {
 
         if ((count > 0)) {
@@ -42,8 +43,8 @@ router.get('/', function (req, res, next) {
 });
 
 
-/* GET index page. */
 router.get('/javascript-error', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: javascript-error - please enable javascript ');
 
     var vm = {
         title: 'Evostream Web UI - Enable Javascript',
@@ -53,8 +54,10 @@ router.get('/javascript-error', function (req, res, next) {
 
 });
 
-/* POST Add Account Form */
+
 router.post('/', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: post request for adding user');
+
     userService.addUser(req.body, function (response) {
 
         if (typeof response[0] !== "undefined") {
@@ -88,8 +91,10 @@ router.post('/', function (req, res, next) {
     });
 });
 
-/* GET index page. */
+
 router.get('/login', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: login user ');
+
     userService.countUser(function (count) {
 
         if ((count > 0)) {
@@ -107,11 +112,12 @@ router.get('/login', function (req, res, next) {
         }
     });
 
-
 });
 
-/* POST Login Form */
+
 router.post('/login', function (req, res, next) {
+        winston.log("info", '[webui] index-routes: post request for login user ');
+
         if (req.body.rememberMe) {
             // req.session.cookie.maxAge = 30 * 24 * 3600 * 1000; // 30 days
             req.session.cookie.maxAge = 5 * 60 * 1000; // 5 minutes
@@ -128,6 +134,7 @@ router.post('/login', function (req, res, next) {
 
 
 router.get('/fblogin', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: facebook login user ');
 
     var fullUrl = req.protocol + '://' + req.get('host') + '/fbcallback';
     var data = "url=" + fullUrl;
@@ -138,7 +145,6 @@ router.get('/fblogin', function (req, res, next) {
         data = "url=" + fullUrl + "&page=dashboard";
     }
 
-
     var buffer = new Buffer(data);
     var webuiUrl = buffer.toString('base64');
     var fbAuth = new Buffer(socialConfig.fbAuthLogin, 'base64');
@@ -147,7 +153,9 @@ router.get('/fblogin', function (req, res, next) {
 
 });
 
+
 router.get('/fbcallback', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: facebook response for login user ');
 
     //Set the page to redirect from
     var redirectPage = '/dashboard';
@@ -195,13 +203,11 @@ router.get('/fbcallback', function (req, res, next) {
         res.render('index/loginform', vm);
     }
 
-
-
-
 });
 
 
 router.get('/googlelogin', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: google login user ');
 
     var fullUrl = req.protocol + '://' + req.get('host') + '/googlecallback';
     if (typeof req.query.page !== 'undefined' && req.query.page) {
@@ -209,7 +215,6 @@ router.get('/googlelogin', function (req, res, next) {
     } else {
         fullUrl = fullUrl + '?page=dashboard';
     }
-
 
     var buffer = new Buffer(fullUrl);
     var webuiUrl = buffer.toString('base64');
@@ -220,6 +225,7 @@ router.get('/googlelogin', function (req, res, next) {
 });
 
 router.get('/googlecallback', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: google response for login user ');
 
     if(req.query.status == 'success'){
         
@@ -266,6 +272,7 @@ router.get('/googlecallback', function (req, res, next) {
 });
 
 router.get('/forgotpassword', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: forgot password ');
 
     var vm = {
         title: 'Forgot Password',
@@ -277,6 +284,8 @@ router.get('/forgotpassword', function (req, res, next) {
 
 
 router.post('/forgotpassword', function (req, res, next) {
+    winston.log("info", '[webui] index-routes: post request for forgot password ');
+
     async.waterfall([
         function (done) {
             crypto.randomBytes(20, function (err, buf) {
@@ -318,6 +327,8 @@ router.post('/forgotpassword', function (req, res, next) {
 
 
 router.get('/resetpassword', function (req, res) {
+    winston.log("info", '[webui] index-routes: reset password ');
+
     userService.findUserResetToken(req.query.token, function (userResult) {
         if (!userResult) {
             req.flash('error', 'Password reset token is invalid or has expired.');
@@ -336,6 +347,8 @@ router.get('/resetpassword', function (req, res) {
 
 
 router.post('/resetpassword', function (req, res) {
+    winston.log("info", '[webui] index-routes: post request for reset password ');
+
     async.waterfall([
         function (done) {
             userService.findUserResetToken(req.body.token, function (userResult) {

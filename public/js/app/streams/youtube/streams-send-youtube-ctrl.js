@@ -227,7 +227,6 @@
 
 
             $scope.sendYoutubeStream = function () {
-                console.log('sendYoutubeStream sendYoutubeStream');
 
                 $scope.disableSelectStreamYt = true;
                 $scope.sendYoutubeStreamLoading = true;
@@ -354,13 +353,11 @@
 webuiApp.controller('invalidArgumentModalCtrl', ['$scope', '$uibModalInstance', '$http', function ($scope, $uibModalInstance, $http) {
 
     $scope.ok = function () {
-        console.log('invalidArgumentModalCtrl ok');
         $scope.sendStreamLoading = false;
         $uibModalInstance.dismiss('ok');
     };
 
     $scope.cancel = function () {
-        console.log('invalidArgumentModalCtrl cancel');
         $scope.sendStreamLoading = false;
         $uibModalInstance.dismiss('cancel');
     };

@@ -7,8 +7,8 @@
 
     $scope.default_option = true;
     $scope.pushStream = {
-        protocol: 'rtmp',
-        targetPort: 1935
+        targetAddress: "",
+        targetStreamName: ""
     };
     // $scope.pushStream = {
     //     protocol: 'rtmp',
@@ -31,30 +31,12 @@
     });
 
 
-    $scope.changeProtocol = function () {
-
-        if ($scope.pushStream.protocol == 'rtmp') {
-            $scope.pushStream.targetPort = 1935;
-        } else if ($scope.pushStream.protocol == 'rtsp') {
-            $scope.pushStream.targetPort = 554;
-        } else if ($scope.pushStream.protocol == 'mpegtstcp') {
-            $scope.pushStream.targetPort = 5555;
-        } else if ($scope.pushStream.protocol == 'mpegtsudp') {
-            $scope.pushStream.targetPort = 5555;
-        }
-
-    };
-
     $scope.setDefaultValuesSendStreamForm = function () {
 
         $scope.pushStream = {
-            protocol: 'rtmp',
-            targetPort: '',
             targetAddress: ''
         };
     };
-
-
 
     $scope.sendStream = function () {
 
@@ -65,14 +47,8 @@
 
             $scope.sendStreamLoading = true;
 
-            var uri = null;
-
-            if ($scope.pushStream.protocol == 'rtmp') {
-                uri = $scope.pushStream.protocol + '://' + $scope.pushStream.targetAddress + '/live'
-            } else {
-                uri = $scope.pushStream.protocol + '://' + $scope.pushStream.targetAddress + ':' + $scope.pushStream.protocol
-            }
-
+            var uri = $scope.pushStream.targetAddress;
+            
             if($scope.pushStream.targetStreamName == ''){
                 $scope.pushStream.targetStreamName = $scope.pushStream.inboundList.selected.name;
             }

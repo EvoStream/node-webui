@@ -1,6 +1,4 @@
-webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$timeout', '$window', '$base64', '$route', '$routeParams', function ($uibModal, $scope, $http, $timeout, $window, $base64, $route, $routeParams) {
-
-    console.log('streamsActiveCtrl loaded');
+webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$timeout', '$window', '$base64', '$route', '$routeParams', '$location', function ($uibModal, $scope, $http, $timeout, $window, $base64, $route, $routeParams, $location) {
 
     //Select the Tab
     $scope.activeTab = '/active';
@@ -19,27 +17,21 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
     /*
      * Dropdown
      */
-
     $scope.streamTypeList = [
         {
             value: "inbound",
-            text: "Inbound Streams (pull)",
+            text: "Inbound Streams ",
             description: "“inbound” will refer to any stream coming into the EMS"
         },
         {
             value: "outbound",
-            text: "Outbound Streams (push)",
+            text: "Outbound Streams ",
             description: "“outbound” will refer to any stream leaving the EMS"
         },
         {
             value: "http",
             text: "Adaptive HTTP Streams",
             description: "existing HTTP streaming technologies, such as HLS, DASH, MSS, HDS"
-        },
-        {
-            value: "file",
-            text: "File Media",
-            description: "Video on Demand Streaming"
         }
     ];
 
@@ -48,11 +40,139 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
         "default": {
             selected: {
                 value: "inbound",
-                text: "Inbound Streams (pull)",
+                text: "Inbound Streams ",
                 description: "“inbound” will refer to any stream coming into the EMS"
             }
         },
     };
+
+    /*
+     * List the Stream and Build Table
+     */
+
+    //Initialize the stream information for the table
+    $scope.streamData = {
+        inbound: {
+            columnCollection: [
+                {field: 'streamId', sortable: true, title: 'Stream ID'},
+                {field: 'streamFormat', sortable: true, title: 'Stream Format'},
+                {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
+                {field: 'sourceURI', sortable: true, title: 'Source URI'},
+                {field: 'audioCodec', sortable: true, title: 'Audio Codec'},
+                {field: 'videoCodec', sortable: true, title: 'Video Codec'},
+                {
+                    field: 'operate',
+                    title: 'Actions',
+                    align: 'center',
+                    width: '180',
+                    clickToSelect: false,
+                    formatter: actionFormatter,
+                    events: {
+                        'click .info': function (e, value, row, index) {
+                            $scope.infoModal(row);
+                        },
+                        'click .delete': function (e, value, row, index) {
+                            $scope.deleteModal(row);
+                        },
+                        'click .play': function (e, value, row, index) {
+                            $scope.playNewWindow(row);
+                        }
+                    }
+                }
+            ]
+        },
+        outbound: {
+            columnCollection: [
+                {field: 'streamId', sortable: true, title: 'Stream ID'},
+                {field: 'streamFormat', sortable: true, title: 'Stream Format'},
+                {field: 'sourceStreamName', sortable: true, title: 'Source Stream Name'},
+                {field: 'farIp', sortable: true, title: 'Destination IP'},
+                {field: 'audioCodec', sortable: true, title: 'Audio Codec'},
+                {field: 'videoCodec', sortable: true, title: 'Video Codec'},
+                {
+                    field: 'operate',
+                    title: 'Actions',
+                    align: 'center',
+                    width: '180',
+                    clickToSelect: false,
+                    formatter: actionFormatter,
+                    events: {
+                        'click .info': function (e, value, row, index) {
+                            $scope.infoModal(row);
+                        },
+                        'click .delete': function (e, value, row, index) {
+                            $scope.deleteModal(row);
+                        }
+                    }
+                }
+            ]
+        },
+        http: {
+            columnCollection: [
+                {field: 'streamId', sortable: true, title: 'Stream ID'},
+                {field: 'streamFormat', sortable: true, title: 'Stream Format'},
+                {field: 'sourceStreamName', sortable: true, title: 'Source Stream Name'},
+                {field: 'groupName', sortable: true, title: 'Group Name'},
+                {field: 'audioCodec', sortable: true, title: 'Audio Codec'},
+                {field: 'videoCodec', sortable: true, title: 'Video Codec'},
+                {
+                    field: 'operate',
+                    title: 'Actions',
+                    align: 'center',
+                    width: '180',
+                    clickToSelect: false,
+                    formatter: actionFormatter,
+                    events: {
+                        'click .info': function (e, value, row, index) {
+                            $scope.infoModal(row);
+
+                        },
+                        'click .delete': function (e, value, row, index) {
+                            $scope.deleteModal(row);
+                        },
+                        'click .play': function (e, value, row, index) {
+                            $scope.playNewWindow(row);
+                        }
+                    }
+                }
+            ]
+        }
+    };
+
+    $scope.streamData.inbound.rowCollection = [];
+    $scope.streamData.outbound.rowCollection = [];
+    $scope.streamData.http.rowCollection = [];
+
+    var streamsActiveCtrlSocket = io.connect($location.protocol() + '://' + $location.host() + ':' + $location.port());
+
+    streamsActiveCtrlSocket.on('startListstreamsMap', function (response) {
+
+        //Get from socket.io
+        $scope.streamData.inbound.rowCollection = response.inbound.rowCollection;
+        $scope.streamData.outbound.rowCollection = response.outbound.rowCollection;
+        $scope.streamData.http.rowCollection = response.http.rowCollection;
+
+
+        listStreams($scope.streamTypeSelected);
+        $scope.$apply();
+
+    });
+
+
+
+
+    streamsActiveCtrlSocket.on('updateListstreamsMap', function (response) {
+
+        //Get from socket.io
+        $scope.streamData.inbound.rowCollection = response.inbound.rowCollection;
+        $scope.streamData.outbound.rowCollection = response.outbound.rowCollection;
+        $scope.streamData.http.rowCollection = response.http.rowCollection;
+
+
+        listStreams($scope.streamTypeSelected);
+        $scope.$apply();
+
+    });
 
     //Load using routeParameters
     if ($routeParams.streamTypeSelected != null) {
@@ -72,11 +192,6 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
             $scope.streamType.default = {
                 selected: $scope.streamTypeList[2]
             };
-        } else if ($routeParams.streamTypeSelected == 'file') {
-            $scope.streamTypeSelected = $routeParams.streamTypeSelected;
-            $scope.streamType.default = {
-                selected: $scope.streamTypeList[3]
-            };
         }
 
         listStreams($routeParams.streamTypeSelected);
@@ -95,317 +210,69 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
     };
 
 
-    /*
-     * List the Stream and Build Table
-     */
-
     function listStreams(streamTypeSelected) {
 
+        var bsTableData = null;
 
-        $http.get("/ems/api/liststreams").then(function (response) {
+        if (streamTypeSelected == 'inbound') {
+            bsTableData = $scope.streamData.inbound;
+        } else if (streamTypeSelected == 'outbound') {
+            bsTableData = $scope.streamData.outbound;
+        } else if (streamTypeSelected == 'http') {
+            bsTableData = $scope.streamData.http;
+        }
 
-            vm.listStreams = response.data;
+        var pageSize = 5;
+        var pageNumber = 1;
 
-            /*
-             * Build the Data of the Table
-             */
+        if ($scope.bsTableControl) {
+            if (typeof $scope.bsTableControl.state !== 'undefined') {
+                if (typeof $scope.bsTableControl.state.pageSize !== 'undefined') {
 
-            $scope.noActiveStreams = true;
+                    pageSize = $scope.bsTableControl.state.pageSize;
+                    pageNumber = $scope.bsTableControl.state.pageNumber;
 
-            //check type on list streams
-            if (vm.listStreams.data != null) {
-
-                $scope.noActiveStreams = false;
-                $scope.listStreamsData = vm.listStreams.data;
-
-                //Initialize the stream information for the table
-                $scope.streamData = {
-                    inbound: {
-                        columnCollection: [
-                            {field: 'streamId', sortable: true, title: 'Stream ID'},
-                            {field: 'streamFormat', sortable: true, title: 'Stream Format'},
-                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
-                            {field: 'sourceURI', sortable: true, title: 'Source URI'},
-                            {field: 'audioCodec', sortable: true, title: 'Audio Codec'},
-                            {field: 'videoCodec', sortable: true, title: 'Video Codec'},
-                            {
-                                field: 'operate',
-                                title: 'Actions',
-                                align: 'center',
-                                width: '180',
-                                clickToSelect: false,
-                                formatter: actionFormatter,
-                                events: {
-                                    'click .info': function (e, value, row, index) {
-                                        $scope.infoModal(row, vm.listStreams.data);
-                                    },
-                                    'click .delete': function (e, value, row, index) {
-                                        $scope.deleteModal(row, index, vm.listStreams.data, $scope.streamData.inbound);
-                                    },
-                                    'click .play': function (e, value, row, index) {
-                                        $scope.playNewWindow(row);
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                    outbound: {
-                        columnCollection: [
-                            {field: 'streamId', sortable: true, title: 'Stream ID'},
-                            {field: 'streamFormat', sortable: true, title: 'Stream Format'},
-                            {field: 'sourceStreamName', sortable: true, title: 'Source Stream Name'},
-                            {field: 'farIp', sortable: true, title: 'Destination IP'},
-                            {field: 'audioCodec', sortable: true, title: 'Audio Codec'},
-                            {field: 'videoCodec', sortable: true, title: 'Video Codec'},
-                            {
-                                field: 'operate',
-                                title: 'Actions',
-                                align: 'center',
-                                width: '180',
-                                clickToSelect: false,
-                                formatter: actionFormatter,
-                                events: {
-                                    'click .info': function (e, value, row, index) {
-                                        $scope.infoModal(row, vm.listStreams.data);
-                                    },
-                                    'click .delete': function (e, value, row, index) {
-                                        $scope.deleteModal(row, index, vm.listStreams.data);
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                    http: {
-                        columnCollection: [
-                            {field: 'streamId', sortable: true, title: 'Stream ID'},
-                            {field: 'streamFormat', sortable: true, title: 'Stream Format'},
-                            {field: 'sourceStreamName', sortable: true, title: 'Source Stream Name'},
-                            {field: 'groupName', sortable: true, title: 'Group Name'},
-                            {field: 'audioCodec', sortable: true, title: 'Audio Codec'},
-                            {field: 'videoCodec', sortable: true, title: 'Video Codec'},
-                            {
-                                field: 'operate',
-                                title: 'Actions',
-                                align: 'center',
-                                width: '180',
-                                clickToSelect: false,
-                                formatter: actionFormatter,
-                                events: {
-                                    'click .info': function (e, value, row, index) {
-                                        $scope.infoModal(row, vm.listStreams.data);
-
-                                    },
-                                    'click .delete': function (e, value, row, index) {
-                                        $scope.deleteModal(row, index, vm.listStreams.data);
-                                    },
-                                    'click .play': function (e, value, row, index) {
-                                        $scope.playNewWindow(row);
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                    file: {
-                        columnCollection: [
-                            {field: 'streamId', sortable: true, title: 'Stream ID'},
-                            {field: 'streamFormat', sortable: true, title: 'Stream Format'},
-                            {field: 'localStreamName', sortable: true, title: 'LocalStreamName'},
-                            {field: 'sourceURI', sortable: true, title: 'Source URI'},
-                            {field: 'audioCodec', sortable: true, title: 'Audio Codec'},
-                            {field: 'videoCodec', sortable: true, title: 'Video Codec'},
-                            {
-                                field: 'operate',
-                                title: 'Actions',
-                                align: 'center',
-                                width: '180',
-                                clickToSelect: false,
-                                formatter: actionFormatter,
-                                events: {
-                                    'click .info': function (e, value, row, index) {
-                                        $scope.infoModal(row, vm.listStreams.data);
-                                    },
-                                    'click .play': function (e, value, row, index) {
-                                        $scope.playNewWindow(row);
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                };
-
-                $scope.streamData.inbound.rowCollection = [];
-                $scope.streamData.outbound.rowCollection = [];
-                $scope.streamData.http.rowCollection = [];
-                $scope.streamData.file.rowCollection = [];
-
-                for (var i in $scope.listStreamsData) {
-
-                    if ($scope.listStreamsData[i].type.charAt(0) == 'I') {
-
-                        var sourceURI = '';
-                        var streamFormat = "Inbound";
-
-                        if ($scope.listStreamsData[i].hasOwnProperty('pullSettings')) {
-                            sourceURI = $scope.listStreamsData[i].pullSettings.uri;
-                            streamFormat = 'PULL';
-                        } else if ($scope.listStreamsData[i].type = 'IFR') {
-                            streamFormat = 'VOD';
-                            $scope.listStreamsData[i].name = $scope.listStreamsData[i].name.split('\\').pop().split('/').pop();
-                        }
-
-                        //set the type as inbound
-                        $scope.streamData.inbound.rowCollection.push({
-                            "streamId": $scope.listStreamsData[i].uniqueId,
-                            "streamFormat": streamFormat,
-                            "localStreamName": $scope.listStreamsData[i].name,
-                            "sourceURI": sourceURI,
-                            "audioCodec": $scope.listStreamsData[i].audio.codec,
-                            "videoCodec": $scope.listStreamsData[i].video.codec
-                        });
-
-
-                    } else if ($scope.listStreamsData[i].type.charAt(0) == 'O') {
-
-                        var streamFormat = "Outbound";
-                        var groupName = '';
-
-                        if ($scope.listStreamsData[i].hasOwnProperty('hlsSettings')) {
-                            streamFormat = 'HLS';
-                            groupName = $scope.listStreamsData[i].hlsSettings.groupName;
-
-                        } else if ($scope.listStreamsData[i].hasOwnProperty('dashSettings')) {
-                            streamFormat = 'DASH';
-                            groupName = $scope.listStreamsData[i].dashSettings.groupName;
-
-                        } else if ($scope.listStreamsData[i].hasOwnProperty('hdsSettings')) {
-                            streamFormat = 'HDS';
-                            groupName = $scope.listStreamsData[i].hdsSettings.groupName;
-
-                        } else if ($scope.listStreamsData[i].hasOwnProperty('mssSettings')) {
-                            streamFormat = 'MSS';
-                            groupName = $scope.listStreamsData[i].mssSettings.groupName;
-
-                        } else {
-                            if ($scope.listStreamsData[i].hasOwnProperty('pushSettings')) {
-                                streamFormat = 'PUSH';
-                            }
-                            else if ($scope.listStreamsData[i].type = 'ONR') {
-                                streamFormat = 'VOD';
-                            }
-                        }
-
-
-                        if (streamFormat == 'Outbound' || streamFormat == 'PUSH') {
-
-                            $scope.streamData.outbound.rowCollection.push({
-                                "streamId": $scope.listStreamsData[i].uniqueId,
-                                "streamFormat": streamFormat,
-                                "sourceStreamName": $scope.listStreamsData[i].name,
-                                "farIp": $scope.listStreamsData[i].farIp,
-                                "audioCodec": $scope.listStreamsData[i].audio.codec,
-                                "videoCodec": $scope.listStreamsData[i].video.codec
-                            });
-
-                        } else if (streamFormat == 'VOD') {
-
-                            $scope.streamData.file.rowCollection.push({
-                                "streamId": $scope.listStreamsData[i].uniqueId,
-                                "streamFormat": streamFormat,
-                                "sourceStreamName": $scope.listStreamsData[i].name,
-                                "farIp": $scope.listStreamsData[i].farIp,
-                                "audioCodec": $scope.listStreamsData[i].audio.codec,
-                                "videoCodec": $scope.listStreamsData[i].video.codec
-                            });
-
-                        } else {
-
-                            $scope.streamData.http.rowCollection.push({
-                                "streamId": $scope.listStreamsData[i].uniqueId,
-                                "streamFormat": streamFormat,
-                                "sourceStreamName": $scope.listStreamsData[i].name,
-                                "groupName": groupName,
-                                "audioCodec": $scope.listStreamsData[i].audio.codec,
-                                "videoCodec": $scope.listStreamsData[i].video.codec
-                            });
-
-                        }
-                    }
+                    $scope.bsTableControlPageSize = pageSize;
+                    $scope.bsTableControlPageNumber = pageNumber;
                 }
 
-                var bsTableData = null;
-
-                if (streamTypeSelected == 'inbound') {
-                    bsTableData = $scope.streamData.inbound;
-                } else if (streamTypeSelected == 'outbound') {
-                    bsTableData = $scope.streamData.outbound;
-                } else if (streamTypeSelected == 'http') {
-                    bsTableData = $scope.streamData.http;
-                } else if (streamTypeSelected == 'file') {
-                    bsTableData = $scope.streamData.file;
+                if ($scope.bsTableControlPageSize != 0) {
+                    pageSize = $scope.bsTableControlPageSize;
+                    pageNumber = $scope.bsTableControlPageNumber;
                 }
-
-                if ($scope.bsTableControl) {
-
-                    if (typeof $scope.bsTableControl.state !== 'undefined') {
-
-                        if (typeof $scope.bsTableControl.state.pageSize !== 'undefined') {
-
-                            pageSize = $scope.bsTableControl.state.pageSize;
-                            pageNumber = $scope.bsTableControl.state.pageNumber;
-
-                            $scope.bsTableControlPageSize = pageSize;
-                            $scope.bsTableControlPageNumber = pageNumber;
-                        }
-
-                        if ($scope.bsTableControlPageSize != 0) {
-                            pageSize = $scope.bsTableControlPageSize;
-                            pageNumber = $scope.bsTableControlPageNumber;
-                        }
-
-
-                    }
-                } else {
-                    var pageSize = 7;
-                    var pageNumber = 1;
-                }
-
-
-                //Set to bsTable
-                $scope.bsTableControl = {
-                    options: {
-                        data: bsTableData.rowCollection,
-                        rowStyle: function (row, index) {
-                            return {classes: 'none'};
-                        },
-                        cache: false,
-                        height: 600,
-                        striped: true,
-                        pagination: true,
-                        pageSize: pageSize,
-                        pageNumber: pageNumber,
-                        pageList: [5, 10, 25, 50, 100, 200],
-                        savePages: true,
-                        search: true,
-                        showColumns: false,
-                        showRefresh: false,
-                        minimumCountColumns: 2,
-                        clickToSelect: false,
-                        showToggle: false,
-                        maintainSelected: true,
-                        dataSortOrder: "desc",
-                        columns: bsTableData.columnCollection
-                    }
-                };
-            } else {
-                //show that there are no streams active
-                $scope.noActiveStreams = true;
             }
-        });
+        } else {
+            pageSize = 5;
+            pageNumber = 1;
+        }
 
-        //Check ListStream Update
-        $timeout(function () {
-            listStreams($scope.streamTypeSelected);
-        }, 3000);
+        //Set to bsTable
+        $scope.bsTableControl = {
+            options: {
+                data: bsTableData.rowCollection,
+                rowStyle: function (row, index) {
+                    return {classes: 'none'};
+                },
+                cache: false,
+                height: 600,
+                striped: true,
+                pagination: true,
+                pageSize: pageSize,
+                pageNumber: pageNumber,
+                pageList: [5, 10, 25, 50, 100, 200],
+                savePages: true,
+                search: true,
+                showColumns: false,
+                showRefresh: false,
+                minimumCountColumns: 2,
+                clickToSelect: false,
+                showToggle: false,
+                maintainSelected: true,
+                dataSortOrder: "desc",
+                columns: bsTableData.columnCollection
+            }
+        };
+
     }
 
     function actionFormatter(value, row, index) {
@@ -447,173 +314,182 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
         return actionFormatterValue;
     }
 
-    $scope.infoModal = function (row, listStreamsDataTemp) {
+    $scope.infoModal = function (row) {
 
-        var index = 0;
-        for (var i in listStreamsDataTemp) {
-            if (listStreamsDataTemp[i].uniqueId === row.streamId) {
-                index = i;
-            }
-        }
+        var uniqueid = row.streamId;
 
-        var listStreamsData = listStreamsDataTemp[index];
+        //get stream info using unique id
+        $http.get("/ems/api/getstreaminfo?uniqueid=" + uniqueid).then(function (response) {
 
-        var streamType = $scope.streamType.default.selected.value;
+            var listStreamsData = response.data.data;
 
-        var modalInstance = $uibModal.open({
-            templateUrl: 'js/app/streams/active/modals/info-streams-active.html',
-            controller: 'activeInfoModalCtrl',
-            size: 'lg',
-            resolve: {
-                streamRowHeaders: function () {
+            var streamType = $scope.streamType.default.selected.value;
 
-                    var streamRowHeaders = {};
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/app/streams/active/modals/info-streams-active.html',
+                controller: 'activeInfoModalCtrl',
+                size: 'lg',
+                resolve: {
+                    streamRowHeaders: function () {
 
-                    if (streamType != 'file') {
-                        for (var i in row) {
-                            if ((row.audioCodec == row[i]) || (row.videoCodec == row[i])) {
-                                continue;
-                            } else {
-                                streamRowHeaders[i] = row[i];
+                        var streamRowHeaders = {};
+
+                        if (streamType != 'file') {
+                            for (var i in row) {
+                                if ((row.audioCodec == row[i]) || (row.videoCodec == row[i])) {
+                                    continue;
+                                } else {
+                                    streamRowHeaders[i] = row[i];
+                                }
                             }
                         }
-                    }
 
 
-                    return streamRowHeaders;
-                },
-                streamRow: function () {
+                        return streamRowHeaders;
+                    },
+                    streamRow: function () {
 
-                    var streamRowTemp = listStreamsData;
+                        var streamRowTemp = listStreamsData;
 
-                    return streamRowTemp;
-                },
-                streamRowAudio: function () {
+                        return streamRowTemp;
+                    },
+                    streamRowAudio: function () {
 
-                    var streamRowAudio = [];
+                        var streamRowAudio = [];
 
-                    streamRowAudio.header = 'Audio';
-                    streamRowAudio.content = listStreamsData.audio;
+                        streamRowAudio.header = 'Audio';
+                        streamRowAudio.content = listStreamsData.audio;
 
-                    return streamRowAudio;
-                },
-                streamRowVideo: function () {
+                        return streamRowAudio;
+                    },
+                    streamRowVideo: function () {
 
-                    var streamRowVideo = [];
-                    streamRowVideo.header = 'Video';
-                    streamRowVideo.content = listStreamsData.video;
+                        var streamRowVideo = [];
+                        streamRowVideo.header = 'Video';
+                        streamRowVideo.content = listStreamsData.video;
 
-                    return streamRowVideo;
+                        return streamRowVideo;
 
-                },
-                streamRowSettings: function () {
+                    },
+                    streamRowSettings: function () {
 
-                    var streamRowTemp = listStreamsData;
-                    var streamRowSettings = [];
-                    streamRowSettings.content = [];
+                        var streamRowTemp = listStreamsData;
+                        var streamRowSettings = [];
+                        streamRowSettings.content = [];
 
-                    if (streamRowTemp.hasOwnProperty('pullSettings')) {
-                        streamRowSettings.header = 'pullSettings';
-                    } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
-                        streamRowSettings.header = 'pushSettings';
-                    } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
-                        streamRowSettings.header = 'hlsSettings';
-                    } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
-                        streamRowSettings.header = 'hdsSettings';
-                    } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
-                        streamRowSettings.header = 'dashSettings';
-                    } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
-                        streamRowSettings.header = 'mssSettings';
-                    }
-
-                    streamRowSettings.content = streamRowTemp[streamRowSettings.header];
-
-                    for (var i in streamRowSettings.content) {
-                        if (i.charAt(0) == '_') {
-                            streamRowSettings.content[i] = null;
-                            delete streamRowSettings.content[i];
+                        if (streamRowTemp.hasOwnProperty('pullSettings')) {
+                            streamRowSettings.header = 'pullSettings';
+                        } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
+                            streamRowSettings.header = 'pushSettings';
+                        } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
+                            streamRowSettings.header = 'hlsSettings';
+                        } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
+                            streamRowSettings.header = 'hdsSettings';
+                        } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
+                            streamRowSettings.header = 'dashSettings';
+                        } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
+                            streamRowSettings.header = 'mssSettings';
                         }
+
+                        streamRowSettings.content = streamRowTemp[streamRowSettings.header];
+
+                        for (var i in streamRowSettings.content) {
+                            if (i.charAt(0) == '_') {
+                                streamRowSettings.content[i] = null;
+                                delete streamRowSettings.content[i];
+                            }
+                        }
+
+                        return streamRowSettings;
                     }
-
-                    return streamRowSettings;
                 }
-            }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $route.reload();
+            }, function () {
+
+            });
+
         });
 
-        modalInstance.result.then(function (selectedItem) {
-            $route.reload();
-        }, function () {
-
-        });
     };
 
-    $scope.deleteModal = function (row, rowCollectionIndex, listStreamsDataTemp) {
+    $scope.deleteModal = function (row) {
 
-        var index = 0;
-        for (var i in listStreamsDataTemp) {
-            if (listStreamsDataTemp[i].uniqueId === row.streamId) {
-                index = i;
-            }
-        }
+        var uniqueid = row.streamId;
 
-        var listStreamsData = listStreamsDataTemp[index];
+        //get stream info using unique id
+        $http.get("/ems/api/getstreaminfo?uniqueid=" + uniqueid).then(function (response) {
 
-        var modalInstance = $uibModal.open({
-            templateUrl: 'js/app/streams/active/modals/delete-streams-active.html',
-            controller: 'activeConfirmDeleteModalCtrl',
-            resolve: {
-                configId: function () {
+            var listStreamsData = response.data.data;
+            
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/app/streams/active/modals/delete-streams-active.html',
+                controller: 'activeConfirmDeleteModalCtrl',
+                resolve: {
+                    uniqueId: function () {
 
-                    var streamRowTemp = listStreamsData;
-                    var configId = null;
+                        var uniqueId = row.streamId;
 
-                    if (streamRowTemp.hasOwnProperty('pullSettings')) {
-                        configId = streamRowTemp.pullSettings.configId;
-                    } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
-                        configId = streamRowTemp.pushSettings.configId;
-                    } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
-                        configId = streamRowTemp.hlsSettings.configId;
-                    } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
-                        configId = streamRowTemp.hdsSettings.configId;
-                    } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
-                        configId = streamRowTemp.dashSettings.configId;
-                    } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
-                        configId = streamRowTemp.mssSettings.configId;
+                        return uniqueId;
+                    },
+                    configId: function () {
+
+                        var streamRowTemp = listStreamsData;
+                        var configId = 0;
+
+                        if (streamRowTemp.hasOwnProperty('pullSettings')) {
+                            configId = streamRowTemp.pullSettings.configId;
+                        } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
+                            configId = streamRowTemp.pushSettings.configId;
+                        } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
+                            configId = streamRowTemp.hlsSettings.configId;
+                        } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
+                            configId = streamRowTemp.hdsSettings.configId;
+                        } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
+                            configId = streamRowTemp.dashSettings.configId;
+                        } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
+                            configId = streamRowTemp.mssSettings.configId;
+                        }
+
+                        $scope.deleteConfigId = configId;
+
+                        return configId;
+                    },
+                    deleteMessage: function () {
+
+                        var streamRowTemp = listStreamsData;
+                        var deleteMessage = '';
+
+                        if (streamRowTemp.hasOwnProperty('pullSettings')) {
+                            deleteMessage = 'stream ' + streamRowTemp.pullSettings.localStreamName;
+                        } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
+                            deleteMessage = 'stream ' + streamRowTemp.pushSettings.localStreamName;
+                        } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
+                            deleteMessage = 'groupname ' + streamRowTemp.hlsSettings.groupName;
+                        } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
+                            deleteMessage = 'groupname ' + streamRowTemp.hdsSettings.groupName;
+                        } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
+                            deleteMessage = 'groupname ' + streamRowTemp.dashSettings.groupName;
+                        } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
+                            deleteMessage = 'groupname ' + streamRowTemp.mssSettings.groupName;
+                        } else{
+                            deleteMessage = 'stream with id ' +uniqueid;
+                        }
+
+                        $scope.deleteMessage = deleteMessage;
+
+                        return deleteMessage;
                     }
-
-                    $scope.deleteConfigId = configId;
-
-                    return configId;
-                },
-                deleteMessage: function () {
-
-                    var streamRowTemp = listStreamsData;
-                    var deleteMessage = '';
-
-                    if (streamRowTemp.hasOwnProperty('pullSettings')) {
-                        deleteMessage = 'stream ' + streamRowTemp.pullSettings.localStreamName;
-                    } else if (streamRowTemp.hasOwnProperty('pushSettings')) {
-                        deleteMessage = 'stream ' + streamRowTemp.pushSettings.localStreamName;
-                    } else if (streamRowTemp.hasOwnProperty('hlsSettings')) {
-                        deleteMessage = 'groupname ' + streamRowTemp.hlsSettings.groupName;
-                    } else if (streamRowTemp.hasOwnProperty('hdsSettings')) {
-                        deleteMessage = 'groupname ' + streamRowTemp.hdsSettings.groupName;
-                    } else if (streamRowTemp.hasOwnProperty('dashSettings')) {
-                        deleteMessage = 'groupname ' + streamRowTemp.dashSettings.groupName;
-                    } else if (streamRowTemp.hasOwnProperty('mssSettings')) {
-                        deleteMessage = 'groupname ' + streamRowTemp.mssSettings.groupName;
-                    }
-
-                    $scope.deleteMessage = deleteMessage;
-
-                    return deleteMessage;
                 }
-            }
-        });
+            });
 
-        modalInstance.result.then(function (result) {
-            $scope.selectedStreamType();
-        }, function () {
+            modalInstance.result.then(function (result) {
+
+            }, function () {
+
+            });
 
         });
     };
@@ -629,20 +505,32 @@ webuiApp.controller('streamsActiveCtrl', ['$uibModal', '$scope', '$http', '$time
 }]);
 
 
-webuiApp.controller('activeConfirmDeleteModalCtrl', ['$scope', '$uibModalInstance', '$http', 'configId', 'deleteMessage', function ($scope, $uibModalInstance, $http, configId, deleteMessage) {
+webuiApp.controller('activeConfirmDeleteModalCtrl', ['$scope', '$uibModalInstance', '$http', 'uniqueId', 'configId', 'deleteMessage', function ($scope, $uibModalInstance, $http, uniqueId, configId, deleteMessage) {
 
     $scope.deleteConfigId = configId;
+    $scope.deleteUniqueId = uniqueId;
     $scope.confirmDeleteMessage = deleteMessage;
 
     $scope.deleteMessage = deleteMessage;
 
     $scope.delete = function () {
 
-        $http.get("/ems/api/removeconfig?configid=" + configId).then(function (response) {
 
-            $uibModalInstance.close();
+        if(configId > 0){
+            $http.get("/ems/api/removeconfig?configid=" + configId).then(function (response) {
 
-        });
+                $uibModalInstance.close();
+
+            });
+        }else{
+            $http.get("/ems/api/shutdownstream?uniqueid=" + uniqueId).then(function (response) {
+
+                $uibModalInstance.close();
+
+            });
+        }
+
+
     };
 
     $scope.cancel = function () {

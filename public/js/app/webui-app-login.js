@@ -26,8 +26,3 @@ webuiApp.controller('welcomeCtrl', ['$scope' , function ($scope) {
     $scope.connectionText = 'EMS Offline. Please Start EMS.';
 
 }]);
-
-
-
-
-

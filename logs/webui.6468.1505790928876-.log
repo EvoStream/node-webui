@@ -1,0 +1,889 @@
+2017-09-19T03:15:28.921Z - 6468 - verbose: [webui] starting app 
+2017-09-19T03:15:29.137Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:15:29.139Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:15:29.142Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:15:29.143Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:29.143Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:29.143Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:29.144Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:29.144Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:29.182Z - 6468 - verbose: [webui] list-streams: inboundRowCollection [{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]
+2017-09-19T03:15:29.182Z - 6468 - verbose: [webui] list-streams: outboundRowCollection []
+2017-09-19T03:15:29.183Z - 6468 - verbose: [webui] list-streams: httpRowCollection [{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]
+2017-09-19T03:15:29.183Z - 6468 - info: [webui] list-streams: data added - {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:29.184Z - 6468 - verbose: [webui] socket_io: sending startListstreamsMap event response: {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:29.191Z - 6468 - info: [webui] socket_io: updating listconfig table 
+2017-09-19T03:15:29.192Z - 6468 - info: [webui] stream-service: updateListConfigTable 
+2017-09-19T03:15:29.192Z - 6468 - info: [webui] stream-service: updateListConfigTable data null
+2017-09-19T03:15:29.193Z - 6468 - info: [webui] list-config: updating data 
+2017-09-19T03:15:29.194Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:29.195Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:29.195Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:29.196Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:29.196Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listConfig
+2017-09-19T03:15:29.214Z - 6468 - info: [webui] list-config:  data added - {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":7,"localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":8,"localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:29.215Z - 6468 - verbose: [webui] socket_io: sending startListconfigMap event response: {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":7,"localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":8,"localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:29.369Z - 6468 - info: [webui] index-routes: index page
+2017-09-19T03:15:29.370Z - 6468 - info: [webui] index-routes: count user
+2017-09-19T03:15:29.371Z - 6468 - info: [webui] user-model: counting user
+2017-09-19T03:15:29.376Z - 6468 - info: [webui] user-model: user count - 1
+2017-09-19T03:15:29.389Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:29 +0000] "GET / HTTP/1.1" 302 54 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:29.393Z - 6468 - info: [webui] index-routes: login user 
+2017-09-19T03:15:29.393Z - 6468 - info: [webui] user-model: counting user
+2017-09-19T03:15:29.396Z - 6468 - info: [webui] user-model: user count - 1
+2017-09-19T03:15:29.516Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:29 +0000] "GET /login HTTP/1.1" 200 6174 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:29.554Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:29 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:29.557Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:29 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:29.559Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:29 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:29.561Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:29 +0000] "GET /css/login-style.css HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:29.564Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:29 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:29.565Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:29 +0000] "GET /js/app/webui-app-login.js HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:29.584Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:29 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:30.082Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:30 +0000] "GET /images/manage-icon.png HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:30.087Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:30 +0000] "GET /images/api-icon.png HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:30.091Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:30 +0000] "GET /images/logo.png HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:30.094Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:30 +0000] "GET /images/dashboard-icon.png HTTP/1.1" 304 - "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.232Z - 6468 - info: [webui] index-routes: post request for login user 
+2017-09-19T03:15:31.233Z - 6468 - info: [webui] passport: checking user qwerty01.evostream@gmail.com
+2017-09-19T03:15:31.234Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:31.378Z - 6468 - info: [webui] passport: serialize user 
+2017-09-19T03:15:31.381Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "POST /login HTTP/1.1" 302 64 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.392Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:31.393Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:31.394Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:31.395Z - 6468 - info: [webui] dashboard: index page
+2017-09-19T03:15:31.409Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /dashboard HTTP/1.1" 200 18872 "http://localhost:4100/login" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.464Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.471Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.472Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.475Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.476Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.478Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.482Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.492Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.494Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.498Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.502Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.503Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.506Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.514Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.515Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.517Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.518Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.521Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/socket.io.2.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.526Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.531Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.534Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/profile-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.539Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.542Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.544Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.547Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.560Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.562Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.563Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.564Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.568Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.592Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.821Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.827Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.839Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.992Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.994Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:31 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:31.996Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:31 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.063Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:32.064Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:32.065Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:32.066Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:32.066Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.067Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.068Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.069Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.071Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:32.072Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:32.076Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:32.077Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:32.078Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.078Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.079Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.079Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.091Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 444 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.094Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 444 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.115Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:32.115Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:32.116Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:32.117Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:32.117Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.118Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.118Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.119Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.119Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:32.120Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:32.121Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:32.122Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:32.124Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:32.127Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.127Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.128Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.128Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.129Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:32.134Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:32.136Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:32.138Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:32.140Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:32.142Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.144Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.144Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.147Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.147Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:32.148Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:32.149Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:32.150Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:32.150Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:32.150Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.151Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.151Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.152Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.152Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:32.162Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.162Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.163Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.163Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.164Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:32.168Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.173Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.176Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.179Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.179Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.180Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:32.187Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /ems/api/get-license-id HTTP/1.1" 200 89 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.191Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.192Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.193Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.196Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.196Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:32.201Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.201Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.202Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.203Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.203Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:32.212Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.216Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 200 35 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.810Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:32.811Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:32.812Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:32.812Z - 6468 - info: [webui] streams-route: index 
+2017-09-19T03:15:32.813Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:32.813Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:32.814Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:32.814Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:32.827Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /streams HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.867Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.869Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.870Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.872Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.876Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.881Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.892Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.893Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.894Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.896Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.897Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.900Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.902Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.903Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.905Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.906Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.912Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.923Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/socket.io.2.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.926Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.927Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.928Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/profile-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.931Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.932Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.940Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.943Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.946Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.948Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.949Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.950Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:32.952Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:32 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.005Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:33 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.185Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:33 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.188Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:33 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.189Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:33 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.346Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:33 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.348Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:33 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.350Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:33 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.371Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:33.372Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:33.373Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:33.373Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:33.375Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:33.376Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:33.378Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:33.379Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:33.386Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:33 +0000] "GET /js/app/streams/active/streams-active.html HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.390Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:33 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.636Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:33.636Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:33.637Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:33.637Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:33.638Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:33.638Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:33.639Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:33.640Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:33.640Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:33.642Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:33.643Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:33.644Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:33.644Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:33.645Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:33.649Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:33.650Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:33.651Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:33.652Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:33.661Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:33.661Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:33.662Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:33.663Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:33.664Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:33.688Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:33 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.693Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:15:33.693Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:15:33.694Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:15:33.696Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:33.697Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:33.699Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:33.700Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:33.701Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:33.707Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:33.709Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:33.710Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:33.710Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:33.712Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:33.721Z - 6468 - verbose: [webui] list-streams: inboundRowCollection [{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]
+2017-09-19T03:15:33.723Z - 6468 - verbose: [webui] list-streams: outboundRowCollection []
+2017-09-19T03:15:33.727Z - 6468 - verbose: [webui] list-streams: httpRowCollection [{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]
+2017-09-19T03:15:33.730Z - 6468 - info: [webui] list-streams: data added - {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:33.731Z - 6468 - verbose: [webui] socket_io: sending startListstreamsMap event response: {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:33.733Z - 6468 - info: [webui] socket_io: updating listconfig table 
+2017-09-19T03:15:33.734Z - 6468 - info: [webui] stream-service: updateListConfigTable 
+2017-09-19T03:15:33.735Z - 6468 - info: [webui] stream-service: updateListConfigTable data null
+2017-09-19T03:15:33.737Z - 6468 - info: [webui] list-config: updating data 
+2017-09-19T03:15:33.744Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:33.752Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:33.752Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:33.753Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:33.754Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listConfig
+2017-09-19T03:15:33.763Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:33 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:33.769Z - 6468 - info: [webui] list-config:  data added - {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":7,"localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":8,"localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:33.771Z - 6468 - verbose: [webui] socket_io: sending startListconfigMap event response: {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":7,"localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":8,"localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:37.316Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:37 +0000] "GET /js/app/streams/add/streams-add.html HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:37.472Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:37.472Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:37.473Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:37.474Z - 6468 - info: [webui] ems-routes: get-ems-dir
+2017-09-19T03:15:37.476Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:37 +0000] "GET /ems/api/get-ems-dir HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.560Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:38.560Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:38.561Z - 6468 - info: [webui] index-routes: index page
+2017-09-19T03:15:38.563Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET / HTTP/1.1" 302 62 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.570Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:38.573Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:38.575Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:38.575Z - 6468 - info: [webui] dashboard: index page
+2017-09-19T03:15:38.582Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /dashboard HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.620Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.627Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.634Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.637Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.641Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.642Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.643Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.643Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.652Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.653Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.654Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.655Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.660Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.661Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.667Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.671Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.674Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/socket.io.2.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.676Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.678Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.680Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.682Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/profile-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.690Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.697Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.698Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.700Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.702Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.718Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.744Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.747Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.748Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.750Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.984Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:38 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.986Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:38.987Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:38 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.139Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.142Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.144Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.187Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:39.187Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:39.188Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:39.189Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:39.190Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.192Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.193Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.194Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.197Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:39.199Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:39.200Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:39.201Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:39.201Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.202Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.202Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.203Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.216Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.217Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /ems/api/check-connection HTTP/1.1" 200 444 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.246Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:39.247Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:39.248Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:39.248Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:39.249Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.250Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.250Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.251Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.252Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:39.254Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:39.254Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:39.255Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:39.258Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:39.259Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.260Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.260Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.261Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.262Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:39.271Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:39.271Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:39.272Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:39.273Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:39.274Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.274Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.275Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.276Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.279Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:39.283Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:39.283Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:39.284Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:39.284Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:39.284Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.285Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.285Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.286Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.286Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:39.291Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.291Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.292Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.293Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.293Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:39.298Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.301Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.303Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.307Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.311Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.312Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:39.318Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.318Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.320Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.321Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.321Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:39.322Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /ems/api/get-license-id HTTP/1.1" 200 89 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.327Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.327Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.328Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.328Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.332Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:39.337Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.343Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 200 35 "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.828Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:39.828Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:39.829Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:39.829Z - 6468 - info: [webui] streams-route: index 
+2017-09-19T03:15:39.830Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:39.830Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:39.831Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:39.831Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:39.842Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /streams HTTP/1.1" 304 - "http://localhost:4100/dashboard" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.884Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /css/bootstrap.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.885Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /css/bootstrap-social.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.886Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /css/font-awesome/css/font-awesome.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.887Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /css/sb-admin.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.892Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /css/bootstrap-table.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.896Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /css/ladda-themeless.min.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.897Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /css/admin-style.css HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.900Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.901Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/bootstrap-ui.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.903Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/bootstrap-table.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.908Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/bootstrap-table-angular.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.913Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/angular-base64.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.914Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.915Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/angular-ladda.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.917Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/Chart.bundle.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.918Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/spin.min.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.921Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/angular-chart.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.925Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/socket.io.2.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.927Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/webui-app-admin.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.928Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/dashboard-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.929Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/profile-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.932Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/api-explorer-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.933Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/streams-controller.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.936Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/streams/add/streams-add-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.937Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/streams/send/streams-send-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.937Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/streams/fblive/streams-fblive-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.938Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/streams/youtube/streams-send-youtube-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.943Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/streams/active/streams-active-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.944Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/streams/config/streams-config-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.946Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:39 +0000] "GET /js/app/streams/vod/streams-vod-ctrl.js HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:39.981Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:39 +0000] "GET /images/fav-icon.ico HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.147Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:40 +0000] "GET /images/evostream-logo-white.svg HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.148Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:40 +0000] "GET /images/dashboard-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.149Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:40 +0000] "GET /images/stream-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.290Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:40 +0000] "GET /images/terminal-logo.png HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.292Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:40 +0000] "GET /images/manual.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.295Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:40 +0000] "GET /images/user.png HTTP/1.1" 304 - "http://localhost:4100/css/admin-style.css" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.319Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:40.320Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:40.321Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:40.321Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:40.322Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:40.322Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:40.323Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:40.324Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:40.329Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:40 +0000] "GET /js/app/streams/active/streams-active.html HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.335Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:40 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.562Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:40.562Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:40.563Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:40.564Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:40.565Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:40.565Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:40.566Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:40.566Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:40.567Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:40.570Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:40.571Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:40.573Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:40.574Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:40.574Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:40.575Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:40.576Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:40.576Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:40.577Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:40.581Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:40.581Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:40.584Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:40.587Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:40.587Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:40.592Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:40 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.599Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:40.600Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:40.600Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:40.602Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:40.603Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:40.613Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:15:40.615Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:15:40.618Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:15:40.620Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:40.621Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:40.622Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:40.622Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:40.623Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:40.630Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:40 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:40.637Z - 6468 - verbose: [webui] list-streams: inboundRowCollection [{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]
+2017-09-19T03:15:40.640Z - 6468 - verbose: [webui] list-streams: outboundRowCollection []
+2017-09-19T03:15:40.642Z - 6468 - verbose: [webui] list-streams: httpRowCollection [{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]
+2017-09-19T03:15:40.643Z - 6468 - info: [webui] list-streams: data added - {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:40.644Z - 6468 - verbose: [webui] socket_io: sending startListstreamsMap event response: {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":14,"streamFormat":"PULL","localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:40.646Z - 6468 - info: [webui] socket_io: updating listconfig table 
+2017-09-19T03:15:40.646Z - 6468 - info: [webui] stream-service: updateListConfigTable 
+2017-09-19T03:15:40.647Z - 6468 - info: [webui] stream-service: updateListConfigTable data null
+2017-09-19T03:15:40.647Z - 6468 - info: [webui] list-config: updating data 
+2017-09-19T03:15:40.652Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:40.652Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:40.653Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:40.654Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:40.654Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listConfig
+2017-09-19T03:15:40.676Z - 6468 - info: [webui] list-config:  data added - {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":7,"localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":8,"localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:40.677Z - 6468 - verbose: [webui] socket_io: sending startListconfigMap event response: {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":7,"localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":8,"localStreamName":"5","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:43.429Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:43.430Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:43.432Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:43.433Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:43.435Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:43.436Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:43.438Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:43.441Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:43.453Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:43 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:43.464Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:43.464Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:43.465Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:43.466Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:43.467Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:43.468Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:43.470Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:43.471Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:43.472Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:43.475Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:43.476Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:43.477Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:43.477Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:43.478Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:43.478Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:43.480Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:43.480Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:43.481Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:43.485Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:43.486Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:43.486Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:43.487Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:43.487Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:43.493Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:43 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:43.496Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:43.496Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:43.497Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:43.498Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:43.500Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:43.509Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:43 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:44.867Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:44.868Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:44.869Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:44.870Z - 6468 - info: [webui] ems-routes: getstreaminfo
+2017-09-19T03:15:44.871Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:44.871Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:44.872Z - 6468 - verbose: [EMS-API] parameters: id=14 
+2017-09-19T03:15:44.872Z - 6468 - verbose: [EMS-API] base64 parameters: id=14 
+2017-09-19T03:15:44.873Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamInfo?params=aWQ9MTQg
+2017-09-19T03:15:44.880Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:44 +0000] "GET /ems/api/getstreaminfo?uniqueid=14 HTTP/1.1" 200 1768 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:44.898Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:44 +0000] "GET /js/app/streams/active/modals/delete-streams-active.html HTTP/1.1" 200 601 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:45.749Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:45.750Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:45.751Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:45.752Z - 6468 - info: [webui] ems-routes: removeconfig
+2017-09-19T03:15:45.752Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:45.753Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:45.753Z - 6468 - verbose: [EMS-API] parameters: id=8 
+2017-09-19T03:15:45.754Z - 6468 - verbose: [EMS-API] base64 parameters: id=8 
+2017-09-19T03:15:45.754Z - 6468 - info: [EMS-API] command url: [SERVERURL]/removeConfig?params=aWQ9OCA=
+2017-09-19T03:15:45.776Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:45 +0000] "GET /ems/api/removeconfig?configid=8 HTTP/1.1" 200 625 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:45.784Z - 6468 - info: [webui] streams-route: update-list 
+2017-09-19T03:15:45.788Z - 6468 - verbose: [webui] streams-route: update-list data - {"id":377,"payload":{"PID":1596,"appName":"evostreamms","audio":{"aveAudioBitRate":62787.3171,"bytesCount":1636657,"codec":"AAAC","codecNumeric":4702111241970123000,"currAudioBitRate":67454.4,"droppedBytesCount":0,"droppedPacketsCount":0,"packetsCount":4467},"bandwidth":0,"connectionType":1,"creationTimestamp":1505790737682.8289,"customData":null,"farIp":"107.21.107.19","farPort":1935,"ip":"192.168.2.196","name":"5","nearIp":"192.168.2.196","nearPort":49847,"outStreamsUniqueIds":null,"pageUrl":"","port":49847,"processId":1596,"processType":"origin","pullSettings":{"audioCodecBytes":"","configId":8,"emulateUserAgent":"EvoStream Media Server (www.evostream.com) player","forceTcp":false,"httpProxy":"","httpStreamType":"ts","isAudio":true,"keepAlive":true,"localStreamName":"5","operationType":1,"pageUrl":"","ppsBytes":"","rangeEnd":-1,"rangeStart":-2,"rtcpDetectionInterval":10,"saveToConfig":true,"sendDummyPayload":false,"sendRenewStream":false,"spsBytes":"","ssmIp":"","swfUrl":"","tcUrl":"","tos":256,"ttl":256,"uri":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","videoSourceIndex":"high"},"queryTimestamp":1505790945773.422,"serverAgent":"FMS/3,5,7,7009","swfUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","tcUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","type":"INR","typeNumeric":5282249572905648000,"uniqueId":14,"upTime":208090.5933,"video":{"aveFrameRate":29.9024,"aveKeyFramesPerSec":0.5317,"aveVideoBitRate":453408.7415,"bytesCount":11802590,"codec":"VH264","codecNumeric":6217274493967008000,"currFrameRate":32.4,"currKeyFramesPerSec":0.6,"currVideoBitRate":494649.6,"droppedBytesCount":0,"droppedPacketsCount":0,"height":480,"level":30,"packetsCount":7280,"profile":77,"width":720}},"processId":1596,"timestamp":1505790945,"type":"inStreamClosed"}
+2017-09-19T03:15:45.792Z - 6468 - info: [webui] stream-service: updateListConfigTable 
+2017-09-19T03:15:45.793Z - 6468 - info: [webui] stream-service: updateListConfigTable data {"id":377,"payload":{"PID":1596,"appName":"evostreamms","audio":{"aveAudioBitRate":62787.3171,"bytesCount":1636657,"codec":"AAAC","codecNumeric":4702111241970123000,"currAudioBitRate":67454.4,"droppedBytesCount":0,"droppedPacketsCount":0,"packetsCount":4467},"bandwidth":0,"connectionType":1,"creationTimestamp":1505790737682.8289,"customData":null,"farIp":"107.21.107.19","farPort":1935,"ip":"192.168.2.196","name":"5","nearIp":"192.168.2.196","nearPort":49847,"outStreamsUniqueIds":null,"pageUrl":"","port":49847,"processId":1596,"processType":"origin","pullSettings":{"audioCodecBytes":"","configId":8,"emulateUserAgent":"EvoStream Media Server (www.evostream.com) player","forceTcp":false,"httpProxy":"","httpStreamType":"ts","isAudio":true,"keepAlive":true,"localStreamName":"5","operationType":1,"pageUrl":"","ppsBytes":"","rangeEnd":-1,"rangeStart":-2,"rtcpDetectionInterval":10,"saveToConfig":true,"sendDummyPayload":false,"sendRenewStream":false,"spsBytes":"","ssmIp":"","swfUrl":"","tcUrl":"","tos":256,"ttl":256,"uri":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","videoSourceIndex":"high"},"queryTimestamp":1505790945773.422,"serverAgent":"FMS/3,5,7,7009","swfUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","tcUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","type":"INR","typeNumeric":5282249572905648000,"uniqueId":14,"upTime":208090.5933,"video":{"aveFrameRate":29.9024,"aveKeyFramesPerSec":0.5317,"aveVideoBitRate":453408.7415,"bytesCount":11802590,"codec":"VH264","codecNumeric":6217274493967008000,"currFrameRate":32.4,"currKeyFramesPerSec":0.6,"currVideoBitRate":494649.6,"droppedBytesCount":0,"droppedPacketsCount":0,"height":480,"level":30,"packetsCount":7280,"profile":77,"width":720}},"processId":1596,"timestamp":1505790945,"type":"inStreamClosed"}
+2017-09-19T03:15:45.794Z - 6468 - verbose: [webui] stream-service: updateListConfigTable eventType inStreamClosed
+2017-09-19T03:15:45.794Z - 6468 - info: [webui] list-config: updating data 
+2017-09-19T03:15:45.795Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:45.796Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:45.796Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:45.797Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:45.797Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listConfig
+2017-09-19T03:15:45.807Z - 6468 - info: [webui] list-config:  data added - {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":7,"localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:45.808Z - 6468 - verbose: [webui] socket_io: sending updateListconfigMap event response: {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":7,"localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:45.811Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:15:45.811Z - 6468 - verbose: [webui] stream-service: updateListStreamsTable eventType inStreamClosed
+2017-09-19T03:15:45.812Z - 6468 - info: [webui] list-streams: deleting data with uniqueId - 14
+2017-09-19T03:15:45.813Z - 6468 - info: [webui] list-streams: data updated after deletion - {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:45.814Z - 6468 - verbose: [webui] socket_io: sending updateListstreamsMap event response: {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:45.815Z - 6468 - info: [webui] streams-route: update-list, all post data done
+2017-09-19T03:15:45.815Z - 6468 - verbose: [webui] socket_io: sending updateListstreamsMap event response: {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":13,"streamFormat":"PULL","localStreamName":"4","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:45.822Z - 6468 - error: [EMS-API] response failed: {}
+2017-09-19T03:15:47.802Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:47.803Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:47.805Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:47.806Z - 6468 - info: [webui] ems-routes: getstreaminfo
+2017-09-19T03:15:47.807Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:47.807Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:47.808Z - 6468 - verbose: [EMS-API] parameters: id=13 
+2017-09-19T03:15:47.808Z - 6468 - verbose: [EMS-API] base64 parameters: id=13 
+2017-09-19T03:15:47.809Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamInfo?params=aWQ9MTMg
+2017-09-19T03:15:47.818Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:47 +0000] "GET /ems/api/getstreaminfo?uniqueid=13 HTTP/1.1" 200 1769 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:48.652Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:48.653Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:48.654Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:48.655Z - 6468 - info: [webui] ems-routes: removeconfig
+2017-09-19T03:15:48.655Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:48.656Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:48.657Z - 6468 - verbose: [EMS-API] parameters: id=7 
+2017-09-19T03:15:48.657Z - 6468 - verbose: [EMS-API] base64 parameters: id=7 
+2017-09-19T03:15:48.658Z - 6468 - info: [EMS-API] command url: [SERVERURL]/removeConfig?params=aWQ9NyA=
+2017-09-19T03:15:48.678Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:48 +0000] "GET /ems/api/removeconfig?configid=7 HTTP/1.1" 200 625 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:48.695Z - 6468 - info: [webui] streams-route: update-list 
+2017-09-19T03:15:48.697Z - 6468 - verbose: [webui] streams-route: update-list data - {"id":383,"payload":{"PID":1596,"appName":"evostreamms","audio":{"aveAudioBitRate":61631.567,"bytesCount":2992052,"codec":"AAAC","codecNumeric":4702111241970123000,"currAudioBitRate":66064,"droppedBytesCount":0,"droppedPacketsCount":0,"packetsCount":8165},"bandwidth":0,"connectionType":1,"creationTimestamp":1505790560604.885,"customData":null,"farIp":"107.21.107.19","farPort":1935,"ip":"192.168.2.196","name":"4","nearIp":"192.168.2.196","nearPort":49653,"outStreamsUniqueIds":null,"pageUrl":"","port":49653,"processId":1596,"processType":"origin","pullSettings":{"audioCodecBytes":"","configId":7,"emulateUserAgent":"EvoStream Media Server (www.evostream.com) player","forceTcp":false,"httpProxy":"","httpStreamType":"ts","isAudio":true,"keepAlive":true,"localStreamName":"4","operationType":1,"pageUrl":"","ppsBytes":"","rangeEnd":-1,"rangeStart":-2,"rtcpDetectionInterval":10,"saveToConfig":true,"sendDummyPayload":false,"sendRenewStream":false,"spsBytes":"","ssmIp":"","swfUrl":"","tcUrl":"","tos":256,"ttl":256,"uri":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","videoSourceIndex":"high"},"queryTimestamp":1505790948677.296,"serverAgent":"FMS/3,5,7,7009","swfUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","tcUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","type":"INR","typeNumeric":5282249572905648000,"uniqueId":13,"upTime":388072.4109,"video":{"aveFrameRate":28.9407,"aveKeyFramesPerSec":0.5129,"aveVideoBitRate":439976.4536,"bytesCount":21362202,"codec":"VH264","codecNumeric":6217274493967008000,"currFrameRate":31.4,"currKeyFramesPerSec":0.6,"currVideoBitRate":492089.6,"droppedBytesCount":0,"droppedPacketsCount":0,"height":480,"level":30,"packetsCount":13000,"profile":77,"width":720}},"processId":1596,"timestamp":1505790948,"type":"inStreamClosed"}
+2017-09-19T03:15:48.699Z - 6468 - info: [webui] stream-service: updateListConfigTable 
+2017-09-19T03:15:48.700Z - 6468 - info: [webui] stream-service: updateListConfigTable data {"id":383,"payload":{"PID":1596,"appName":"evostreamms","audio":{"aveAudioBitRate":61631.567,"bytesCount":2992052,"codec":"AAAC","codecNumeric":4702111241970123000,"currAudioBitRate":66064,"droppedBytesCount":0,"droppedPacketsCount":0,"packetsCount":8165},"bandwidth":0,"connectionType":1,"creationTimestamp":1505790560604.885,"customData":null,"farIp":"107.21.107.19","farPort":1935,"ip":"192.168.2.196","name":"4","nearIp":"192.168.2.196","nearPort":49653,"outStreamsUniqueIds":null,"pageUrl":"","port":49653,"processId":1596,"processType":"origin","pullSettings":{"audioCodecBytes":"","configId":7,"emulateUserAgent":"EvoStream Media Server (www.evostream.com) player","forceTcp":false,"httpProxy":"","httpStreamType":"ts","isAudio":true,"keepAlive":true,"localStreamName":"4","operationType":1,"pageUrl":"","ppsBytes":"","rangeEnd":-1,"rangeStart":-2,"rtcpDetectionInterval":10,"saveToConfig":true,"sendDummyPayload":false,"sendRenewStream":false,"spsBytes":"","ssmIp":"","swfUrl":"","tcUrl":"","tos":256,"ttl":256,"uri":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","videoSourceIndex":"high"},"queryTimestamp":1505790948677.296,"serverAgent":"FMS/3,5,7,7009","swfUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","tcUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","type":"INR","typeNumeric":5282249572905648000,"uniqueId":13,"upTime":388072.4109,"video":{"aveFrameRate":28.9407,"aveKeyFramesPerSec":0.5129,"aveVideoBitRate":439976.4536,"bytesCount":21362202,"codec":"VH264","codecNumeric":6217274493967008000,"currFrameRate":31.4,"currKeyFramesPerSec":0.6,"currVideoBitRate":492089.6,"droppedBytesCount":0,"droppedPacketsCount":0,"height":480,"level":30,"packetsCount":13000,"profile":77,"width":720}},"processId":1596,"timestamp":1505790948,"type":"inStreamClosed"}
+2017-09-19T03:15:48.701Z - 6468 - verbose: [webui] stream-service: updateListConfigTable eventType inStreamClosed
+2017-09-19T03:15:48.701Z - 6468 - info: [webui] list-config: updating data 
+2017-09-19T03:15:48.702Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:48.703Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:48.704Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:48.705Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:48.715Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listConfig
+2017-09-19T03:15:48.722Z - 6468 - info: [webui] list-config:  data added - {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:48.723Z - 6468 - verbose: [webui] socket_io: sending updateListconfigMap event response: {"dash":{"rowCollection":[{"configId":4,"localStreamName":"1","groupName":"d01"},{"configId":5,"localStreamName":"2","groupName":"d02"},{"configId":6,"localStreamName":"1","groupName":"d011"}]},"hds":{"rowCollection":[]},"hls":{"rowCollection":[]},"metalistener":{"rowCollection":[]},"mss":{"rowCollection":[]},"process":{"rowCollection":[]},"pull":{"rowCollection":[{"configId":1,"localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":2,"localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"},{"configId":3,"localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1"}]},"pushEms":{"rowCollection":[]},"record":{"rowCollection":[]},"webrtc":{"rowCollection":[]}}
+2017-09-19T03:15:48.724Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:15:48.725Z - 6468 - verbose: [webui] stream-service: updateListStreamsTable eventType inStreamClosed
+2017-09-19T03:15:48.725Z - 6468 - info: [webui] list-streams: deleting data with uniqueId - 13
+2017-09-19T03:15:48.729Z - 6468 - info: [webui] list-streams: data updated after deletion - {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:48.730Z - 6468 - verbose: [webui] socket_io: sending updateListstreamsMap event response: {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:48.732Z - 6468 - info: [webui] streams-route: update-list, all post data done
+2017-09-19T03:15:48.734Z - 6468 - verbose: [webui] socket_io: sending updateListstreamsMap event response: {"inbound":{"rowCollection":[{"streamId":1,"streamFormat":"PULL","localStreamName":"1","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":2,"streamFormat":"PULL","localStreamName":"2","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":3,"streamFormat":"PULL","localStreamName":"3","sourceURI":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","audioCodec":"AAAC","videoCodec":"VH264"}]},"outbound":{"rowCollection":[]},"http":{"rowCollection":[{"streamId":4,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d01","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":7,"streamFormat":"DASH","sourceStreamName":"2","groupName":"d02","audioCodec":"AAAC","videoCodec":"VH264"},{"streamId":10,"streamFormat":"DASH","sourceStreamName":"1","groupName":"d011","audioCodec":"AAAC","videoCodec":"VH264"}]}}
+2017-09-19T03:15:48.735Z - 6468 - error: [EMS-API] response failed: {}
+2017-09-19T03:15:50.380Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:50.381Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:50.382Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:50.382Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:50.383Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:50.384Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:50.384Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:50.385Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:50.393Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:50 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:50.399Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:50.399Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:50.400Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:50.401Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:50.406Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:50.407Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:50.407Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:50.408Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:50.409Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:50.412Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:50.412Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:50.413Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:50.413Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:50.414Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:50.414Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:50.415Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:50.415Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:50.415Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:50.423Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:50.423Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:50.424Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:50.425Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:50.425Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:50.430Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:50 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:50.432Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:50.432Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:50.437Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:50.439Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:50.440Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:50.450Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:50 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 200 35 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:53.508Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:53.509Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:53.511Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:53.512Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:15:53.513Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:53.513Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:53.514Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:53.515Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:53.528Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:53 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:53.540Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:53.540Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:53.542Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:53.542Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:15:53.543Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:53.544Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:53.545Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:53.545Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:53.546Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:15:53.548Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:53.548Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:53.549Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:15:53.549Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:15:53.550Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:53.550Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:53.553Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:53.553Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:53.554Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:15:53.558Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:53.559Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:53.560Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:53.561Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:53.561Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:15:53.568Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:15:53 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:53.572Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:53.572Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:53.573Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:15:53.574Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:15:53.574Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:15:53.581Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:53 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:55.805Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:15:55.805Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:15:55.806Z - 6468 - info: [webui] ems-routes: execute-command
+2017-09-19T03:15:55.808Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:15:55.809Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:15:55.809Z - 6468 - verbose: [EMS-API] parameters: uri=rtmp://webcasting.thefloridachannel.org/live/tvweb1 localStreamName=4 
+2017-09-19T03:15:55.810Z - 6468 - verbose: [EMS-API] base64 parameters: uri=rtmp://webcasting.thefloridachannel.org/live/tvweb1 localStreamName=4 
+2017-09-19T03:15:55.811Z - 6468 - info: [EMS-API] command url: [SERVERURL]/pullStream?params=dXJpPXJ0bXA6Ly93ZWJjYXN0aW5nLnRoZWZsb3JpZGFjaGFubmVsLm9yZy9saXZlL3R2d2ViMSBsb2NhbFN0cmVhbU5hbWU9NCA=
+2017-09-19T03:15:55.912Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:15:55 +0000] "POST /ems/api/execute-command HTTP/1.1" 200 1174 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:15:56.828Z - 6468 - info: [webui] streams-route: update-list 
+2017-09-19T03:15:56.829Z - 6468 - verbose: [webui] streams-route: update-list data - {"id":386,"payload":{"PID":1596,"appName":"evostreamms","audio":{"aveAudioBitRate":0,"bytesCount":0,"codec":"AUNK","codecNumeric":4707755069515235000,"currAudioBitRate":0,"droppedBytesCount":0,"droppedPacketsCount":0,"packetsCount":0},"bandwidth":0,"connectionType":1,"creationTimestamp":1505790956771.789,"customData":null,"farIp":"107.21.107.19","farPort":1935,"ip":"192.168.2.196","name":"4","nearIp":"192.168.2.196","nearPort":50214,"outStreamsUniqueIds":null,"pageUrl":"","port":50214,"processId":1596,"processType":"origin","pullSettings":{"audioCodecBytes":"","configId":9,"emulateUserAgent":"EvoStream Media Server (www.evostream.com) player","forceTcp":false,"httpProxy":"","httpStreamType":"ts","isAudio":true,"keepAlive":true,"localStreamName":"4","operationType":1,"pageUrl":"","ppsBytes":"","rangeEnd":-1,"rangeStart":-2,"rtcpDetectionInterval":10,"saveToConfig":true,"sendDummyPayload":false,"sendRenewStream":false,"spsBytes":"","ssmIp":"","swfUrl":"","tcUrl":"","tos":256,"ttl":256,"uri":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","videoSourceIndex":"high"},"queryTimestamp":1505790956773.793,"serverAgent":"FMS/3,5,7,7009","swfUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","tcUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","type":"INR","typeNumeric":5282249572905648000,"uniqueId":15,"upTime":2.0039,"video":{"aveFrameRate":0,"aveKeyFramesPerSec":0,"aveVideoBitRate":0,"bytesCount":0,"codec":"VUNK","codecNumeric":6220964544311722000,"currFrameRate":0,"currKeyFramesPerSec":0,"currVideoBitRate":0,"droppedBytesCount":0,"droppedPacketsCount":0,"height":0,"level":0,"packetsCount":0,"profile":0,"width":0}},"processId":1596,"timestamp":1505790956,"type":"inStreamCreated"}
+2017-09-19T03:15:56.829Z - 6468 - info: [webui] stream-service: updateListConfigTable 
+2017-09-19T03:15:56.830Z - 6468 - info: [webui] stream-service: updateListConfigTable data {"id":386,"payload":{"PID":1596,"appName":"evostreamms","audio":{"aveAudioBitRate":0,"bytesCount":0,"codec":"AUNK","codecNumeric":4707755069515235000,"currAudioBitRate":0,"droppedBytesCount":0,"droppedPacketsCount":0,"packetsCount":0},"bandwidth":0,"connectionType":1,"creationTimestamp":1505790956771.789,"customData":null,"farIp":"107.21.107.19","farPort":1935,"ip":"192.168.2.196","name":"4","nearIp":"192.168.2.196","nearPort":50214,"outStreamsUniqueIds":null,"pageUrl":"","port":50214,"processId":1596,"processType":"origin","pullSettings":{"audioCodecBytes":"","configId":9,"emulateUserAgent":"EvoStream Media Server (www.evostream.com) player","forceTcp":false,"httpProxy":"","httpStreamType":"ts","isAudio":true,"keepAlive":true,"localStreamName":"4","operationType":1,"pageUrl":"","ppsBytes":"","rangeEnd":-1,"rangeStart":-2,"rtcpDetectionInterval":10,"saveToConfig":true,"sendDummyPayload":false,"sendRenewStream":false,"spsBytes":"","ssmIp":"","swfUrl":"","tcUrl":"","tos":256,"ttl":256,"uri":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","videoSourceIndex":"high"},"queryTimestamp":1505790956773.793,"serverAgent":"FMS/3,5,7,7009","swfUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","tcUrl":"rtmp://webcasting.thefloridachannel.org/live/tvweb1","type":"INR","typeNumeric":5282249572905648000,"uniqueId":15,"upTime":2.0039,"video":{"aveFrameRate":0,"aveKeyFramesPerSec":0,"aveVideoBitRate":0,"bytesCount":0,"codec":"VUNK","codecNumeric":6220964544311722000,"currFrameRate":0,"currKeyFramesPerSec":0,"currVideoBitRate":0,"droppedBytesCount":0,"droppedPacketsCount":0,"height":0,"level":0,"packetsCount":0,"profile":0,"width":0}},"processId":1596,"timestamp":1505790956,"type":"inStreamCreated"}
+2017-09-19T03:15:56.831Z - 6468 - verbose: [webui] stream-service: updateListConfigTable eventType inStreamCreated
+2017-09-19T03:15:56.831Z - 6468 - info: [webui] list-config: updating data 
+2017-09-19T03:16:00.428Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:16:00.430Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:16:00.432Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:16:00.433Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:16:00.434Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:00.435Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:00.437Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:00.439Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:00.454Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:16:00 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:16:00.465Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:16:00.466Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:16:00.470Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:16:00.471Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:16:00.472Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:00.473Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:00.474Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:00.475Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:00.475Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:16:00.478Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:16:00.479Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:16:00.480Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:16:00.480Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:16:00.481Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:00.483Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:00.484Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:00.485Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:00.485Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:16:00.491Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:00.492Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:00.493Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:00.494Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:00.495Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:16:00.504Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:16:00 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:16:00.507Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:00.507Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:00.509Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:00.509Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:00.511Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:16:00.521Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:16:00 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 200 35 "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:16:03.618Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:16:03.624Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:16:03.626Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:16:03.627Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:16:03.628Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:03.630Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:03.631Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:03.632Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:03.651Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:16:03 +0000] "GET /ems/api/check-connection HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:16:03.664Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:16:03.665Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:16:03.667Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:16:03.668Z - 6468 - info: [webui] ems-routes: get-inbound-outbound-count
+2017-09-19T03:16:03.669Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:03.670Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:03.671Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:03.672Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:03.673Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getStreamsCount
+2017-09-19T03:16:03.676Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:16:03.678Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:16:03.679Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:16:03.680Z - 6468 - info: [webui] ems-routes: get-license-id
+2017-09-19T03:16:03.681Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:03.681Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:03.682Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:03.682Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:03.683Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getLicenseId
+2017-09-19T03:16:03.689Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:03.689Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:03.690Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:03.691Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:03.694Z - 6468 - info: [EMS-API] command url: [SERVERURL]/getInboundStreamsCount
+2017-09-19T03:16:03.701Z - 6468 - verbose: [webui] ::1 - - [19/Sep/2017:03:16:03 +0000] "GET /ems/api/get-license-id HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:16:03.706Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:16:03.706Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:16:03.710Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:16:03.712Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:16:03.714Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:16:03.723Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:16:03 +0000] "GET /ems/api/get-inbound-outbound-count HTTP/1.1" 304 - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:16:10.466Z - 6468 - info: [webui] passport: deserialize user
+2017-09-19T03:25:02.712Z - 6468 - info: [webui] user-model: finding user - qwerty01.evostream@gmail.com
+2017-09-19T03:25:02.714Z - 6468 - verbose: [webui] restirct: checking user authentication
+2017-09-19T03:25:02.718Z - 6468 - info: [webui] ems-routes: check-connection
+2017-09-19T03:25:02.722Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.726Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.732Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.736Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.746Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:25:02 +0000] "GET /ems/api/check-connection HTTP/1.1" - - "http://localhost:4100/streams" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0"
+2017-09-19T03:25:02.748Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:25:02 +0000] "POST /streams/update-list HTTP/1.1" - - "-" "EvoStream Media Server (www.evostream.com)"
+2017-09-19T03:25:02.749Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:25:02 +0000] "POST /streams/update-list HTTP/1.1" - - "-" "EvoStream Media Server (www.evostream.com)"
+2017-09-19T03:25:02.751Z - 6468 - verbose: [webui] ::ffff:127.0.0.1 - - [19/Sep/2017:03:25:02 +0000] "POST /streams/update-list HTTP/1.1" - - "-" "EvoStream Media Server (www.evostream.com)"
+2017-09-19T03:25:02.755Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:25:02.756Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:25:02.757Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:25:02.758Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.759Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.760Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.765Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.766Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:25:02.770Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:25:02.771Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:25:02.773Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:25:02.774Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.775Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.778Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.780Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.781Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:25:02.793Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:25:02.794Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:25:02.795Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:25:02.796Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.797Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.798Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.799Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.800Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:25:02.803Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:25:02.804Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:25:02.806Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:25:02.806Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.809Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.811Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.812Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.813Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:25:02.815Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:25:02.815Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:25:02.816Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:25:02.817Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.818Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.819Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.820Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.821Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:25:02.825Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:25:02.826Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:25:02.827Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:25:02.828Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.829Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.830Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.831Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.832Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:25:02.835Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:25:02.837Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:25:02.838Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:25:02.842Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.842Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.843Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.844Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.845Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams
+2017-09-19T03:25:02.847Z - 6468 - info: [webui] socket_io: updating liststreams table 
+2017-09-19T03:25:02.847Z - 6468 - info: [webui] stream-service: updateListStreamsTable 
+2017-09-19T03:25:02.849Z - 6468 - info: [webui] list-streams: updating data 
+2017-09-19T03:25:02.850Z - 6468 - info: [EMS-API] building the command
+2017-09-19T03:25:02.850Z - 6468 - info: [EMS-API] building the query string 
+2017-09-19T03:25:02.851Z - 6468 - verbose: [EMS-API] parameters: 
+2017-09-19T03:25:02.852Z - 6468 - verbose: [EMS-API] base64 parameters: 
+2017-09-19T03:25:02.853Z - 6468 - info: [EMS-API] command url: [SERVERURL]/listStreams

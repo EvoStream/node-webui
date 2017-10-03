@@ -3,7 +3,11 @@ var router = express.Router();
 
 var path = require('path');
 var restrict = require(path.join(__dirname, '../auth/restrict'));
-var ems = require(path.join(__dirname, "../core_modules/ems-api-core"))(null);
+
+//build the api proxy
+var ipApiProxy = require(path.join(__dirname, "../core_modules/ems-api-proxy"));
+var ems = require(path.join(__dirname, "../core_modules/ems-api-core"))(ipApiProxy.url);
+
 var winston = require('winston');
 
 router.get('/', restrict, function(req, res, next) {

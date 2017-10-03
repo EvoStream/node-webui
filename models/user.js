@@ -1,3 +1,6 @@
+/**
+ * user Model
+ */
 var bcrypt = require('bcryptjs');
 
 var path = require('path');
@@ -11,13 +14,14 @@ var db = new loki(path.join(__dirname, '../data/user.json'));
  * Local User
  */
 exports.addUser = function (user, next) {
-    winston.log("info", '[webui] add user');
+    winston.log("info", '[webui] user-model: adding user - '+user.email.toString());
 
     //load the database
     db.loadDatabase({}, function () {
 
         //get the users collection
         var users = db.getCollection('users');
+        var emailWithNoPasswordFound = false;
 
         if (users == null) {
             //add the users collection if it does not exist
@@ -27,17 +31,23 @@ exports.addUser = function (user, next) {
 
             var email = users.addDynamicView('email');
             email.applyFind({'email': user.email.toString().toLowerCase()});
+            var emailData = email.data();
 
-            if (email.data().length > 0) {
+            if( (email.data().length > 0 ) && (typeof(emailData[0].password ) != "undefined")) {
 
                 var response = {
                     error: 'Email address already exists.'
                 };
-                winston.log("error", '[webui] add user - email address already exists');
+                winston.log("error", '[webui] user-model: email address already exists - '+user.email.toString());
                 return next(response);
+            }else{
+
+                emailWithNoPasswordFound = true;
+
             }
         }
 
+        winston.log("info", '[webui] user-model: checking if user has an email with no password - '+emailWithNoPasswordFound);
 
         bcrypt.genSalt(10, function (err, salt) {
             bcrypt.hash(user.password, salt, function (err, hash) {
@@ -47,21 +57,31 @@ exports.addUser = function (user, next) {
                         error: 'Password hashing failed.'
                     };
 
-                    winston.log("error", '[webui] add user - password hashing failed');
+                    winston.log("error", '[webui] user-model: password hashing failed for user - '+user.email.toString());
                     return next(response);
                 }
 
-                winston.log("verbose", "[webui] user to be inserted " + JSON.stringify(user));
 
-                //insert the user
-                users.insert({
-                    email: user.email.toString().toLowerCase(),
-                    password: hash,
-                    resetPasswordToken: undefined,
-                    resetPasswordExpires: undefined,
-                    googletoken: '',
-                    fbtoken: ''
-                });
+                if(emailWithNoPasswordFound) {
+
+                    var emailChange = users.get(1);
+
+                    emailChange.email = user.email.toLowerCase();
+                    emailChange.password = hash;
+
+                    users.update(emailChange);
+
+                }else{
+                    //insert the user
+                    users.insert({
+                        email: user.email.toString().toLowerCase(),
+                        password: hash,
+                        resetPasswordToken: undefined,
+                        resetPasswordExpires: undefined,
+                        googletoken: '',
+                        fbtoken: ''
+                    });
+                }
 
                 //save the database
                 db.saveDatabase();
@@ -70,8 +90,8 @@ exports.addUser = function (user, next) {
                 var email = users.addDynamicView('email');
                 email.applyFind({'email': user.email.toString().toLowerCase()});
 
-                var response = email.data();
 
+                winston.log("info", '[webui] user-model: user information saved to db - '+user.email.toString());
                 return next(email.data());
 
             });
@@ -83,44 +103,35 @@ exports.addUser = function (user, next) {
 };
 
 exports.findUser = function (email, user) {
-
-    winston.log("info", '[webui] find user');
+    winston.log("info", '[webui] user-model: finding user - '+email);
 
     //get the users collection
     var users = db.getCollection('users');
-
-    // winston.log("verbose", "[webui] find users " + JSON.stringify(users));
-    // winston.log("verbose", "(typeof(users) == undefined) " + (typeof(users) == "undefined"));
-    // winston.log("verbose", "(users == null) " + (users == null));
 
     if ((typeof(users) == "undefined") || users == null) {
         var response = {
             error: 'there are no existing users'
         };
-        winston.log("error", '[webui] find user - there are no existing users');
+        winston.log("error", '[webui] user-model: there are no existing users ');
         return user(response);
 
     } else {
         var result = users.findOne({'email': email.toLowerCase()});
 
-        winston.log("verbose", "[webui] find user - result " + JSON.stringify(result));
-
         if (!result) {
             var response = {
                 error: 'there are no existing users'
             };
-            winston.log("verbose", '[webui] find user - there are no existing users');
+            winston.log("error", '[webui] user-model: user does not exists - '+email);
             return user(response);
         }
-
-        winston.log("verbose", "result " + JSON.stringify(result));
 
         return user(result);
     }
 };
 
 exports.countUser = function (next) {
-    winston.log("info", '[webui] count user');
+    winston.log("info", '[webui] user-model: counting user');
 
     var count = 0;
 
@@ -130,14 +141,23 @@ exports.countUser = function (next) {
         //get the users collection
         var users = db.getCollection('users');
 
-        winston.log("info", '[webui] count user data ' + JSON.stringify(users));
-
         if ((typeof(users) == "undefined") || users == null) {
+            winston.log("info", '[webui] user-model: zero user ');
             return next(count);
         } else {
             var email = users.addDynamicView('email');
             count = email.data().length;
 
+            if(count > 0){
+                //check if local user exists
+                var emailData = email.data();
+
+                if(typeof(emailData[0].password ) == "undefined"){
+                    count = 0;
+                }
+            }
+
+            winston.log("info", '[webui] user-model: user count - '+count);
             return next(count);
         }
 
@@ -145,12 +165,8 @@ exports.countUser = function (next) {
 
 };
 
-/*
- * Forgot Password functions
- */
-
 exports.findUserResetToken = function (resetPasswordToken, userResult) {
-    winston.log("info", '[webui] find user and reset token');
+    winston.log("info", '[webui] user-model: find user and reset token ');
 
     //load the database
     db.loadDatabase({}, function () {
@@ -163,7 +179,7 @@ exports.findUserResetToken = function (resetPasswordToken, userResult) {
                 error: 'there are no existing users'
             };
 
-            winston.log("error", '[webui] find user and reset token - there are no existing users');
+            winston.log("error", '[webui] user-model: there are no existing users ');
             return userResult(response);
 
         } else {
@@ -178,6 +194,7 @@ exports.findUserResetToken = function (resetPasswordToken, userResult) {
                 }
             );
 
+            winston.log("info", '[webui] user-model: token reset');
             return userResult(result);
         }
 
@@ -187,7 +204,7 @@ exports.findUserResetToken = function (resetPasswordToken, userResult) {
 
 
 exports.updateUser = function (user, userResult) {
-    winston.log("info", '[webui] update user');
+    winston.log("info", '[webui] user-model: update user - '+user.email);
 
     //load the database
     db.loadDatabase({}, function () {
@@ -199,14 +216,12 @@ exports.updateUser = function (user, userResult) {
             var response = {
                 error: 'there are no existing users'
             };
-            winston.log("error", '[webui] update user - there are no existing users');
+            winston.log("error", '[webui] user-model: there are no existing users ');
             return userResult(response);
 
         } else {
 
             var result = users.findOne({'email': user.email.toLowerCase()});
-
-            winston.log("verbose", "result data " + JSON.stringify(result));
 
             result.resetPasswordToken = user.resetPasswordToken;
             result.resetPasswordExpires = user.resetPasswordExpires; // 1 hour
@@ -220,6 +235,8 @@ exports.updateUser = function (user, userResult) {
             //save
             db.saveDatabase();
 
+            winston.log("info", '[webui] user-model: user successfully updated - '+user.email);
+
             userResult(result);
         }
 
@@ -229,7 +246,7 @@ exports.updateUser = function (user, userResult) {
 
 
 exports.findUserOldPassword = function (user, next) {
-    winston.log("info", '[webui] find user and check old password');
+    winston.log("info", '[webui] user-model: find and check old password for user - '+user.email);
 
     //load the database
     db.loadDatabase({}, function () {
@@ -242,13 +259,12 @@ exports.findUserOldPassword = function (user, next) {
                 status: false,
                 error: 'there are no existing users'
             };
-            winston.log("error", '[webui] update user - there are no existing users');
+            winston.log("error", '[webui] user-model: there are no existing users ');
             return next(response);
 
         } else {
 
             var result = users.findOne({'email': user.email.toLowerCase()});
-
             bcrypt.compare(user.oldpassword, result.password, function (err, res) {
 
                 if (err) {
@@ -256,7 +272,7 @@ exports.findUserOldPassword = function (user, next) {
                         status: false,
                         error: 'match password failed'
                     };
-                    winston.log("error", '[webui] user old password did not match ');
+                    winston.log("error", '[webui] user-model: user old password did not match - '+user.email);
                     return next(response);
                 }
                 if (res === false) {
@@ -264,29 +280,25 @@ exports.findUserOldPassword = function (user, next) {
                         status: false,
                         error: 'user old password did not match'
                     };
-                    winston.log("error", '[webui] user old password did not match ');
+                    winston.log("error", '[webui] user-model: user old password did not match - '+user.email);
                     return next(response);
                 } else {
                     var response = {
                         status: true,
                         message: 'password match'
                     };
+
+                    winston.log("info", '[webui] user-model: password match for user - '+user.email);
                     return next(response);
                 }
-
             });
-
-
         }
-
     });
-
-
 };
 
 
 exports.updateUserPassword = function (user, next) {
-    winston.log("info", '[webui] update user password');
+    winston.log("info", '[webui] user-model: update user password for user - '+user.email);
 
     bcrypt.genSalt(10, function (err, salt) {
         bcrypt.hash(user.password, salt, function (err, hash) {
@@ -296,7 +308,7 @@ exports.updateUserPassword = function (user, next) {
                     status: false,
                     error: 'hashing failed'
                 };
-                winston.log("error", '[webui] hashing failed ');
+                winston.log("error", '[webui] user-model: password hashing failed for user - '+user.email.toString());
                 return next(response);
             }
 
@@ -315,7 +327,7 @@ exports.updateUserPassword = function (user, next) {
                         error: 'there are no existing users',
                         status: false
                     };
-                    winston.log("error", '[webui] update user - there are no existing users');
+                    winston.log("error", '[webui] user-model: there are no existing users ');
                     return next(response);
 
                 } else {
@@ -332,6 +344,7 @@ exports.updateUserPassword = function (user, next) {
                     //save
                     db.saveDatabase();
 
+                    winston.log("info", '[webui] user-model: password updated for user - '+user.email);
                     return next(result);
                 }
 
@@ -346,7 +359,7 @@ exports.updateUserPassword = function (user, next) {
  * Facebook User
  */
 exports.addFbUser = function (fbUser, response) {
-    winston.log("info", '[webui] add facebook user');
+    winston.log("info", '[webui] user-model: adding facebook user - '+fbUser.email.toString());
 
     db.loadDatabase({}, function () {
 
@@ -375,7 +388,7 @@ exports.addFbUser = function (fbUser, response) {
 };
 
 exports.findFbEmailUpdateToken = function (fbUser, response) {
-    winston.log("info", '[webui] find facebook user and update token');
+    winston.log("info", '[webui] user-model: find facebook user and update token - '+fbUser.email.toString());
 
     db.loadDatabase({}, function () {
 
@@ -387,7 +400,7 @@ exports.findFbEmailUpdateToken = function (fbUser, response) {
             var result = {
                 error: 'there are no existing users'
             };
-            winston.log("error", '[webui] find facebook user and update token - there are no existing users');
+            winston.log("info", '[webui] user-model: there are no existing users');
             return response(result);
 
         } else {
@@ -413,7 +426,7 @@ exports.findFbEmailUpdateToken = function (fbUser, response) {
  */
 
 exports.addGoogleUser = function (googleUser, response) {
-    winston.log("info", '[webui] add google user');
+    winston.log("info", '[webui] user-model: adding google user - '+googleUser.email.toString());
 
     db.loadDatabase({}, function () {
 
@@ -442,7 +455,7 @@ exports.addGoogleUser = function (googleUser, response) {
 
 
 exports.findGoogleEmailUpdateToken = function (googleUser, response) {
-    winston.log("info", '[webui] find google user and update token');
+    winston.log("info", '[webui] user-model: find google user and update token - '+googleUser.email.toString());
 
     db.loadDatabase({}, function () {
 
@@ -454,7 +467,7 @@ exports.findGoogleEmailUpdateToken = function (googleUser, response) {
             var result = {
                 error: 'there are no existing users'
             };
-            winston.log("error", '[webui] find google user and update token - there are no existing users');
+            winston.log("info", '[webui] user-model: there are no existing users');
             return response(result);
 
         } else {

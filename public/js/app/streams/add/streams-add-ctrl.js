@@ -1,7 +1,5 @@
 ﻿webuiApp.controller('streamsAddCtrl', ['$scope', '$http', '$timeout', 'listPullStreamFactory', '$uibModal', function ($scope, $http, $timeout, listPullStreamFactory, $uibModal) {
 
-    console.log('streamsAddCtrl loaded');
-    
     //Default Values
     $scope.activeTab = '/add';
 
@@ -51,33 +49,47 @@
         localStreamName: ''
     };
 
-    $scope.hls = {
-        targetFolder: '/var/www',
-        bandwidths: '',
-        groupName: '',
-        chunkLength: 10
-    };
+    $http.get("/ems/api/get-ems-dir").then(function (response) {
 
-    $scope.hds = {
-        targetFolder: '/var/www',
-        bandwidths: '',
-        groupName: '',
-        chunkLength: 10
-    };
+        var dir = response.data.directory;
+        var targetFolder = null;
 
-    $scope.dash = {
-        targetFolder: '/var/www',
-        bandwidths: '',
-        groupName: '',
-        chunkLength: 10
-    };
+        if (dir != null) {
+            targetFolder = dir;
+        } else {
+            targetFolder = '/var/www';
+        }
 
-    $scope.mss = {
-        targetFolder: '/var/www',
-        bandwidths: '',
-        groupName: '',
-        chunkLength: 10
-    };
+        $scope.hls = {
+            targetFolder: targetFolder,
+            bandwidths: '',
+            groupName: '',
+            chunkLength: 10
+        };
+
+        $scope.hds = {
+            targetFolder: targetFolder,
+            bandwidths: '',
+            groupName: '',
+            chunkLength: 10
+        };
+
+        $scope.dash = {
+            targetFolder: targetFolder,
+            bandwidths: '',
+            groupName: '',
+            chunkLength: 10
+        };
+
+        $scope.mss = {
+            targetFolder: targetFolder,
+            bandwidths: '',
+            groupName: '',
+            chunkLength: 10
+        };
+
+    });
+
 
     //Get the List of Inbound Streams
     $scope.inboundList = [];
@@ -108,24 +120,29 @@
 
         $scope.inboundList.selected = [];
 
-        $scope.hls.targetFolder = '';
         $scope.hls.bandwidths = '';
         $scope.hls.groupName = '';
         $scope.hls.chunkLength = 10;
-        $scope.hds.targetFolder = '';
+
         $scope.hds.bandwidths = '';
         $scope.hds.groupName = '';
         $scope.hds.chunkLength = 10;
-        $scope.dash.targetFolder = '';
+
         $scope.dash.bandwidths = '';
         $scope.dash.groupName = '';
         $scope.dash.chunkLength = 10;
-        $scope.mss.targetFolder = '';
+        
         $scope.mss.bandwidths = '';
         $scope.mss.groupName = '';
         $scope.mss.chunkLength = 10;
     };
 
+
+    $scope.removeSuccessInfo = function () {
+
+        $scope.seeAddedStream = false;
+
+    };
 
     $scope.addStream = function () {
 
@@ -172,6 +189,10 @@
                     bandwidths = $scope.mss.bandwidths.split(",");
                 }
 
+                if(bandwidths[0] == ''){
+                    delete parameters.bandwidths;
+                }
+
                 if(bandwidths.length > 1){
                     var ctr = 1;
                     for (var b = 0; b < bandwidths.length; b++) {
@@ -185,10 +206,6 @@
                     }
                 }else{
                     parameters.localStreamNames = $scope.inboundList.selected[0].name;
-                }
-
-                if(bandwidths[0] == ''){
-                    delete parameters.bandwidths;
                 }
 
             }else{
@@ -228,6 +245,10 @@
                 parameters.pathToFile = '/' + parameters.pathToFile;
                 parameters.pathToFile = 'file://' + parameters.pathToFile;
             }
+        }
+
+        if(parameters.bandwidths == ''){
+            delete parameters.bandwidths;
         }
 
         var data = $.param({

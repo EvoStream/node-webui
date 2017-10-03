@@ -15,16 +15,17 @@
                 <label for="password" class="sr-only">Password</label>
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 
-                <!--<div class="checkbox">-->
-                    <!--<label for="rememberMe">-->
-                        <!--<input type="checkbox" id="rememberMe" name="rememberMe"> Remember me-->
-                    <!--</label>-->
-                    <!--<a class="pull-right" href="/forgotpassword">Forgot password?</a>-->
-                <!--</div>-->
                 {{#if error}}
                     <div style="color:red;">{{error}}</div>
                 {{/if}}
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+                <a class="pull-right" style="margin-bottom: 10px;" href="/forgotpassword">Forgot password?</a>
+                <!--<div class="checkbox">-->
+                    <!--&lt;!&ndash;<label for="rememberMe">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="checkbox" id="rememberMe" name="rememberMe"> Remember me&ndash;&gt;-->
+                    <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                    <!--<a class="pull-right" href="/forgotpassword">Forgot password?</a>-->
+                <!--</div>-->
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <p class="subtitle fancy"><span>Or</span></p>

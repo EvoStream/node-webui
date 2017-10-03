@@ -1,7 +1,6 @@
 'use strict';
 var webuiApp = angular.module('webui-app', ['ngSanitize', 'ui.select', 'ngRoute', 'bsTable', 'ui.bootstrap', 'base64', 'angular-ladda', 'chart.js']);
 
-
 webuiApp.config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{[{');
     $interpolateProvider.endSymbol('}]}');
@@ -154,7 +153,8 @@ webuiApp.factory('listPullStreamFactory', [ '$http', '$q', function ($http, $q) 
 
 }]);
 
-webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout ) {
+
+webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', '$location', function ($scope, $http, $timeout, $location) {
 
     $scope.connectionStatus = 'disconnected';
     $scope.connectionText = 'EMS Offline. Please Start EMS.';
@@ -174,6 +174,7 @@ webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', func
                 $scope.connectionText = 'EMS Offline. Please Start EMS.';
                 $scope.dashboardConnectionText = 'Not Connected. Please Start EMS.';
                 $scope.statusConnected = 'status';
+                
             }
 
             if(data.status == "SUCCESS"){
@@ -242,10 +243,10 @@ webuiApp.controller('connectionButtonCtrl', ['$scope', '$http', '$timeout', func
             }
 
             $timeout(function () {
-                // console.log("$timeout triggered");
                 checkEmsConnection();
             }, 10000);
         });
     }
+    
 }]);
 
